@@ -5,11 +5,13 @@ stages:
 build_project:
     stage: build
         script:
+
             - xcodebuild clean -project StrawberryPie.xcodeproj -scheme StrawberryPie | xcpretty
             - xcodebuild test -project StrawberryPie.xcodeproj -scheme StrawberryPie -destination 'platform=iOS Simulator,name=iPhone XR,OS=12.1' | xcpretty -s
 
-tags:
-- strawberrypie
-- iosdev
-- tyokkari
+
+    tags:
+    - strawberrypie
+    - iosdev
+    - tyokkari
 
