@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6636238430AD00F8340C /* AppDelegate.swift */; };
+		6A7E6639238430AD00F8340C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6638238430AD00F8340C /* ViewController.swift */; };
+		6A7E663C238430AD00F8340C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E663A238430AD00F8340C /* Main.storyboard */; };
+		6A7E663F238430AD00F8340C /* StrawberryPie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E663D238430AD00F8340C /* StrawberryPie.xcdatamodeld */; };
+		6A7E6641238430AF00F8340C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6640238430AF00F8340C /* Assets.xcassets */; };
+		6A7E6644238430AF00F8340C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */; };
+		6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
+		6A7E665A238430AF00F8340C /* StrawberryPieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6A7E664B238430AF00F8340C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A7E662B238430AD00F8340C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A7E6632238430AD00F8340C;
+			remoteInfo = StrawberryPie;
+		};
+		6A7E6656238430AF00F8340C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A7E662B238430AD00F8340C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A7E6632238430AD00F8340C;
+			remoteInfo = StrawberryPie;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6A7E6633238430AD00F8340C /* StrawberryPie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrawberryPie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A7E6636238430AD00F8340C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6A7E6638238430AD00F8340C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6A7E663B238430AD00F8340C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6A7E663E238430AD00F8340C /* StrawberryPie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StrawberryPie.xcdatamodel; sourceTree = "<group>"; };
+		6A7E6640238430AF00F8340C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A7E6643238430AF00F8340C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6A7E6645238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrawberryPieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieTests.swift; sourceTree = "<group>"; };
+		6A7E6650238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A7E6655238430AF00F8340C /* StrawberryPieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrawberryPieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieUITests.swift; sourceTree = "<group>"; };
+		6A7E665B238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6A7E6630238430AD00F8340C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A7E6647238430AF00F8340C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A7E6652238430AF00F8340C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6A7E662A238430AD00F8340C = {
+			isa = PBXGroup;
+			children = (
+				6A7E6635238430AD00F8340C /* StrawberryPie */,
+				6A7E664D238430AF00F8340C /* StrawberryPieTests */,
+				6A7E6658238430AF00F8340C /* StrawberryPieUITests */,
+				6A7E6634238430AD00F8340C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6A7E6634238430AD00F8340C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A7E6633238430AD00F8340C /* StrawberryPie.app */,
+				6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */,
+				6A7E6655238430AF00F8340C /* StrawberryPieUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A7E6635238430AD00F8340C /* StrawberryPie */ = {
+			isa = PBXGroup;
+			children = (
+				6A7E6636238430AD00F8340C /* AppDelegate.swift */,
+				6A7E6638238430AD00F8340C /* ViewController.swift */,
+				6A7E663A238430AD00F8340C /* Main.storyboard */,
+				6A7E6640238430AF00F8340C /* Assets.xcassets */,
+				6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */,
+				6A7E6645238430AF00F8340C /* Info.plist */,
+				6A7E663D238430AD00F8340C /* StrawberryPie.xcdatamodeld */,
+			);
+			path = StrawberryPie;
+			sourceTree = "<group>";
+		};
+		6A7E664D238430AF00F8340C /* StrawberryPieTests */ = {
+			isa = PBXGroup;
+			children = (
+				6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */,
+				6A7E6650238430AF00F8340C /* Info.plist */,
+			);
+			path = StrawberryPieTests;
+			sourceTree = "<group>";
+		};
+		6A7E6658238430AF00F8340C /* StrawberryPieUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */,
+				6A7E665B238430AF00F8340C /* Info.plist */,
+			);
+			path = StrawberryPieUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6A7E6632238430AD00F8340C /* StrawberryPie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A7E665E238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPie" */;
+			buildPhases = (
+				6A7E662F238430AD00F8340C /* Sources */,
+				6A7E6630238430AD00F8340C /* Frameworks */,
+				6A7E6631238430AD00F8340C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StrawberryPie;
+			productName = StrawberryPie;
+			productReference = 6A7E6633238430AD00F8340C /* StrawberryPie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6A7E6649238430AF00F8340C /* StrawberryPieTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A7E6661238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPieTests" */;
+			buildPhases = (
+				6A7E6646238430AF00F8340C /* Sources */,
+				6A7E6647238430AF00F8340C /* Frameworks */,
+				6A7E6648238430AF00F8340C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A7E664C238430AF00F8340C /* PBXTargetDependency */,
+			);
+			name = StrawberryPieTests;
+			productName = StrawberryPieTests;
+			productReference = 6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6A7E6654238430AF00F8340C /* StrawberryPieUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A7E6664238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPieUITests" */;
+			buildPhases = (
+				6A7E6651238430AF00F8340C /* Sources */,
+				6A7E6652238430AF00F8340C /* Frameworks */,
+				6A7E6653238430AF00F8340C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A7E6657238430AF00F8340C /* PBXTargetDependency */,
+			);
+			name = StrawberryPieUITests;
+			productName = StrawberryPieUITests;
+			productReference = 6A7E6655238430AF00F8340C /* StrawberryPieUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6A7E662B238430AD00F8340C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Team Työkkäri";
+				TargetAttributes = {
+					6A7E6632238430AD00F8340C = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					6A7E6649238430AF00F8340C = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 6A7E6632238430AD00F8340C;
+					};
+					6A7E6654238430AF00F8340C = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 6A7E6632238430AD00F8340C;
+					};
+				};
+			};
+			buildConfigurationList = 6A7E662E238430AD00F8340C /* Build configuration list for PBXProject "StrawberryPie" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6A7E662A238430AD00F8340C;
+			productRefGroup = 6A7E6634238430AD00F8340C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6A7E6632238430AD00F8340C /* StrawberryPie */,
+				6A7E6649238430AF00F8340C /* StrawberryPieTests */,
+				6A7E6654238430AF00F8340C /* StrawberryPieUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6A7E6631238430AD00F8340C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A7E6644238430AF00F8340C /* LaunchScreen.storyboard in Resources */,
+				6A7E6641238430AF00F8340C /* Assets.xcassets in Resources */,
+				6A7E663C238430AD00F8340C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A7E6648238430AF00F8340C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A7E6653238430AF00F8340C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A7E662F238430AD00F8340C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A7E663F238430AD00F8340C /* StrawberryPie.xcdatamodeld in Sources */,
+				6A7E6639238430AD00F8340C /* ViewController.swift in Sources */,
+				6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A7E6646238430AF00F8340C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A7E6651238430AF00F8340C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A7E665A238430AF00F8340C /* StrawberryPieUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6A7E664C238430AF00F8340C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A7E6632238430AD00F8340C /* StrawberryPie */;
+			targetProxy = 6A7E664B238430AF00F8340C /* PBXContainerItemProxy */;
+		};
+		6A7E6657238430AF00F8340C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A7E6632238430AD00F8340C /* StrawberryPie */;
+			targetProxy = 6A7E6656238430AF00F8340C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6A7E663A238430AD00F8340C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A7E663B238430AD00F8340C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A7E6643238430AF00F8340C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6A7E665C238430AF00F8340C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6A7E665D238430AF00F8340C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6A7E665F238430AF00F8340C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6458786ZYK;
+				INFOPLIST_FILE = StrawberryPie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.metropolia.StrawberryPie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6A7E6660238430AF00F8340C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6458786ZYK;
+				INFOPLIST_FILE = StrawberryPie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.metropolia.StrawberryPie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6A7E6662238430AF00F8340C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6458786ZYK;
+				INFOPLIST_FILE = StrawberryPieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.metropolia.StrawberryPieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StrawberryPie.app/StrawberryPie";
+			};
+			name = Debug;
+		};
+		6A7E6663238430AF00F8340C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6458786ZYK;
+				INFOPLIST_FILE = StrawberryPieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.metropolia.StrawberryPieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StrawberryPie.app/StrawberryPie";
+			};
+			name = Release;
+		};
+		6A7E6665238430AF00F8340C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6458786ZYK;
+				INFOPLIST_FILE = StrawberryPieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.metropolia.StrawberryPieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StrawberryPie;
+			};
+			name = Debug;
+		};
+		6A7E6666238430AF00F8340C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6458786ZYK;
+				INFOPLIST_FILE = StrawberryPieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.metropolia.StrawberryPieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StrawberryPie;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6A7E662E238430AD00F8340C /* Build configuration list for PBXProject "StrawberryPie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A7E665C238430AF00F8340C /* Debug */,
+				6A7E665D238430AF00F8340C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A7E665E238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A7E665F238430AF00F8340C /* Debug */,
+				6A7E6660238430AF00F8340C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A7E6661238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPieTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A7E6662238430AF00F8340C /* Debug */,
+				6A7E6663238430AF00F8340C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A7E6664238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPieUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A7E6665238430AF00F8340C /* Debug */,
+				6A7E6666238430AF00F8340C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6A7E663D238430AD00F8340C /* StrawberryPie.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6A7E663E238430AD00F8340C /* StrawberryPie.xcdatamodel */,
+			);
+			currentVersion = 6A7E663E238430AD00F8340C /* StrawberryPie.xcdatamodel */;
+			path = StrawberryPie.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6A7E662B238430AD00F8340C /* Project object */;
+}
