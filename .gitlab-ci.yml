@@ -5,8 +5,8 @@ build_project:
     stage: build
     script:
 
-        - xcodebuild clean -project StrawberryPie.xcodeproj -scheme StrawberryPie | xcpretty
-        - xcodebuild test -project StrawberryPie.xcodeproj -scheme StrawberryPie -destination 'platform=iOS Simulator,name=iPhone XR,OS=12.1' | xcpretty -s
+        - xcodebuild clean -workspace StrawberryPie.xcworkspace -scheme StrawberryPie | xcpretty
+        - xcodebuild test -workspace StrawberryPie.xcworkspace -scheme StrawberryPie -destination 'platform=iOS Simulator,name=iPhone XR,OS=12.1' | xcpretty -s
 
 
     tags:

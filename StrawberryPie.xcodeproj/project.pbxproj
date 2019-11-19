@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AE1A9D774B4EACF234848E1 /* Pods_StrawberryPie_StrawberryPieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33E5455F31C152E21085EE4 /* Pods_StrawberryPie_StrawberryPieUITests.framework */; };
+		63D2D57F931C466535B8CD21 /* Pods_StrawberryPieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */; };
 		6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6636238430AD00F8340C /* AppDelegate.swift */; };
 		6A7E6639238430AD00F8340C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6638238430AD00F8340C /* ViewController.swift */; };
 		6A7E663C238430AD00F8340C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E663A238430AD00F8340C /* Main.storyboard */; };
@@ -16,6 +18,7 @@
 		6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
 		6A7E665A238430AF00F8340C /* StrawberryPieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */; };
 		6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E66672384368600F8340C /* .gitlab-ci.yml */; };
+		BFC9BD0A46682C914BB4736A /* Pods_StrawberryPie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D46F4DD8FE8DEC51E6DC26 /* Pods_StrawberryPie.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13D46F4DD8FE8DEC51E6DC26 /* Pods_StrawberryPie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StrawberryPie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		180D49CC598AD12A2D22C9D2 /* Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig"; path = "Target Support Files/Pods-StrawberryPie-StrawberryPieUITests/Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StrawberryPieTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7E6633238430AD00F8340C /* StrawberryPie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrawberryPie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7E6636238430AD00F8340C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A7E6638238430AD00F8340C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +57,12 @@
 		6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieUITests.swift; sourceTree = "<group>"; };
 		6A7E665B238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7E66672384368600F8340C /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
+		6FE67FC2653627D51C037D95 /* Pods-StrawberryPieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPieTests.debug.xcconfig"; path = "Target Support Files/Pods-StrawberryPieTests/Pods-StrawberryPieTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A96B7A6FA000376F53649958 /* Pods-StrawberryPieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPieTests.release.xcconfig"; path = "Target Support Files/Pods-StrawberryPieTests/Pods-StrawberryPieTests.release.xcconfig"; sourceTree = "<group>"; };
+		CE07CB0B56F32CAAB48E7C6C /* Pods-StrawberryPie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPie.debug.xcconfig"; path = "Target Support Files/Pods-StrawberryPie/Pods-StrawberryPie.debug.xcconfig"; sourceTree = "<group>"; };
+		D33E5455F31C152E21085EE4 /* Pods_StrawberryPie_StrawberryPieUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StrawberryPie_StrawberryPieUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E22A0183E24B3C2146C949F3 /* Pods-StrawberryPie-StrawberryPieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPie-StrawberryPieUITests.debug.xcconfig"; path = "Target Support Files/Pods-StrawberryPie-StrawberryPieUITests/Pods-StrawberryPie-StrawberryPieUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC31303FB4172628B0DEDD57 /* Pods-StrawberryPie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPie.release.xcconfig"; path = "Target Support Files/Pods-StrawberryPie/Pods-StrawberryPie.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC9BD0A46682C914BB4736A /* Pods_StrawberryPie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63D2D57F931C466535B8CD21 /* Pods_StrawberryPieTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AE1A9D774B4EACF234848E1 /* Pods_StrawberryPie_StrawberryPieUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +101,8 @@
 				6A7E664D238430AF00F8340C /* StrawberryPieTests */,
 				6A7E6658238430AF00F8340C /* StrawberryPieUITests */,
 				6A7E6634238430AD00F8340C /* Products */,
+				D8676E192A98880C385AA71C /* Pods */,
+				DE12CC7A72B449AE856F45B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +148,30 @@
 			path = StrawberryPieUITests;
 			sourceTree = "<group>";
 		};
+		D8676E192A98880C385AA71C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE07CB0B56F32CAAB48E7C6C /* Pods-StrawberryPie.debug.xcconfig */,
+				EC31303FB4172628B0DEDD57 /* Pods-StrawberryPie.release.xcconfig */,
+				E22A0183E24B3C2146C949F3 /* Pods-StrawberryPie-StrawberryPieUITests.debug.xcconfig */,
+				180D49CC598AD12A2D22C9D2 /* Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig */,
+				6FE67FC2653627D51C037D95 /* Pods-StrawberryPieTests.debug.xcconfig */,
+				A96B7A6FA000376F53649958 /* Pods-StrawberryPieTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DE12CC7A72B449AE856F45B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13D46F4DD8FE8DEC51E6DC26 /* Pods_StrawberryPie.framework */,
+				D33E5455F31C152E21085EE4 /* Pods_StrawberryPie_StrawberryPieUITests.framework */,
+				1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +179,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A7E665E238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPie" */;
 			buildPhases = (
+				74C2599007B140233B7A0B47 /* [CP] Check Pods Manifest.lock */,
 				6A7E662F238430AD00F8340C /* Sources */,
 				6A7E6630238430AD00F8340C /* Frameworks */,
 				6A7E6631238430AD00F8340C /* Resources */,
@@ -155,6 +197,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A7E6661238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPieTests" */;
 			buildPhases = (
+				5170783F1EB807920D457DE8 /* [CP] Check Pods Manifest.lock */,
 				6A7E6646238430AF00F8340C /* Sources */,
 				6A7E6647238430AF00F8340C /* Frameworks */,
 				6A7E6648238430AF00F8340C /* Resources */,
@@ -173,6 +216,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A7E6664238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPieUITests" */;
 			buildPhases = (
+				ADC2A9EA4EC8AD913CCADA20 /* [CP] Check Pods Manifest.lock */,
 				6A7E6651238430AF00F8340C /* Sources */,
 				6A7E6652238430AF00F8340C /* Frameworks */,
 				6A7E6653238430AF00F8340C /* Resources */,
@@ -257,6 +301,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5170783F1EB807920D457DE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StrawberryPieTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74C2599007B140233B7A0B47 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StrawberryPie-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADC2A9EA4EC8AD913CCADA20 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StrawberryPie-StrawberryPieUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6A7E662F238430AD00F8340C /* Sources */ = {
@@ -438,6 +551,7 @@
 		};
 		6A7E665F238430AF00F8340C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE07CB0B56F32CAAB48E7C6C /* Pods-StrawberryPie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -456,6 +570,7 @@
 		};
 		6A7E6660238430AF00F8340C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC31303FB4172628B0DEDD57 /* Pods-StrawberryPie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -474,6 +589,7 @@
 		};
 		6A7E6662238430AF00F8340C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FE67FC2653627D51C037D95 /* Pods-StrawberryPieTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -495,6 +611,7 @@
 		};
 		6A7E6663238430AF00F8340C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96B7A6FA000376F53649958 /* Pods-StrawberryPieTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -516,6 +633,7 @@
 		};
 		6A7E6665238430AF00F8340C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E22A0183E24B3C2146C949F3 /* Pods-StrawberryPie-StrawberryPieUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -536,6 +654,7 @@
 		};
 		6A7E6666238430AF00F8340C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 180D49CC598AD12A2D22C9D2 /* Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

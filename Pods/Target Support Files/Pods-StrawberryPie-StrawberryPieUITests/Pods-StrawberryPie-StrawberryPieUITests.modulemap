@@ -1,0 +1,6 @@
+framework module Pods_StrawberryPie_StrawberryPieUITests {
+  umbrella header "Pods-StrawberryPie-StrawberryPieUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
