@@ -5,7 +5,9 @@ target 'StrawberryPie' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
+  
   # Pods for StrawberryPie
+   pod 'RealmSwift'
 
   target 'StrawberryPieTests' do
     inherit! :search_paths
