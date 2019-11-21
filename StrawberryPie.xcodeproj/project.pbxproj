@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -131,17 +131,12 @@
 		6A7E6635238430AD00F8340C /* StrawberryPie */ = {
 			isa = PBXGroup;
 			children = (
+				6ACB980823866FDD0070CCF6 /* Objects */,
+				6ACB980723866FC40070CCF6 /* Components */,
+				6ACB980623866FB80070CCF6 /* ViewControllers */,
+				6ACB980423866F8C0070CCF6 /* Storyboards */,
 				6A7E6636238430AD00F8340C /* AppDelegate.swift */,
-				6A7E6638238430AD00F8340C /* LoginRegisterController.swift */,
-				6AC642CB2385892500E2906F /* ProfileController.swift */,
 				6A7E6640238430AF00F8340C /* Assets.xcassets */,
-				6AC642D42385915000E2906F /* Main.storyboard */,
-				6AC642E5238593BB00E2906F /* Categories.storyboard */,
-				6AC642E12385937100E2906F /* Feed.storyboard */,
-				6AC642E32385939500E2906F /* Home.storyboard */,
-				6AC642E7238593E100E2906F /* LoginRegister.storyboard */,
-				6AC642DF2385932E00E2906F /* Profile.storyboard */,
-				6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */,
 				6A7E6645238430AF00F8340C /* Info.plist */,
 				6A7E663D238430AD00F8340C /* StrawberryPie.xcdatamodeld */,
 			);
@@ -164,6 +159,43 @@
 				6A7E665B238430AF00F8340C /* Info.plist */,
 			);
 			path = StrawberryPieUITests;
+			sourceTree = "<group>";
+		};
+		6ACB980423866F8C0070CCF6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6AC642D42385915000E2906F /* Main.storyboard */,
+				6AC642E5238593BB00E2906F /* Categories.storyboard */,
+				6AC642E12385937100E2906F /* Feed.storyboard */,
+				6AC642E32385939500E2906F /* Home.storyboard */,
+				6AC642E7238593E100E2906F /* LoginRegister.storyboard */,
+				6AC642DF2385932E00E2906F /* Profile.storyboard */,
+				6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		6ACB980623866FB80070CCF6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6A7E6638238430AD00F8340C /* LoginRegisterController.swift */,
+				6AC642CB2385892500E2906F /* ProfileController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6ACB980723866FC40070CCF6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		6ACB980823866FDD0070CCF6 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		D8676E192A98880C385AA71C /* Pods */ = {
