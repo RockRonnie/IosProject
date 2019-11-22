@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5AE1A9D774B4EACF234848E1 /* Pods_StrawberryPie_StrawberryPieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33E5455F31C152E21085EE4 /* Pods_StrawberryPie_StrawberryPieUITests.framework */; };
 		63D2D57F931C466535B8CD21 /* Pods_StrawberryPieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */; };
 		6877CD2A238855B700CBCEDE /* QA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6877CD29238855B700CBCEDE /* QA.storyboard */; };
 		6A7D3412238830630079BFB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D3411238830630079BFB7 /* Constants.swift */; };
@@ -17,7 +16,6 @@
 		6A7E6641238430AF00F8340C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6640238430AF00F8340C /* Assets.xcassets */; };
 		6A7E6644238430AF00F8340C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */; };
 		6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
-		6A7E665A238430AF00F8340C /* StrawberryPieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */; };
 		6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E66672384368600F8340C /* .gitlab-ci.yml */; };
 		6AC642CC2385892500E2906F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC642CB2385892500E2906F /* ProfileController.swift */; };
 		6AC642D62385915000E2906F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642D42385915000E2906F /* Main.storyboard */; };
@@ -28,10 +26,8 @@
 		6AC642E8238593E100E2906F /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642E7238593E100E2906F /* LoginRegister.storyboard */; };
 		6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
 		6ACB980B2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
-		6ACB980C2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
 		6ACB980E238674AD0070CCF6 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB980D238674AD0070CCF6 /* ChatMessage.swift */; };
 		6ACB980F238674AD0070CCF6 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB980D238674AD0070CCF6 /* ChatMessage.swift */; };
-		6ACB9810238674AD0070CCF6 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB980D238674AD0070CCF6 /* ChatMessage.swift */; };
 		6AE09EAD238827760040E87E /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA7238827750040E87E /* Category+CoreDataClass.swift */; };
 		6AE09EAE238827760040E87E /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
 		6AE09EAF238827760040E87E /* Studies+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA9238827750040E87E /* Studies+CoreDataProperties.swift */; };
@@ -43,13 +39,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		6A7E664B238430AF00F8340C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6A7E662B238430AD00F8340C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6A7E6632238430AD00F8340C;
-			remoteInfo = StrawberryPie;
-		};
-		6A7E6656238430AF00F8340C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6A7E662B238430AD00F8340C /* Project object */;
 			proxyType = 1;
@@ -74,9 +63,6 @@
 		6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrawberryPieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieTests.swift; sourceTree = "<group>"; };
 		6A7E6650238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A7E6655238430AF00F8340C /* StrawberryPieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrawberryPieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieUITests.swift; sourceTree = "<group>"; };
-		6A7E665B238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7E66672384368600F8340C /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
 		6AC642CB2385892500E2906F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		6AC642D52385915000E2906F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,14 +104,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A7E6652238430AF00F8340C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5AE1A9D774B4EACF234848E1 /* Pods_StrawberryPie_StrawberryPieUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -135,7 +113,6 @@
 				6A7E66672384368600F8340C /* .gitlab-ci.yml */,
 				6A7E6635238430AD00F8340C /* StrawberryPie */,
 				6A7E664D238430AF00F8340C /* StrawberryPieTests */,
-				6A7E6658238430AF00F8340C /* StrawberryPieUITests */,
 				6A7E6634238430AD00F8340C /* Products */,
 				D8676E192A98880C385AA71C /* Pods */,
 				DE12CC7A72B449AE856F45B9 /* Frameworks */,
@@ -147,7 +124,6 @@
 			children = (
 				6A7E6633238430AD00F8340C /* StrawberryPie.app */,
 				6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */,
-				6A7E6655238430AF00F8340C /* StrawberryPieUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,15 +152,6 @@
 				6A7E6650238430AF00F8340C /* Info.plist */,
 			);
 			path = StrawberryPieTests;
-			sourceTree = "<group>";
-		};
-		6A7E6658238430AF00F8340C /* StrawberryPieUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */,
-				6A7E665B238430AF00F8340C /* Info.plist */,
-			);
-			path = StrawberryPieUITests;
 			sourceTree = "<group>";
 		};
 		6ACB980423866F8C0070CCF6 /* Storyboards */ = {
@@ -304,26 +271,6 @@
 			productReference = 6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6A7E6654238430AF00F8340C /* StrawberryPieUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6A7E6664238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPieUITests" */;
-			buildPhases = (
-				ADC2A9EA4EC8AD913CCADA20 /* [CP] Check Pods Manifest.lock */,
-				6A7E6651238430AF00F8340C /* Sources */,
-				6A7E6652238430AF00F8340C /* Frameworks */,
-				6A7E6653238430AF00F8340C /* Resources */,
-				71F9019C138066EA2245F0EF /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6A7E6657238430AF00F8340C /* PBXTargetDependency */,
-			);
-			name = StrawberryPieUITests;
-			productName = StrawberryPieUITests;
-			productReference = 6A7E6655238430AF00F8340C /* StrawberryPieUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -338,10 +285,6 @@
 						CreatedOnToolsVersion = 10.1;
 					};
 					6A7E6649238430AF00F8340C = {
-						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 6A7E6632238430AD00F8340C;
-					};
-					6A7E6654238430AF00F8340C = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 6A7E6632238430AD00F8340C;
 					};
@@ -362,7 +305,6 @@
 			targets = (
 				6A7E6632238430AD00F8340C /* StrawberryPie */,
 				6A7E6649238430AF00F8340C /* StrawberryPieTests */,
-				6A7E6654238430AF00F8340C /* StrawberryPieUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -392,13 +334,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A7E6653238430AF00F8340C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -422,23 +357,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		71F9019C138066EA2245F0EF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StrawberryPie-StrawberryPieUITests/Pods-StrawberryPie-StrawberryPieUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StrawberryPie-StrawberryPieUITests/Pods-StrawberryPie-StrawberryPieUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StrawberryPie-StrawberryPieUITests/Pods-StrawberryPie-StrawberryPieUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		74C2599007B140233B7A0B47 /* [CP] Check Pods Manifest.lock */ = {
@@ -480,28 +398,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StrawberryPie/Pods-StrawberryPie-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ADC2A9EA4EC8AD913CCADA20 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StrawberryPie-StrawberryPieUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -535,16 +431,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A7E6651238430AF00F8340C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6ACB9810238674AD0070CCF6 /* ChatMessage.swift in Sources */,
-				6ACB980C2386747A0070CCF6 /* QASession.swift in Sources */,
-				6A7E665A238430AF00F8340C /* StrawberryPieUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -552,11 +438,6 @@
 			isa = PBXTargetDependency;
 			target = 6A7E6632238430AD00F8340C /* StrawberryPie */;
 			targetProxy = 6A7E664B238430AF00F8340C /* PBXContainerItemProxy */;
-		};
-		6A7E6657238430AF00F8340C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6A7E6632238430AD00F8340C /* StrawberryPie */;
-			targetProxy = 6A7E6656238430AF00F8340C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -778,48 +659,6 @@
 			};
 			name = Release;
 		};
-		6A7E6665238430AF00F8340C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E22A0183E24B3C2146C949F3 /* Pods-StrawberryPie-StrawberryPieUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6458786ZYK;
-				INFOPLIST_FILE = StrawberryPieUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.metropolia.StrawberryPieUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = StrawberryPie;
-			};
-			name = Debug;
-		};
-		6A7E6666238430AF00F8340C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 180D49CC598AD12A2D22C9D2 /* Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6458786ZYK;
-				INFOPLIST_FILE = StrawberryPieUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.metropolia.StrawberryPieUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = StrawberryPie;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -846,15 +685,6 @@
 			buildConfigurations = (
 				6A7E6662238430AF00F8340C /* Debug */,
 				6A7E6663238430AF00F8340C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6A7E6664238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPieUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6A7E6665238430AF00F8340C /* Debug */,
-				6A7E6666238430AF00F8340C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
