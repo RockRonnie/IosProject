@@ -3,20 +3,22 @@
     <entity name="Category" representedClassName=".Category" syncable="YES">
         <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="categorySummary" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="availableStudies" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Studies" syncable="YES"/>
-        <relationship name="availableWork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Work" syncable="YES"/>
+        <relationship name="relatedStudies" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Studies" inverseName="isPartOfCategory" inverseEntity="Studies" syncable="YES"/>
+        <relationship name="relatedWork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Work" inverseName="isPartOfCategory" inverseEntity="Work" syncable="YES"/>
     </entity>
     <entity name="Studies" representedClassName=".Studies" syncable="YES">
         <attribute name="studyName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="studySummary" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="isPartOfCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="relatedStudies" inverseEntity="Category" syncable="YES"/>
     </entity>
     <entity name="Work" representedClassName=".Work" syncable="YES">
         <attribute name="workPositionName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="workSummary" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="isPartOfCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="relatedWork" inverseEntity="Category" syncable="YES"/>
     </entity>
     <elements>
         <element name="Category" positionX="-11057.671875" positionY="-8726.39453125" width="165.21875" height="103"/>
-        <element name="Studies" positionX="-11139.66015625" positionY="-8442.73828125" width="128" height="73"/>
-        <element name="Work" positionX="-10958.40234375" positionY="-8435.1875" width="128" height="73"/>
+        <element name="Studies" positionX="-11118.9453125" positionY="-8568.38671875" width="128" height="88"/>
+        <element name="Work" positionX="-10812.2421875" positionY="-8459.00390625" width="128" height="88"/>
     </elements>
 </model>
