@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5AE1A9D774B4EACF234848E1 /* Pods_StrawberryPie_StrawberryPieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33E5455F31C152E21085EE4 /* Pods_StrawberryPie_StrawberryPieUITests.framework */; };
 		63D2D57F931C466535B8CD21 /* Pods_StrawberryPieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */; };
+		6A0D537C2388751300706AF9 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0D537B2388751300706AF9 /* HomeController.swift */; };
 		6A7D3412238830630079BFB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D3411238830630079BFB7 /* Constants.swift */; };
 		6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6636238430AD00F8340C /* AppDelegate.swift */; };
 		6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6638238430AD00F8340C /* LoginRegisterController.swift */; };
@@ -18,6 +19,8 @@
 		6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
 		6A7E665A238430AF00F8340C /* StrawberryPieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */; };
 		6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E66672384368600F8340C /* .gitlab-ci.yml */; };
+		6AA2149923884DD90091A7C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA2149823884DD90091A7C1 /* User.swift */; };
+		6AB3344D2388522D008B938D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB3344C2388522D008B938D /* ChatMessage.swift */; };
 		6AC642CC2385892500E2906F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC642CB2385892500E2906F /* ProfileController.swift */; };
 		6AC642D62385915000E2906F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642D42385915000E2906F /* Main.storyboard */; };
 		6AC642E02385932E00E2906F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642DF2385932E00E2906F /* Profile.storyboard */; };
@@ -28,9 +31,6 @@
 		6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
 		6ACB980B2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
 		6ACB980C2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
-		6ACB980E238674AD0070CCF6 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB980D238674AD0070CCF6 /* ChatMessage.swift */; };
-		6ACB980F238674AD0070CCF6 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB980D238674AD0070CCF6 /* ChatMessage.swift */; };
-		6ACB9810238674AD0070CCF6 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB980D238674AD0070CCF6 /* ChatMessage.swift */; };
 		6AE09EAD238827760040E87E /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA7238827750040E87E /* Category+CoreDataClass.swift */; };
 		6AE09EAE238827760040E87E /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
 		6AE09EAF238827760040E87E /* Studies+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA9238827750040E87E /* Studies+CoreDataProperties.swift */; };
@@ -61,6 +61,7 @@
 		13D46F4DD8FE8DEC51E6DC26 /* Pods_StrawberryPie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StrawberryPie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		180D49CC598AD12A2D22C9D2 /* Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig"; path = "Target Support Files/Pods-StrawberryPie-StrawberryPieUITests/Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StrawberryPieTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A0D537B2388751300706AF9 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		6A7D3411238830630079BFB7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6A7E6633238430AD00F8340C /* StrawberryPie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrawberryPie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7E6636238430AD00F8340C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +77,8 @@
 		6A7E6659238430AF00F8340C /* StrawberryPieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieUITests.swift; sourceTree = "<group>"; };
 		6A7E665B238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7E66672384368600F8340C /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
+		6AA2149823884DD90091A7C1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6AB3344C2388522D008B938D /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		6AC642CB2385892500E2906F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		6AC642D52385915000E2906F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AC642DF2385932E00E2906F /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -84,7 +87,6 @@
 		6AC642E5238593BB00E2906F /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		6AC642E7238593E100E2906F /* LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
 		6ACB98092386747A0070CCF6 /* QASession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QASession.swift; sourceTree = "<group>"; };
-		6ACB980D238674AD0070CCF6 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		6AE09EA7238827750040E87E /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Studies+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6AE09EA9238827750040E87E /* Studies+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Studies+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				6A7E6638238430AD00F8340C /* LoginRegisterController.swift */,
 				6AC642CB2385892500E2906F /* ProfileController.swift */,
+				6A0D537B2388751300706AF9 /* HomeController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -211,7 +214,6 @@
 		6ACB980723866FC40070CCF6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				6ACB980D238674AD0070CCF6 /* ChatMessage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -220,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				6ACB98092386747A0070CCF6 /* QASession.swift */,
+				6AA2149823884DD90091A7C1 /* User.swift */,
+				6AB3344C2388522D008B938D /* ChatMessage.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -508,14 +512,16 @@
 				6AE09EB1238827760040E87E /* Work+CoreDataClass.swift in Sources */,
 				6AE09EB0238827760040E87E /* Work+CoreDataProperties.swift in Sources */,
 				6A7E663F238430AD00F8340C /* StrawberryPie.xcdatamodeld in Sources */,
+				6AB3344D2388522D008B938D /* ChatMessage.swift in Sources */,
 				6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */,
+				6A0D537C2388751300706AF9 /* HomeController.swift in Sources */,
 				6AE09EAD238827760040E87E /* Category+CoreDataClass.swift in Sources */,
 				6AE09EAF238827760040E87E /* Studies+CoreDataProperties.swift in Sources */,
+				6AA2149923884DD90091A7C1 /* User.swift in Sources */,
 				6AE09EAE238827760040E87E /* Studies+CoreDataClass.swift in Sources */,
 				6A7D3412238830630079BFB7 /* Constants.swift in Sources */,
 				6AE09EB2238827760040E87E /* Category+CoreDataProperties.swift in Sources */,
 				6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */,
-				6ACB980E238674AD0070CCF6 /* ChatMessage.swift in Sources */,
 				6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */,
 				6AC642CC2385892500E2906F /* ProfileController.swift in Sources */,
 			);
@@ -525,7 +531,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ACB980F238674AD0070CCF6 /* ChatMessage.swift in Sources */,
 				6ACB980B2386747A0070CCF6 /* QASession.swift in Sources */,
 				6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */,
 			);
@@ -535,7 +540,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ACB9810238674AD0070CCF6 /* ChatMessage.swift in Sources */,
 				6ACB980C2386747A0070CCF6 /* QASession.swift in Sources */,
 				6A7E665A238430AF00F8340C /* StrawberryPieUITests.swift in Sources */,
 			);
