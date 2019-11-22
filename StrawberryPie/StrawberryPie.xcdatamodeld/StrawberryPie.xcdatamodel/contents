@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName=".Category" syncable="YES">
-        <attribute name="categoryName" optional="YES" syncable="YES"/>
-        <attribute name="categorySummary" optional="YES" syncable="YES"/>
+        <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="categorySummary" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="availableStudies" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Studies" syncable="YES"/>
         <relationship name="availableWork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Work" syncable="YES"/>
     </entity>
     <entity name="Studies" representedClassName=".Studies" syncable="YES">
-        <attribute name="studyName" optional="YES" syncable="YES"/>
-        <attribute name="studySummary" optional="YES" syncable="YES"/>
+        <attribute name="studyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studySummary" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Work" representedClassName=".Work" syncable="YES">
-        <attribute name="workPositionName" optional="YES" syncable="YES"/>
-        <attribute name="workSummary" optional="YES" syncable="YES"/>
+        <attribute name="workPositionName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workSummary" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Category" positionX="-11057.671875" positionY="-8726.39453125" width="165.21875" height="103"/>
