@@ -12,28 +12,41 @@ class QAController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupQa()
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    func setupQa() {
+        titleLabel.text = "Expert title here"
+       
+        
     }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hostcardTable: UITableView!
     
     @IBAction func chatButton(_ sender: UIButton) {
+        // Vaihda cellin pohjaa ja reloadData()
+        
+        let alert = UIAlertController(title: "Chat button pressed", message: "You presed a button", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cool", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+        
     }
     @IBAction func pinnedButton(_ sender: UIButton) {
+        // Vaihda cellin pohjaa ja reloadData()
     }
     @IBAction func topicButton(_ sender: UIButton) {
+        // Vaihda cellin pohjaa ja reloadData()
     }
     @IBOutlet weak var qaTable: UITableView!
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+//extension QAController: jotainDelegate { }
+
+
