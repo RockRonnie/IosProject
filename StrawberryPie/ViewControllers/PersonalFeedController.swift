@@ -1,5 +1,5 @@
 //
-//  ProfileController.swift
+//  PersonalFeedController.swift
 //  StrawberryPie
 //
 //  Created by iosdev on 23/11/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileController: UIViewController {
+class PersonalFeedController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

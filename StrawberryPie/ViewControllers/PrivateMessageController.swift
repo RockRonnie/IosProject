@@ -1,5 +1,5 @@
 //
-//  ProfileController.swift
+//  PrivateMessageController.swift
 //  StrawberryPie
 //
 //  Created by iosdev on 23/11/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileController: UIViewController {
+class PrivateMessageController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
