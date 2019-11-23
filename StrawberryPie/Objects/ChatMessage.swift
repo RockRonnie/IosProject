@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-@objcMembers class Message: Object {
+@objcMembers class ChatMessage: Object {
   
   dynamic var messageSender: String = ""
   dynamic var messageId: String = UUID().uuidString

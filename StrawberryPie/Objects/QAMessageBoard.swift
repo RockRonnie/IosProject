@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import RealmSwift
+
+@objcMembers class QAMessageBoard: Object {
+    dynamic var boardID: String = UUID().uuidString
+    let QAs = List<QA>()
+    override static func primaryKey() -> String? {
+        return "boardID"
+    }
+}

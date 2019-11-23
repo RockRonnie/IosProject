@@ -30,8 +30,8 @@
 		6A9E89C72389461B0069DE71 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BA2389461A0069DE71 /* Category.swift */; };
 		6A9E89C82389461B0069DE71 /* profession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BB2389461A0069DE71 /* profession.swift */; };
 		6A9E89C92389461B0069DE71 /* profession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BB2389461A0069DE71 /* profession.swift */; };
-		6A9E89CA2389461B0069DE71 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BC2389461A0069DE71 /* File.swift */; };
-		6A9E89CB2389461B0069DE71 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BC2389461A0069DE71 /* File.swift */; };
+		6A9E89CA2389461B0069DE71 /* QA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BC2389461A0069DE71 /* QA.swift */; };
+		6A9E89CB2389461B0069DE71 /* QA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BC2389461A0069DE71 /* QA.swift */; };
 		6A9E89CC2389461B0069DE71 /* Education.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BD2389461A0069DE71 /* Education.swift */; };
 		6A9E89CD2389461B0069DE71 /* Education.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BD2389461A0069DE71 /* Education.swift */; };
 		6A9E89CE2389461B0069DE71 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BE2389461A0069DE71 /* Chat.swift */; };
@@ -112,7 +112,7 @@
 		6A9E89B92389461A0069DE71 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6A9E89BA2389461A0069DE71 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		6A9E89BB2389461A0069DE71 /* profession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profession.swift; sourceTree = "<group>"; };
-		6A9E89BC2389461A0069DE71 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		6A9E89BC2389461A0069DE71 /* QA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QA.swift; sourceTree = "<group>"; };
 		6A9E89BD2389461A0069DE71 /* Education.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Education.swift; sourceTree = "<group>"; };
 		6A9E89BE2389461A0069DE71 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		6A9E89BF2389461A0069DE71 /* ChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 				6A9E89BE2389461A0069DE71 /* Chat.swift */,
 				6A9E89BF2389461A0069DE71 /* ChatMessage.swift */,
 				6A9E89BD2389461A0069DE71 /* Education.swift */,
-				6A9E89BC2389461A0069DE71 /* File.swift */,
+				6A9E89BC2389461A0069DE71 /* QA.swift */,
 				6A9E89B7238946190069DE71 /* Intro.swift */,
 				6A9E89BB2389461A0069DE71 /* profession.swift */,
 				6A9E89B8238946190069DE71 /* QAMessageBoard.swift */,
@@ -515,7 +515,7 @@
 				6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */,
 				6A9E89E3238946450069DE71 /* ChatMessageCell.swift in Sources */,
 				6A9E89C82389461B0069DE71 /* profession.swift in Sources */,
-				6A9E89CA2389461B0069DE71 /* File.swift in Sources */,
+				6A9E89CA2389461B0069DE71 /* QA.swift in Sources */,
 				6A9E89E1238946450069DE71 /* Hottest.swift in Sources */,
 				6A9E89C42389461B0069DE71 /* User.swift in Sources */,
 				6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */,
@@ -544,7 +544,7 @@
 				6A9E89DE238946450069DE71 /* FeedTable.swift in Sources */,
 				6ACB980B2386747A0070CCF6 /* QASession.swift in Sources */,
 				6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */,
-				6A9E89CB2389461B0069DE71 /* File.swift in Sources */,
+				6A9E89CB2389461B0069DE71 /* QA.swift in Sources */,
 				6A9E89C32389461B0069DE71 /* QAMessageBoard.swift in Sources */,
 				68574591238935DE0002A538 /* QAController.swift in Sources */,
 				6A9E89C52389461B0069DE71 /* User.swift in Sources */,

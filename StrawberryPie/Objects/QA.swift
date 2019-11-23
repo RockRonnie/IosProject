@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import RealmSwift
+@objcMembers class QA: Object{
+    dynamic var QAID: String = UUID().uuidString
+    let question = List<ChatMessage>()
+    let answer = List<ChatMessage>()
+    override static func primaryKey() -> String? {
+    return "QAID"
+    }
+}
