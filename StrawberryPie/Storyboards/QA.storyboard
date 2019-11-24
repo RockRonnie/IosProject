@@ -13,7 +13,7 @@
         <!--QA Scene-->
         <scene sceneID="Wbk-gp-9zP">
             <objects>
-                <viewController title="QA Scene" id="rbh-wZ-ci6" customClass="QAController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QAController" title="QA Scene" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rbh-wZ-ci6" customClass="QAController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Jb-lh-l2E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -9,6 +9,8 @@
 import UIKit
 
 class QAController: UIViewController {
+    
+    var yourvariable: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,7 @@ class QAController: UIViewController {
     }
     
     func setupQa() {
-        titleLabel.text = "Expert title here"
+        titleLabel.text = yourvariable
        
         
     }

@@ -9,11 +9,10 @@
 import RealmSwift
 
 @objcMembers class ChatMessage: Object {
-  
-  dynamic var messageSender: String = ""
-  dynamic var messageId: String = UUID().uuidString
-  dynamic var body: String = ""
-  dynamic var timestamp: Date = Date()
+    dynamic var messageSender: String = ""
+    dynamic var messageId: String = UUID().uuidString
+    dynamic var body: String = ""
+    dynamic var timestamp: Date = Date()
   
   
   override static func primaryKey() -> String? {
