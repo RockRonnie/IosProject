@@ -24,6 +24,8 @@
 		6A7E6644238430AF00F8340C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */; };
 		6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
 		6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E66672384368600F8340C /* .gitlab-ci.yml */; };
+		6A8C5DD3238AC59600C321E5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8C5DD2238AC59600C321E5 /* Host.storyboard */; };
+		6A8C5DD4238AC59600C321E5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8C5DD2238AC59600C321E5 /* Host.storyboard */; };
 		6A9E89C02389461B0069DE71 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B7238946190069DE71 /* Intro.swift */; };
 		6A9E89C12389461B0069DE71 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B7238946190069DE71 /* Intro.swift */; };
 		6A9E89C22389461B0069DE71 /* QAMessageBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B8238946190069DE71 /* QAMessageBoard.swift */; };
@@ -115,6 +117,7 @@
 		6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieTests.swift; sourceTree = "<group>"; };
 		6A7E6650238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7E66672384368600F8340C /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
+		6A8C5DD2238AC59600C321E5 /* Host.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Host.storyboard; sourceTree = "<group>"; };
 		6A9E89B7238946190069DE71 /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		6A9E89B8238946190069DE71 /* QAMessageBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAMessageBoard.swift; sourceTree = "<group>"; };
 		6A9E89B92389461A0069DE71 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -236,6 +239,7 @@
 				6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */,
 				6877CD29238855B700CBCEDE /* QA.storyboard */,
 				689803D8238A860400FE39CF /* QaTest.storyboard */,
+				6A8C5DD2238AC59600C321E5 /* Host.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -413,6 +417,7 @@
 				6AC642E8238593E100E2906F /* LoginRegister.storyboard in Resources */,
 				6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */,
 				6AC642E6238593BB00E2906F /* Categories.storyboard in Resources */,
+				6A8C5DD3238AC59600C321E5 /* Host.storyboard in Resources */,
 				6877CD2A238855B700CBCEDE /* QA.storyboard in Resources */,
 				6A7E6644238430AF00F8340C /* LaunchScreen.storyboard in Resources */,
 				6AC642E22385937100E2906F /* Feed.storyboard in Resources */,
@@ -427,6 +432,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A8C5DD4238AC59600C321E5 /* Host.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

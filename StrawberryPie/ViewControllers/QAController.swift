@@ -11,7 +11,7 @@ import UIKit
 class QAController: UIViewController {
     
     var dummyTitle: String?
-    var dummyChat: Chat?
+    var dummySession: QASession?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,9 @@ class QAController: UIViewController {
     }
     
     func setupQa() {
-        titleLabel.text = dummyTitle
-        print(dummyChat?.chatMessages[0])
+        titleLabel.text = dummySession?.title ?? "No title"
+        print(dummySession?.title ?? "Not working Session")
+        print(dummySession?.chat[0].chatMessages[0] ?? "Not working chatmessages")
     }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hostcardTable: UITableView!

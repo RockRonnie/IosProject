@@ -11,7 +11,7 @@ import RealmSwift
 // Main QA SESSION OBJECT, ACTS AS A HUB FOR CONNECTING OTHER OBJECTS REQUIRED FOR TO THE SESSION SO THEY CAN BE EASILY ACCESSED.
 @objcMembers class QASession: Object {
     dynamic var sessionID: String = UUID().uuidString
-    dynamic var Title: String = ""
+    dynamic var title: String = ""
     dynamic var sessionDescription: String = ""
     let host = List<User>()
     let chat = List<Chat>()
