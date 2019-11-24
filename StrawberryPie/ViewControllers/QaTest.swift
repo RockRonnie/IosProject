@@ -12,7 +12,7 @@ class QaTest: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -22,8 +22,18 @@ class QaTest: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "QAController") {
+            
+            let testChat = Chat()
+            let testMessage = ChatMessage()
+            testMessage.body = "Tässä viesti"
+            testChat.chatMessages.append(testMessage)
+            // Valitaan kohde viewcontroller
             let destinationVC = segue.destination as? QAController
-            destinationVC?.yourvariable = "Test successful"
+            
+            // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
+            destinationVC?.dummyTitle = "Test successful"
+            destinationVC?.dummyChat = testChat
+            
         }
     }
     

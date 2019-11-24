@@ -10,7 +10,8 @@ import UIKit
 
 class QAController: UIViewController {
     
-    var yourvariable: String?
+    var dummyTitle: String?
+    var dummyChat: Chat?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +22,8 @@ class QAController: UIViewController {
     }
     
     func setupQa() {
-        titleLabel.text = yourvariable
-       
-        
+        titleLabel.text = dummyTitle
+        print(dummyChat?.chatMessages[0])
     }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hostcardTable: UITableView!
