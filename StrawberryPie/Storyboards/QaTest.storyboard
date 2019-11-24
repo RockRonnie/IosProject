@@ -16,7 +16,15 @@
                 <viewControllerPlaceholder storyboardIdentifier="QAController" storyboardName="QA" referencedIdentifier="QAController" id="0TR-cP-poj" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Bv-Ur-HeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="678" y="-156"/>
+            <point key="canvasLocation" x="892" y="-202"/>
+        </scene>
+        <!--HostController-->
+        <scene sceneID="TrL-b2-8VG">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Host" storyboardName="Host" referencedIdentifier="HostController" id="x1t-sk-YJP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3PC-jU-tNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="956" y="188"/>
         </scene>
         <!--Qa Test-->
         <scene sceneID="Fbn-gN-UzP">
@@ -35,6 +43,16 @@
                                 </state>
                                 <connections>
                                     <action selector="enterButton:" destination="SzT-wj-0hD" eventType="touchUpInside" id="XdX-Jr-aiL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Wx-qs-KFa">
+                                <rect key="frame" x="122" y="293" width="130" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="HOST">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="x1t-sk-YJP" kind="show" id="sL1-Sf-pVe"/>
                                 </connections>
                             </button>
                         </subviews>

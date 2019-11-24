@@ -13,7 +13,7 @@
         <!--Host Controller-->
         <scene sceneID="1H4-Yh-1ct">
             <objects>
-                <viewController id="aTo-ga-yDV" customClass="HostController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HostController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aTo-ga-yDV" customClass="HostController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="roC-t9-VgF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
