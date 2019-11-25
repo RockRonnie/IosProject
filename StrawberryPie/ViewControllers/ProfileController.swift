@@ -2,20 +2,31 @@
 //  ProfileController.swift
 //  StrawberryPie
 //
-//  Created by iosdev on 23/11/2019.
+//  Created by Markus Saronsalo on 23/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 
 import UIKit
+import RealmSwift
+
+var realm: Realm!
 
 class ProfileController: UIViewController {
 
-    override func viewDidLoad() {
+  @IBOutlet weak var logOut: UIButton!
+  override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+  @IBAction func logOut(_ sender: UIButton!) {
+    let main = UIStoryboard(name: "Main", bundle: nil)
+    let loggedOut: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedOutTabBar") as? UITabBarController
+    self.present(loggedOut!, animated:  true, completion: nil)
+    SyncUser.current?.logOut()
     
+  }
+  
 
     /*
     // MARK: - Navigation

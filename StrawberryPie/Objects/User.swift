@@ -8,8 +8,10 @@
 
 import RealmSwift
 
+// User class, work in progress
 @objcMembers class User: Object {
-  dynamic var name: String = ""
+  dynamic var userId: String = UUID().uuidString
+  dynamic var userName: String = ""
   
 
   }
