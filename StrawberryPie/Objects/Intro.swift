@@ -16,8 +16,6 @@ import RealmSwift
     dynamic var body: String = ""
     // possibility of creating several chapters to make the text flow better? for now just one body will do
     dynamic var sessionAdded: Date = Date()
-    
-    
     override static func primaryKey() -> String? {
         return "introId"
     }

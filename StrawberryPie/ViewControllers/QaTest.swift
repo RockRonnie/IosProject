@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 class QaTest: UIViewController {
-
+    var realm: Realm!
+    let username = "test1"
+    let password = "test"
+    let register = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupRealm()
         // Do any additional setup after loading the view.
     }
     
@@ -42,7 +46,31 @@ class QaTest: UIViewController {
             
         }
     }
+    func setupRealm() {
+        // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
+        SyncUser.logIn(with: .usernamePassword(username: "test1", password: "test", register: false), server: Constants.AUTH_URL) { user, error in
+            if let user = user {
+                // Onnistunut kirjautuminen
+                // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
+                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "*", accessLevel: .write)
+                user.apply(permission, callback: { (error) in
+                    if error != nil {
+                        print(error?.localizedDescription ?? "No error")
+                    } else {
+                        print("success")
+                    }
+                })
+                // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
+                let config = SyncUser.current?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
+                self.realm = try! Realm(configuration: config!)
+                print("Realm connection has been setup")
+            }
+        }
+    }
     
+    // Otetaan seuranta notifikaatio pois koska ... ???
+   
+
     /*
     // MARK: - Navigation
 
