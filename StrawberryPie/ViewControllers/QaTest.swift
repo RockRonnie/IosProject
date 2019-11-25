@@ -16,7 +16,7 @@ class QaTest: UIViewController {
     let register = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupRealm()
+        RealmDB.sharedInstance.setupRealm()
         // Do any additional setup after loading the view.
     }
     
