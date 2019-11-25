@@ -91,6 +91,8 @@ class CategoryViewController: UIViewController {
         }
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         deleteAllData(entity: "Category")
