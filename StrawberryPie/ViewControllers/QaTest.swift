@@ -33,8 +33,11 @@ class QaTest: UIViewController {
             let testSession = QASession()
             let testChat = Chat()
             let testMessage = ChatMessage()
+            let testMessage2 = ChatMessage()
             testMessage.body = "Tässä viesti"
+            testMessage2.body = "Tässä toinen ehkä hieman pidempi, mutta silti riemukas, viesti digitaalisessa muodossa"
             testChat.chatMessages.append(testMessage)
+            testChat.chatMessages.append(testMessage2)
             testSession.title = "This is session title"
             testSession.chat.append(testChat)
             // Valitaan kohde viewcontroller
