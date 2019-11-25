@@ -91,6 +91,7 @@ class CategoryViewController: UIViewController {
         }
     }
     
+  
     
     
     override func viewDidLoad() {
@@ -110,7 +111,8 @@ class CategoryViewController: UIViewController {
         createCategoryData(name: "Misc & Unkown", summary: "")
         getCategoryData(name: "Social sectors")
         // Do any additional setup after loading the view.
-        
+        let path = Bundle.main.url(forResource: "Ict", withExtension: ".jpg")
+        print(path)
         //Reminder check for duplicate objects
     }
     
