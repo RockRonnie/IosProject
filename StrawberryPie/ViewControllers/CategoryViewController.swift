@@ -11,7 +11,7 @@ import CoreData
 
 class CategoryViewController: UIViewController {
     
-    
+    //This method is used to create data for a category
     func createCategoryData(name: String, summary: String){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -33,7 +33,7 @@ class CategoryViewController: UIViewController {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-    
+    //Fetches all data in category entity
     func getAllCategoryData(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -51,6 +51,7 @@ class CategoryViewController: UIViewController {
         }
     }
     
+    //Fetches data for a certain given category
     func getCategoryData(name: String){
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDel.persistentContainer.viewContext
@@ -69,7 +70,7 @@ class CategoryViewController: UIViewController {
         
     }
 
-    
+    //Deletes all data in a given entity
     func deleteAllData(entity: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
