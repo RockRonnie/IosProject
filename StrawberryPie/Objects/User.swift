@@ -9,6 +9,7 @@
 import RealmSwift
 
 @objcMembers class User: Object {
+  dynamic var name: String = ""
   
 
   }

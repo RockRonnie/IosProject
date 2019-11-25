@@ -13,7 +13,7 @@
         <!--Home-->
         <scene sceneID="KaU-cz-iDh">
             <objects>
-                <viewController storyboardIdentifier="homestoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ciD-od-2sG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homestoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ciD-od-2sG" customClass="HomeController" customModule="StrawberryPie" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="homestoryboard" id="6bl-7k-hXp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
