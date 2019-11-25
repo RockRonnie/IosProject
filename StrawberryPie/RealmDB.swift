@@ -11,6 +11,7 @@ import RealmSwift
 
 class RealmDB {
     var realm:Realm!
+    
     static let sharedInstance = RealmDB()
     func setupRealm() {
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
@@ -26,6 +27,7 @@ class RealmDB {
                         print("success")
                     }
                 })
+                print(user)
                 // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
                 let config = SyncUser.current?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
                 self.realm = try! Realm(configuration: config!)

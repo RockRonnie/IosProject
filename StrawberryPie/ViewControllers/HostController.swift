@@ -13,9 +13,11 @@ import RealmSwift
 class HostController: UIViewController {
     var objectCount = 0
     var createdSession: QASession?
+    var realm: Realm!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        realm = RealmDB.sharedInstance.realm
 
         // Do any additional setup after loading the view.
     }
@@ -24,6 +26,11 @@ class HostController: UIViewController {
         print("Starting the QA Session creation sequence")
         createdSession = createSession()
         print(createdSession ?? "No object")
+        if let createdSession = createdSession {
+            try! realm.write {
+                realm.add(createdSession)
+            }
+        }
         objectCount += 1
     }
     
