@@ -13,7 +13,7 @@ import UIKit
 public class Category: NSManagedObject {
 
     //This method is used to create data for a category
-    func createCategoryData(name: String, summary: String, imageName: String){
+    func createCategoryData(name: String, summary: String, imageName: String, id: Int){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
@@ -29,6 +29,7 @@ public class Category: NSManagedObject {
                 category.setValue(name, forKeyPath: "categoryName")
                 category.setValue(summary, forKey: "categorySummary")
                 category.setValue(imageUrl, forKey: "categoryImageUrl")
+                category.setValue(id, forKey: "id")
                 try managedContext.save()
                 print("Succesfully saved data for category \(name)")
             } else {
@@ -51,6 +52,7 @@ public class Category: NSManagedObject {
                 print("Name of category: \(data.value(forKey: "categoryName")as! String)")
                 print("Summary: \(data.value(forKey: "categorySummary")as! String)")
                 print("URI: \(data.value(forKey: "categoryImageUrl") as! URL)")
+                print("ID: \(data.value(forKey: "id") as! Int)")
             }
         } catch {
             print(error)
@@ -69,6 +71,7 @@ public class Category: NSManagedObject {
             print("Name: \(result[0].value(forKey: "categoryName") as! String)")
             print("Summary: \(result[0].value(forKey: "categorySummary") as! String)")
             print("File URL: \(result[0].value(forKey: "categoryImageUrl") as! URL)")
+            print("ID: \(result[0].value(forKey: "id") as! Int)")
             
             
         } catch let error as NSError {
@@ -99,18 +102,18 @@ public class Category: NSManagedObject {
     
     //Generates all the categories. Do not touch. Will break app
     func generateData(){
-        createCategoryData(name: "ICT", summary: "Computers and stuff you know", imageName: "ICTImage")
-        createCategoryData(name: "Humanities and Arts", summary: "punch of hippies",imageName: "ArtImage")
-        createCategoryData(name: "Social sectors", summary: "Studies and work related to society",imageName: "SocietyImage")
-        createCategoryData(name: "Education Sciences", summary: "",imageName: "EducationImage")
-        createCategoryData(name: "Trade, Adminstration and Law", summary: "",imageName: "lawImage")
-        createCategoryData(name: "Natural Sciences", summary: "",imageName: "NaturualImage")
-        createCategoryData(name: "Technical Fields", summary: "", imageName: "TechImage")
-        createCategoryData(name: "Agriculture and Forestry", summary: "",imageName: "AgricultureImage")
-        createCategoryData(name: "Health and Wellbeing", summary: "", imageName: "HealthcareImage")
-        createCategoryData(name: "Service Industry", summary: "", imageName: "ServicesImage")
-        createCategoryData(name: "General Education", summary: "", imageName: "GeneralEduImage")
-        createCategoryData(name: "Misc & Unkown", summary: "", imageName: "MiscImage")
+        createCategoryData(name: "ICT", summary: "Computers and stuff you know", imageName: "ICTImage",id: 0)
+        createCategoryData(name: "Humanities and Arts", summary: "punch of hippies",imageName: "ArtImage",id: 1)
+        createCategoryData(name: "Social sectors", summary: "Studies and work related to society",imageName: "SocietyImage",id: 2)
+        createCategoryData(name: "Education Sciences", summary: "",imageName: "EducationImage",id: 3)
+        createCategoryData(name: "Trade, Adminstration and Law", summary: "",imageName: "lawImage", id: 4)
+        createCategoryData(name: "Natural Sciences", summary: "",imageName: "NaturualImage", id: 5)
+        createCategoryData(name: "Technical Fields", summary: "", imageName: "TechImage", id: 6)
+        createCategoryData(name: "Agriculture and Forestry", summary: "",imageName: "AgricultureImage",id:7)
+        createCategoryData(name: "Health and Wellbeing", summary: "", imageName: "HealthcareImage",id:8)
+        createCategoryData(name: "Service Industry", summary: "", imageName: "ServicesImage", id:9)
+        createCategoryData(name: "General Education", summary: "", imageName: "GeneralEduImage",id:10)
+        createCategoryData(name: "Misc & Unkown", summary: "", imageName: "MiscImage", id:11)
     }
     
     

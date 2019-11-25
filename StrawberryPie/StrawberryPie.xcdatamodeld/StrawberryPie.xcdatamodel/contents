@@ -4,6 +4,7 @@
         <attribute name="categoryImageUrl" optional="YES" attributeType="URI" syncable="YES"/>
         <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="categorySummary" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="relatedStudies" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Studies" inverseName="isPartOfCategory" inverseEntity="Studies" syncable="YES"/>
         <relationship name="relatedWork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Work" inverseName="isPartOfCategory" inverseEntity="Work" syncable="YES"/>
     </entity>
@@ -18,7 +19,7 @@
         <relationship name="isPartOfCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="relatedWork" inverseEntity="Category" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-11057.671875" positionY="-8726.39453125" width="165.21875" height="120"/>
+        <element name="Category" positionX="-11057.671875" positionY="-8726.39453125" width="165.21875" height="135"/>
         <element name="Studies" positionX="-11118.9453125" positionY="-8568.38671875" width="128" height="88"/>
         <element name="Work" positionX="-10800.609375" positionY="-8598.41015625" width="128" height="88"/>
     </elements>

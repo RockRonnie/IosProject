@@ -9,13 +9,16 @@
 import UIKit
 import CoreData
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let category = Category()
-    @IBOutlet weak var categoryTableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    let categoryNames = [String]()
+    let categoryImages = [UIImage]()
     
     
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         category.deleteAllData(entity: "Category")
@@ -23,12 +26,22 @@ class CategoryViewController: UIViewController {
         category.getCategoryData(name: "Social sectors")
         // Do any additional setup after loading the view.
         
-      
-    
-        
         //Reminder check for duplicate objects
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categoryNames.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
+        
+        cell.categoryNameLabel.text = categoryNames[indexPath.item]
+        cell.categoryImageView.image = categoryImages[indexPath.item]
+        
+        return cell
+    }
+
 
     /*
     // MARK: - Navigation
