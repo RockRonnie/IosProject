@@ -43,9 +43,9 @@ class QaTest: UIViewController {
             
             // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
             destinationVC?.dummySession = testSession
-            
         }
     }
+    
     func setupRealm() {
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
         SyncUser.logIn(with: .usernamePassword(username: "test1", password: "test", register: false), server: Constants.AUTH_URL) { user, error in

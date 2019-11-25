@@ -9,21 +9,11 @@
 import UIKit
 import RealmSwift
 
+
 class HostController: UIViewController {
-    var realm: Realm
     var objectCount = 0
     var createdSession: QASession?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        let config = SyncUser.current?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
-        self.realm = try! Realm(configuration: config!)
-        super.init(nibName: nil, bundle: nil)
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,13 +24,6 @@ class HostController: UIViewController {
         print("Starting the QA Session creation sequence")
         createdSession = createSession()
         print(createdSession ?? "No object")
-        if let qaSession = createdSession {
-            try! self.realm.write {
-                self.realm.add(qaSession)
-            }
-        }else { print("no object")
-            return
-        }
         objectCount += 1
     }
     
