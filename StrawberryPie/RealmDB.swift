@@ -11,9 +11,10 @@ import RealmSwift
 
 class RealmDB {
     var realm:Realm!
-    var syncedUser: SyncUser?
+    var user: SyncUser?
     
     static let sharedInstance = RealmDB()
+    
     func setupRealm() {
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
         SyncUser.logIn(with: .usernamePassword(username: "test1", password: "test", register: false), server: Constants.AUTH_URL) { user, error in
@@ -28,7 +29,7 @@ class RealmDB {
                         print("success")
                     }
                 })
-                self.syncedUser = user
+                self.user = user
                 let admin = user.isAdmin
                 print(admin)
                 // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
