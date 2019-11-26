@@ -1,17 +1,15 @@
 //
-//  QASession.swift
+//  HomepageFeed.swift
 //  StrawberryPie
 //
-//  Created by iosdev on 21/11/2019.
+//  Created by iosdev on 24/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 
-import Foundation
-    
 import RealmSwift
 import Foundation
 
-@objcMembers class Feed: Object {
+@objcMembers class HomepageFeed: Object {
     
     @objc dynamic var title: String = ""
     @objc dynamic var name: String = ""
