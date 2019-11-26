@@ -26,6 +26,9 @@ class QAController: UIViewController {
         
         qaTable.dataSource = self
         qaTable.delegate = self
+        
+        sendButton.isHidden = true
+        messageField.isHidden = true
 
         // Do any additional setup after loading the view.
     }
@@ -36,6 +39,12 @@ class QAController: UIViewController {
         print(dummySession?.title ?? "Not working Session")
         //print(dummySession?.chat[0].chatMessages[0] ?? "Not working chatmessages")
         
+    }
+    
+    func updateSession() {
+        let updatedSession = realm.objects().last
+        self.tableSource.append(newMessage ?? Message())
+        self.chatTable.reloadData()
     }
     
     func populateChat() {
@@ -61,19 +70,38 @@ class QAController: UIViewController {
     @IBAction func chatButton(_ sender: UIButton) {
         // Vaihda cellin pohjaa ja reloadData()
         selectedTab = "chat"
+        messageField.isHidden = false
+        sendButton.isHidden = false
         qaTable.reloadData()
+
     }
+    
+    @IBOutlet weak var messageField: UITextField!
+    
+    @IBAction func sendButton(_ sender: UIButton) {
+        let newMessage = ChatMessage()
+        newMessage.body = messageField.text ?? "Tapahtui virhe"
+        try! realm!.write {
+            dummySession!.chat[0].chatMessages.append(newMessage)
+            
+        }
+
+    }
+    @IBOutlet weak var sendButton: UIButton!
     @IBAction func pinnedButton(_ sender: UIButton) {
         // Vaihda cellin pohjaa ja reloadData()       
       
         selectedTab = "pinned"
+        sendButton.isHidden = true
+        messageField.isHidden = true
         qaTable.reloadData()
     }
     @IBAction func topicButton(_ sender: UIButton) {
         // Vaihda cellin pohjaa ja reloadData()
         selectedTab = "topic"
         qaTable.rowHeight = 500.0
-        
+        sendButton.isHidden = true
+        messageField.isHidden = true
         qaTable.reloadData()
 
     }

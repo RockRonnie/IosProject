@@ -18,9 +18,8 @@ class HostController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = RealmDB.sharedInstance.realm
-        print(realm.configuration)
-        //print(RealmDB.sharedInstance.user?.isAdmin)
-
+        print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
+        print(getSession())
         // Do any additional setup after loading the view.
     }
     //Button action
@@ -62,7 +61,10 @@ class HostController: UIViewController {
         let newBoard = QAMessageBoard()
         return newBoard
     }
-
+    func getSession() -> QASession {
+            let realmSession = realm.objects(QASession.self).sorted(byKeyPath: "sessionID", ascending: false)
+        return realmSession[0]
+    }
     // Initializing a realm object
     // (value: ["brand": "BMW", "year": 1980])
  
