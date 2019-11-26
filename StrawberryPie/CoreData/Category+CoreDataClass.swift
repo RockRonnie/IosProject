@@ -12,6 +12,8 @@ import UIKit
 
 public class Category: NSManagedObject {
 
+   
+    
     //This method is used to create data for a category
     func createCategoryData(name: String, summary: String, imageName: String, id: Int){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -24,6 +26,7 @@ public class Category: NSManagedObject {
                 
                 guard let imageUrl = Bundle.main.url(forResource: imageName, withExtension: "jpg", subdirectory: "Images") else {return}
                 
+        
                 let categoryEntity = NSEntityDescription.entity(forEntityName: "Category", in: managedContext)!
                 let category = NSManagedObject(entity: categoryEntity, insertInto: managedContext)
                 category.setValue(name, forKeyPath: "categoryName")
@@ -39,12 +42,12 @@ public class Category: NSManagedObject {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
-    //Fetches all data in category entity
+    //Fetches all data in category entity and sorts them by the ID
     func getAllCategoryData(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
-        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         do {
             let result = try managedContext.fetch(fetchRequest)
             print("Results: \(result)")
@@ -77,7 +80,44 @@ public class Category: NSManagedObject {
         } catch let error as NSError {
             print("There was an error processing your request: \(error)")
         }
-        
+    }
+    //Returns the category names in an array of strings
+    func getNames() -> Array<String>{
+        var names = [String]()
+        guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return [""]}
+        let managedContext = appDel.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject]{
+                names.append(data.value(forKey: "categoryName")as! String)
+            }
+            
+        }catch let error as NSError {
+            print(error)
+        }
+        return names
+    }
+    //Returns category images in an array of UIImages
+    func getImages() ->Array<UIImage>{
+        var urls = [UIImage]()
+        guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return urls}
+        let managedContext = appDel.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject]{
+                //Converts URLs to UIImages.
+                guard let data = try? Data(contentsOf: data.value(forKey: "categoryImageUrl") as! URL)else{return urls}
+                let image: UIImage = UIImage(data: data)!
+                urls.append(image)
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+        return urls
     }
     
     //Deletes all data in a given entity. Good for wiping CoreData clean if need be.
@@ -107,7 +147,7 @@ public class Category: NSManagedObject {
         createCategoryData(name: "Social sectors", summary: "Studies and work related to society",imageName: "SocietyImage",id: 2)
         createCategoryData(name: "Education Sciences", summary: "",imageName: "EducationImage",id: 3)
         createCategoryData(name: "Trade, Adminstration and Law", summary: "",imageName: "lawImage", id: 4)
-        createCategoryData(name: "Natural Sciences", summary: "",imageName: "NaturualImage", id: 5)
+        createCategoryData(name: "Natural Sciences", summary: "",imageName: "NaturalImage", id: 5)
         createCategoryData(name: "Technical Fields", summary: "", imageName: "TechImage", id: 6)
         createCategoryData(name: "Agriculture and Forestry", summary: "",imageName: "AgricultureImage",id:7)
         createCategoryData(name: "Health and Wellbeing", summary: "", imageName: "HealthcareImage",id:8)

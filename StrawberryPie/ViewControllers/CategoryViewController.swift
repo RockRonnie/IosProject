@@ -14,30 +14,33 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     let category = Category()
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let categoryNames = [String]()
-    let categoryImages = [UIImage]()
-    
-    
    
     override func viewDidLoad() {
         super.viewDidLoad()
         category.deleteAllData(entity: "Category")
         category.generateData()
         category.getCategoryData(name: "Social sectors")
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        var layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width - 20)/2, height: self.collectionView.frame.size.height/3)
         // Do any additional setup after loading the view.
         
         //Reminder check for duplicate objects
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryNames.count
+        return category.getNames().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         
-        cell.categoryNameLabel.text = categoryNames[indexPath.item]
-        cell.categoryImageView.image = categoryImages[indexPath.item]
+        cell.categoryNameLabel.text = category.getNames()[indexPath.item]
+        cell.categoryImageView.image = category.getImages()[indexPath.item]
         
         return cell
     }

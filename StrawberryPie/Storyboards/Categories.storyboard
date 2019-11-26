@@ -21,7 +21,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="298-hh-pmE">
                                 <rect key="frame" x="20" y="89" width="374" height="754"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u1d-Xu-ekm">
                                     <size key="itemSize" width="170" height="202"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -49,6 +49,7 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="categoryImageView" destination="wT4-Z1-gZU" id="SJH-m3-I7m"/>
                                             <outlet property="categoryNameLabel" destination="nw8-CL-wRN" id="iAP-bV-Fhw"/>
