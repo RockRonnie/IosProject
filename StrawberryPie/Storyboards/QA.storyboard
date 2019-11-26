@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="izR-vc-5F2">
-                                <rect key="frame" x="46" y="271" width="284" height="346"/>
+                                <rect key="frame" x="46" y="256" width="284" height="346"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -85,13 +85,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YHw-E5-McQ">
+                                <rect key="frame" x="59" y="610" width="191" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="messageField:" destination="rbh-wZ-ci6" eventType="editingDidEnd" id="Uoe-Pc-pvs"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9P-ZH-Ho3">
+                                <rect key="frame" x="268" y="609" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendButton:" destination="rbh-wZ-ci6" eventType="touchUpInside" id="Opu-rm-rcL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nOg-Mg-cx9"/>
                     </view>
                     <connections>
                         <outlet property="hostcardTable" destination="KIG-6Y-rnT" id="JYZ-4l-vAg"/>
+                        <outlet property="messageField" destination="YHw-E5-McQ" id="Hat-HD-7Ln"/>
                         <outlet property="qaTable" destination="izR-vc-5F2" id="6Uh-Pq-4rL"/>
+                        <outlet property="sendButton" destination="n9P-ZH-Ho3" id="bCY-O6-r8t"/>
                         <outlet property="titleLabel" destination="zLm-GV-bOL" id="yqb-ws-ZvD"/>
                     </connections>
                 </viewController>

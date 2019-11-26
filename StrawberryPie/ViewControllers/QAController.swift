@@ -13,6 +13,7 @@ class QAController: UIViewController {
     
     var dummyTitle: String?
     var dummySession: QASession?
+    var realm: Realm?
     var topicSource = ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."]
     var chatSource = [] as [ChatMessage] // Tänne chattiviestit sisään
     var qaSource = ["Q: Mitä huudetaan jos koodi levii?","A: 🆘"]
@@ -25,6 +26,9 @@ class QAController: UIViewController {
         
         qaTable.dataSource = self
         qaTable.delegate = self
+        
+        sendButton.isHidden = true
+        messageField.isHidden = true
 
         // Do any additional setup after loading the view.
     }
@@ -33,16 +37,22 @@ class QAController: UIViewController {
         
         titleLabel.text = dummySession?.title ?? "No title"
         print(dummySession?.title ?? "Not working Session")
-        print(dummySession?.chat[0].chatMessages[0] ?? "Not working chatmessages")
+        //print(dummySession?.chat[0].chatMessages[0] ?? "Not working chatmessages")
         
+    }
+    
+    func updateSession() {
+        let updatedSession = realm.objects().last
+        self.tableSource.append(newMessage ?? Message())
+        self.chatTable.reloadData()
     }
     
     func populateChat() {
         let chat = dummySession?.chat[0]
         // Huutomerkki pois. Ärsyttävän karkee tapa leipoa ChatMessage() objektit Arrayn sisään. Hyh
         chatSource = Array((chat?.chatMessages)!) // Siivoo !!!!! tämä sotku
-        print ("Eka viesti on", chatSource[0].body)
-         print ("Toka viesti on", chatSource[1].body)
+        //print ("Eka viesti on", chatSource[0].body)
+         //print ("Toka viesti on", chatSource[1].body)
         print ("Viestejä yhteensä ", chatSource.count)
     }
     
@@ -60,18 +70,38 @@ class QAController: UIViewController {
     @IBAction func chatButton(_ sender: UIButton) {
         // Vaihda cellin pohjaa ja reloadData()
         selectedTab = "chat"
+        messageField.isHidden = false
+        sendButton.isHidden = false
         qaTable.reloadData()
+
     }
+    
+    @IBOutlet weak var messageField: UITextField!
+    
+    @IBAction func sendButton(_ sender: UIButton) {
+        let newMessage = ChatMessage()
+        newMessage.body = messageField.text ?? "Tapahtui virhe"
+        try! realm!.write {
+            dummySession!.chat[0].chatMessages.append(newMessage)
+            
+        }
+
+    }
+    @IBOutlet weak var sendButton: UIButton!
     @IBAction func pinnedButton(_ sender: UIButton) {
-        // Vaihda cellin pohjaa ja reloadData()
+        // Vaihda cellin pohjaa ja reloadData()       
+      
         selectedTab = "pinned"
+        sendButton.isHidden = true
+        messageField.isHidden = true
         qaTable.reloadData()
     }
     @IBAction func topicButton(_ sender: UIButton) {
         // Vaihda cellin pohjaa ja reloadData()
         selectedTab = "topic"
         qaTable.rowHeight = 500.0
-        
+        sendButton.isHidden = true
+        messageField.isHidden = true
         qaTable.reloadData()
 
     }

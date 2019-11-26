@@ -11,13 +11,10 @@ import RealmSwift
 
 class QaTest: UIViewController {
     var realm: Realm!
-    var user: SyncUser?
-    var realmSession: QASession?
    
     override func viewDidLoad() {
-        
+        setupRealm()
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -32,6 +29,10 @@ class QaTest: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "QAController") {
             
+            let realmSession = realm.objects(QASession.self)
+            //let subscription = realmSession.subscribe()
+            //print(realm.configuration)
+
             let testSession = QASession()
             let testChat = Chat()
             let testMessage = ChatMessage()
@@ -46,13 +47,38 @@ class QaTest: UIViewController {
             let destinationVC = segue.destination as? QAController
             
             // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
-            destinationVC?.dummySession = realmSession
+            destinationVC?.dummySession = realmSession.last
+            destinationVC?.realm = realm
+            
         }
     }
-}
+    
+    func setupRealm() {
+        // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
+        SyncUser.logIn(with: .usernamePassword(username: "test1", password: "test", register: false), server: Constants.AUTH_URL) { user, error in
+            if let user = user {
+                // Onnistunut kirjautuminen
+                // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
+                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "*", accessLevel: .write)
+                user.apply(permission, callback: { (error) in
+                    if error != nil {
+                        print(error?.localizedDescription ?? "No error")
+                    } else {
+                        print("success")
+                    }
+                })
+                //self.user = user
+                let admin = user.isAdmin
+                print(admin)
+                // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
+                let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
+                self.realm = try! Realm(configuration: config)
+                print("Realm connection has been setup")
+            }
+        }
+    }
     
     
-   
     // Otetaan seuranta notifikaatio pois koska ... ???
    
 
