@@ -13,7 +13,9 @@ class QAController: UIViewController {
     
     var dummyTitle: String?
     var dummySession: QASession?
+    var sessionID:String?
     var realm: Realm?
+    var notificationToken: NotificationToken?
     var topicSource = ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."]
     var chatSource = [] as [ChatMessage] // Tänne chattiviestit sisään
     var qaSource = ["Q: Mitä huudetaan jos koodi levii?","A: 🆘"]
@@ -39,12 +41,15 @@ class QAController: UIViewController {
         print(dummySession?.title ?? "Not working Session")
         //print(dummySession?.chat[0].chatMessages[0] ?? "Not working chatmessages")
         
+        //self.notificationToken = self.realm?.observe { _,_ in
+          //  self.updateSession()
+    // }
     }
     
     func updateSession() {
-        let updatedSession = realm.objects().last
-        self.tableSource.append(newMessage ?? Message())
-        self.chatTable.reloadData()
+        // let updatedSession = realm?.objects(QASession.self).filter("sessionID = \(sessionID)")
+        // dummySession = updatedSession?[0]
+        // self.qaTable.reloadData()
     }
     
     func populateChat() {
@@ -79,6 +84,7 @@ class QAController: UIViewController {
     @IBOutlet weak var messageField: UITextField!
     
     @IBAction func sendButton(_ sender: UIButton) {
+        print(realm!.objects(QASession.self).filter("sessionID =(sessionID)")[0].title)
         let newMessage = ChatMessage()
         newMessage.body = messageField.text ?? "Tapahtui virhe"
         try! realm!.write {
