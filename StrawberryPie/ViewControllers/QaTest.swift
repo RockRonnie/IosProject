@@ -11,10 +11,13 @@ import RealmSwift
 
 class QaTest: UIViewController {
     var realm: Realm!
+    var user: SyncUser?
+    var realmSession: QASession?
    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        realm = RealmDB.sharedInstance.realm
+
         // Do any additional setup after loading the view.
     }
     
@@ -28,8 +31,6 @@ class QaTest: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "QAController") {
-            
-            //let realmSession = realm.objects(QASession.self).last
             
             let testSession = QASession()
             let testChat = Chat()
@@ -45,11 +46,13 @@ class QaTest: UIViewController {
             let destinationVC = segue.destination as? QAController
             
             // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
-            destinationVC?.dummySession = testSession
+            destinationVC?.dummySession = realmSession
         }
     }
+}
     
     
+   
     // Otetaan seuranta notifikaatio pois koska ... ???
    
 

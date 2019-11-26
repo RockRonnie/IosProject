@@ -36,6 +36,7 @@ class RealmDB {
                 let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
                 self.realm = try! Realm(configuration: config)
                 print("Realm connection has been setup")
+
             }
         }
     }
