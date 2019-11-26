@@ -18,10 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="298-hh-pmE">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="298-hh-pmE">
                                 <rect key="frame" x="20" y="89" width="374" height="754"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u1d-Xu-ekm">
                                     <size key="itemSize" width="170" height="202"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -37,13 +36,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wT4-Z1-gZU">
-                                                    <rect key="frame" x="0.0" y="3" width="170" height="147"/>
+                                                    <rect key="frame" x="-7" y="-6" width="182" height="156"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nw8-CL-wRN">
-                                                    <rect key="frame" x="0.0" y="151" width="170" height="51"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nw8-CL-wRN">
+                                                    <rect key="frame" x="0.0" y="51" width="170" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -59,6 +59,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="298-hh-pmE" firstAttribute="top" secondItem="ZBa-hS-58W" secondAttribute="top" constant="45" id="0d3-xf-KnW"/>
+                            <constraint firstItem="ZBa-hS-58W" firstAttribute="trailing" secondItem="298-hh-pmE" secondAttribute="trailing" constant="20" id="NAB-yI-GFG"/>
+                            <constraint firstItem="ZBa-hS-58W" firstAttribute="bottom" secondItem="298-hh-pmE" secondAttribute="bottom" constant="19" id="jbR-bl-owB"/>
+                            <constraint firstItem="298-hh-pmE" firstAttribute="leading" secondItem="ZBa-hS-58W" secondAttribute="leading" constant="20" id="mNL-3n-wSR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZBa-hS-58W"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Categories" id="ZcQ-Fu-cAE"/>

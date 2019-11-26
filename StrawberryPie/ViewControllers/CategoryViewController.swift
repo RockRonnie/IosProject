@@ -4,7 +4,7 @@
 //
 //  Created by Arttu Jokinen on 23/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
-//
+//  This class handles the Category view. Uses Category+CoreDataClass as its model
 
 import UIKit
 import CoreData
@@ -23,10 +23,11 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        var layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width - 20)/2, height: self.collectionView.frame.size.height/3)
+        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width - 20)/2, height: self.collectionView.frame.size.height/6)
+        
         // Do any additional setup after loading the view.
         
         //Reminder check for duplicate objects
@@ -41,10 +42,30 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.categoryNameLabel.text = category.getNames()[indexPath.item]
         cell.categoryImageView.image = category.getImages()[indexPath.item]
+        //Adding some styling here
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.borderWidth = 0.5
+        cell.layer.cornerRadius = 30
+        cell.categoryNameLabel.layer.masksToBounds = true
+        cell.categoryNameLabel.layer.cornerRadius = 30
         
         return cell
     }
-
+    
+    //Select item and increases the gray border size to indicate selection
+    //TODO add navigation here
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderColor = UIColor.gray.cgColor
+        cell?.layer.borderWidth = 2
+        
+    }
+    //Deselects the old item and removes its larger border
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderColor = UIColor.lightGray.cgColor
+        cell?.layer.borderWidth = 0.5
+    }
 
     /*
     // MARK: - Navigation

@@ -2,9 +2,9 @@
 //  Category+CoreDataClass.swift
 //  
 //
-//  Created by iosdev on 22/11/2019.
+//  Created by Arttu Jokinen on 22/11/2019.
 //
-//
+//  Used as the model for CategoryViewConroller. Provides CoreData operations.
 
 import Foundation
 import CoreData
@@ -12,7 +12,6 @@ import UIKit
 
 public class Category: NSManagedObject {
 
-   
     
     //This method is used to create data for a category
     func createCategoryData(name: String, summary: String, imageName: String, id: Int){

@@ -14,5 +14,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var categoryNameLabel: UILabel!
+ 
+    
     
 }
