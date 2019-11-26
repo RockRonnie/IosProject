@@ -18,7 +18,8 @@ class HostController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = RealmDB.sharedInstance.realm
-        print(RealmDB.sharedInstance.user?.isAdmin)
+        print(realm.configuration)
+        //print(RealmDB.sharedInstance.user?.isAdmin)
 
         // Do any additional setup after loading the view.
     }
