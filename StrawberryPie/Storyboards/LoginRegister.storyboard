@@ -17,73 +17,10 @@
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="logregstoryboard" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uQf-fk-lc8">
-                                <rect key="frame" x="123" y="195" width="123" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EVv-x4-bDb">
-                                <rect key="frame" x="109" y="268" width="151" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-BB-XLQ">
-                                <rect key="frame" x="142" y="166" width="85" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOi-l8-HxX">
-                                <rect key="frame" x="144" y="239" width="81" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHu-e0-UFK">
-                                <rect key="frame" x="79" y="335" width="211" height="30"/>
-                                <state key="normal" title="Register"/>
-                                <connections>
-                                    <action selector="SignupButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1O6-Wz-1nX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKA-v9-aJQ">
-                                <rect key="frame" x="165" y="373" width="44" height="30"/>
-                                <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="LoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qgg-Jf-5Ll"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="zKA-v9-aJQ" firstAttribute="top" secondItem="lHu-e0-UFK" secondAttribute="bottom" constant="8" symbolic="YES" id="6KG-Gj-EDi"/>
-                            <constraint firstItem="EVv-x4-bDb" firstAttribute="top" secondItem="cOi-l8-HxX" secondAttribute="bottom" constant="8" symbolic="YES" id="BmF-p8-Lhp"/>
-                            <constraint firstItem="zKA-v9-aJQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C2A-Hb-7kB"/>
-                            <constraint firstItem="uQf-fk-lc8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="123" id="CsV-l5-nLR"/>
-                            <constraint firstItem="cOi-l8-HxX" firstAttribute="centerX" secondItem="EVv-x4-bDb" secondAttribute="centerX" id="E4p-Yw-Wah"/>
-                            <constraint firstItem="rRb-BB-XLQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="146" id="EC1-ku-r97"/>
-                            <constraint firstItem="EVv-x4-bDb" firstAttribute="centerX" secondItem="lHu-e0-UFK" secondAttribute="centerX" id="FaR-cq-l4d"/>
-                            <constraint firstItem="cOi-l8-HxX" firstAttribute="top" secondItem="uQf-fk-lc8" secondAttribute="bottom" constant="14" id="GTG-wI-C21"/>
-                            <constraint firstItem="uQf-fk-lc8" firstAttribute="centerX" secondItem="cOi-l8-HxX" secondAttribute="centerX" id="Gd1-D2-Qfb"/>
-                            <constraint firstItem="rRb-BB-XLQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="142" id="NZM-jx-p7b"/>
-                            <constraint firstItem="lHu-e0-UFK" firstAttribute="top" secondItem="EVv-x4-bDb" secondAttribute="bottom" constant="37" id="PCC-qQ-sAP"/>
-                            <constraint firstItem="cOi-l8-HxX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="144" id="ROv-AS-5mJ"/>
-                            <constraint firstItem="rRb-BB-XLQ" firstAttribute="centerX" secondItem="uQf-fk-lc8" secondAttribute="centerX" id="ZQb-tF-5fV"/>
-                            <constraint firstItem="EVv-x4-bDb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="109" id="aFN-8y-oAB"/>
-                            <constraint firstItem="uQf-fk-lc8" firstAttribute="top" secondItem="rRb-BB-XLQ" secondAttribute="bottom" constant="8" symbolic="YES" id="bK5-sb-c86"/>
-                            <constraint firstItem="zKA-v9-aJQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="165" id="p2q-ll-QEN"/>
-                            <constraint firstItem="lHu-e0-UFK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="79" id="zJL-nW-Fgx"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Login / Register" id="h9f-FB-dwx"/>
-                    <connections>
-                        <outlet property="unameLogin" destination="uQf-fk-lc8" id="foE-Kj-QdK"/>
-                        <outlet property="userPw" destination="EVv-x4-bDb" id="hiv-Su-PXA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
