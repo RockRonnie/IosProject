@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+import RealmSwift
+// intro object for QA session
+@objcMembers class Intro: Object {
+    dynamic var introId: String = UUID().uuidString
+    dynamic var title: String = ""
+    dynamic var body: String = ""
+    // possibility of creating several chapters to make the text flow better? for now just one body will do
+    dynamic var sessionAdded: Date = Date()
+    override static func primaryKey() -> String? {
+        return "introId"
+    }
+    
+}

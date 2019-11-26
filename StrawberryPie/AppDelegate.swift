@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       self.window?.rootViewController = navController
       // make window visible
         self.window?.makeKeyAndVisible()
+
+        RealmDB.sharedInstance.setupRealm()
+        // Override point for customization after application launch.
         return true
     }
 

@@ -14,13 +14,17 @@ import RealmSwift
   @IBOutlet weak var unameLogin: UITextField!
   @IBOutlet weak var userPw: UITextField!
   
+  let signInButton = UIButton(type: .roundedRect)
+  let signUpButton = UIButton(type: .roundedRect)
+  let errorLabel = UILabel()
+  
   var realm: Realm!
   var notificationToken: NotificationToken?
-  var Messages: Results<Message>?
   let thisUser = User()
-
+  let main = UIStoryboard(name: "Main", bundle: nil)
+  
   // Tänne pusketaan data --> Vaihda johonkin fiksumpaan
-  private var tableSource = [] as [Message]
+  private var tableSource = [] as [ChatMessage]
   
   //Log user
   func logIn(_ username: String,_ password: String,_ register: Bool) {
@@ -29,73 +33,63 @@ import RealmSwift
     // Sync credentials declaration and login
     let creds = SyncCredentials.usernamePassword(username: username, password: password, register: register)
     SyncUser.logIn(with: creds, server: Constants.AUTH_URL, onCompletion: { (user, err) in
-      if let error = err {
-        print("Login error: \(error)")
-        self.navigationController?.pushViewController(LoginRegisterController(), animated: true)
-        return
-      } else if user != nil{
-      print("No errors")
-      // set username
+      if let user = user {
+        Realm.Configuration.defaultConfiguration = user.configuration()
+        Realm.asyncOpen() { realm, err in
+          if let realm = realm {
+            try! Realm(configuration: user.configuration(realmURL: Constants.REALM_URL))
+          } else if let error = err {
+            print(error)
+          }
+          
+        }
+        print("No login errors \(user)")
         self.thisUser.userName = username
-        print(self.thisUser.userName)
-      //Push homecontroller
-      self.navigationController?.pushViewController(HomeController(), animated: true)
+        //Push homecontroller
+        self.navigationController?.pushViewController(HomeController(), animated: true)
+        
+        
+        return
+      } else if err != nil {
+        print("Login error: \(String(describing: err))")
+        self.navigationController?.pushViewController(LoginRegisterController(), animated: true)
+        self.userDef = false
+        
+        
       }
     })
+  }
+  @IBAction func SignupButton(_ sender: UIButton!) {
+    signUp()
+    let loggedIn: UITabBarController? = self.main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
+    self.present(loggedIn!, animated:  true, completion: nil)
   }
   // Login nappi
   @IBAction func LoginButton(_ sender: UIButton!) {
     // Define main Tab bar controller
-    let main = UIStoryboard(name: "Main", bundle: nil)
-    // Define login storyboard
-    //let loginBoard = UIStoryboard(name: "LoginRegister", bundle: nil)
-    // Get username and pw from Loginscreen
-    let usrname: String? = unameLogin.text
-    let usrpw: String? = userPw.text
     // Define tab bar shown when logged in
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
     // Define tab bar show when logged out
     let loggedOut: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedOutTabBar") as? UITabBarController
     // Check if login values are empty
-    if usrname != "" && usrpw != "" && SyncUser.current != nil {
-      
-      logIn(usrname ?? "", usrpw ?? "", false)
-      print("\(String(describing: usrname))")
-      //---- NOT IN USE ----> //
-      //let loggedInView: UIViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "homestoryboard") as UIViewController
-      
-      //self.present(loggedInView, animated: true, completion: nil)
-      // <--- NOT IN USE ---- //
-      
+    signIn()
+    if thisUser.userName != "" {
+      print("\(String(describing: username))")
       // LOGIN SUCCESSFUL, navigate to home and show loggedIn tabbar
       self.present(loggedIn!, animated:  true, completion: nil)
       
-      // Some placeholder realm data
-      let newUser = User()
-      newUser.userName = usrname!
-      let newMessage = Message()
-      newMessage.messageSender = "Maketest"
-      newMessage.body = "new message"
+ 
       // Connection to realm
       // Error check
       
       // Some placeholder realm writes
       //try! self.realm.write {
       //  self.realm.add(newMessage)
-        
+      
       //}
       return
-      
-      
-      
-      
     } else {
-      // -- NOT IN USE --> //
-      //let loggedOutView: UIViewController? = loginBoard.instantiateViewController(withIdentifier: "logregstoryboard")
-      //self.present(loggedOutView!, animated: true, completion: nil)
-      // <-- NOT IN USE --- //
-      
-      // --> LOGIN FAILED, navigate to same page
+      // --> LOGIN FAILED, navigate to login/register page
       let alert = UIAlertController(title: "Login alert", message: "Login failed!", preferredStyle: .alert)
       let alertOk=UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in print("Ok pressed")})
       alert.addAction(alertOk)
@@ -112,8 +106,28 @@ import RealmSwift
     unameLogin.delegate = self
     userPw.delegate = self
     
+    // Container, can be used for additional information on the screen, is built programmatically
+    let container = UIStackView()
+    let messageLabel = UILabel()
+    messageLabel.numberOfLines = 0
+    messageLabel.text = "Please enter your credentials"
+    container.addArrangedSubview(messageLabel)
+    container.translatesAutoresizingMaskIntoConstraints = false
+    container.axis = .horizontal
+    container.alignment = .fill
+    container.spacing = 16.0
+    view.addSubview(container)
+    // Container's location on the screen
+    let guide = view.safeAreaLayoutGuide
+    NSLayoutConstraint.activate([
+      container.centerXAnchor.constraint(equalTo: guide.centerXAnchor, constant: 0),
+      container.centerYAnchor.constraint(equalTo: guide.centerYAnchor, constant: -300),
+      
+      ])
+    
+    
   }
-  // NOT IN USE
+  // NOT IN USE, might be used later
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let destVC = segue.destination as! HomeController
     destVC.view.backgroundColor = .blue
@@ -125,7 +139,7 @@ import RealmSwift
   }
   func signUp() {
     logIn(username!, password!,
-          false)
+          true)
   }
   var username: String? {
     get {
@@ -135,6 +149,15 @@ import RealmSwift
   var password: String? {
     get {
       return userPw.text
+    }
+  }
+  // NOT USED but might be useful, can set and get bool
+  var userDef: Bool {
+    get {
+      return UserDefaults.standard.bool(forKey: "userExists")
+    }
+    set {
+      UserDefaults.standard.set(newValue, forKey: "userExists")
     }
   }
 }
