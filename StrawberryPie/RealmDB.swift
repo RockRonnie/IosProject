@@ -15,13 +15,13 @@ class RealmDB {
     
     static let sharedInstance = RealmDB()
     
-    func setupRealm() {
+  func setupRealm(_ username: String,_ password: String,_ register: Bool) { 
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
-        SyncUser.logIn(with: .usernamePassword(username: "test1", password: "test", register: false), server: Constants.AUTH_URL) { user, error in
+        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: Constants.AUTH_URL) { user, error in
             if let user = user {
                 // Onnistunut kirjautuminen
                 // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
-                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "test1", accessLevel: .write)
+                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "*", accessLevel: .write)
                 user.apply(permission, callback: { (error) in
                     if error != nil {
                         print(error?.localizedDescription ?? "No error")

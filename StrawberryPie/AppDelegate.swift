@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // make window visible
         self.window?.makeKeyAndVisible()
 
-        RealmDB.sharedInstance.setupRealm()
         // Override point for customization after application launch.
         return true
     }
