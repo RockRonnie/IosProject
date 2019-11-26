@@ -11,6 +11,7 @@ import RealmSwift
 
 class RealmDB {
     var realm:Realm!
+    var syncedUser: SyncUser?
     
     static let sharedInstance = RealmDB()
     func setupRealm() {
@@ -27,16 +28,18 @@ class RealmDB {
                         print("success")
                     }
                 })
-                print(user)
+                self.syncedUser = user
+                let admin = user.isAdmin
+                print(admin)
                 // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
-                let config = SyncUser.current?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
-                self.realm = try! Realm(configuration: config!)
+                let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
+                self.realm = try! Realm(configuration: config)
                 print("Realm connection has been setup")
             }
         }
     }
     /*
-    func getDataFromDB() -> Results<Object> {
+    func getDataFromDB() -> Object {
         let results: Results<Route> = realm.Objects(Object.self)
         return results
     }*/
