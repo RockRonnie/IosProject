@@ -11,7 +11,9 @@ import RealmSwift
 
 @objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate {
   
-  
+  var signUpFormEnabled = Bool()
+  let messageLabel = UILabel()
+  let changeFormButton = UIButton(type: .roundedRect)
   let loginButton = UIButton(type: .roundedRect)
   let signUpButton = UIButton(type: .roundedRect)
   let errorLabel = UILabel()
@@ -44,53 +46,30 @@ import RealmSwift
     firstnameField.delegate = self
     lastnameField.delegate = self
     
-    usernameField.isHidden = true
-    userpasswordField.isHidden = true
+    usernameField.isHidden = false
+    userpasswordField.isHidden = false
     userinfoField.isHidden = true
     userpwagainField.isHidden = true
     firstnameField.isHidden = true
     lastnameField.isHidden = true
     loginButton.isHidden = true
     signUpButton.isHidden = true
+    changeFormButton.isHidden = false
+    
+    self.signUpFormEnabled = true
+    self.switchForm()
     
     // Container, can be used for additional information on the screen, is built programmatically
     let container = UIStackView()
-    let messageLabel = UILabel()
+    
     messageLabel.numberOfLines = 0
-    messageLabel.text = "Please enter your credentials"
+    messageLabel.text = "Please enter your login information"
     container.addArrangedSubview(messageLabel)
     container.translatesAutoresizingMaskIntoConstraints = false
     container.axis = .vertical
     container.alignment = .fill
     container.spacing = 16.0
     view.addSubview(container)
-    
-    // LOGIN OR REGISTER DEPENDING ON USER
-    // Using alert at the moment to choose login/signup, will be changed to something more sophisticated
-    let alertController = UIAlertController(title: "Login / Register?", message: "Login / Register?", preferredStyle: .alert)
-    let toLogin = UIAlertAction(title: "Login", style: .default) {
-      (action:UIAlertAction) in
-      print("Pressed toLogin")
-      // LOGIN Form chosen -> Show login fields
-      self.usernameField.isHidden = false
-      self.userpasswordField.isHidden = false
-      self.loginButton.isHidden = false
-    }
-    let toSignUp = UIAlertAction(title: "Sign up", style: .default) {
-      (action:UIAlertAction) in
-      print("Pressed toSignUp")
-      // SIGNUP Form chosen -> Show signup fields
-      self.usernameField.isHidden = false
-      self.userpasswordField.isHidden = false
-      self.userinfoField.isHidden = false
-      self.userpwagainField.isHidden = false
-      self.firstnameField.isHidden = false
-      self.lastnameField.isHidden = false
-      self.signUpButton.isHidden = false
-    }
-    alertController.addAction(toLogin)
-    alertController.addAction(toSignUp)
-    self.present(alertController, animated: true, completion: nil)
     
     // Create Register / Login Form
     // Styling etc. could be moved to another separate styling file
@@ -111,10 +90,14 @@ import RealmSwift
     userinfoField.placeholder = "Info"
     userinfoField.borderStyle = .roundedRect
     container.addArrangedSubview(userinfoField)
+    
     userpasswordField.placeholder = "Password"
     userpasswordField.borderStyle = .roundedRect
     userpasswordField.autocapitalizationType = .none
     container.addArrangedSubview(userpasswordField)
+    // Retype user pw
+    // Password validation placeholder
+    //userpasswordField.passwordRules = UITextInputPasswordRules(descriptor: "required: upper; required: lower; required: digit; max-consecutive: 2; minlenght: 8;")
     userpwagainField.placeholder = "Password again"
     userpwagainField.borderStyle = .roundedRect
     userpwagainField.autocapitalizationType = .none
@@ -126,6 +109,9 @@ import RealmSwift
     signUpButton.setTitle("Sign up", for: .normal)
     signUpButton.addTarget(self, action: #selector(createUser), for: .touchUpInside)
     container.addArrangedSubview(signUpButton)
+    changeFormButton.addTarget(self, action: #selector(switchForm),
+                               for: .touchUpInside)
+    container.addArrangedSubview(changeFormButton)
     // Container's location on the screen
     let guide = view.safeAreaLayoutGuide
     NSLayoutConstraint.activate([
@@ -138,35 +124,42 @@ import RealmSwift
   }
   // NOT IN USE, might be used later
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
-    }
+    
+  }
   
   // LOGIN FUNCTION, ALL THE LOGIC NOT IMPLEMENTED, WILL BE SUBJECT TO CHANGE
   func logIn(_ username: String,_ password: String,_ register: Bool) {
-    
-    // Define Tab Bar showing while logged IN
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
-    // Define Tab Bar showing while logged OUT
-    let loggedOut: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedOutTabBar") as? UITabBarController
-    // Check if login values are empty
-    if usernameField.text != "" && userpasswordField.text != "" {
-      // Login to Realm
-      RealmDB.sharedInstance.setupRealm(username, password, register)
-      print("Login as user: \(username), register \(register)")
-      //Show LoggedIn TabBar
-      self.present(loggedIn!, animated: true, completion: nil)
-      return
+    if usernameField.text == "" {
+      self.present(customAlert(title: "uname", reason: "Missing username"), animated: true, completion: nil)
+    } else if userpasswordField.text == "" {
+      self.present(customAlert(title: "upw", reason: "Missing password"),
+                   animated: true, completion: nil)
     } else {
-      // --> LOGIN FAILED, navigate back to login/register page
-      let alert = UIAlertController(title: "Login alert", message: "Login failed!", preferredStyle: .alert)
-      let alertOk=UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in print("Ok pressed")})
-      alert.addAction(alertOk)
-      self.navigationController?.pushViewController(LoginRegisterController(), animated: true)
-      self.present(alert, animated: true, completion: nil)
-      self.present(loggedOut!, animated:  true, completion: nil)
-      print("No user")
+      // USER FROM REALM IS AVAILABLE BEFORE IF-statement so doesnt work, FIX PLS
+      RealmDB.sharedInstance.setupRealm(username, password, register)
+      if RealmDB.sharedInstance.user?.identity != nil {
+        print("Login as user: \(username), register \(register)")
+        //Show LoggedIn TabBar
+          self.present(customAlert(title: "Login", reason: "Wrong login"), animated: true, completion: nil)
+        
+      }
+      self.present(loggedIn!, animated: true, completion: nil)
+      
+      
     }
   }
+  
+  // To reduce clutter calling alert
+  func customAlert(title: String, reason: String) -> UIAlertController {
+    let alert = UIAlertController(title: title, message: reason, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    
+    return alert
+    
+  }
+  
+  
   
   
   
@@ -179,6 +172,7 @@ import RealmSwift
     thisUser.firstName = firstname ?? "No first name"
     thisUser.lastName = lastname ?? "No lastname"
     thisUser.info = info ?? "No user Info"
+    print(thisUser)
     let credentials = SyncCredentials.usernamePassword(username: username, password: password, register: true)
     SyncUser.logIn(with: credentials, server: Constants.AUTH_URL, onCompletion: { (user, error) in
       if let user = user {
@@ -202,18 +196,54 @@ import RealmSwift
         print("Realm connection has been setup")
         self.navigationController?.pushViewController(HomeController(), animated: true)
         self.present(loggedIn!, animated: true, completion: nil)
+      } else {
+        print("Register error: \(String(describing: error))")
       }
     })
+    
   }
   
   
-
+  
   func signIn() {
     logIn(username!, password!, false)
   }
   func createUser() {
     signUp(username!, password!, true)
+  }
+  // Change between login / register
+  func switchForm() {
+    self.changeFormButton.isHidden = false
+    if signUpFormEnabled {
+      // LOGIN Form chosen -> Show login fields
+      signUpFormEnabled = false
+      self.messageLabel.text = "Please enter your login information"
+      self.usernameField.isHidden = false
+      self.firstnameField.isHidden = true
+      self.lastnameField.isHidden = true
+      self.userpasswordField.isHidden = false
+      self.userpwagainField.isHidden = true
+      self.userinfoField.isHidden = true
+      self.loginButton.isHidden = false
+      self.signUpButton.isHidden = true
+      changeFormButton.setTitle("Sign up instead", for: .normal)
+    } else if
+      !signUpFormEnabled {
+      signUpFormEnabled = true
+      self.messageLabel.text = "Please fill out the registration form"
+      // SIGNUP Form chosen -> Show signup fields
+      self.usernameField.isHidden = false
+      self.userpasswordField.isHidden = false
+      self.userinfoField.isHidden = false
+      self.userpwagainField.isHidden = false
+      self.firstnameField.isHidden = false
+      self.lastnameField.isHidden = false
+      self.loginButton.isHidden = true
+      self.signUpButton.isHidden = false
+      changeFormButton.setTitle("Already have an account? Login instead", for: .normal)
+    }
     
+    // Getters
   }
   var firstname: String? {
     get {
