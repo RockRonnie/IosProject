@@ -20,9 +20,9 @@ struct Constants {
   // CONNECTION TO REALM
   static let MY_INSTANCE_ADDRESS = "askandreceive.de1a.cloud.realm.io" //
   
-  static let AUTH_URL  = URL(string: "https://\(MY_INSTANCE_ADDRESS)")!s
+  static let AUTH_URL  = URL(string: "https://\(MY_INSTANCE_ADDRESS)")!
   // /~/ <-- tuolla tehdään käyttäjäkohtainen path
   static let REALM_URL = URL(string: "realms://\(MY_INSTANCE_ADDRESS)/QATest")!
-  static let REALM_URL = URL(string: "realms://\(MY_INSTANCE_ADDRESS)/QATest")!
+  
 
 }
