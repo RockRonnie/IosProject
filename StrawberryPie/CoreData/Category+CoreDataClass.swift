@@ -11,8 +11,6 @@ import CoreData
 import UIKit
 
 public class Category: NSManagedObject {
-
-    
     //This method is used to create data for a category
     func createCategoryData(name: String, summary: String, imageName: String, id: Int){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -24,8 +22,6 @@ public class Category: NSManagedObject {
             if result.count < 1 {
                 
                 guard let imageUrl = Bundle.main.url(forResource: imageName, withExtension: "jpg", subdirectory: "Images") else {return}
-                
-        
                 let categoryEntity = NSEntityDescription.entity(forEntityName: "Category", in: managedContext)!
                 let category = NSManagedObject(entity: categoryEntity, insertInto: managedContext)
                 category.setValue(name, forKeyPath: "categoryName")
@@ -67,15 +63,12 @@ public class Category: NSManagedObject {
         let managedContext = appDel.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
         fetchRequest.predicate = NSPredicate(format: "categoryName == %@", name)
-        
         do {
             let result = try managedContext.fetch(fetchRequest) as! [NSManagedObject]
             print("Name: \(result[0].value(forKey: "categoryName") as! String)")
             print("Summary: \(result[0].value(forKey: "categorySummary") as! String)")
             print("File URL: \(result[0].value(forKey: "categoryImageUrl") as! URL)")
             print("ID: \(result[0].value(forKey: "id") as! Int)")
-            
-            
         } catch let error as NSError {
             print("There was an error processing your request: \(error)")
         }
@@ -92,7 +85,6 @@ public class Category: NSManagedObject {
             for data in result as! [NSManagedObject]{
                 names.append(data.value(forKey: "categoryName")as! String)
             }
-            
         }catch let error as NSError {
             print(error)
         }
@@ -118,15 +110,29 @@ public class Category: NSManagedObject {
         }
         return urls
     }
-    
+    //This Should return the object
+    func getEntity(name: String) -> [NSManagedObject] {
+        var test = [NSManagedObject]()
+        guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return test}
+        let managedContext = appDel.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
+        fetchRequest.predicate = NSPredicate(format: "categoryName == %@", name)
+        do {
+            let result = try managedContext.fetch(fetchRequest) as! [NSManagedObject]
+            test = result
+            
+        } catch let error as NSError {
+            print(error)
+        }
+        return test
+    }
     //Deletes all data in a given entity. Good for wiping CoreData clean if need be.
     func deleteAllData(entity: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         fetchRequest.returnsObjectsAsFaults = false
-        do
-        {
+        do {
             let results = try managedContext.fetch(fetchRequest)
             for managedObject in results
             {
@@ -138,7 +144,6 @@ public class Category: NSManagedObject {
             print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
         }
     }
-    
     //Generates all the categories. Do not touch. Will break app
     func generateData(){
         createCategoryData(name: "ICT", summary: "Computers and stuff you know", imageName: "ICTImage",id: 0)
@@ -154,7 +159,4 @@ public class Category: NSManagedObject {
         createCategoryData(name: "General Education", summary: "", imageName: "GeneralEduImage",id:10)
         createCategoryData(name: "Misc & Unkown", summary: "", imageName: "MiscImage", id:11)
     }
-    
-    
-    
 }
