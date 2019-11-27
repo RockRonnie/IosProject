@@ -14,6 +14,9 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var notificationToken: NotificationToken?
 
+    @IBOutlet weak var HottestStudiesTableView: UITableView!
+    @IBOutlet weak var HottestTopicsLabel: UITableViewCell!
+    
     @IBOutlet weak var ExpertTableView: ExpertTableViewController!
     @IBAction func TestButton(_ sender: Any) {
         
@@ -66,14 +69,13 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    updateExpertFeed()
+    
     
     ExpertTableView.dataSource = self
     ExpertTableView.delegate = self
     ExpertTableView.reloadData()
-    print(Realm.Configuration.defaultConfiguration.fileURL)
-    
+    //print(Realm.Configuration.defaultConfiguration.fileURL)
+    updateExpertFeed()
     
   }
     func updateExpertFeed(){
