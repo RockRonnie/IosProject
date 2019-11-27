@@ -56,7 +56,7 @@ class QaTest: UIViewController {
     
     func setupRealm() {
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
-        SyncUser.logIn(with: .usernamePassword(username: "test1", password: "test", register: false), server: Constants.AUTH_URL) { user, error in
+        SyncUser.logIn(with: .usernamePassword(username: "Donald", password: "Duck", register: false), server: Constants.AUTH_URL) { user, error in
             if let user = user {
                 // Onnistunut kirjautuminen
                 // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift

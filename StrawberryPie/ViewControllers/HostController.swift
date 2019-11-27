@@ -11,18 +11,28 @@ import RealmSwift
 
 
 class HostController: UIViewController {
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var introTextView: UITextView!
+    @IBOutlet weak var titleField: UITextField!
     var objectCount = 0
     var createdSession: QASession?
     var realm: Realm!
+    var thisUser: String?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         realm = RealmDB.sharedInstance.realm
         print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
-        print(getSession())
+        print(RealmDB.sharedInstance.user?.identity ?? "huoh")
+        super.viewDidLoad()
+      
         // Do any additional setup after loading the view.
+        
     }
     //Button action
+    @IBAction func clearButton(_ sender: UIButton) {
+        introTextView.text = ""
+        titleField.text = ""
+    }
     @IBAction func createButton(_ sender: Any) {
         print("Starting the QA Session creation sequence")
         createdSession = createSession()
@@ -61,10 +71,12 @@ class HostController: UIViewController {
         let newBoard = QAMessageBoard()
         return newBoard
     }
+    /*
     func getSession() -> QASession {
             let realmSession = realm.objects(QASession.self).sorted(byKeyPath: "sessionID", ascending: false)
         return realmSession[0]
     }
+ */
     // Initializing a realm object
     // (value: ["brand": "BMW", "year": 1980])
  
@@ -80,3 +92,68 @@ class HostController: UIViewController {
     */
 
 }
+
+/*
+extension HostController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
+        print("Should I?")
+        return true
+    } // return NO to disallow editing.
+    
+    func textFieldDidBeginEditing(_ textField: UITextField){
+        print("first responder!")
+    } // became first responder
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool{
+        pickedName = textField.text
+        print("Textfield should end editing")
+        if(pickedName != nil){
+            return true
+        }else{
+            return false
+        }
+    }// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end1
+    
+    func textFieldDidEndEditing(_ textField: UITextField){
+        print("textfield did end editing")
+        if(pickedName != nil){
+            textField.resignFirstResponder()
+        }else{
+            print("no name selected")
+            textField.becomeFirstResponder()
+        }
+} // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+ 
+ 
+    extension HostController: UITextViewDelegate {
+        
+        func textFieldShouldBeginEditing(_ textField: UITextView) -> Bool{
+            print("Should I?")
+            return true
+        } // return NO to disallow editing.
+        
+        func textFieldDidBeginEditing(_ textField: UITextView){
+            print("first responder!")
+        } // became first responder
+        
+        func textFieldShouldEndEditing(_ textField: UITextView) -> Bool{
+            pickedName = textField.text
+            print("Textfield should end editing")
+            if(pickedName != nil){
+                return true
+            }else{
+                return false
+            }
+        }// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end1
+        
+        func textFieldDidEndEditing(_ textField: UITextView){
+            print("textfield did end editing")
+            if(pickedName != nil){
+                textField.resignFirstResponder()
+            }else{
+                print("no name selected")
+                textField.becomeFirstResponder()
+            }
+}
+*/
