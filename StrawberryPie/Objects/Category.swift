@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+class category {
+    
+    private let categoryName: String?
+    private let categorySummary: String?
+    
+    init(categoryName: String, categorySummary: String) {
+        self.categoryName = categoryName
+        self.categorySummary = categorySummary
+    }
+    
+    
+    
+    
+}

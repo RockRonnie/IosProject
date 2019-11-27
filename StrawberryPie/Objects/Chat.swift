@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import RealmSwift
+
+@objcMembers class Chat: Object {
+    dynamic var chatID: String = UUID().uuidString
+    dynamic var title: String = ""
+    let userList = List<User>()
+    let chatMessages = List<ChatMessage>()
+    override static func primaryKey() -> String? {
+        return "chatID"
+    }
+}
