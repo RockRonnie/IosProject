@@ -1,5 +1,5 @@
 //
-//  QAMessageBoard.swift
+//  File.swift
 //  StrawberryPie
 //
 //  Created by iosdev on 22/11/2019.
@@ -8,11 +8,11 @@
 
 import Foundation
 import RealmSwift
-
-@objcMembers class QAMessageBoard: Object {
-    dynamic var boardID: String = UUID().uuidString
-    let QAs = List<QA>()
+@objcMembers class QA: Object{
+    dynamic var QAID: String = UUID().uuidString
+    let question = List<ChatMessage>()
+    let answer = List<ChatMessage>()
     override static func primaryKey() -> String? {
-        return "boardID"
+    return "QAID"
     }
 }
