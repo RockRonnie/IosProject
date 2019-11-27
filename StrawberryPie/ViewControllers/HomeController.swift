@@ -20,20 +20,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        if indexPath.section == 0{
-            return UITableView.automaticDimension
-        } else {
-            return 128
-        }
-    }
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return UITableView.automaticDimension
-        } else {
-            return 128
-        }
-    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return experts.count
@@ -81,8 +68,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     ExpertTableView.reloadData()
     print(experts)
     
-    ExpertTableView.rowHeight = UITableView.automaticDimension
-    ExpertTableView.estimatedRowHeight = 128
+    
   }
 }
 
