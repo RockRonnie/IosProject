@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 import RealmSwift
 // Main QA SESSION OBJECT, ACTS AS A HUB FOR CONNECTING OTHER OBJECTS REQUIRED FOR TO THE SESSION SO THEY CAN BE EASILY ACCESSED.
 @objcMembers class QASession: Object {
@@ -25,3 +26,4 @@ import RealmSwift
     }
     
 }
+

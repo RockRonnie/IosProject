@@ -8,15 +8,26 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navController: UITabBarController = UITabBarController()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        RealmDB.sharedInstance.setupRealm()
+      
+      // Init baseview
+      self.window = UIWindow(frame: UIScreen.main.bounds)
+      // associate basecontroller with window
+      let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+      navController = mainStoryboard.instantiateViewController(withIdentifier: "LoggedOutTabBar") as! UITabBarController
+      self.window?.rootViewController = navController
+      // make window visible
+        self.window?.makeKeyAndVisible()
+
         // Override point for customization after application launch.
         return true
     }

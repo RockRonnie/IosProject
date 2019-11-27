@@ -2,8 +2,8 @@
 //  Constants.swift
 //  StrawberryPie
 //
-//  Created by Markus Saronsalo on 20/11/2019.
-//  Copyright © 2019 Team Työkkäri. All rights reserved.
+//  Created by Markus Saronsalo 20/11/2019.
+//  Original from Realm.io
 //
 
 import Foundation
@@ -18,9 +18,11 @@ struct Constants {
   // **** address of your ROS server, e.g.: "http://127.0.0.1:9080" and "realm://127.0.0.1:9080"
   
   // CONNECTION TO REALM
-    static let MY_INSTANCE_ADDRESS = "askandreceive.de1a.cloud.realm.io"
-    static let AUTH_URL  = URL(string: "https://\(MY_INSTANCE_ADDRESS)")!
-    static let REALM_URL = URL(string: "realms://\(MY_INSTANCE_ADDRESS)/QATest")!
-    static let USERNAME = "test1"
-    static let PASSWORD = "test"
+  static let MY_INSTANCE_ADDRESS = "askandreceive.de1a.cloud.realm.io" //
+  
+  static let AUTH_URL  = URL(string: "https://\(MY_INSTANCE_ADDRESS)")!
+  // /~/ <-- tuolla tehdään käyttäjäkohtainen path
+  static let REALM_URL = URL(string: "realms://\(MY_INSTANCE_ADDRESS)/QATest")!
+  
+
 }

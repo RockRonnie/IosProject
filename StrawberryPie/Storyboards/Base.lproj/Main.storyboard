@@ -13,7 +13,7 @@
         <scene sceneID="hwk-3x-0Wr">
             <objects>
                 <tabBarController restorationIdentifier="LoggedInTabBar" storyboardIdentifier="LoggedInTabBar" id="ke4-Hu-fBZ" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gVz-oz-Kaa">
+                    <tabBar key="tabBar" contentMode="scaleToFill" restorationIdentifier="LoggedInTabBar" insetsLayoutMarginsFromSafeArea="NO" id="gVz-oz-Kaa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,7 +33,7 @@
         <scene sceneID="Qvm-ce-MAy">
             <objects>
                 <tabBarController restorationIdentifier="LoggedOutTabBar" storyboardIdentifier="LoggedOutTabBar" id="ugR-Qj-qXe" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gSz-tW-jsY">
+                    <tabBar key="tabBar" contentMode="scaleToFill" restorationIdentifier="LoggedOutTabBar" insetsLayoutMarginsFromSafeArea="NO" id="gSz-tW-jsY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -100,7 +100,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="h2I-fJ-zbA"/>
-        <segue reference="y6b-74-IY9"/>
+        <segue reference="jO1-JY-mv8"/>
+        <segue reference="2Ae-Kh-JK6"/>
     </inferredMetricsTieBreakers>
 </document>
