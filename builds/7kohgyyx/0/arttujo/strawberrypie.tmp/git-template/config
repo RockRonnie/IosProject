@@ -1,0 +1,4 @@
+[fetch]
+	recurseSubmodules = false
+[http "https://gitlab.com"]
+	sslCAInfo = /Users/iosdev/Desktop/IoSProject/strawberrypie/builds/7kohgyyx/0/arttujo/strawberrypie.tmp/CI_SERVER_TLS_CA_FILE
