@@ -57,7 +57,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = UIColor.gray.cgColor
-        cell?.layer.borderWidth = 2
+        cell?.layer.borderWidth = 3
+        
         
     }
     //Deselects the old item and removes its larger border
