@@ -21,7 +21,7 @@ class RealmDB {
             if let user = user {
                 // Onnistunut kirjautuminen
                 // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
-                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "*", accessLevel: .write)
+                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
                 user.apply(permission, callback: { (error) in
                     if error != nil {
                         print(error?.localizedDescription ?? "No error")
@@ -36,7 +36,9 @@ class RealmDB {
                 let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
                 self.realm = try! Realm(configuration: config)
                 print("Realm connection has been setup")
-            }
+            } else if let error = error {
+              print("Login error: \(error)")
+          }
         }
     }
     /*

@@ -2,7 +2,7 @@
 //  ProfileController.swift
 //  StrawberryPie
 //
-//  Created by Markus Saronsalo on 23/11/2019.
+//  Created by Markus Saronsalo on 23/11/2019, modified on 27/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 
@@ -25,8 +25,9 @@ class ProfileController: UIViewController {
     alertController.addAction(UIAlertAction(title: "Yes, Logout", style: .destructive, handler: {
       alert -> Void in
       //SYNCUSER LOGOUT DOES NOT WORK CURRENTLY, NEEDS MORE RESEARCH, NOT A REAL LOGOUT
-      //SyncUser.current?.logOut()
       let main = UIStoryboard(name: "Main", bundle: nil)
+      RealmDB.sharedInstance.user?.logOut()
+      print("Logged OUT USER")
       let loggedOut: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedOutTabBar") as? UITabBarController
       self.present(loggedOut!, animated:  true, completion: nil)
     }))

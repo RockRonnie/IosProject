@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  StrawberryPie
 //
-//  Created by Markus Saronsalo / Ilias Doukas on 19/11/2019.
+//  Created by Markus Saronsalo on 19/11/2019, modified on 27/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 
@@ -44,14 +44,14 @@ import RealmSwift
     firstnameField.delegate = self
     lastnameField.delegate = self
     
-    self.usernameField.isHidden = true
-    self.userpasswordField.isHidden = true
-    self.userinfoField.isHidden = true
-    self.userpwagainField.isHidden = true
-    self.firstnameField.isHidden = true
-    self.lastnameField.isHidden = true
-    self.loginButton.isHidden = true
-    self.signUpButton.isHidden = true
+    usernameField.isHidden = true
+    userpasswordField.isHidden = true
+    userinfoField.isHidden = true
+    userpwagainField.isHidden = true
+    firstnameField.isHidden = true
+    lastnameField.isHidden = true
+    loginButton.isHidden = true
+    signUpButton.isHidden = true
     
     // Container, can be used for additional information on the screen, is built programmatically
     let container = UIStackView()
@@ -66,10 +66,12 @@ import RealmSwift
     view.addSubview(container)
     
     // LOGIN OR REGISTER DEPENDING ON USER
+    // Using alert at the moment to choose login/signup, will be changed to something more sophisticated
     let alertController = UIAlertController(title: "Login / Register?", message: "Login / Register?", preferredStyle: .alert)
     let toLogin = UIAlertAction(title: "Login", style: .default) {
       (action:UIAlertAction) in
       print("Pressed toLogin")
+      // LOGIN Form chosen -> Show login fields
       self.usernameField.isHidden = false
       self.userpasswordField.isHidden = false
       self.loginButton.isHidden = false
@@ -77,6 +79,7 @@ import RealmSwift
     let toSignUp = UIAlertAction(title: "Sign up", style: .default) {
       (action:UIAlertAction) in
       print("Pressed toSignUp")
+      // SIGNUP Form chosen -> Show signup fields
       self.usernameField.isHidden = false
       self.userpasswordField.isHidden = false
       self.userinfoField.isHidden = false
@@ -88,15 +91,16 @@ import RealmSwift
     alertController.addAction(toLogin)
     alertController.addAction(toSignUp)
     self.present(alertController, animated: true, completion: nil)
-      //SYNCUSER LOGOUT DOES NOT WORK CURRENTLY, NEEDS MORE RESEARCH, NOT A REAL LOGOUT
-      //SyncUser.current?.logOut()
     
     // Create Register / Login Form
+    // Styling etc. could be moved to another separate styling file
+    // --------------------------------------
     userpwagainField.isSecureTextEntry = true
     userpasswordField.isSecureTextEntry = true
     userinfoField.frame.size.height = 100
     usernameField.placeholder = "Username"
     usernameField.borderStyle = .roundedRect
+    usernameField.autocapitalizationType = .none
     container.addArrangedSubview(usernameField)
     firstnameField.placeholder = "First name"
     firstnameField.borderStyle = .roundedRect
@@ -109,9 +113,11 @@ import RealmSwift
     container.addArrangedSubview(userinfoField)
     userpasswordField.placeholder = "Password"
     userpasswordField.borderStyle = .roundedRect
+    userpasswordField.autocapitalizationType = .none
     container.addArrangedSubview(userpasswordField)
     userpwagainField.placeholder = "Password again"
     userpwagainField.borderStyle = .roundedRect
+    userpwagainField.autocapitalizationType = .none
     container.addArrangedSubview(userpwagainField)
     // Buttons
     loginButton.setTitle("Login", for: .normal)
@@ -132,27 +138,30 @@ import RealmSwift
   }
   // NOT IN USE, might be used later
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    let destVC = segue.destination as! HomeController
-    destVC.view.backgroundColor = .blue
-  }
+      
+    }
+  
+  // LOGIN FUNCTION, ALL THE LOGIC NOT IMPLEMENTED, WILL BE SUBJECT TO CHANGE
   func logIn(_ username: String,_ password: String,_ register: Bool) {
-    // Check if login values are empty
     
+    // Define Tab Bar showing while logged IN
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
-    // Define tab bar show when logged out
+    // Define Tab Bar showing while logged OUT
     let loggedOut: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedOutTabBar") as? UITabBarController
+    // Check if login values are empty
     if usernameField.text != "" && userpasswordField.text != "" {
-      RealmDB().setupRealm(username, password, register)
+      // Login to Realm
+      RealmDB.sharedInstance.setupRealm(username, password, register)
       print("Login as user: \(username), register \(register)")
-      //Push homecontroller
-      self.navigationController?.pushViewController(HomeController(), animated: true)
+      //Show LoggedIn TabBar
       self.present(loggedIn!, animated: true, completion: nil)
       return
     } else {
-      // --> LOGIN FAILED, navigate to login/register page
+      // --> LOGIN FAILED, navigate back to login/register page
       let alert = UIAlertController(title: "Login alert", message: "Login failed!", preferredStyle: .alert)
       let alertOk=UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in print("Ok pressed")})
       alert.addAction(alertOk)
+      self.navigationController?.pushViewController(LoginRegisterController(), animated: true)
       self.present(alert, animated: true, completion: nil)
       self.present(loggedOut!, animated:  true, completion: nil)
       print("No user")
@@ -161,8 +170,10 @@ import RealmSwift
   
   
   
+  // SIGNUP FUNCTION EARLY VERSION, SUBJECT TO CHANGE
   func signUp(_ username: String, _ password: String, _ register: Bool) {
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
+    // Set User object "thisUser" and its information
     let thisUser = User()
     thisUser.userName = username
     thisUser.firstName = firstname ?? "No first name"
