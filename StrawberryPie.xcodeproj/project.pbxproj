@@ -67,6 +67,7 @@
 		6A9E89F02389466B0069DE71 /* PersonalFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */; };
 		6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */; };
 		6A9E89F22389466B0069DE71 /* PrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */; };
+		6AACF22C238EAEFB006ECBF4 /* ExpertFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */; };
 		6AC642CC2385892500E2906F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC642CB2385892500E2906F /* ProfileController.swift */; };
 		6AC642D62385915000E2906F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642D42385915000E2906F /* Main.storyboard */; };
 		6AC642E02385932E00E2906F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642DF2385932E00E2906F /* Profile.storyboard */; };
@@ -76,12 +77,16 @@
 		6AC642E8238593E100E2906F /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642E7238593E100E2906F /* LoginRegister.storyboard */; };
 		6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
 		6ACB980B2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
+		6AD541E3238C364A00DF16DA /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 6AD541E2238C364A00DF16DA /* Images */; };
+		6AD541E5238C49AC00DF16DA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */; };
+		6AD541F7238EC6A700DF16DA /* CategoryContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */; };
 		6AE09EAD238827760040E87E /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA7238827750040E87E /* Category+CoreDataClass.swift */; };
 		6AE09EAE238827760040E87E /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
 		6AE09EAF238827760040E87E /* Studies+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA9238827750040E87E /* Studies+CoreDataProperties.swift */; };
 		6AE09EB0238827760040E87E /* Work+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EAA238827750040E87E /* Work+CoreDataProperties.swift */; };
 		6AE09EB1238827760040E87E /* Work+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EAB238827750040E87E /* Work+CoreDataClass.swift */; };
 		6AE09EB2238827760040E87E /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EAC238827760040E87E /* Category+CoreDataProperties.swift */; };
+		6AE09EB62389508A0040E87E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EB52389508A0040E87E /* CategoryViewController.swift */; };
 		BFC9BD0A46682C914BB4736A /* Pods_StrawberryPie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D46F4DD8FE8DEC51E6DC26 /* Pods_StrawberryPie.framework */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +145,7 @@
 		6A9E89E82389466A0069DE71 /* QASessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QASessionController.swift; sourceTree = "<group>"; };
 		6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalFeedController.swift; sourceTree = "<group>"; };
 		6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageController.swift; sourceTree = "<group>"; };
+		6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertFeed.swift; sourceTree = "<group>"; };
 		6AC642CB2385892500E2906F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		6AC642D52385915000E2906F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AC642DF2385932E00E2906F /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -148,12 +154,16 @@
 		6AC642E5238593BB00E2906F /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		6AC642E7238593E100E2906F /* LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
 		6ACB98092386747A0070CCF6 /* QASession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QASession.swift; sourceTree = "<group>"; };
+		6AD541E2238C364A00DF16DA /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryContentController.swift; sourceTree = "<group>"; };
 		6AE09EA7238827750040E87E /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Studies+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6AE09EA9238827750040E87E /* Studies+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Studies+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6AE09EAA238827750040E87E /* Work+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Work+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6AE09EAB238827750040E87E /* Work+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Work+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6AE09EAC238827760040E87E /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6AE09EB52389508A0040E87E /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		6FE67FC2653627D51C037D95 /* Pods-StrawberryPieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPieTests.debug.xcconfig"; path = "Target Support Files/Pods-StrawberryPieTests/Pods-StrawberryPieTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A96B7A6FA000376F53649958 /* Pods-StrawberryPieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPieTests.release.xcconfig"; path = "Target Support Files/Pods-StrawberryPieTests/Pods-StrawberryPieTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE07CB0B56F32CAAB48E7C6C /* Pods-StrawberryPie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPie.debug.xcconfig"; path = "Target Support Files/Pods-StrawberryPie/Pods-StrawberryPie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,7 +226,10 @@
 				6A7E6640238430AF00F8340C /* Assets.xcassets */,
 				6A7E6645238430AF00F8340C /* Info.plist */,
 				6A7E663D238430AD00F8340C /* StrawberryPie.xcdatamodeld */,
-				6A367A1B238C2D750006D64A /* RealmDB.swift */,
+        6A367A1B238C2D750006D64A /* RealmDB.swift */,
+        6A7D3411238830630079BFB7 /* Constants.swift */,
+				6AD541E2238C364A00DF16DA /* Images */,
+
 			);
 			path = StrawberryPie;
 			sourceTree = "<group>";
@@ -258,7 +271,11 @@
 				6A7E6638238430AD00F8340C /* LoginRegisterController.swift */,
 				6AC642CB2385892500E2906F /* ProfileController.swift */,
 				6857458F238935DE0002A538 /* QAController.swift */,
-				689803DA238A864F00FE39CF /* QaTest.swift */,
+        689803DA238A864F00FE39CF /* QaTest.swift */,
+        6AE09EB52389508A0040E87E /* CategoryViewController.swift */,
+				6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */,
+				6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */,
+
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -292,6 +309,7 @@
 				6A9E89B8238946190069DE71 /* QAMessageBoard.swift */,
 				6A9E89B92389461A0069DE71 /* User.swift */,
 				6ACB98092386747A0070CCF6 /* QASession.swift */,
+				6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -416,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD541E3238C364A00DF16DA /* Images in Resources */,
 				6AC642E42385939500E2906F /* Home.storyboard in Resources */,
 				6AC642E8238593E100E2906F /* LoginRegister.storyboard in Resources */,
 				6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */,
@@ -512,6 +531,7 @@
 			files = (
 				6AE09EB1238827760040E87E /* Work+CoreDataClass.swift in Sources */,
 				6A9E89E5238946450069DE71 /* QAMessageCell.swift in Sources */,
+				6AD541E5238C49AC00DF16DA /* CollectionViewCell.swift in Sources */,
 				6AE09EB0238827760040E87E /* Work+CoreDataProperties.swift in Sources */,
 				6A9E89DB238946450069DE71 /* FeedTableTableViewController.swift in Sources */,
 				6A9E89CC2389461B0069DE71 /* Education.swift in Sources */,
@@ -527,6 +547,7 @@
 				6A9E89EF2389466B0069DE71 /* PersonalFeedController.swift in Sources */,
 				6A9E89DF238946450069DE71 /* FeedItem.swift in Sources */,
 				6AE09EAF238827760040E87E /* Studies+CoreDataProperties.swift in Sources */,
+				6AACF22C238EAEFB006ECBF4 /* ExpertFeed.swift in Sources */,
 				6A9E89ED2389466B0069DE71 /* QASessionController.swift in Sources */,
 				6AE09EAE238827760040E87E /* Studies+CoreDataClass.swift in Sources */,
 				68574590238935DE0002A538 /* QAController.swift in Sources */,
@@ -542,7 +563,9 @@
 				6A9E89C82389461B0069DE71 /* profession.swift in Sources */,
 				6A9E89CA2389461B0069DE71 /* QA.swift in Sources */,
 				6A9E89E1238946450069DE71 /* Hottest.swift in Sources */,
+				6AD541F7238EC6A700DF16DA /* CategoryContentController.swift in Sources */,
 				6A9E89C42389461B0069DE71 /* User.swift in Sources */,
+				6AE09EB62389508A0040E87E /* CategoryViewController.swift in Sources */,
 				6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */,
 				6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */,
 				6AC642CC2385892500E2906F /* ProfileController.swift in Sources */,
@@ -733,7 +756,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6458786ZYK;
+				DEVELOPMENT_TEAM = HW4V3X5292;
 				INFOPLIST_FILE = StrawberryPie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -752,7 +775,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6458786ZYK;
+				DEVELOPMENT_TEAM = HW4V3X5292;
 				INFOPLIST_FILE = StrawberryPie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

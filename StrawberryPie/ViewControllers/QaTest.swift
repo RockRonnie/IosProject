@@ -32,30 +32,20 @@ class QaTest: UIViewController {
             let realmSession = realm.objects(QASession.self)
             //let subscription = realmSession.subscribe()
             //print(realm.configuration)
-
-            let testSession = QASession()
-            let testChat = Chat()
-            let testMessage = ChatMessage()
-            let testMessage2 = ChatMessage()
-            testMessage.body = "Tässä viesti"
-            testMessage2.body = "Tässä toinen ehkä hieman pidempi, mutta silti riemukas, viesti digitaalisessa muodossa"
-            testChat.chatMessages.append(testMessage)
-            testChat.chatMessages.append(testMessage2)
-            testSession.title = "This is session title"
-            testSession.chat.append(testChat)
             // Valitaan kohde viewcontroller
             let destinationVC = segue.destination as? QAController
             
             // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
             destinationVC?.dummySession = realmSession.last
             destinationVC?.realm = realm
+            destinationVC?.sessionID = realmSession.last?.sessionID
             
         }
     }
     
     func setupRealm() {
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
-        SyncUser.logIn(with: .usernamePassword(username: "test1", password: "testi", register: false), server: Constants.AUTH_URL) { user, error in
+        SyncUser.logIn(with: .usernamePassword(username: "Donald", password: "Duck", register: false), server: Constants.AUTH_URL) { user, error in
             if let user = user {
                 // Onnistunut kirjautuminen
                 // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
