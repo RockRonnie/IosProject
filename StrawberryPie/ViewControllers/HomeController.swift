@@ -12,7 +12,32 @@ import RealmSwift
 
 class HomeController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    var notificationToken: NotificationToken?
+
     @IBOutlet weak var ExpertTableView: ExpertTableViewController!
+    @IBAction func TestButton(_ sender: Any) {
+        
+        let feedOne = Feed()
+        feedOne.title = "Police"
+        feedOne.name = "Dog Boy"
+        feedOne.desc = "Skilled dog telling about the job..."
+        
+        //let feedTwo = Feed()
+        //feedTwo.title = "Bus driver"
+        //feedTwo.name = "Cheeky Brat"
+        //feedTwo.desc = "I'm an old bus driver who will be telling about my work..."
+        
+        //let feedThree = Feed()
+        //feedThree.title = "Drug Lord"
+        //feedThree.name = "Madam Mister"
+        //feedThree.desc = "I will be telling about my life on the street and how you can turn it around..."
+        
+        try! realm.write {
+          realm.add(feedOne)
+          //realm.add(feedTwo)
+          //realm.add(feedThree)
+        }
+    }
     
     let realm = try! Realm()
     lazy var experts = realm.objects(Feed.self)
@@ -20,7 +45,6 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return experts.count
@@ -42,34 +66,22 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    updateExpertFeed()
     
-    let feedOne = Feed()
-    feedOne.title = "Manager"
-    feedOne.name = "Bulba dog"
-    feedOne.desc = "Skilled manager telling about her work..."
-    
-    let feedTwo = Feed()
-    feedTwo.title = "Bus driver"
-    feedTwo.name = "Cheeky Brat"
-    feedTwo.desc = "I'm an old bus driver who will be telling about my work..."
-    
-    let feedThree = Feed()
-    feedThree.title = "Drug Lord"
-    feedThree.name = "Madam Mister"
-    feedThree.desc = "I will be telling about my life on the street and how you can turn it around..."
-    
-    //try! realm.write {
-      //  realm.add(feedOne)
-       // realm.add(feedTwo)
-       // realm.add(feedThree)
-    //}
     ExpertTableView.dataSource = self
     ExpertTableView.delegate = self
     ExpertTableView.reloadData()
-    print(experts)
+    print(Realm.Configuration.defaultConfiguration.fileURL)
     
     
   }
+    func updateExpertFeed(){
+        self.notificationToken = realm.observe {_,_ in
+            self.ExpertTableView.reloadData()
+        }
+    }
+    
 }
 
 //ExpertTableView

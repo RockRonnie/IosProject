@@ -7,16 +7,4 @@
 //
 
 import Foundation
-    
-import RealmSwift
-import Foundation
 
-@objcMembers class Feed: Object {
-    
-    @objc dynamic var title: String = ""
-    @objc dynamic var name: String = ""
-    @objc dynamic var desc: String = ""
-    @objc dynamic var picture: String? = ""
-    
-    //override static func primaryKey() -> String? {}
-}
