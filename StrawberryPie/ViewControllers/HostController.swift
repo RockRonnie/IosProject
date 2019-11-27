@@ -25,7 +25,7 @@ class HostController: UIViewController {
         realm = RealmDB.sharedInstance.realm
         print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
         print(RealmDB.sharedInstance.user?.identity ?? "huoh")
-        thisUser =  RealmDB.sharedInstance.user?.identity ?? "Not"
+        thisUser = RealmDB.sharedInstance.user?.identity ?? "Not"
         usernameLabel.text = thisUser
         super.viewDidLoad()
         titleField.delegate = self
