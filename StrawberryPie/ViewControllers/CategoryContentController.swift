@@ -16,6 +16,7 @@ class CategoryContentController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = topText
+        print(topText)
         
         // Do any additional setup after loading the view.
     }
