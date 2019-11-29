@@ -20,6 +20,8 @@ class StrawberryPieTests: XCTestCase {
     }
 
     func testExample() {
+        let testController = QAController()
+        XCTAssertEqual(testController.testiTesti(), 1, "Hyvin toimii")
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
@@ -30,5 +32,6 @@ class StrawberryPieTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }
+
+

@@ -84,6 +84,10 @@ class QAController: UIViewController {
         }
     }
     
+    func testiTesti () -> Int {
+        return 1
+    }
+    
     deinit {
     notificationToken?.invalidate()
     }
