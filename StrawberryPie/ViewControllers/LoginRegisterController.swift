@@ -129,7 +129,6 @@ import RealmSwift
   
   // LOGIN FUNCTION, ALL THE LOGIC NOT IMPLEMENTED, WILL BE SUBJECT TO CHANGE
   func logIn(_ username: String,_ password: String,_ register: Bool) {
-    let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
     if usernameField.text == "" {
       self.present(customAlert(title: "uname", reason: "Missing username"), animated: true, completion: nil)
     } else if userpasswordField.text == "" {
@@ -137,18 +136,7 @@ import RealmSwift
                    animated: true, completion: nil)
     } else {
       // USER FROM REALM IS AVAILABLE BEFORE IF-statement so doesnt work, FIX PLS
-        let loading = loginRealm(username, password, register)
-        if (self.user?.identity != "6ba8837343732970afd511f92239ed21"  && loading == true) {
-            print("Login as user: \(username), register \(register)")
-            //Show LoggedIn TabBar
-            self.present(loggedIn!, animated:true, completion: nil)
-         
-            
-        }else{
-            self.present(customAlert(title: "Login", reason: "Wrong login"), animated: true, completion: nil)
-           // self.present(loggedIn!, animated: true, completion: nil)
-            
-        }
+        loginRealm(username, password, register)
     }
     
   }
@@ -163,8 +151,9 @@ import RealmSwift
   }
   
   
-    func loginRealm(_ username: String,_ password: String,_ register: Bool) -> Bool{
+    func loginRealm(_ username: String,_ password: String,_ register: Bool){
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
+         let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
         SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: Constants.AUTH_URL) { user, error in
             if let user = user {
                 RealmDB.sharedInstance.user?.logOut()
@@ -187,11 +176,14 @@ import RealmSwift
                 self.realm = try! Realm(configuration: config)
                 RealmDB.sharedInstance.realm = self.realm
                 print("Realm connection has been setup")
+                print("Changing navigators")
+                self.present(loggedIn!, animated:true, completion: nil)
             } else if let error = error {
                 print("Login error: \(error)")
+                self.present(self.customAlert(title: "Login", reason: "Wrong login"), animated: true, completion: nil)
             }
         }
-        return true
+        
     }
   
   
