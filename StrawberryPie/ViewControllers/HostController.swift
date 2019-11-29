@@ -27,20 +27,21 @@ class HostController: UIViewController {
         print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
         print(RealmDB.sharedInstance.user?.identity ?? "huoh")
         thisUser = RealmDB.sharedInstance.user?.identity ?? "Not"
-        thisUserObject = getUser()
         usernameLabel.text = thisUser
         
         super.viewDidLoad()
         titleField.delegate = self
         introTextView.delegate = self
-        // Do any additional setup after loading the view.
+      
     }
+  
     //Button action
     @IBAction func clearButton(_ sender: UIButton) {
         introTextView.text = ""
         titleField.text = ""
     }
     @IBAction func createButton(_ sender: Any) {
+        getUser()
         print("Starting the QA Session creation sequence")
         createdSession = createSession()
         print(createdSession ?? "No object")
@@ -63,16 +64,15 @@ class HostController: UIViewController {
         let newChat = Chat(value:["title": sessionTitle])
         return newChat
     }
-    func createUser() -> User {
+    func createUser() -> User? {
         print("Creating a user object to serve as a host")
             let newUser = User(value:["userID": thisUser ?? "dummyuser" ,"userName": "user\(objectCount)", "firstName": "firstname user\(objectCount)", "lastName": "lastname user\(objectCount)", "info": "info for user \(objectCount)"])
             return newUser
     }
 
-    func getUser() -> User {
-        print("Finding the host based on ID")
-        let foundUser = realm.objects(User.self).filter("userID = thisUser")
-        return foundUser[0]
+    func getUser(){
+            let foundUser = self.realm.objects(User.self).filter("userID = self.thisUser").first
+            self.thisUserObject = foundUser
     }
     func createIntro() -> Intro {
         print("Creating Session Intro object")
