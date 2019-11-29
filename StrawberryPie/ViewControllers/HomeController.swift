@@ -119,7 +119,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
             if let user = user {
                 // Onnistunut kirjautuminen
                 // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
-                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
+                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "default" , accessLevel: .write)
                 user.apply(permission, callback: { (error) in
                     if error != nil {
                         print(error?.localizedDescription ?? "No error")
