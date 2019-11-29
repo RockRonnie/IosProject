@@ -20,13 +20,16 @@ class HostController: UIViewController {
     var createdSession: QASession?
     var realm: Realm!
     var thisUser: String?
+    var thisUserObject: User?
     
     override func viewDidLoad() {
         realm = RealmDB.sharedInstance.realm
         print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
         print(RealmDB.sharedInstance.user?.identity ?? "huoh")
         thisUser = RealmDB.sharedInstance.user?.identity ?? "Not"
+        thisUserObject = getUser()
         usernameLabel.text = thisUser
+        
         super.viewDidLoad()
         titleField.delegate = self
         introTextView.delegate = self
@@ -52,7 +55,7 @@ class HostController: UIViewController {
     //functions for creating the objects
     func createSession() -> QASession{
         print("Creating Session object")
-            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [getUser()], "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
+            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [thisUserObject], "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
             return newSession
     }
     func createChat() -> Chat {
