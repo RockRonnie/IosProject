@@ -138,13 +138,15 @@ import RealmSwift
     } else {
       // USER FROM REALM IS AVAILABLE BEFORE IF-statement so doesnt work, FIX PLS
         let loading = loginRealm(username, password, register)
-        if self.user?.identity != "6ba8837343732970afd511f92239ed21"  && loading == true{
+        if (self.user?.identity != "6ba8837343732970afd511f92239ed21"  && loading == true) {
             print("Login as user: \(username), register \(register)")
             //Show LoggedIn TabBar
-            self.present(customAlert(title: "Login", reason: "Wrong login"), animated: true, completion: nil)
+            self.present(loggedIn!, animated:true, completion: nil)
+         
             
         }else{
-            self.present(loggedIn!, animated: true, completion: nil)
+            self.present(customAlert(title: "Login", reason: "Wrong login"), animated: true, completion: nil)
+           // self.present(loggedIn!, animated: true, completion: nil)
             
         }
     }

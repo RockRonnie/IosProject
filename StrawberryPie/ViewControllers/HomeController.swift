@@ -25,6 +25,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(RealmDB.sharedInstance.setup)
         setupRealm("default", "default" , false)
         
         ExpertTableView.dataSource = self
@@ -114,6 +115,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     func setupRealm(_ username: String,_ password: String,_ register: Bool) {
+        if(RealmDB.sharedInstance.setup == false){
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
         SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: Constants.AUTH_URL) { user, error in
             if let user = user {
@@ -135,13 +137,24 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.realm = try! Realm(configuration: config)
                 print("Realm connection has been setup")
                 RealmDB.sharedInstance.realm = self.realm
+                RealmDB.sharedInstance.setup = true
+                print(RealmDB.sharedInstance.setup = true)
                 self.updateExpertFeed()
                 self.setupExperts()
                 self.ExpertTableView.reloadData()
             } else if let error = error {
                 print("Login error: \(error)")
             }
-        }
+            }
+            }else{
+                self.realm = RealmDB.sharedInstance.realm
+                self.user = RealmDB.sharedInstance.user
+                self.updateExpertFeed()
+                self.setupExperts()
+                self.ExpertTableView.reloadData()
+                print(self.user?.identity ?? "No identity")
+            }
+        
     }
     
 }

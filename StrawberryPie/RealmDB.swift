@@ -12,6 +12,7 @@ import RealmSwift
 class RealmDB {
     var realm:Realm!
     var user: SyncUser?
+    var setup = false
     
     static let sharedInstance = RealmDB()
     
