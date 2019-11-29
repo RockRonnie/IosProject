@@ -52,7 +52,7 @@ class HostController: UIViewController {
     //functions for creating the objects
     func createSession() -> QASession{
         print("Creating Session object")
-            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [createUser()], "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
+            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [getUser()], "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
             return newSession
     }
     func createChat() -> Chat {
@@ -64,6 +64,12 @@ class HostController: UIViewController {
         print("Creating a user object to serve as a host")
             let newUser = User(value:["userID": thisUser ?? "dummyuser" ,"userName": "user\(objectCount)", "firstName": "firstname user\(objectCount)", "lastName": "lastname user\(objectCount)", "info": "info for user \(objectCount)"])
             return newUser
+    }
+
+    func getUser() -> User {
+        print("Finding the host based on ID")
+        let foundUser = realm.objects(User.self).filter("userID = thisUser")
+        return foundUser[0]
     }
     func createIntro() -> Intro {
         print("Creating Session Intro object")
