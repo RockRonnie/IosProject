@@ -109,6 +109,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
   
     func updateExpertFeed(){
         self.notificationToken = realm?.observe {_,_ in
+            self.setupExperts()
             self.ExpertTableView.reloadData()
         }
     }
