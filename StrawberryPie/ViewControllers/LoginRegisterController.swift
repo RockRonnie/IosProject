@@ -302,6 +302,11 @@ import RealmSwift
       return userinfoField.text
     }
   }
+  public var currentUser: User {
+    get {
+      return thisUser
+    }
+  }
   var username: String? {
     get {
       return usernameField.text
