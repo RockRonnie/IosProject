@@ -224,6 +224,9 @@ import RealmSwift
             return }
           self.thisUser.userID = userIdentity
           self.thisUser.userName = username
+          try! self.realm.write {
+              self.realm.add(self.thisUser)
+          }
           print("Realm connection has been setup")
           print("Changing navigators")
           self.present(loggedIn!, animated:true, completion: nil)
@@ -248,7 +251,6 @@ import RealmSwift
   }
   func createUser() {
     signUp(username ?? "", password ?? "", true)
-    
   }
   // Change between login / register
   func switchForm() {
