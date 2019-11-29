@@ -232,7 +232,7 @@ import RealmSwift
           self.present(loggedIn!, animated:true, completion: nil)
         } else if let error = error {
           print("Signup error!: \(error)")
-          self.present(self.customAlert(title: "Signup", reason: "Something went wrong"), animated: true, completion: nil)
+          self.present(self.customAlert(title: "Signup", reason: "User exists"), animated: true, completion: nil)
         }
         
         
