@@ -11,7 +11,7 @@ import RealmSwift
 // User class, work in progress
 @objcMembers class User: Object {
 
-    dynamic var userID: String = UUID().uuidString
+    dynamic var userID: String = ""
     dynamic var userName: String = ""
     dynamic var firstName: String = ""
     dynamic var lastName: String = ""

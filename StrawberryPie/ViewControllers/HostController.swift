@@ -65,6 +65,10 @@ class HostController: UIViewController {
             let newUser = User(value:["userID": thisUser ?? "dummyuser" ,"userName": "user\(objectCount)", "firstName": "firstname user\(objectCount)", "lastName": "lastname user\(objectCount)", "info": "info for user \(objectCount)"])
             return newUser
     }
+    func getUser() -> User {
+        print("Finding the host based on ID")
+        //let foundUser? = realm.objects(User.self).filter("userID = thisUser")
+    }
     func createIntro() -> Intro {
         print("Creating Session Intro object")
         let newIntro = Intro(value: ["title": sessionTitle ?? "Session Title", "body": sessionIntro ?? "Session intro"])
