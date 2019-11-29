@@ -25,7 +25,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupRealm("test1", "test" , false)
+        setupRealm("default", "default" , false)
         
         ExpertTableView.dataSource = self
         ExpertTableView.delegate = self
@@ -93,7 +93,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         var object: QASession
         object = self.experts[indexPath.row] as QASession
         
-        cell.expertDesc?.text = object.description
+        cell.expertDesc?.text = object.sessionDescription
         cell.expertName?.text = object.host[0].userID
         cell.expertTitle?.text = object.title
         //cell.expertImage?

@@ -137,17 +137,18 @@ import RealmSwift
                    animated: true, completion: nil)
     } else {
       // USER FROM REALM IS AVAILABLE BEFORE IF-statement so doesnt work, FIX PLS
-      RealmDB.sharedInstance.setupRealm(username, password, register)
-      if RealmDB.sharedInstance.user?.identity != nil {
-        print("Login as user: \(username), register \(register)")
-        //Show LoggedIn TabBar
-          self.present(customAlert(title: "Login", reason: "Wrong login"), animated: true, completion: nil)
-        
-      }
-      self.present(loggedIn!, animated: true, completion: nil)
-      
-      
+        let loading = loginRealm(username, password, register)
+        if self.user?.identity != "6ba8837343732970afd511f92239ed21"  && loading == true{
+            print("Login as user: \(username), register \(register)")
+            //Show LoggedIn TabBar
+            self.present(customAlert(title: "Login", reason: "Wrong login"), animated: true, completion: nil)
+            
+        }else{
+            self.present(loggedIn!, animated: true, completion: nil)
+            
+        }
     }
+    
   }
   
   // To reduce clutter calling alert
@@ -160,7 +161,36 @@ import RealmSwift
   }
   
   
-  
+    func loginRealm(_ username: String,_ password: String,_ register: Bool) -> Bool{
+        // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
+        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: Constants.AUTH_URL) { user, error in
+            if let user = user {
+                RealmDB.sharedInstance.user?.logOut()
+                // Onnistunut kirjautuminen
+                // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
+                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
+                user.apply(permission, callback: { (error) in
+                    if error != nil {
+                        print(error?.localizedDescription ?? "No error")
+                    } else {
+                        print("success")
+                    }
+                })
+                self.user = user
+                let admin = user.isAdmin
+                print(admin)
+                RealmDB.sharedInstance.user = self.user
+                // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
+                let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
+                self.realm = try! Realm(configuration: config)
+                RealmDB.sharedInstance.realm = self.realm
+                print("Realm connection has been setup")
+            } else if let error = error {
+                print("Login error: \(error)")
+            }
+        }
+        return true
+    }
   
   
   // SIGNUP FUNCTION EARLY VERSION, SUBJECT TO CHANGE
