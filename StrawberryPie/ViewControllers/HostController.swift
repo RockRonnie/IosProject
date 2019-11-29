@@ -68,6 +68,7 @@ class HostController: UIViewController {
             let newUser = User(value:["userID": thisUser ?? "dummyuser" ,"userName": "user\(objectCount)", "firstName": "firstname user\(objectCount)", "lastName": "lastname user\(objectCount)", "info": "info for user \(objectCount)"])
             return newUser
     }
+
     func getUser() -> User {
         print("Finding the host based on ID")
         let foundUser = realm.objects(User.self).filter("userID = thisUser")
