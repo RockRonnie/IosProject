@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
+
 public class Category: NSManagedObject {
     //This method is used to create data for a category
     func createCategoryData(name: String, summary: String, imageName: String, id: Int){
