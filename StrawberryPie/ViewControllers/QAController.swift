@@ -28,6 +28,7 @@ class QAController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        realm = RealmDB.sharedInstance.realm
         setupQa() // Tähän joku varmennuslogiikka?
         populateChat() // Lisää logiikka -> tee tämä jos realm ja session ok
         

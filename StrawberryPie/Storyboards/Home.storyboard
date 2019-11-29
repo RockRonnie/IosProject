@@ -104,6 +104,7 @@
                                             <outlet property="expertImage" destination="Fry-QB-FTm" id="BxQ-YL-1dK"/>
                                             <outlet property="expertName" destination="LWX-aB-rKV" id="dre-Vq-Utb"/>
                                             <outlet property="expertTitle" destination="5NC-vv-yEL" id="XLe-Zz-opu"/>
+                                            <segue destination="uhI-Ap-FkS" kind="show" identifier="QAController" id="e6F-E2-evP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -120,7 +121,7 @@
                                 <rect key="frame" x="238" y="294" width="137" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="TestButton:" destination="ciD-od-2sG" eventType="touchUpInside" id="xd6-Sr-zrB"/>
+                                    <segue destination="uhI-Ap-FkS" kind="show" identifier="QASessionButton" id="wRj-IT-WS9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -164,5 +165,16 @@
             </objects>
             <point key="canvasLocation" x="12" y="-986.35682158920542"/>
         </scene>
+        <!--QAController-->
+        <scene sceneID="HSF-ca-M6c">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="QAController" storyboardName="QA" referencedIdentifier="QAController" id="uhI-Ap-FkS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="meb-9Y-o7G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="598" y="-1115"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="e6F-E2-evP"/>
+    </inferredMetricsTieBreakers>
 </document>

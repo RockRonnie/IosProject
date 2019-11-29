@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-      
+        //RealmDB.sharedInstance.setupRealm("test1", "test" , false)
       // Init baseview
       self.window = UIWindow(frame: UIScreen.main.bounds)
       // associate basecontroller with window
