@@ -21,9 +21,9 @@ class QAControllerTest: XCTestCase {
     
     func testExample() {
         let testQAController = QAController()
-        let topic = testQAController.topicSource
-        // Testataan että aiheella on pituutta yli 0 merkkiä
-        XCTAssertTrue(topic[0].count > 0)
+        let tab = testQAController.selectedTab
+        // Testataan että tabinimellä on pituutta yli 0 merkkiä
+        XCTAssertTrue(tab.count > 0)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

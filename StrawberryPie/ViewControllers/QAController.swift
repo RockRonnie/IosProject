@@ -39,6 +39,7 @@ class QAController: UIViewController {
     
     func setupNotification() {
         self.notificationToken = realm?.observe { _,_ in
+            // Ajetaan populateSources joka päivityksellä kunnes sessiossa on vähintään yksi QA objekti ja "pinned" tableviewiin saadaan cellejä. Sen jälkeen realm hoitaa kaiken.
             if self.answerSource == nil {
                 self.populateSources()
             }
