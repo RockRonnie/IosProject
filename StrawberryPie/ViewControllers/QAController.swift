@@ -20,7 +20,7 @@ class QAController: UIViewController {
     // Tee kunnolla, hae QASessionista Q ja A --> odotellaan hostipuolen edistymistä. Alustava koodi tableviewissä
     var answerSource = [] as [ChatMessage]
     var questionSource = [] as [ChatMessage]
-    var chatSource = [] as [ChatMessage] // Tänne chattiviestit sisään
+    var chatSource: List<ChatMessage>? // Tänne chattiviestit sisään
     // Poista qaSource kun ylläolevat on kunnossa
     var qaSource = ["Q: Mitä huudetaan jos koodi levii?","A: 🆘"]
     // Tabin valinta, oletuksena aihe
@@ -48,44 +48,26 @@ class QAController: UIViewController {
         // Kytätään päivityksiä realmissa
         // Jostain syystä updaten yhteydessä edellinen update menee uusiksi läpi = arrayhyn tulee tuplia
         self.notificationToken = realm?.observe { _,_ in
-            self.updateChat()
+            self.qaTable.reloadData()
         }
     }
     
     
     func populateChat() {
-        // hae esimerkistä mallia, hae 10 uusinta viestiä ja appendaa uudet
         if let chat = dummySession?.chat[0] {
-            
-            let fullChat = Array(chat.chatMessages)
-            
-            while chatSource.count < 10 && fullChat.count > 1 {
-                while self.chatSource.count < 10 {
-                    // Taiotaan yhdeksän uusinta viestiä ja otetaan indeksipaikat huomioon. Seuraavassa vaiheessa tule vielä viimeisin viesti = 10kpl
-                    self.chatSource.append(fullChat[fullChat.count-self.chatSource.count-1])
-                }
-            }
-            self.qaTable.reloadData()
+            chatSource = chat.chatMessages
         }
     }
     
-    func updateChat() {
-        print ("Viestejä yhteensä ", chatSource.count)
-        if let newMessage = dummySession?.chat[0].chatMessages.last {
-            print ("uusmessage", newMessage)
-            chatSource.append(newMessage)
-            refreshUI()
-        }
-    }
-    
-    func refreshUI() {
-        DispatchQueue.main.async {
-            self.qaTable.reloadData()
-        }
-    }
     
     func testiTesti () -> Int {
         return 1
+    }
+    
+    func messageToRealm(data: ChatMessage) {
+        try! realm!.write {
+            dummySession!.chat[0].chatMessages.append(data)
+        }
     }
     
     deinit {
@@ -110,9 +92,7 @@ class QAController: UIViewController {
         // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin
         let newMessage = ChatMessage()
         newMessage.body = messageField.text ?? "Tapahtui virhe"
-        try! realm!.write {
-            dummySession!.chat[0].chatMessages.append(newMessage)
-        }
+        messageToRealm(data: newMessage)
     }
     
     @IBOutlet weak var sendButton: UIButton!
@@ -152,7 +132,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
         case "pinned":
             numberOfRows = qaSource.count //answerSource.count
         case "chat":
-            numberOfRows = chatSource.count
+            numberOfRows = chatSource?.count ?? 0
         default: numberOfRows = 0
         }
         return (numberOfRows)
@@ -171,7 +151,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             cell.textLabel?.numberOfLines = 0
             qaTable.rowHeight = 44.0 // palautetaan default korkeus topicin jäljiltä
         case "chat":
-            cell.textLabel?.text = chatSource[indexPath.row].body
+            cell.textLabel?.text = chatSource?[indexPath.row].body
             cell.textLabel?.numberOfLines = 2
             qaTable.rowHeight = 44.0
         default:

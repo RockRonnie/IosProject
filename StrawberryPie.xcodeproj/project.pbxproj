@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		63D2D57F931C466535B8CD21 /* Pods_StrawberryPieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */; };
+		684EEE17239270C800D68EC6 /* StrawberryPieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */; };
 		68574590238935DE0002A538 /* QAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6857458F238935DE0002A538 /* QAController.swift */; };
 		68574593238940B80002A538 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68574592238940B80002A538 /* HomeController.swift */; };
 		685D424623895F2400059014 /* QaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D424523895F2400059014 /* QaTable.swift */; };
@@ -71,6 +72,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		684EEE19239270C800D68EC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A7E662B238430AD00F8340C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A7E6632238430AD00F8340C;
+			remoteInfo = StrawberryPie;
+		};
 		6A7E664B238430AF00F8340C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6A7E662B238430AD00F8340C /* Project object */;
@@ -84,6 +92,9 @@
 		13D46F4DD8FE8DEC51E6DC26 /* Pods_StrawberryPie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StrawberryPie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		180D49CC598AD12A2D22C9D2 /* Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig"; path = "Target Support Files/Pods-StrawberryPie-StrawberryPieUITests/Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StrawberryPieTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		684EEE14239270C800D68EC6 /* StrawberryPieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrawberryPieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieUITests.swift; sourceTree = "<group>"; };
+		684EEE18239270C800D68EC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6857458F238935DE0002A538 /* QAController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAController.swift; sourceTree = "<group>"; };
 		68574592238940B80002A538 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		685D424523895F2400059014 /* QaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QaTable.swift; sourceTree = "<group>"; };
@@ -153,6 +164,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		684EEE11239270C800D68EC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A7E6630238430AD00F8340C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -172,12 +190,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		684EEE15239270C800D68EC6 /* StrawberryPieUITests */ = {
+			isa = PBXGroup;
+			children = (
+				684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */,
+				684EEE18239270C800D68EC6 /* Info.plist */,
+			);
+			path = StrawberryPieUITests;
+			sourceTree = "<group>";
+		};
 		6A7E662A238430AD00F8340C = {
 			isa = PBXGroup;
 			children = (
 				6A7E66672384368600F8340C /* .gitlab-ci.yml */,
 				6A7E6635238430AD00F8340C /* StrawberryPie */,
 				6A7E664D238430AF00F8340C /* StrawberryPieTests */,
+				684EEE15239270C800D68EC6 /* StrawberryPieUITests */,
 				6A7E6634238430AD00F8340C /* Products */,
 				D8676E192A98880C385AA71C /* Pods */,
 				DE12CC7A72B449AE856F45B9 /* Frameworks */,
@@ -189,6 +217,7 @@
 			children = (
 				6A7E6633238430AD00F8340C /* StrawberryPie.app */,
 				6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */,
+				684EEE14239270C800D68EC6 /* StrawberryPieUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -331,6 +360,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		684EEE13239270C800D68EC6 /* StrawberryPieUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 684EEE1D239270C800D68EC6 /* Build configuration list for PBXNativeTarget "StrawberryPieUITests" */;
+			buildPhases = (
+				684EEE10239270C800D68EC6 /* Sources */,
+				684EEE11239270C800D68EC6 /* Frameworks */,
+				684EEE12239270C800D68EC6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				684EEE1A239270C800D68EC6 /* PBXTargetDependency */,
+			);
+			name = StrawberryPieUITests;
+			productName = StrawberryPieUITests;
+			productReference = 684EEE14239270C800D68EC6 /* StrawberryPieUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		6A7E6632238430AD00F8340C /* StrawberryPie */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A7E665E238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPie" */;
@@ -379,6 +426,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Team Työkkäri";
 				TargetAttributes = {
+					684EEE13239270C800D68EC6 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 6A7E6632238430AD00F8340C;
+					};
 					6A7E6632238430AD00F8340C = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -403,11 +454,19 @@
 			targets = (
 				6A7E6632238430AD00F8340C /* StrawberryPie */,
 				6A7E6649238430AF00F8340C /* StrawberryPieTests */,
+				684EEE13239270C800D68EC6 /* StrawberryPieUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		684EEE12239270C800D68EC6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A7E6631238430AD00F8340C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,6 +564,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		684EEE10239270C800D68EC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				684EEE17239270C800D68EC6 /* StrawberryPieUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A7E662F238430AD00F8340C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -565,6 +632,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		684EEE1A239270C800D68EC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A7E6632238430AD00F8340C /* StrawberryPie */;
+			targetProxy = 684EEE19239270C800D68EC6 /* PBXContainerItemProxy */;
+		};
 		6A7E664C238430AF00F8340C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6A7E6632238430AD00F8340C /* StrawberryPie */;
@@ -592,6 +664,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		684EEE1B239270C800D68EC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6P6S5UH7Z3;
+				INFOPLIST_FILE = StrawberryPieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = id.StrawberryPieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StrawberryPie;
+			};
+			name = Debug;
+		};
+		684EEE1C239270C800D68EC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6P6S5UH7Z3;
+				INFOPLIST_FILE = StrawberryPieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = id.StrawberryPieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StrawberryPie;
+			};
+			name = Release;
+		};
 		6A7E665C238430AF00F8340C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -793,6 +903,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		684EEE1D239270C800D68EC6 /* Build configuration list for PBXNativeTarget "StrawberryPieUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				684EEE1B239270C800D68EC6 /* Debug */,
+				684EEE1C239270C800D68EC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6A7E662E238430AD00F8340C /* Build configuration list for PBXProject "StrawberryPie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
