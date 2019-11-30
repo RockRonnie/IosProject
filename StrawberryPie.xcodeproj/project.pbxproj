@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		63D2D57F931C466535B8CD21 /* Pods_StrawberryPieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */; };
 		684EEE17239270C800D68EC6 /* StrawberryPieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */; };
+		684EEE1F2392847B00D68EC6 /* QAControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684EEE1E2392847B00D68EC6 /* QAControllerTest.swift */; };
 		68574590238935DE0002A538 /* QAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6857458F238935DE0002A538 /* QAController.swift */; };
 		68574593238940B80002A538 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68574592238940B80002A538 /* HomeController.swift */; };
 		685D424623895F2400059014 /* QaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D424523895F2400059014 /* QaTable.swift */; };
@@ -95,6 +96,7 @@
 		684EEE14239270C800D68EC6 /* StrawberryPieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrawberryPieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieUITests.swift; sourceTree = "<group>"; };
 		684EEE18239270C800D68EC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		684EEE1E2392847B00D68EC6 /* QAControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAControllerTest.swift; sourceTree = "<group>"; };
 		6857458F238935DE0002A538 /* QAController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAController.swift; sourceTree = "<group>"; };
 		68574592238940B80002A538 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		685D424523895F2400059014 /* QaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QaTable.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 		6A7E664D238430AF00F8340C /* StrawberryPieTests */ = {
 			isa = PBXGroup;
 			children = (
+				684EEE1E2392847B00D68EC6 /* QAControllerTest.swift */,
 				6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */,
 				6A7E6650238430AF00F8340C /* Info.plist */,
 			);
@@ -626,6 +629,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */,
+				684EEE1F2392847B00D68EC6 /* QAControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

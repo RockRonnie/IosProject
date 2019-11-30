@@ -60,7 +60,7 @@ class QAController: UIViewController {
     }
     
     
-    func testiTesti () -> Int {
+    func testiTesti() -> Int {
         return 1
     }
     
@@ -105,6 +105,7 @@ class QAController: UIViewController {
         messageField.isHidden = true
         qaTable.reloadData()
     }
+    
     @IBAction func topicButton(_ sender: UIButton) {
         // Vaihdetaan cellin pohjaa ja reloadData()
         selectedTab = "topic"
