@@ -33,7 +33,7 @@ class StrawberryPieUITests: XCTestCase {
         // app.launch()
         // let btn = app.segmentedControls.buttons["Button"]
         // XCTAssertTrue(btn.exists)
-        // btn.tap()
+        // btn.tap() // <-- tällä voit esim. jatkaa apissa eteenpäin ja ketjuttaa näkymiä. Näkymän vaihdon jälkeen voi esim testata että siellä oleva nappi on käytettävissä tai teksti luettavissa.
         
         
         

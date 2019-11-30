@@ -43,8 +43,8 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
             let destinationVC = segue.destination as? QAController
             
             // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
-            destinationVC?.dummySession = realmSession
-            destinationVC?.sessionID = realmSession?.sessionID
+            destinationVC?.currentSession = realmSession
+            // destinationVC?.sessionID = realmSession?.sessionID
             
         }
     }

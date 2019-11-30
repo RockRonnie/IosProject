@@ -11,26 +11,23 @@ import RealmSwift
 
 class QAController: UIViewController {
     
-    var dummySession: QASession?
-    var sessionID:String?
+    var currentSession: QASession?
     var realm: Realm?
     var notificationToken: NotificationToken?
-    // Tee kunnolla, hae QASessionista topic --> odotellaan hostipuolen topiccia
-    var topicSource = ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."]
-    // Tee kunnolla, hae QASessionista Q ja A --> odotellaan hostipuolen edistymistä. Alustava koodi tableviewissä
-    var answerSource = [] as [ChatMessage]
-    var questionSource = [] as [ChatMessage]
-    var chatSource: List<ChatMessage>? // Tänne chattiviestit sisään
-    // Poista qaSource kun ylläolevat on kunnossa
-    var qaSource = ["Q: Mitä huudetaan jos koodi levii?","A: 🆘"]
+    
+    var topicSource: String?
+    var answerSource: List<ChatMessage>?
+    var questionSource: List<ChatMessage>?
+    var chatSource: List<ChatMessage>?
+    
     // Tabin valinta, oletuksena aihe
     var selectedTab = "topic"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = RealmDB.sharedInstance.realm
-        setupQa() // Tähän joku varmennuslogiikka?
-        populateChat() // Lisää logiikka -> tee tämä jos realm ja session ok
+        setupNotification()
+        populateSources()
         
         qaTable.dataSource = self
         qaTable.delegate = self
@@ -40,25 +37,34 @@ class QAController: UIViewController {
         messageField.isHidden = true
     }
     
-    func setupQa() {
-        
-        // Laitetaan otsikkotekstipaikalleen
-        titleLabel.text = dummySession?.title ?? "No title"
-        
-        // Kytätään päivityksiä realmissa
-        // Jostain syystä updaten yhteydessä edellinen update menee uusiksi läpi = arrayhyn tulee tuplia
+    func setupNotification() {
         self.notificationToken = realm?.observe { _,_ in
-            self.qaTable.reloadData()
+            if self.answerSource == nil {
+                self.populateSources()
+            }
         }
     }
     
-    
-    func populateChat() {
-        if let chat = dummySession?.chat[0] {
+    func populateSources() {
+        print ("Source data")
+        // Title
+        titleLabel.text = currentSession?.title ?? "No title"
+        // Aihe
+        topicSource = currentSession?.sessionDescription ?? "Topic text missing"
+        // Chatviestit
+        if let chat = currentSession?.chat[0] {
             chatSource = chat.chatMessages
         }
+        // Kysymykset ja vastaukset
+        if let qaBoard = currentSession?.QABoard[0] {
+        if qaBoard.QAs.count > 0 {
+            questionSource = qaBoard.QAs[0].question
+            answerSource = qaBoard.QAs[0].answer
+            }
+        }
+        print ("Ajettu onnistuneesti")
+        
     }
-    
     
     func testiTesti() -> Int {
         return 1
@@ -66,7 +72,21 @@ class QAController: UIViewController {
     
     func messageToRealm(data: ChatMessage) {
         try! realm!.write {
-            dummySession!.chat[0].chatMessages.append(data)
+            currentSession!.chat[0].chatMessages.append(data)
+        }
+    }
+    
+    func messageToQA(data: ChatMessage) {
+        let defaultAnswer = ChatMessage()
+        defaultAnswer.body = "Tässä vastaus"
+        let selectedQuestion = data
+        let qaSet = QA()
+        print("QAID", qaSet.QAID)
+        try! realm!.write {
+            currentSession!.chat[0].chatMessages.append(data)
+            currentSession!.QABoard[0].QAs.append(qaSet)
+            currentSession!.QABoard[0].QAs.last!.question.append(selectedQuestion)
+            currentSession!.QABoard[0].QAs.last!.answer.append(defaultAnswer)
         }
     }
     
@@ -124,14 +144,13 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
     
     // Päivitetään tableviewiin tavarat sisälle
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         var numberOfRows: Int
         
         switch selectedTab {
         case "topic":
-            numberOfRows = topicSource.count
+            numberOfRows = 1
         case "pinned":
-            numberOfRows = qaSource.count //answerSource.count
+            numberOfRows = answerSource?.count ?? 0
         case "chat":
             numberOfRows = chatSource?.count ?? 0
         default: numberOfRows = 0
@@ -145,12 +164,16 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
         // Täytetään celli valitan tabin perusteella
         switch selectedTab {
         case "topic":
-            cell.textLabel?.text = topicSource[indexPath.row]
+            cell.textLabel?.text = topicSource
             cell.textLabel?.numberOfLines = 0
         case "pinned":
-            cell.textLabel?.text = qaSource[indexPath.row] //Line 1" + "\n" + "Line 2"
-            cell.textLabel?.numberOfLines = 0
-            qaTable.rowHeight = 44.0 // palautetaan default korkeus topicin jäljiltä
+            if let answerRowsExist = answerSource {
+                if answerRowsExist.count > 0 {
+                    cell.textLabel?.text = (questionSource?[indexPath.row].body ?? "Question missing") + "\n" + (answerSource?[indexPath.row].body ?? "Answer missing")
+                    cell.textLabel?.numberOfLines = 0
+                    qaTable.rowHeight = 44.0 // palautetaan default korkeus topicin jäljiltä
+                }
+            }
         case "chat":
             cell.textLabel?.text = chatSource?[indexPath.row].body
             cell.textLabel?.numberOfLines = 2
