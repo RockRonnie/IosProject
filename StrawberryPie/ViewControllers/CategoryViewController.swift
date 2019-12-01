@@ -45,9 +45,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.categoryNameLabel.layer.cornerRadius = 30
         return cell
     }
-    var selectedCat = String()
     //Select item and increases the gray border size to indicate selection
-    //TODO add navigation related stuff here
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = UIColor.gray.cgColor
