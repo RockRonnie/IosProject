@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class CategoryContentController: UIViewController {
 
     
     var topText = String()
+    var categoryObject = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = topText
+        self.title = categoryObject[0].value(forKey: "categoryName") as? String
         print(topText)
         
         // Do any additional setup after loading the view.

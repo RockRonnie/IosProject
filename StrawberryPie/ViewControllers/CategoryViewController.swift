@@ -53,18 +53,19 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell?.layer.borderColor = UIColor.gray.cgColor
         cell?.layer.borderWidth = 3
         let selectedCategory = category.getNames()[indexPath.item]
-        //print(selectedCategory)
+        print(selectedCategory)
         
     }
+    //Sends data over to CategoryContent 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ToCategoryContent"){
             let vc = segue.destination as? CategoryContentController
             let cell = sender as! CollectionViewCell
             let indexPaths = self.collectionView.indexPath(for: cell)
-            let thisThing = self.category.getNames()[indexPaths!.item] as String
+            let selected = self.category.getNames()[indexPaths!.item] as String
             //print(thisThing)
-            vc?.topText = thisThing
-        
+            vc?.topText = selected
+            vc?.categoryObject = category.getEntity(name: selected)
         }
     }
     //Deselects the old item and removes its larger border
