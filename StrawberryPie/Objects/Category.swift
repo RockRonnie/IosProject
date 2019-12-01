@@ -17,8 +17,4 @@ class category {
         self.categoryName = categoryName
         self.categorySummary = categorySummary
     }
-    
-    
-    
-    
 }

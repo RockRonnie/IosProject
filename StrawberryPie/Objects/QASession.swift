@@ -14,6 +14,10 @@ import RealmSwift
     dynamic var sessionID: String = UUID().uuidString
     dynamic var title: String = ""
     dynamic var sessionDescription: String = ""
+    dynamic var sessionCategory: String = ""
+    dynamic var live: Bool = false
+    dynamic var upcoming: Bool = false
+    dynamic var archived: Bool = false
     let host = List<User>()
     let chat = List<Chat>()
     let QABoard = List<QAMessageBoard>()
