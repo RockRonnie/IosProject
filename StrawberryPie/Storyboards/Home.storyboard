@@ -25,7 +25,7 @@
                                     <outlet property="delegate" destination="ciD-od-2sG" id="drW-FH-quP"/>
                                 </connections>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get help from the experts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noi-15-Wgc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get help from the experts" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noi-15-Wgc">
                                 <rect key="frame" x="0.0" y="299" width="196" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="QMP-d5-QcU"/>

@@ -163,12 +163,3 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 class ExpertTableViewController: UITableView{
     
 }
-
-
-//Custom Cell
-class ExpertCellController: UITableViewCell{
-    @IBOutlet weak var expertImage: UIImageView!
-    @IBOutlet weak var expertTitle: UILabel!
-    @IBOutlet weak var expertName: UILabel!
-    @IBOutlet weak var expertDesc: UILabel!
-}
