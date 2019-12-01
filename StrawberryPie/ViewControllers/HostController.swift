@@ -27,12 +27,11 @@ class HostController: UIViewController {
         print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
         print(RealmDB.sharedInstance.user?.identity ?? "huoh")
         thisUser = RealmDB.sharedInstance.user?.identity ?? "Not"
-        getUser()
+        thisUserObject = RealmDB.sharedInstance.getUser()
         usernameLabel.text = thisUserObject?.userName ?? "no name found"
         super.viewDidLoad()
         titleField.delegate = self
         introTextView.delegate = self
-      
     }
   
     //Button action
@@ -55,12 +54,12 @@ class HostController: UIViewController {
     //functions for creating the objects
     func createSession() -> QASession{
         print("Creating Session object")
-            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [thisUserObject], "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
+            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
             return newSession
     }
     func createChat() -> Chat {
         print("creatin Chat object")
-        let newChat = Chat(value:["title": sessionTitle])
+        let newChat = Chat(value:["title": sessionTitle ?? "No title"])
         return newChat
     }
     func createUser() -> User? {
