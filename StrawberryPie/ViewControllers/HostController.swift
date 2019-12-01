@@ -41,7 +41,6 @@ class HostController: UIViewController {
         titleField.text = ""
     }
     @IBAction func createButton(_ sender: Any) {
-        getUser()
         print("Starting the QA Session creation sequence")
         createdSession = createSession()
         print(createdSession ?? "No object")

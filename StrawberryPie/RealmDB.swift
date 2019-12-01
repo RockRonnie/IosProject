@@ -42,11 +42,12 @@ class RealmDB {
           }
         }
     }
-    /*
-    func getDataFromDB() -> Object {
-        let results: Results<Route> = realm.Objects(Object.self)
-        return results
-    }*/
+    
+    func getUser() -> User? {
+        let userObject = self.realm.objects(User.self).filter("userID = %@", user?.identity ?? "default").first
+        return userObject
+    }
+   
     func addData(object: Object)   {
         try! realm.write {
             realm.add(object)
