@@ -27,8 +27,8 @@ class HostController: UIViewController {
         print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
         print(RealmDB.sharedInstance.user?.identity ?? "huoh")
         thisUser = RealmDB.sharedInstance.user?.identity ?? "Not"
-        usernameLabel.text = thisUser
-        
+        getUser()
+        usernameLabel.text = thisUserObject?.userName ?? "no name found"
         super.viewDidLoad()
         titleField.delegate = self
         introTextView.delegate = self
@@ -71,7 +71,7 @@ class HostController: UIViewController {
     }
 
     func getUser(){
-            let foundUser = self.realm.objects(User.self).filter("userID = self.thisUser").first
+            let foundUser = self.realm.objects(User.self).filter("userID = %@", thisUser ?? "thisone").first
             self.thisUserObject = foundUser
     }
     func createIntro() -> Intro {
