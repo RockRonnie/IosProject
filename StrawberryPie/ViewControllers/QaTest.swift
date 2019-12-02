@@ -36,9 +36,9 @@ class QaTest: UIViewController {
             let destinationVC = segue.destination as? QAController
             
             // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
-            destinationVC?.dummySession = realmSession.last
+            destinationVC?.currentSession = realmSession.last
             destinationVC?.realm = realm
-            destinationVC?.sessionID = realmSession.last?.sessionID
+            // destinationVC?.sessionID = realmSession.last?.sessionID
             
         }
     }

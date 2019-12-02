@@ -26,15 +26,32 @@
                                     <action selector="logOut:" destination="e3T-Aw-GOO" eventType="touchUpInside" id="hOe-i1-3Xd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="usernamelabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35l-PO-21M">
+                                <rect key="frame" x="185" y="61" width="155" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="hUN-hc-6hR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cJI-8X-8Tw" firstAttribute="trailing" secondItem="35l-PO-21M" secondAttribute="trailing" constant="35" id="TM2-zo-Mcm"/>
+                            <constraint firstItem="35l-PO-21M" firstAttribute="top" secondItem="cJI-8X-8Tw" secondAttribute="top" constant="41" id="Vec-MF-NnX"/>
+                            <constraint firstItem="35l-PO-21M" firstAttribute="leading" secondItem="cJI-8X-8Tw" secondAttribute="leading" constant="185" id="xYc-a4-7gN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cJI-8X-8Tw"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="yLo-EL-BVO"/>
+                    <connections>
+                        <outlet property="unameLabel" destination="35l-PO-21M" id="1So-cE-SsY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmY-m4-fY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21" y="-2365"/>
+            <point key="canvasLocation" x="20" y="-2365.3673163418293"/>
         </scene>
     </scenes>
 </document>
