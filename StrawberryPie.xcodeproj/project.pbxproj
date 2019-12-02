@@ -25,6 +25,7 @@
 		68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
 		6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B723952F0A000917B0 /* ExpertCellController.swift */; };
 		6A0178BA23952F15000917B0 /* HomeExpertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */; };
+		6A0D53B42395858100706AF9 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0D53B22395858100706AF9 /* CategoryTableViewCell.xib */; };
 		6A7D3412238830630079BFB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D3411238830630079BFB7 /* Constants.swift */; };
 		6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6636238430AD00F8340C /* AppDelegate.swift */; };
 		6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6638238430AD00F8340C /* LoginRegisterController.swift */; };
@@ -109,6 +110,7 @@
 		689803DA238A864F00FE39CF /* QaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QaTest.swift; sourceTree = "<group>"; };
 		6A0178B723952F0A000917B0 /* ExpertCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeExpertTableCell.swift; sourceTree = "<group>"; };
+		6A0D53B22395858100706AF9 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		6A367A1B238C2D750006D64A /* RealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
 		6A7D3411238830630079BFB7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6A7E6633238430AD00F8340C /* StrawberryPie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrawberryPie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +322,7 @@
 				6A9E89D8238946450069DE71 /* QAMessageCell.swift */,
 				685D424523895F2400059014 /* QaTable.swift */,
 				685D424723895F3700059014 /* QaHostCardTable.swift */,
+				6A0D53B22395858100706AF9 /* CategoryTableViewCell.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AD541E3238C364A00DF16DA /* Images in Resources */,
+				6A0D53B42395858100706AF9 /* CategoryTableViewCell.xib in Resources */,
 				6AC642E42385939500E2906F /* Home.storyboard in Resources */,
 				6AC642E8238593E100E2906F /* LoginRegister.storyboard in Resources */,
 				6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */,
