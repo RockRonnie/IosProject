@@ -150,9 +150,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.ExpertTableView.reloadData()
                 print(self.user?.identity ?? "No identity")
             }
-
     }
-    
 }
 
 //ExpertTableView
