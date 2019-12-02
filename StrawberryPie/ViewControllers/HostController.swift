@@ -11,9 +11,16 @@ import RealmSwift
 
 
 class HostController: UIViewController {
+    @IBOutlet weak var pickCategory: UIButton!
+    @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var introTextView: UITextView!
     @IBOutlet weak var titleField: UITextField!
+    
+    let transparentView = UIView()
+    let tableView = UITableView()
+    var selectedButton = UIButton()
+    
     var sessionTitle: String?
     var sessionIntro: String?
     var objectCount = 0
@@ -21,23 +28,68 @@ class HostController: UIViewController {
     var realm: Realm!
     var thisUser: String?
     var thisUserObject: User?
+    var category = Category()
+    var allCategories: Array<String> = []
+    var selectedCategory: String = ""
+    var selectedView = UITextView()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         realm = RealmDB.sharedInstance.realm
+        category.generateData()
         print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
         print(RealmDB.sharedInstance.user?.identity ?? "huoh")
         thisUser = RealmDB.sharedInstance.user?.identity ?? "Not"
         thisUserObject = RealmDB.sharedInstance.getUser()
+        allCategories = category.getNames()
         usernameLabel.text = thisUserObject?.userName ?? "no name found"
-        super.viewDidLoad()
+        print(allCategories)
         titleField.delegate = self
         introTextView.delegate = self
+        descTextView.delegate = self
+        
+        // Tableview delegate / datasource / cell register methods
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(PickCategoryCell.self, forCellReuseIdentifier: "Cell")
+        
+    }
+    
+    
+    
+    func addTransparentView(frames: CGRect) {
+        let window = UIApplication.shared.keyWindow
+        transparentView.frame = window?.frame ?? self.view.frame
+        self.view.addSubview(transparentView)
+        
+        tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        self.view.addSubview(tableView)
+        tableView.layer.cornerRadius = 5
+        
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        tableView.reloadData()
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+        transparentView.addGestureRecognizer(tapgesture)
+        transparentView.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5, width: frames.width, height: CGFloat(self.allCategories.count * 50))
+        }, completion: nil)
+    }
+    
+    @objc func removeTransparentView() {
+        let frames = selectedButton.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        }, completion: nil)
     }
   
-    //Button action
+    //Button actions
     @IBAction func clearButton(_ sender: UIButton) {
         introTextView.text = ""
         titleField.text = ""
+        descTextView.text = ""
     }
     @IBAction func createButton(_ sender: Any) {
         print("Starting the QA Session creation sequence")
@@ -50,11 +102,24 @@ class HostController: UIViewController {
         }
         objectCount += 1
     }
+    @IBAction func categoryButton(_ sender: UIButton) {
+        selectedButton = pickCategory
+        addTransparentView(frames: pickCategory.frame)
+    }
     
-    //functions for creating the objects
+    // functions for the dropdown category menu
+    func setCategory(category: String) {
+        selectedCategory = category
+    }
+    
+    func setText(_ sender: UITextView){
+        
+    }
+    
+    //functions for creating the Realm objects
     func createSession() -> QASession{
         print("Creating Session object")
-            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
+        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "category": selectedCategory])
             return newSession
     }
     func createChat() -> Chat {
@@ -62,11 +127,13 @@ class HostController: UIViewController {
         let newChat = Chat(value:["title": sessionTitle ?? "No title"])
         return newChat
     }
+    /*
     func createUser() -> User? {
         print("Creating a user object to serve as a host")
             let newUser = User(value:["userID": thisUser ?? "dummyuser" ,"userName": "user\(objectCount)", "firstName": "firstname user\(objectCount)", "lastName": "lastname user\(objectCount)", "info": "info for user \(objectCount)"])
             return newUser
     }
+     */
 
     func getUser(){
             let foundUser = self.realm.objects(User.self).filter("userID = %@", thisUser ?? "thisone").first
@@ -82,13 +149,9 @@ class HostController: UIViewController {
         let newBoard = QAMessageBoard()
         return newBoard
     }
-    /*
-    func getSession() -> QASession {
-            let realmSession = realm.objects(QASession.self).sorted(byKeyPath: "sessionID", ascending: false)
-        return realmSession[0]
-    }
- */
-    // Initializing a realm object
+    
+    
+    // initializing a realm object
     // (value: ["brand": "BMW", "year": 1980])
  
 
@@ -219,5 +282,25 @@ extension HostController: UITextViewDelegate{
                 }
                 
             } // called when 'return' key pressed. return NO to ignore.
+}
+extension HostController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allCategories.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = allCategories[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedButton.setTitle(allCategories[indexPath.row], for: .normal)
+        setCategory(category: allCategories[indexPath.row])
+        removeTransparentView()
+    }
 }
