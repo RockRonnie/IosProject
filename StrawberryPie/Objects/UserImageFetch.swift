@@ -8,9 +8,9 @@
 
 import Foundation
 
-open class UserImageFetch {
+public class UserImagePost {
     
-    let url = URL(string: "foxer153.asuscomm.com:3000/upload")
+    let url = "foxer153.asuscomm.com:3000/upload"
     
     
     
