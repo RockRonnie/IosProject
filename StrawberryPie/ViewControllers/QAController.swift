@@ -19,6 +19,7 @@ class QAController: UIViewController {
     var answerSource: List<ChatMessage>?
     var questionSource: List<ChatMessage>?
     var chatSource: List<ChatMessage>?
+    var userSource: User?
     
     // Tabin valinta, oletuksena aihe
     var selectedTab = "topic"
@@ -72,8 +73,13 @@ class QAController: UIViewController {
             answerSource = qaBoard.QAs[0].answer
             }
         }
+        // Käyttäjä
+        userSource = RealmDB.sharedInstance.getUser()
+        print (userSource)
+        if let gotUser = userSource {
+            print("USERNAME", gotUser.userName)
+        }
         print ("Ajettu onnistuneesti")
-        
     }
     
     func testiTesti() -> Int {
