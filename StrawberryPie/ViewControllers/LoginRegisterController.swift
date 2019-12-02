@@ -163,7 +163,7 @@ import RealmSwift
     
   }
   
-  // To reduce clutter calling alert
+  // Custom alert, can be modified later
   func customAlert(title: String, reason: String) -> UIAlertController {
     let alert = UIAlertController(title: title, message: reason, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -172,15 +172,16 @@ import RealmSwift
     
   }
   
-  
+  // Login function with username and password
   func loginRealm(_ username: String,_ password: String,_ register: Bool){
-    // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
+    // Try Logging in
     SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: Constants.AUTH_URL) { user, error in
+      // If user is found -> login
       if let user = user {
         RealmDB.sharedInstance.user?.logOut()
-        // Onnistunut kirjautuminen
-        // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
+        // Login successful
+        // Create read/write permissions for the realm, username is the logged user
         let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
         user.apply(permission, callback: { (error) in
           if error != nil {
@@ -189,18 +190,22 @@ import RealmSwift
             print("success")
           }
         })
+        // Check if user admin
         self.user = user
         let admin = user.isAdmin
         print(admin)
+        // Realm user is this user
         RealmDB.sharedInstance.user = self.user
-        // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
+        // Create config for realm (Constants.swift)
         let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
         self.realm = try! Realm(configuration: config)
         RealmDB.sharedInstance.realm = self.realm
         print("Realm connection has been setup")
         print("Changing navigators")
+        // Change tabbar to loggedIn
         self.present(loggedIn!, animated:true, completion: nil)
       } else if let error = error {
+        // Error login
         print("Login error: \(error)")
         self.present(self.customAlert(title: "Login", reason: "Wrong login"), animated: true, completion: nil)
       }
@@ -209,8 +214,9 @@ import RealmSwift
   }
   
   
-  // SIGNUP FUNCTION EARLY VERSION, SUBJECT TO CHANGE
+  // Signup function
   func signUp(_ username: String, _ password: String, _ register: Bool) {
+    // Empty textfield = not valid
     if usernameField.text == "" {
       self.present(customAlert(title: "uname", reason: "Missing username"), animated: true, completion: nil)
     } else if userpasswordField.text == "" {
@@ -221,13 +227,14 @@ import RealmSwift
                    animated: true, completion: nil)
     } else if usernameField.text != "" && userpasswordField.text != "" && userpwagainField.text != "" {
       
+    // Textfields are not empty => Login
       
       SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: true), server: Constants.AUTH_URL) { user, error in
         if let user = user {
-          
+        // logout user in realm instance if exists
           RealmDB.sharedInstance.user?.logOut()
-          // Onnistunut kirjautuminen
-          // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
+          // Login successful
+          // Create read/write permissions for the realm, username is the logged user
           let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
           user.apply(permission, callback: { (error) in
             if error != nil {
@@ -270,7 +277,8 @@ import RealmSwift
       
     }
   }
-  
+
+  // Functions connecting to Buttons
   func signIn() {
     logIn(username ?? "", password ?? "", false)
   }
@@ -278,11 +286,12 @@ import RealmSwift
     
     signUp(username ?? "", password ?? "", true)
   }
+  // Enable user fields for registration phase 2
   func createUserMoreInfo() {
     // SHOW RELEVANT FIELDS
     self.usernameField.isHidden = true
-    self.userpasswordField.isHidden = false
-    self.userpwagainField.isHidden = false
+    self.userpasswordField.isHidden = true
+    self.userpwagainField.isHidden = true
     self.firstnameField.isHidden = false
     self.lastnameField.isHidden = false
     self.changeFormButton.isHidden = true
@@ -293,23 +302,24 @@ import RealmSwift
     self.userinfoField.isHidden = false
     self.infoAddedButton.isHidden = false
   }
+  // Go out of register and present logged in tab bar, should only be used for user that has logged in already
   func cancelRegister() {
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
     self.present(loggedIn!, animated: true, completion: nil)
   }
+  // Registration phase 2 function
   func advancedSignup() {
-
-    // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
-    
+    // Settings for realm
     let config = self.user?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
     if let cfg = config {
       self.realm = try! Realm(configuration: cfg)
     } else {
       self.present(self.customAlert(title: "Signup Error", reason: "Signup Error"), animated: true, completion: nil)
     }
+    // Create temporary user object from Realm (check getUser() function in RealmDB.swift for more information)
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
     realm = RealmDB.sharedInstance.realm
-    if self.userpasswordField.text != "" && self.userpwagainField.text != "" {
+    // Check that user does not empty password field
     try! self.realm.write {
       userUpdatedObj?.firstName = self.firstnameField.text ?? ""
       userUpdatedObj?.lastName = self.lastnameField.text ?? ""
@@ -319,27 +329,22 @@ import RealmSwift
       userUpdatedObj?.userEmail = self.userEmailField.text ?? ""
       userUpdatedObj?.info = self.userinfoField.text ?? ""
       userUpdatedObj?.extraInfo = self.userXtraInfoField.text ?? ""
+      // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
       if let userUpdate = userUpdatedObj {
         self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
-        
-        
-        // Forced cast, userpasswordField.text has to exist here
         } else {
         print("No changes")
       }
     }
+    // Succesful registration, login ensues
       let alert = UIAlertController(title: "Success!", message: "Registration successful!", preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
       self.present(alert, animated: true)
-    } else {
-      self.present(self.customAlert(title: "Missing password", reason: "Missing fields"), animated: true, completion: nil)
-      
-    }
     
   }
   
   
-  // Change between login / register
+  // Change between login / register forms
   func switchForm() {
     self.changeFormButton.isHidden = false
     if signUpFormEnabled {
