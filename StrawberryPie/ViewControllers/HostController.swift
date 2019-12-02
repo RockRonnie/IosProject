@@ -20,18 +20,20 @@ class HostController: UIViewController {
     var createdSession: QASession?
     var realm: Realm!
     var thisUser: String?
+    var thisUserObject: User?
     
     override func viewDidLoad() {
         realm = RealmDB.sharedInstance.realm
         print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
         print(RealmDB.sharedInstance.user?.identity ?? "huoh")
         thisUser = RealmDB.sharedInstance.user?.identity ?? "Not"
-        usernameLabel.text = thisUser
+        thisUserObject = RealmDB.sharedInstance.getUser()
+        usernameLabel.text = thisUserObject?.userName ?? "no name found"
         super.viewDidLoad()
         titleField.delegate = self
         introTextView.delegate = self
-        // Do any additional setup after loading the view.
     }
+  
     //Button action
     @IBAction func clearButton(_ sender: UIButton) {
         introTextView.text = ""
@@ -52,18 +54,23 @@ class HostController: UIViewController {
     //functions for creating the objects
     func createSession() -> QASession{
         print("Creating Session object")
-            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [createUser()], "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
+            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
             return newSession
     }
     func createChat() -> Chat {
         print("creatin Chat object")
-        let newChat = Chat(value:["title": sessionTitle])
+        let newChat = Chat(value:["title": sessionTitle ?? "No title"])
         return newChat
     }
-    func createUser() -> User {
+    func createUser() -> User? {
         print("Creating a user object to serve as a host")
             let newUser = User(value:["userID": thisUser ?? "dummyuser" ,"userName": "user\(objectCount)", "firstName": "firstname user\(objectCount)", "lastName": "lastname user\(objectCount)", "info": "info for user \(objectCount)"])
             return newUser
+    }
+
+    func getUser(){
+            let foundUser = self.realm.objects(User.self).filter("userID = %@", thisUser ?? "thisone").first
+            self.thisUserObject = foundUser
     }
     func createIntro() -> Intro {
         print("Creating Session Intro object")

@@ -25,7 +25,8 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupRealm("test1", "test" , false)
+        print(RealmDB.sharedInstance.setup)
+        setupRealm("default", "default" , false)
         
         ExpertTableView.dataSource = self
         ExpertTableView.delegate = self
@@ -42,8 +43,8 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
             let destinationVC = segue.destination as? QAController
             
             // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
-            destinationVC?.dummySession = realmSession
-            destinationVC?.sessionID = realmSession?.sessionID
+            destinationVC?.currentSession = realmSession
+            // destinationVC?.sessionID = realmSession?.sessionID
             
         }
     }
@@ -93,7 +94,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         var object: QASession
         object = self.experts[indexPath.row] as QASession
         
-        cell.expertDesc?.text = object.description
+        cell.expertDesc?.text = object.sessionDescription
         cell.expertName?.text = object.host[0].userID
         cell.expertTitle?.text = object.title
         //cell.expertImage?
@@ -114,12 +115,13 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     func setupRealm(_ username: String,_ password: String,_ register: Bool) {
+        if(RealmDB.sharedInstance.setup == false){
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
         SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: Constants.AUTH_URL) { user, error in
             if let user = user {
                 // Onnistunut kirjautuminen
                 // Lähetetään permission realmille -> read/write oikeudet käytössä olevalle palvelimelle. realmURL: Constants.REALM_URL --> Katso Constants.swift
-                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
+                let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "default" , accessLevel: .write)
                 user.apply(permission, callback: { (error) in
                     if error != nil {
                         print(error?.localizedDescription ?? "No error")
@@ -135,13 +137,24 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.realm = try! Realm(configuration: config)
                 print("Realm connection has been setup")
                 RealmDB.sharedInstance.realm = self.realm
+                RealmDB.sharedInstance.setup = true
+                print(RealmDB.sharedInstance.setup = true)
                 self.updateExpertFeed()
                 self.setupExperts()
                 self.ExpertTableView.reloadData()
             } else if let error = error {
                 print("Login error: \(error)")
             }
-        }
+            }
+            }else{
+                self.realm = RealmDB.sharedInstance.realm
+                self.user = RealmDB.sharedInstance.user
+                self.updateExpertFeed()
+                self.setupExperts()
+                self.ExpertTableView.reloadData()
+                print(self.user?.identity ?? "No identity")
+            }
+
     }
     
 }
@@ -151,11 +164,3 @@ class ExpertTableViewController: UITableView{
     
 }
 
-
-//Custom Cell
-class ExpertCellController: UITableViewCell{
-    @IBOutlet weak var expertImage: UIImageView!
-    @IBOutlet weak var expertTitle: UILabel!
-    @IBOutlet weak var expertName: UILabel!
-    @IBOutlet weak var expertDesc: UILabel!
-}

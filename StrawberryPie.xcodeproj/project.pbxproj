@@ -8,66 +8,51 @@
 
 /* Begin PBXBuildFile section */
 		63D2D57F931C466535B8CD21 /* Pods_StrawberryPieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */; };
+		684EEE17239270C800D68EC6 /* StrawberryPieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */; };
+		684EEE1F2392847B00D68EC6 /* QAControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684EEE1E2392847B00D68EC6 /* QAControllerTest.swift */; };
 		68574590238935DE0002A538 /* QAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6857458F238935DE0002A538 /* QAController.swift */; };
-		68574591238935DE0002A538 /* QAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6857458F238935DE0002A538 /* QAController.swift */; };
 		68574593238940B80002A538 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68574592238940B80002A538 /* HomeController.swift */; };
 		685D424623895F2400059014 /* QaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D424523895F2400059014 /* QaTable.swift */; };
 		685D424823895F3700059014 /* QaHostCardTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D424723895F3700059014 /* QaHostCardTable.swift */; };
 		6877CD2A238855B700CBCEDE /* QA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6877CD29238855B700CBCEDE /* QA.storyboard */; };
 		689803D9238A860400FE39CF /* QaTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 689803D8238A860400FE39CF /* QaTest.storyboard */; };
 		689803DB238A864F00FE39CF /* QaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689803DA238A864F00FE39CF /* QaTest.swift */; };
-		6A367A1C238C2D750006D64A /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A367A1B238C2D750006D64A /* RealmDB.swift */; };
+		68B0A18F2391934B00404D7A /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A367A1B238C2D750006D64A /* RealmDB.swift */; };
+		68B0A191239193A900404D7A /* HostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E72389466A0069DE71 /* HostController.swift */; };
+		68B0A19C23919C8000404D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6640238430AF00F8340C /* Assets.xcassets */; };
+		68B0A19E23919C8C00404D7A /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 6AD541E2238C364A00DF16DA /* Images */; };
+		68B0A1A92391A5A000404D7A /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
+		68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
 		6A7D3412238830630079BFB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D3411238830630079BFB7 /* Constants.swift */; };
 		6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6636238430AD00F8340C /* AppDelegate.swift */; };
 		6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6638238430AD00F8340C /* LoginRegisterController.swift */; };
 		6A7E663F238430AD00F8340C /* StrawberryPie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E663D238430AD00F8340C /* StrawberryPie.xcdatamodeld */; };
 		6A7E6641238430AF00F8340C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6640238430AF00F8340C /* Assets.xcassets */; };
 		6A7E6644238430AF00F8340C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */; };
-		6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
 		6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E66672384368600F8340C /* .gitlab-ci.yml */; };
 		6A8C5DD3238AC59600C321E5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8C5DD2238AC59600C321E5 /* Host.storyboard */; };
 		6A8C5DD4238AC59600C321E5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8C5DD2238AC59600C321E5 /* Host.storyboard */; };
 		6A9E89C02389461B0069DE71 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B7238946190069DE71 /* Intro.swift */; };
-		6A9E89C12389461B0069DE71 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B7238946190069DE71 /* Intro.swift */; };
 		6A9E89C22389461B0069DE71 /* QAMessageBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B8238946190069DE71 /* QAMessageBoard.swift */; };
-		6A9E89C32389461B0069DE71 /* QAMessageBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B8238946190069DE71 /* QAMessageBoard.swift */; };
 		6A9E89C42389461B0069DE71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B92389461A0069DE71 /* User.swift */; };
-		6A9E89C52389461B0069DE71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B92389461A0069DE71 /* User.swift */; };
 		6A9E89C62389461B0069DE71 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BA2389461A0069DE71 /* Category.swift */; };
-		6A9E89C72389461B0069DE71 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BA2389461A0069DE71 /* Category.swift */; };
 		6A9E89C82389461B0069DE71 /* profession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BB2389461A0069DE71 /* profession.swift */; };
-		6A9E89C92389461B0069DE71 /* profession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BB2389461A0069DE71 /* profession.swift */; };
 		6A9E89CA2389461B0069DE71 /* QA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BC2389461A0069DE71 /* QA.swift */; };
-		6A9E89CB2389461B0069DE71 /* QA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BC2389461A0069DE71 /* QA.swift */; };
 		6A9E89CC2389461B0069DE71 /* Education.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BD2389461A0069DE71 /* Education.swift */; };
-		6A9E89CD2389461B0069DE71 /* Education.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BD2389461A0069DE71 /* Education.swift */; };
 		6A9E89CE2389461B0069DE71 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BE2389461A0069DE71 /* Chat.swift */; };
-		6A9E89CF2389461B0069DE71 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BE2389461A0069DE71 /* Chat.swift */; };
 		6A9E89D02389461B0069DE71 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BF2389461A0069DE71 /* ChatMessage.swift */; };
-		6A9E89D12389461B0069DE71 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89BF2389461A0069DE71 /* ChatMessage.swift */; };
 		6A9E89D9238946450069DE71 /* HottestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D2238946450069DE71 /* HottestCell.swift */; };
-		6A9E89DA238946450069DE71 /* HottestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D2238946450069DE71 /* HottestCell.swift */; };
 		6A9E89DB238946450069DE71 /* FeedTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D3238946450069DE71 /* FeedTableTableViewController.swift */; };
-		6A9E89DC238946450069DE71 /* FeedTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D3238946450069DE71 /* FeedTableTableViewController.swift */; };
 		6A9E89DD238946450069DE71 /* FeedTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D4238946450069DE71 /* FeedTable.swift */; };
-		6A9E89DE238946450069DE71 /* FeedTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D4238946450069DE71 /* FeedTable.swift */; };
 		6A9E89DF238946450069DE71 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D5238946450069DE71 /* FeedItem.swift */; };
-		6A9E89E0238946450069DE71 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D5238946450069DE71 /* FeedItem.swift */; };
 		6A9E89E1238946450069DE71 /* Hottest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D6238946450069DE71 /* Hottest.swift */; };
-		6A9E89E2238946450069DE71 /* Hottest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D6238946450069DE71 /* Hottest.swift */; };
 		6A9E89E3238946450069DE71 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D7238946450069DE71 /* ChatMessageCell.swift */; };
-		6A9E89E4238946450069DE71 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D7238946450069DE71 /* ChatMessageCell.swift */; };
 		6A9E89E5238946450069DE71 /* QAMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D8238946450069DE71 /* QAMessageCell.swift */; };
-		6A9E89E6238946450069DE71 /* QAMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D8238946450069DE71 /* QAMessageCell.swift */; };
-		6A9E89EB2389466B0069DE71 /* HostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E72389466A0069DE71 /* HostController.swift */; };
-		6A9E89EC2389466B0069DE71 /* HostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E72389466A0069DE71 /* HostController.swift */; };
 		6A9E89ED2389466B0069DE71 /* QASessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E82389466A0069DE71 /* QASessionController.swift */; };
-		6A9E89EE2389466B0069DE71 /* QASessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E82389466A0069DE71 /* QASessionController.swift */; };
 		6A9E89EF2389466B0069DE71 /* PersonalFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */; };
-		6A9E89F02389466B0069DE71 /* PersonalFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */; };
 		6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */; };
-		6A9E89F22389466B0069DE71 /* PrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */; };
 		6AACF22C238EAEFB006ECBF4 /* ExpertFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */; };
+		6AACF2302393C29B006ECBF4 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AACF22F2393C29B006ECBF4 /* ExpertCellController.swift */; };
 		6AC642CC2385892500E2906F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC642CB2385892500E2906F /* ProfileController.swift */; };
 		6AC642D62385915000E2906F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642D42385915000E2906F /* Main.storyboard */; };
 		6AC642E02385932E00E2906F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642DF2385932E00E2906F /* Profile.storyboard */; };
@@ -76,13 +61,11 @@
 		6AC642E6238593BB00E2906F /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642E5238593BB00E2906F /* Categories.storyboard */; };
 		6AC642E8238593E100E2906F /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642E7238593E100E2906F /* LoginRegister.storyboard */; };
 		6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
-		6ACB980B2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
 		6AD541E3238C364A00DF16DA /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 6AD541E2238C364A00DF16DA /* Images */; };
 		6AD541E5238C49AC00DF16DA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */; };
 		6AD541F7238EC6A700DF16DA /* CategoryContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */; };
 		6AD541F92394075F00DF16DA /* UserImageFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541F82394075F00DF16DA /* UserImageFetch.swift */; };
 		6AE09EAD238827760040E87E /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA7238827750040E87E /* Category+CoreDataClass.swift */; };
-		6AE09EAE238827760040E87E /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
 		6AE09EAF238827760040E87E /* Studies+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA9238827750040E87E /* Studies+CoreDataProperties.swift */; };
 		6AE09EB0238827760040E87E /* Work+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EAA238827750040E87E /* Work+CoreDataProperties.swift */; };
 		6AE09EB1238827760040E87E /* Work+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EAB238827750040E87E /* Work+CoreDataClass.swift */; };
@@ -92,6 +75,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		684EEE19239270C800D68EC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A7E662B238430AD00F8340C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A7E6632238430AD00F8340C;
+			remoteInfo = StrawberryPie;
+		};
 		6A7E664B238430AF00F8340C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6A7E662B238430AD00F8340C /* Project object */;
@@ -105,6 +95,10 @@
 		13D46F4DD8FE8DEC51E6DC26 /* Pods_StrawberryPie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StrawberryPie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		180D49CC598AD12A2D22C9D2 /* Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig"; path = "Target Support Files/Pods-StrawberryPie-StrawberryPieUITests/Pods-StrawberryPie-StrawberryPieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1DA5921CA9EEDF3C149272E5 /* Pods_StrawberryPieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StrawberryPieTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		684EEE14239270C800D68EC6 /* StrawberryPieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrawberryPieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieUITests.swift; sourceTree = "<group>"; };
+		684EEE18239270C800D68EC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		684EEE1E2392847B00D68EC6 /* QAControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAControllerTest.swift; sourceTree = "<group>"; };
 		6857458F238935DE0002A538 /* QAController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAController.swift; sourceTree = "<group>"; };
 		68574592238940B80002A538 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		685D424523895F2400059014 /* QaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QaTable.swift; sourceTree = "<group>"; };
@@ -147,6 +141,7 @@
 		6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalFeedController.swift; sourceTree = "<group>"; };
 		6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageController.swift; sourceTree = "<group>"; };
 		6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertFeed.swift; sourceTree = "<group>"; };
+		6AACF22F2393C29B006ECBF4 /* ExpertCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6AC642CB2385892500E2906F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		6AC642D52385915000E2906F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AC642DF2385932E00E2906F /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -175,6 +170,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		684EEE11239270C800D68EC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A7E6630238430AD00F8340C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,12 +196,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		684EEE15239270C800D68EC6 /* StrawberryPieUITests */ = {
+			isa = PBXGroup;
+			children = (
+				684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */,
+				684EEE18239270C800D68EC6 /* Info.plist */,
+			);
+			path = StrawberryPieUITests;
+			sourceTree = "<group>";
+		};
 		6A7E662A238430AD00F8340C = {
 			isa = PBXGroup;
 			children = (
 				6A7E66672384368600F8340C /* .gitlab-ci.yml */,
 				6A7E6635238430AD00F8340C /* StrawberryPie */,
 				6A7E664D238430AF00F8340C /* StrawberryPieTests */,
+				684EEE15239270C800D68EC6 /* StrawberryPieUITests */,
 				6A7E6634238430AD00F8340C /* Products */,
 				D8676E192A98880C385AA71C /* Pods */,
 				DE12CC7A72B449AE856F45B9 /* Frameworks */,
@@ -211,6 +223,7 @@
 			children = (
 				6A7E6633238430AD00F8340C /* StrawberryPie.app */,
 				6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */,
+				684EEE14239270C800D68EC6 /* StrawberryPieUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,6 +250,7 @@
 		6A7E664D238430AF00F8340C /* StrawberryPieTests */ = {
 			isa = PBXGroup;
 			children = (
+				684EEE1E2392847B00D68EC6 /* QAControllerTest.swift */,
 				6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */,
 				6A7E6650238430AF00F8340C /* Info.plist */,
 			);
@@ -275,9 +289,14 @@
 				6AE09EB52389508A0040E87E /* CategoryViewController.swift */,
 				6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */,
 				6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */,
+<<<<<<< HEAD
+=======
+				6AACF22F2393C29B006ECBF4 /* ExpertCellController.swift */,
+>>>>>>> b033e057c4e9a97158cc804382abc7dabb432bba
 			);
-			path = ViewControllers;
-			sourceTree = "<group>";
+			name = ViewControllers;
+			path = StrawberryPie/ViewControllers;
+			sourceTree = SOURCE_ROOT;
 		};
 		6ACB980723866FC40070CCF6 /* Components */ = {
 			isa = PBXGroup;
@@ -353,6 +372,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		684EEE13239270C800D68EC6 /* StrawberryPieUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 684EEE1D239270C800D68EC6 /* Build configuration list for PBXNativeTarget "StrawberryPieUITests" */;
+			buildPhases = (
+				684EEE10239270C800D68EC6 /* Sources */,
+				684EEE11239270C800D68EC6 /* Frameworks */,
+				684EEE12239270C800D68EC6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				684EEE1A239270C800D68EC6 /* PBXTargetDependency */,
+			);
+			name = StrawberryPieUITests;
+			productName = StrawberryPieUITests;
+			productReference = 684EEE14239270C800D68EC6 /* StrawberryPieUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		6A7E6632238430AD00F8340C /* StrawberryPie */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A7E665E238430AF00F8340C /* Build configuration list for PBXNativeTarget "StrawberryPie" */;
@@ -401,6 +438,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Team Työkkäri";
 				TargetAttributes = {
+					684EEE13239270C800D68EC6 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 6A7E6632238430AD00F8340C;
+					};
 					6A7E6632238430AD00F8340C = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -425,11 +466,19 @@
 			targets = (
 				6A7E6632238430AD00F8340C /* StrawberryPie */,
 				6A7E6649238430AF00F8340C /* StrawberryPieTests */,
+				684EEE13239270C800D68EC6 /* StrawberryPieUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		684EEE12239270C800D68EC6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A7E6631238430AD00F8340C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -454,6 +503,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B0A19C23919C8000404D7A /* Assets.xcassets in Resources */,
+				68B0A19E23919C8C00404D7A /* Images in Resources */,
 				6A8C5DD4238AC59600C321E5 /* Host.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +576,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		684EEE10239270C800D68EC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				684EEE17239270C800D68EC6 /* StrawberryPieUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A7E662F238430AD00F8340C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -542,7 +601,6 @@
 				6A7E663F238430AD00F8340C /* StrawberryPie.xcdatamodeld in Sources */,
 				6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */,
 				6AE09EAD238827760040E87E /* Category+CoreDataClass.swift in Sources */,
-				6A367A1C238C2D750006D64A /* RealmDB.swift in Sources */,
 				6A9E89DD238946450069DE71 /* FeedTable.swift in Sources */,
 				6A9E89D02389461B0069DE71 /* ChatMessage.swift in Sources */,
 				6A9E89EF2389466B0069DE71 /* PersonalFeedController.swift in Sources */,
@@ -550,18 +608,19 @@
 				6AE09EAF238827760040E87E /* Studies+CoreDataProperties.swift in Sources */,
 				6AACF22C238EAEFB006ECBF4 /* ExpertFeed.swift in Sources */,
 				6A9E89ED2389466B0069DE71 /* QASessionController.swift in Sources */,
-				6AE09EAE238827760040E87E /* Studies+CoreDataClass.swift in Sources */,
 				68574590238935DE0002A538 /* QAController.swift in Sources */,
-				6A9E89EB2389466B0069DE71 /* HostController.swift in Sources */,
 				685D424623895F2400059014 /* QaTable.swift in Sources */,
+				68B0A1A92391A5A000404D7A /* Studies+CoreDataClass.swift in Sources */,
 				6A7D3412238830630079BFB7 /* Constants.swift in Sources */,
 				6A9E89D9238946450069DE71 /* HottestCell.swift in Sources */,
 				689803DB238A864F00FE39CF /* QaTest.swift in Sources */,
 				6A9E89CE2389461B0069DE71 /* Chat.swift in Sources */,
 				6AE09EB2238827760040E87E /* Category+CoreDataProperties.swift in Sources */,
+				6AACF2302393C29B006ECBF4 /* ExpertCellController.swift in Sources */,
 				6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */,
 				6A9E89E3238946450069DE71 /* ChatMessageCell.swift in Sources */,
 				6A9E89C82389461B0069DE71 /* profession.swift in Sources */,
+				68B0A18F2391934B00404D7A /* RealmDB.swift in Sources */,
 				6A9E89CA2389461B0069DE71 /* QA.swift in Sources */,
 				6A9E89E1238946450069DE71 /* Hottest.swift in Sources */,
 				6AD541F7238EC6A700DF16DA /* CategoryContentController.swift in Sources */,
@@ -570,6 +629,7 @@
 				6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */,
 				6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */,
 				6AC642CC2385892500E2906F /* ProfileController.swift in Sources */,
+				68B0A191239193A900404D7A /* HostController.swift in Sources */,
 				685D424823895F3700059014 /* QaHostCardTable.swift in Sources */,
 				68574593238940B80002A538 /* HomeController.swift in Sources */,
 			);
@@ -579,35 +639,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A9E89C92389461B0069DE71 /* profession.swift in Sources */,
-				6A9E89E2238946450069DE71 /* Hottest.swift in Sources */,
-				6A9E89F02389466B0069DE71 /* PersonalFeedController.swift in Sources */,
-				6A9E89CF2389461B0069DE71 /* Chat.swift in Sources */,
-				6A9E89D12389461B0069DE71 /* ChatMessage.swift in Sources */,
-				6A9E89F22389466B0069DE71 /* PrivateMessageController.swift in Sources */,
-				6A9E89EE2389466B0069DE71 /* QASessionController.swift in Sources */,
-				6A9E89E0238946450069DE71 /* FeedItem.swift in Sources */,
-				6A9E89E6238946450069DE71 /* QAMessageCell.swift in Sources */,
-				6A9E89C12389461B0069DE71 /* Intro.swift in Sources */,
-				6A9E89CD2389461B0069DE71 /* Education.swift in Sources */,
-				6A9E89DA238946450069DE71 /* HottestCell.swift in Sources */,
-				6A9E89DE238946450069DE71 /* FeedTable.swift in Sources */,
-				6ACB980B2386747A0070CCF6 /* QASession.swift in Sources */,
-				6A7E664F238430AF00F8340C /* StrawberryPieTests.swift in Sources */,
-				6A9E89CB2389461B0069DE71 /* QA.swift in Sources */,
-				6A9E89C32389461B0069DE71 /* QAMessageBoard.swift in Sources */,
-				68574591238935DE0002A538 /* QAController.swift in Sources */,
-				6A9E89C52389461B0069DE71 /* User.swift in Sources */,
-				6A9E89E4238946450069DE71 /* ChatMessageCell.swift in Sources */,
-				6A9E89EC2389466B0069DE71 /* HostController.swift in Sources */,
-				6A9E89C72389461B0069DE71 /* Category.swift in Sources */,
-				6A9E89DC238946450069DE71 /* FeedTableTableViewController.swift in Sources */,
+				68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */,
+				684EEE1F2392847B00D68EC6 /* QAControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		684EEE1A239270C800D68EC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A7E6632238430AD00F8340C /* StrawberryPie */;
+			targetProxy = 684EEE19239270C800D68EC6 /* PBXContainerItemProxy */;
+		};
 		6A7E664C238430AF00F8340C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6A7E6632238430AD00F8340C /* StrawberryPie */;
@@ -635,6 +679,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		684EEE1B239270C800D68EC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6P6S5UH7Z3;
+				INFOPLIST_FILE = StrawberryPieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = id.StrawberryPieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StrawberryPie;
+			};
+			name = Debug;
+		};
+		684EEE1C239270C800D68EC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6P6S5UH7Z3;
+				INFOPLIST_FILE = StrawberryPieUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = id.StrawberryPieUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StrawberryPie;
+			};
+			name = Release;
+		};
 		6A7E665C238430AF00F8340C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -836,6 +918,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		684EEE1D239270C800D68EC6 /* Build configuration list for PBXNativeTarget "StrawberryPieUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				684EEE1B239270C800D68EC6 /* Debug */,
+				684EEE1C239270C800D68EC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6A7E662E238430AD00F8340C /* Build configuration list for PBXProject "StrawberryPie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

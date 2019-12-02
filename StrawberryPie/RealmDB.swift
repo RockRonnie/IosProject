@@ -12,10 +12,11 @@ import RealmSwift
 class RealmDB {
     var realm:Realm!
     var user: SyncUser?
+    var setup = false
     
     static let sharedInstance = RealmDB()
     
-  func setupRealm(_ username: String,_ password: String,_ register: Bool) { 
+  func setupRealm(_ username: String,_ password: String,_ register: Bool) {
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
         SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: Constants.AUTH_URL) { user, error in
             if let user = user {
@@ -41,11 +42,12 @@ class RealmDB {
           }
         }
     }
-    /*
-    func getDataFromDB() -> Object {
-        let results: Results<Route> = realm.Objects(Object.self)
-        return results
-    }*/
+    
+    func getUser() -> User? {
+        let userObject = self.realm.objects(User.self).filter("userID = %@", user?.identity ?? "default").first
+        return userObject
+    }
+   
     func addData(object: Object)   {
         try! realm.write {
             realm.add(object)
