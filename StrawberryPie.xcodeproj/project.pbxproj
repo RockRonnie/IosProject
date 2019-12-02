@@ -23,10 +23,10 @@
 		68B0A19E23919C8C00404D7A /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 6AD541E2238C364A00DF16DA /* Images */; };
 		68B0A1A92391A5A000404D7A /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
 		68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
-		6A38A7362395391C00577E9F /* CategoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A7352395391C00577E9F /* CategoryTableView.swift */; };
-		6A38A738239574DD00577E9F /* PickCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A737239574DD00577E9F /* PickCategoryCell.swift */; };
 		6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B723952F0A000917B0 /* ExpertCellController.swift */; };
 		6A0178BA23952F15000917B0 /* HomeExpertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */; };
+		6A38A7362395391C00577E9F /* CategoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A7352395391C00577E9F /* CategoryTableView.swift */; };
+		6A38A738239574DD00577E9F /* PickCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A38A737239574DD00577E9F /* PickCategoryCell.swift */; };
 		6A7D3412238830630079BFB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D3411238830630079BFB7 /* Constants.swift */; };
 		6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6636238430AD00F8340C /* AppDelegate.swift */; };
 		6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6638238430AD00F8340C /* LoginRegisterController.swift */; };
@@ -899,7 +899,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HW4V3X5292;
+				DEVELOPMENT_TEAM = LXCLGZBB37;
 				INFOPLIST_FILE = StrawberryPie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -918,7 +918,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HW4V3X5292;
+				DEVELOPMENT_TEAM = LXCLGZBB37;
 				INFOPLIST_FILE = StrawberryPie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
