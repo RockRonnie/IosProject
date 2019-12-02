@@ -9,13 +9,34 @@
 import UIKit
 import RealmSwift
 
-var realm: Realm!
+
 
 class ProfileController: UIViewController {
+  var realm: Realm!
+  
+  @IBOutlet weak var unameLabel: UILabel!
+  
   
   @IBOutlet weak var logOut: UIButton!
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    
+    realm = RealmDB.sharedInstance.realm
+    let users = realm.objects(User.self)
+      
+    for user in users {
+      print(user)
+      if user.userID == RealmDB.sharedInstance.user?.identity {
+        unameLabel.text = user.userName
+      }
+    }
+  
+
+    
+    
+    
+    
     
     // Do any additional setup after loading the view.
   }

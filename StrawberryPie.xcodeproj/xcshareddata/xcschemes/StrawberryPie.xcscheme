@@ -38,6 +38,16 @@
                ReferencedContainer = "container:StrawberryPie.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "684EEE13239270C800D68EC6"
+               BuildableName = "StrawberryPieUITests.xctest"
+               BlueprintName = "StrawberryPieUITests"
+               ReferencedContainer = "container:StrawberryPie.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
