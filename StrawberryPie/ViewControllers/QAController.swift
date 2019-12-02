@@ -53,6 +53,7 @@ class QAController: UIViewController {
             if self.answerSource == nil {
                 self.populateSources()
             }
+            self.qaTable.reloadData()
         }
     }
     
@@ -126,9 +127,9 @@ class QAController: UIViewController {
     @IBOutlet weak var messageField: UITextField!
     
     @IBAction func sendButton(_ sender: UIButton) {
-        // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin
+        // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username
         let newMessage = ChatMessage()
-        newMessage.body = messageField.text ?? "Tapahtui virhe"
+        newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
         messageToRealm(data: newMessage)
     }
     
