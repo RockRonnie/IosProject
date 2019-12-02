@@ -80,6 +80,7 @@
 		6AD541E3238C364A00DF16DA /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 6AD541E2238C364A00DF16DA /* Images */; };
 		6AD541E5238C49AC00DF16DA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */; };
 		6AD541F7238EC6A700DF16DA /* CategoryContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */; };
+		6AD541F92394075F00DF16DA /* UserImageFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541F82394075F00DF16DA /* UserImageFetch.swift */; };
 		6AE09EAD238827760040E87E /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA7238827750040E87E /* Category+CoreDataClass.swift */; };
 		6AE09EAE238827760040E87E /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
 		6AE09EAF238827760040E87E /* Studies+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA9238827750040E87E /* Studies+CoreDataProperties.swift */; };
@@ -157,6 +158,7 @@
 		6AD541E2238C364A00DF16DA /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryContentController.swift; sourceTree = "<group>"; };
+		6AD541F82394075F00DF16DA /* UserImageFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageFetch.swift; sourceTree = "<group>"; };
 		6AE09EA7238827750040E87E /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Studies+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6AE09EA9238827750040E87E /* Studies+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Studies+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -222,14 +224,12 @@
 				6ACB980623866FB80070CCF6 /* ViewControllers */,
 				6ACB980423866F8C0070CCF6 /* Storyboards */,
 				6A7E6636238430AD00F8340C /* AppDelegate.swift */,
-				6A7D3411238830630079BFB7 /* Constants.swift */,
 				6A7E6640238430AF00F8340C /* Assets.xcassets */,
 				6A7E6645238430AF00F8340C /* Info.plist */,
 				6A7E663D238430AD00F8340C /* StrawberryPie.xcdatamodeld */,
-        6A367A1B238C2D750006D64A /* RealmDB.swift */,
-        6A7D3411238830630079BFB7 /* Constants.swift */,
+				6A367A1B238C2D750006D64A /* RealmDB.swift */,
+				6A7D3411238830630079BFB7 /* Constants.swift */,
 				6AD541E2238C364A00DF16DA /* Images */,
-
 			);
 			path = StrawberryPie;
 			sourceTree = "<group>";
@@ -271,11 +271,10 @@
 				6A7E6638238430AD00F8340C /* LoginRegisterController.swift */,
 				6AC642CB2385892500E2906F /* ProfileController.swift */,
 				6857458F238935DE0002A538 /* QAController.swift */,
-        689803DA238A864F00FE39CF /* QaTest.swift */,
-        6AE09EB52389508A0040E87E /* CategoryViewController.swift */,
+				689803DA238A864F00FE39CF /* QaTest.swift */,
+				6AE09EB52389508A0040E87E /* CategoryViewController.swift */,
 				6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */,
 				6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */,
-
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -310,6 +309,7 @@
 				6A9E89B92389461A0069DE71 /* User.swift */,
 				6ACB98092386747A0070CCF6 /* QASession.swift */,
 				6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */,
+				6AD541F82394075F00DF16DA /* UserImageFetch.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -529,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD541F92394075F00DF16DA /* UserImageFetch.swift in Sources */,
 				6AE09EB1238827760040E87E /* Work+CoreDataClass.swift in Sources */,
 				6A9E89E5238946450069DE71 /* QAMessageCell.swift in Sources */,
 				6AD541E5238C49AC00DF16DA /* CollectionViewCell.swift in Sources */,

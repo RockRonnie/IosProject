@@ -16,7 +16,7 @@ class CategoryContentController: UIViewController {
     var categoryObject = [NSManagedObject]()
     
     let button = UIButton()
-    
+    //Alert function for the the topbar button. Presents summary for the selected category.
     @objc func press() {
         let summary = categoryObject[0].value(forKey: "categorySummary") as! String
         let alert = UIAlertController(title: "Summary", message: summary, preferredStyle: .alert)
