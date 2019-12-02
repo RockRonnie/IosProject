@@ -29,4 +29,7 @@ class CategoryContentController: UIViewController {
         self.title = categoryObject[0].value(forKey: "categoryName") as? String
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Info", style: .plain, target: self, action: #selector(self.press))
     }
+    
+    
+    
 }

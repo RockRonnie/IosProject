@@ -73,7 +73,7 @@ public class Category: NSManagedObject {
             print("There was an error processing your request: \(error)")
         }
     }
-    //Returns the category names in an array of strings
+    //Returns the category names in an array of strings. Sorted
     func getNames() -> Array<String>{
         var names = [String]()
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return [""]}
@@ -90,7 +90,7 @@ public class Category: NSManagedObject {
         }
         return names
     }
-    //Returns category images in an array of UIImages
+    //Returns category images in an array of UIImages. Sorted
     func getImages() ->Array<UIImage>{
         var urls = [UIImage]()
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return urls}
