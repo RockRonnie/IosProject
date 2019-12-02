@@ -53,6 +53,11 @@ class QAController: UIViewController {
             if self.answerSource == nil {
                 self.populateSources()
             }
+//            if let gotMessages = self.chatSource {
+//                print("moi")
+//                let bottomRow = IndexPath(row: gotMessages.count-1, section: 0)
+//                self.qaTable.scrollToRow(at: bottomRow, at: .bottom, animated: true)
+//            }
             self.qaTable.reloadData()
         }
     }
