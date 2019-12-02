@@ -8,8 +8,4 @@
 
 import UIKit
 
-class ExpertCellController: UITableViewCell{
-    
-    
-    
-}
+

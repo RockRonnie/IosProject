@@ -46,13 +46,25 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         return cell
     }
     //Select item and increases the gray border size to indicate selection
-    //TODO add navigation related stuff here
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = UIColor.gray.cgColor
         cell?.layer.borderWidth = 3
         let selectedCategory = category.getNames()[indexPath.item]
         print(selectedCategory)
+        
+    }
+    //Sends data over to CategoryContent 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ToCategoryContent"){
+            let vc = segue.destination as? CategoryContentController
+            let cell = sender as! CollectionViewCell
+            let indexPaths = self.collectionView.indexPath(for: cell)
+            let selected = self.category.getNames()[indexPaths!.item] as String
+            //print(thisThing)
+            vc?.topText = selected
+            vc?.categoryObject = category.getEntity(name: selected)
+        }
     }
     //Deselects the old item and removes its larger border
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

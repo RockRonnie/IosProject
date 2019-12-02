@@ -8,6 +8,8 @@ target 'StrawberryPie' do
   
   # Pods for StrawberryPie
    pod 'RealmSwift'
+   pod 'Alamofire'
+   pod 'SwiftyJSON'
 
   target 'StrawberryPieTests' do
     inherit! :search_paths

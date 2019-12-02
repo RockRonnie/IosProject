@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Category-->
+        <!--Categories-->
         <scene sceneID="NA1-2S-jo8">
             <objects>
                 <viewController id="GdW-G0-lIA" customClass="CategoryViewController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +68,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZBa-hS-58W"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Category" id="QFS-Jk-WCn"/>
+                    <navigationItem key="navigationItem" title="Categories" id="QFS-Jk-WCn"/>
                     <connections>
                         <outlet property="collectionView" destination="298-hh-pmE" id="kiv-bJ-mdT"/>
                     </connections>
