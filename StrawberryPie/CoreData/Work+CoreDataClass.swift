@@ -63,7 +63,7 @@ public class Work: NSManagedObject {
         }
     }
     //Update an existing work object inside core data
-    func updateWorkWithName(oldName: String,newName: String, summary: String??){
+    func updateWorkWithName(oldName: String,newName: String, summary: String?){
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDel.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Work")
@@ -75,6 +75,7 @@ public class Work: NSManagedObject {
                 manage.setValue(newName, forKey: "workPositionName")
                 if let newSummary = summary {
                     manage.setValue(newSummary, forKey: "workSummary")
+                    print("Set summary \(newSummary)")
                 }
                 try managedContext.save()
                 print("Succesfully Updated object to \(newName)")
