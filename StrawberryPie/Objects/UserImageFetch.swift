@@ -7,11 +7,21 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 public class UserImagePost {
     
-    let url = "foxer153.asuscomm.com:3000/upload"
     
+    
+    func requestWith(endUrl: String, imageData: Data?, onCompletion: ((JSON?) -> Void)? = nil, onError: ((Error?)->Void)? = nil) {
+        
+        let url = "foxer153.asuscomm.com:3000/upload"
+        
+        
+        
+    }
+
     
     
     
