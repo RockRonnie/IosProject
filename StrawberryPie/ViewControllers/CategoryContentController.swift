@@ -4,14 +4,14 @@
 //
 //  Created by iosdev on 27/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
-//
+//  Class for handling Category Content view.
 
 import UIKit
 import CoreData
+import RealmSwift
 
 class CategoryContentController: UIViewController {
 
-    
     var topText = String()
     var categoryObject = [NSManagedObject]()
     
@@ -28,20 +28,5 @@ class CategoryContentController: UIViewController {
         super.viewDidLoad()
         self.title = categoryObject[0].value(forKey: "categoryName") as? String
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Info", style: .plain, target: self, action: #selector(self.press))
-        print(topText)
-        
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
