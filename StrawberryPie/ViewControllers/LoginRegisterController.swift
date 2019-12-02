@@ -32,7 +32,7 @@ import RealmSwift
   var user: SyncUser?
   let main = UIStoryboard(name: "Main", bundle: nil)
   let thisUser = User()
-
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -57,6 +57,7 @@ import RealmSwift
     cancelButton.isHidden = true
     changeFormButton.isHidden = false
     infoAddedButton.isHidden = true
+    
     
     // Initial swap of forms to get Loginform to show
     self.signUpFormEnabled = true
@@ -210,7 +211,6 @@ import RealmSwift
   
   // SIGNUP FUNCTION EARLY VERSION, SUBJECT TO CHANGE
   func signUp(_ username: String, _ password: String, _ register: Bool) {
-    let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
     if usernameField.text == "" {
       self.present(customAlert(title: "uname", reason: "Missing username"), animated: true, completion: nil)
     } else if userpasswordField.text == "" {
@@ -248,15 +248,14 @@ import RealmSwift
           self.thisUser.userID = userIdentity
           self.thisUser.userName = username
           try! self.realm.write {
-              self.realm.add(self.thisUser)
+            self.realm.add(self.thisUser)
           }
           let alert = UIAlertController(title: "Customize?", message: "Do you want to customize your profile now?", preferredStyle: .alert)
-          alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in self.advancedSignup(user: self.thisUser) }))
-          alert.addAction(UIAlertAction(title: "Do it later", style: .cancel, handler: nil))
+          alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in self.createUserMoreInfo() }))
+          alert.addAction(UIAlertAction(title: "Do it later", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
           self.present(alert, animated: true)
           print("Realm connection has been setup")
           print("Changing navigators")
-          self.present(loggedIn!, animated:true, completion: nil)
         } else if let error = error {
           print("Signup error!: \(error)")
           self.present(self.customAlert(title: "Signup", reason: "User exists"), animated: true, completion: nil)
@@ -266,9 +265,9 @@ import RealmSwift
         
         
       }
-     
       
-     
+      
+      
     }
   }
   
@@ -279,48 +278,67 @@ import RealmSwift
     
     signUp(username ?? "", password ?? "", true)
   }
+  func createUserMoreInfo() {
+    // SHOW RELEVANT FIELDS
+    self.usernameField.isHidden = true
+    self.userpasswordField.isHidden = false
+    self.userpwagainField.isHidden = false
+    self.firstnameField.isHidden = false
+    self.lastnameField.isHidden = false
+    self.changeFormButton.isHidden = true
+    self.signUpButton.isHidden = true
+    self.cancelButton.isHidden = false
+    self.userEmailField.isHidden = false
+    self.userXtraInfoField.isHidden = false
+    self.userinfoField.isHidden = false
+    self.infoAddedButton.isHidden = false
+  }
   func cancelRegister() {
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
     self.present(loggedIn!, animated: true, completion: nil)
   }
-  func advancedSignup(user: User) {
-    RealmDB.sharedInstance.user = self.user
+  func advancedSignup() {
+
     // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
+    
     let config = self.user?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
     if let cfg = config {
       self.realm = try! Realm(configuration: cfg)
     } else {
-      print("Error")
-      return
+      self.present(self.customAlert(title: "Signup Error", reason: "Signup Error"), animated: true, completion: nil)
     }
-    self.changeFormButton.isHidden = true
-    self.signUpButton.isHidden = true
-    self.cancelButton.isHidden = false
-    self.userXtraInfoField.isHidden = false
-    self.userinfoField.isHidden = false
-    signUpFormEnabled = true
+    let userUpdatedObj = RealmDB.sharedInstance.getUser()
     realm = RealmDB.sharedInstance.realm
-    let users = realm.objects(User.self)
-    
-    for user in users {
-      print(user)
-      let thisUserUpdated = User()
-      if user.userID == RealmDB.sharedInstance.user?.identity {
-        thisUserUpdated.firstName = firstnameField.text ?? ""
-        thisUserUpdated.lastName = lastnameField.text ?? ""
-        thisUserUpdated.info = userinfoField.text ?? ""
-        // EXPERT STATUS TO BE IMPLEMENTED LATER
-        thisUserUpdated.userExpert = false
-        thisUserUpdated.userEmail = userEmailField.text ?? ""
-        thisUserUpdated.info = userinfoField.text ?? ""
-        thisUserUpdated.extraInfo = userXtraInfoField.text ?? ""
-        }
-      try! self.realm.write {
-        self.realm.add(thisUserUpdated, update: Realm.UpdatePolicy.modified)
+    if self.userpasswordField.text != "" && self.userpwagainField.text != "" {
+    try! self.realm.write {
+      userUpdatedObj?.firstName = self.firstnameField.text ?? ""
+      userUpdatedObj?.lastName = self.lastnameField.text ?? ""
+      userUpdatedObj?.info = self.userinfoField.text ?? ""
+      // EXPERT STATUS TO BE IMPLEMENTED LATER
+      userUpdatedObj?.userExpert = false
+      userUpdatedObj?.userEmail = self.userEmailField.text ?? ""
+      userUpdatedObj?.info = self.userinfoField.text ?? ""
+      userUpdatedObj?.extraInfo = self.userXtraInfoField.text ?? ""
+      if let userUpdate = userUpdatedObj {
+        self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
+        
+        
+        // Forced cast, userpasswordField.text has to exist here
+        } else {
+        print("No changes")
+      }
+    }
+      let alert = UIAlertController(title: "Success!", message: "Registration successful!", preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
+      self.present(alert, animated: true)
+    } else {
+      self.present(self.customAlert(title: "Missing password", reason: "Missing fields"), animated: true, completion: nil)
+      
     }
     
-    }
   }
+  
+  
   // Change between login / register
   func switchForm() {
     self.changeFormButton.isHidden = false
@@ -328,12 +346,7 @@ import RealmSwift
       // LOGIN Form chosen -> Show login fields
       signUpFormEnabled = false
       self.messageLabel.text = "Please enter your login information"
-      self.firstnameField.isHidden = true
-      self.lastnameField.isHidden = true
       self.userpwagainField.isHidden = true
-      self.userinfoField.isHidden = true
-      self.userXtraInfoField.isHidden = true
-      self.userEmailField.isHidden = true
       self.loginButton.isHidden = false
       self.signUpButton.isHidden = true
       changeFormButton.setTitle("Sign up instead", for: .normal)
@@ -342,18 +355,13 @@ import RealmSwift
       signUpFormEnabled = true
       self.messageLabel.text = "Please fill out the registration form"
       // SIGNUP Form chosen -> Show signup fields
-
+      
       self.userpwagainField.isHidden = false
-      self.firstnameField.isHidden = false
-      self.lastnameField.isHidden = false
-      self.userXtraInfoField.isHidden = true
-      self.userEmailField.isHidden = false
-      self.userinfoField.isHidden = true
       self.loginButton.isHidden = true
       self.signUpButton.isHidden = false
       changeFormButton.setTitle("Already have an account? Login instead", for: .normal)
     }
-  
+    
     
     // Getters
   }
