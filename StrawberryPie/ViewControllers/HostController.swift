@@ -119,7 +119,7 @@ class HostController: UIViewController {
     //functions for creating the Realm objects
     func createSession() -> QASession{
         print("Creating Session object")
-        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "category": selectedCategory])
+        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "sessionCategory": selectedCategory])
             return newSession
     }
     func createChat() -> Chat {
@@ -299,8 +299,8 @@ extension HostController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedButton.setTitle(allCategories[indexPath.row], for: .normal)
         setCategory(category: allCategories[indexPath.row])
+        selectedButton.setTitle(allCategories[indexPath.row], for: .normal)
         removeTransparentView()
     }
 }
