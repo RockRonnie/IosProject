@@ -19,6 +19,7 @@ class QAController: UIViewController {
     var answerSource: List<ChatMessage>?
     var questionSource: List<ChatMessage>?
     var chatSource: List<ChatMessage>?
+    var userSource: User?
     
     // Tabin valinta, oletuksena aihe
     var selectedTab = "topic"
@@ -52,6 +53,12 @@ class QAController: UIViewController {
             if self.answerSource == nil {
                 self.populateSources()
             }
+//            if let gotMessages = self.chatSource {
+//                print("moi")
+//                let bottomRow = IndexPath(row: gotMessages.count-1, section: 0)
+//                self.qaTable.scrollToRow(at: bottomRow, at: .bottom, animated: true)
+//            }
+            self.qaTable.reloadData()
         }
     }
     
@@ -72,8 +79,13 @@ class QAController: UIViewController {
             answerSource = qaBoard.QAs[0].answer
             }
         }
+        // Käyttäjä
+        userSource = RealmDB.sharedInstance.getUser()
+        print (userSource)
+        if let gotUser = userSource {
+            print("USERNAME", gotUser.userName)
+        }
         print ("Ajettu onnistuneesti")
-        
     }
     
     func testiTesti() -> Int {
@@ -120,9 +132,9 @@ class QAController: UIViewController {
     @IBOutlet weak var messageField: UITextField!
     
     @IBAction func sendButton(_ sender: UIButton) {
-        // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin
+        // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username
         let newMessage = ChatMessage()
-        newMessage.body = messageField.text ?? "Tapahtui virhe"
+        newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
         messageToRealm(data: newMessage)
     }
     

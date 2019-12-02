@@ -82,10 +82,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         return experts.count
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
-        
        let row = indexPath.row
- 
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,7 +101,6 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     func setupExperts(){
         let sessions = realm.objects(QASession.self)
         experts = Array(sessions)
-        
     }
     
   
