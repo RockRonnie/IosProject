@@ -44,7 +44,6 @@ class QAController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         layout.minimumInteritemSpacing = 5
         layout.itemSize = CGSize(width: (hostCardCV.frame.size.width - 20)/2, height: hostCardCV.frame.size.height)
-    
     }
     
     func setupNotification() {
@@ -53,14 +52,21 @@ class QAController: UIViewController {
             if self.answerSource == nil {
                 self.populateSources()
             }
-//            if let gotMessages = self.chatSource {
-//                print("moi")
-//                let bottomRow = IndexPath(row: gotMessages.count-1, section: 0)
-//                self.qaTable.scrollToRow(at: bottomRow, at: .bottom, animated: true)
-//            }
             self.qaTable.reloadData()
+            self.scrollToBottom()
+            
+            }
+        }
+    
+    func scrollToBottom() {
+        if let gotChat = self.chatSource {
+            if gotChat.count > 0 {
+                let indexPath = NSIndexPath(row: gotChat.count - 1, section: 0)
+                self.qaTable.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+            }
         }
     }
+    
     
     func populateSources() {
         print ("Source data")
@@ -124,9 +130,12 @@ class QAController: UIViewController {
     @IBAction func chatButton(_ sender: UIButton) {
         // Vaihdetaan cellin pohjaa ja reloadData()
         selectedTab = "chat"
+        if userSource?.userName != "default" && userSource?.userName != nil {
         messageField.isHidden = false
         sendButton.isHidden = false
+        }
         qaTable.reloadData()
+        scrollToBottom()
     }
     
     @IBOutlet weak var messageField: UITextField!
