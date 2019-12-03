@@ -26,6 +26,7 @@
 		6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B723952F0A000917B0 /* ExpertCellController.swift */; };
 		6A0178BA23952F15000917B0 /* HomeExpertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */; };
 		6A0D53B42395858100706AF9 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0D53B22395858100706AF9 /* CategoryTableViewCell.xib */; };
+		6A48A9BC2396470600A962DA /* PickCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48A9BB2396470600A962DA /* PickCategoryCell.swift */; };
 		6A7D3412238830630079BFB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D3411238830630079BFB7 /* Constants.swift */; };
 		6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6636238430AD00F8340C /* AppDelegate.swift */; };
 		6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6638238430AD00F8340C /* LoginRegisterController.swift */; };
@@ -113,8 +114,7 @@
 		6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeExpertTableCell.swift; sourceTree = "<group>"; };
 		6A0D53B22395858100706AF9 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		6A367A1B238C2D750006D64A /* RealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
-		6A38A7352395391C00577E9F /* CategoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableView.swift; sourceTree = "<group>"; };
-		6A38A737239574DD00577E9F /* PickCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCategoryCell.swift; sourceTree = "<group>"; };
+		6A48A9BB2396470600A962DA /* PickCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickCategoryCell.swift; sourceTree = "<group>"; };
 		6A7D3411238830630079BFB7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6A7E6633238430AD00F8340C /* StrawberryPie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrawberryPie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7E6636238430AD00F8340C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -317,6 +317,7 @@
 		6ACB980723866FC40070CCF6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6A48A9BB2396470600A962DA /* PickCategoryCell.swift */,
 				6A9E89D7238946450069DE71 /* ChatMessageCell.swift */,
 				6A9E89D5238946450069DE71 /* FeedItem.swift */,
 				6A9E89D4238946450069DE71 /* FeedTable.swift */,
@@ -677,7 +678,6 @@
 				6AE09EB2238827760040E87E /* Category+CoreDataProperties.swift in Sources */,
 				6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */,
 				6A9E89E3238946450069DE71 /* ChatMessageCell.swift in Sources */,
-				6A38A7362395391C00577E9F /* CategoryTableView.swift in Sources */,
 				6A9E89C82389461B0069DE71 /* profession.swift in Sources */,
 				68B0A18F2391934B00404D7A /* RealmDB.swift in Sources */,
 				6A9E89CA2389461B0069DE71 /* QA.swift in Sources */,
@@ -687,7 +687,7 @@
 				6AE09EB62389508A0040E87E /* CategoryViewController.swift in Sources */,
 				6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */,
 				6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */,
-				6A38A738239574DD00577E9F /* PickCategoryCell.swift in Sources */,
+				6A48A9BC2396470600A962DA /* PickCategoryCell.swift in Sources */,
 				6AC642CC2385892500E2906F /* ProfileController.swift in Sources */,
 				68B0A191239193A900404D7A /* HostController.swift in Sources */,
 				685D424823895F3700059014 /* QaHostCardTable.swift in Sources */,
