@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginRegisterController.swift
 //  StrawberryPie
 //
 //  Created by Markus Saronsalo on 19/11/2019, modified on 27/11/2019.
@@ -9,7 +9,9 @@
 import UIKit
 import RealmSwift
 
-@objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate {
+@objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+  
+  @IBOutlet weak var categoryTable: UITableView!
   
   var signUpFormEnabled = Bool()
   let messageLabel = UILabel()
@@ -18,6 +20,7 @@ import RealmSwift
   let signUpButton = UIButton(type: .roundedRect)
   let cancelButton = UIButton(type: .roundedRect)
   let infoAddedButton = UIButton(type: .roundedRect)
+  
   let errorLabel = UILabel()
   let userEmailField = UITextField()
   let usernameField = UITextField()
@@ -28,6 +31,8 @@ import RealmSwift
   let userpasswordField = UITextField()
   let userpwagainField = UITextField()
   
+  var category = Category()
+  
   var realm: Realm!
   var user: SyncUser?
   let main = UIStoryboard(name: "Main", bundle: nil)
@@ -36,14 +41,10 @@ import RealmSwift
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    usernameField.delegate = self
-    userpasswordField.delegate = self
-    userinfoField.delegate = self
-    userpwagainField.delegate = self
-    firstnameField.delegate = self
-    lastnameField.delegate = self
-    
+    self.categoryTable.delegate = self
+    self.categoryTable.dataSource = self
+    self.categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+   
     usernameField.isHidden = false
     userpasswordField.isHidden = false
     userinfoField.isHidden = true
@@ -58,9 +59,9 @@ import RealmSwift
     changeFormButton.isHidden = false
     infoAddedButton.isHidden = true
     
-    
     // Initial swap of forms to get Loginform to show
     self.signUpFormEnabled = true
+    
     self.switchForm()
     
     // Container, can be used for additional information on the screen, is built programmatically
@@ -111,6 +112,7 @@ import RealmSwift
     container.addArrangedSubview(userinfoField)
     container.addArrangedSubview(userXtraInfoField)
     
+    
     // Buttons
     // LOGIN BUTTON
     loginButton.setTitle("Login", for: .normal)
@@ -141,15 +143,44 @@ import RealmSwift
       container.centerYAnchor.constraint(equalTo: guide.centerYAnchor, constant: -100),
       
       ])
-    
-    
-    
   }
+  
   // NOT IN USE, might be used later
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
   }
-  // Login function, check for username and password
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return category.getNames().count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    cell.textLabel?.text = category.getNames()[indexPath.item]
+    for i in thisUser.userInterests {
+      if i == category.getNames()[indexPath.item] {
+        cell.backgroundColor = UIColor.red
+      }
+    }
+    return cell
+  }
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 35
+  }
+  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
+    
+    let selectedCategory = category.getNames()[indexPath.item]
+    print(selectedCategory)
+    thisUser.userInterests.append(selectedCategory)
+    
+  }
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      thisUser.userInterests.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+  
+  }
+// Login function, check for username and password
   func logIn(_ username: String,_ password: String,_ register: Bool) {
     if usernameField.text == "" {
       self.present(customAlert(title: "uname", reason: "Missing username"), animated: true, completion: nil)
@@ -171,8 +202,7 @@ import RealmSwift
     return alert
     
   }
-  
-  // Login function with username and password
+// Login function with username and password
   func loginRealm(_ username: String,_ password: String,_ register: Bool){
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
     // Try Logging in
