@@ -73,7 +73,7 @@ class QAController: UIViewController {
         // Title
         titleLabel.text = currentSession?.title ?? "No title"
         // Aihe
-        topicSource = currentSession?.sessionDescription ?? "Topic text missing"
+        topicSource = currentSession?.intro[0].body ?? "Topic text missing"
         // Chatviestit
         if let chat = currentSession?.chat[0] {
             chatSource = chat.chatMessages
@@ -220,26 +220,6 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item + 1)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        var width:CGFloat?
-//        var height:CGFloat?
-//
-//
-//        if indexPath.row == 0 {
-//            print ("indexpath oli 0")
-//            width = (view.frame.size.width / 5)
-//            height = view.frame.size.height / 2
-//        }
-//        else {
-//            print ("myös elsessä käytiin")
-//            width = ((view.frame.width / 5) * 3)
-//            height = view.frame.height / 2
-//        }
-//
-//        return CGSize(width: width ?? 10.0, height: height ?? 10.0)
-//    }
 
     // Päivitetään tableviewiin tavarat sisälle
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
