@@ -70,18 +70,24 @@ public class Work: NSManagedObject {
         fetchRequest.predicate = NSPredicate(format: "workPositionName == %@", oldName)
         do {
             let result = try managedContext.fetch(fetchRequest) as! [NSManagedObject]
-            if (result.count > 0){
+            if (result.count == 1){
                 let manage = result[0]
+                fetchRequest.predicate = NSPredicate(format: "workPositionName == %@", newName)
+                let newNameResult = try managedContext.fetch(fetchRequest) as! [NSManagedObject]
+                if (newNameResult.count == 0) {
                 manage.setValue(newName, forKey: "workPositionName")
                 if let newSummary = summary {
                     manage.setValue(newSummary, forKey: "workSummary")
                     print("Set summary \(newSummary)")
+                    try managedContext.save()
+                }
                 }
                 try managedContext.save()
                 print("Succesfully Updated object to \(newName)")
             } else {
                 print("Object not found. Didn't update.")
             }
+            
         } catch let error as NSError {
             print("There was an error processing your request: \(error)")
         }
