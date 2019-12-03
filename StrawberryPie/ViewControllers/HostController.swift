@@ -143,7 +143,7 @@ class HostController: UIViewController {
     //functions for creating the Realm objects
     func createSession() -> QASession{
         print("Creating Session object")
-        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionDesc ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "sessionCategory": selectedCategory, "profession": selectedProfession ?? "no profession", "education": selectedEducation ?? "no education"])
+        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionDesc ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "sessionCategory": selectedCategory ?? "No category", "profession": selectedProfession ?? "no profession", "education": selectedEducation ?? "no education"])
             return newSession
     }
     func createChat() -> Chat {
