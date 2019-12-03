@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ciD-od-2sG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0x7-Uc-ffs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,24 @@
     </dependencies>
     <scenes>
         <!--Home-->
+        <scene sceneID="GRS-0E-vK9">
+            <objects>
+                <navigationController id="0x7-Uc-ffs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" id="72e-ts-Nwy"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JnQ-8i-Aj2">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ciD-od-2sG" kind="relationship" relationship="rootViewController" id="c2S-pX-Dnx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QbT-0n-xAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-812" y="-986"/>
+        </scene>
+        <!--Home Controller-->
         <scene sceneID="KaU-cz-iDh">
             <objects>
                 <viewController storyboardIdentifier="homestoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ciD-od-2sG" customClass="HomeController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get help from the experts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noi-15-Wgc">
-                                <rect key="frame" x="0.0" y="190" width="196" height="21"/>
+                                <rect key="frame" x="0.0" y="234" width="196" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="QMP-d5-QcU"/>
                                     <constraint firstAttribute="width" constant="196" id="R8T-5l-OAj"/>
@@ -29,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yUB-SZ-ADC" customClass="ExpertTableViewController" customModule="StrawberryPie" customModuleProvider="target">
-                                <rect key="frame" x="16" y="219" width="343" height="448"/>
+                                <rect key="frame" x="16" y="263" width="343" height="355"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpertCell" rowHeight="128" id="ZdF-1Z-E8r" customClass="ExpertCellController" customModule="StrawberryPie" customModuleProvider="target">
@@ -106,20 +124,20 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-fE-m1Z">
-                                <rect key="frame" x="238" y="185" width="137" height="30"/>
+                                <rect key="frame" x="238" y="229" width="137" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="uhI-Ap-FkS" kind="show" identifier="QASessionButton" id="wRj-IT-WS9"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igm-3d-w0q">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Team Työkkäri ReEdu" id="6UC-6F-lzY"/>
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" restorationIdentifier="HomeSearchBar" translatesAutoresizingMaskIntoConstraints="NO" id="AMi-cQ-h6c">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="eEh-RC-2Zg"/>
                                 </constraints>
@@ -152,7 +170,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WKZ-cr-NjJ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="72e-ts-Nwy"/>
+                    <navigationItem key="navigationItem" id="frC-6D-hOk"/>
                     <connections>
                         <outlet property="ExpertTableView" destination="yUB-SZ-ADC" id="5IM-n8-cAL"/>
                         <outlet property="searchDisplayController" destination="K2O-F1-rgq" id="PPw-dn-zBu"/>
