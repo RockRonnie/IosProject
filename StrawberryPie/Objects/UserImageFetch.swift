@@ -11,10 +11,11 @@ import Alamofire
 import SwiftyJSON
 
 public class UserImagePost {
+    
+    let url = "http://foxer153.asuscomm.com:3000/upload" //API URL
+
 
     func requestWith(endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((JSON?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
-        
-        let url = "http://foxer153.asuscomm.com:3000/upload" //API URL
         
         let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
         
@@ -45,4 +46,18 @@ public class UserImagePost {
             }
         }
     }
+    
+    func getPic(image: String, onCompletion: ((UIImage?) -> Void)? = nil) {
+        var resultImage: UIImage?
+        print("haetaan kuvaa")
+        Alamofire.request("http://foxer153.asuscomm.com/images/53bf7ebb568d8b78f51a8bbcf295a8b8").responseData(completionHandler: { response in
+            if let imageData = response.data
+            {
+                print ("Kuva löytyi")
+                resultImage = UIImage(data: imageData)
+                print(response)
+                onCompletion?(resultImage)
+            }
+        })
+}
 }
