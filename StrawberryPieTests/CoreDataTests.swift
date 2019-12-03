@@ -5,6 +5,7 @@
 //  Created by iosdev on 03/12/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+//  CoreData Testing class.
 
 import Foundation
 import XCTest
@@ -50,18 +51,6 @@ class CoreDataTests: XCTestCase {
     }
     
     func testUpdate(){
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
-        //work.deleteWorkWithName(name: "Police")
         work.createWorkPosition(name: "Engineer")
         work.updateWorkWithName(oldName: "Engineer", newName: "Police", summary: nil)
         let result = work.getWorkPositionWithName(name: "Police")
