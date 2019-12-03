@@ -23,6 +23,7 @@ class HostController: UIViewController {
     
     var sessionTitle: String?
     var sessionIntro: String?
+    var sessionDesc: String?
     var objectCount = 0
     var createdSession: QASession?
     var realm: Realm!
@@ -52,10 +53,7 @@ class HostController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(PickCategoryCell.self, forCellReuseIdentifier: "Cell")
-        
     }
-    
-    
     
     func addTransparentView(frames: CGRect) {
         let window = UIApplication.shared.keyWindow
@@ -119,7 +117,7 @@ class HostController: UIViewController {
     //functions for creating the Realm objects
     func createSession() -> QASession{
         print("Creating Session object")
-        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "sessionCategory": selectedCategory])
+        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionDesc ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "sessionCategory": selectedCategory])
             return newSession
     }
     func createChat() -> Chat {
@@ -133,12 +131,13 @@ class HostController: UIViewController {
             let newUser = User(value:["userID": thisUser ?? "dummyuser" ,"userName": "user\(objectCount)", "firstName": "firstname user\(objectCount)", "lastName": "lastname user\(objectCount)", "info": "info for user \(objectCount)"])
             return newUser
     }
-     */
-
+ 
+    
     func getUser(){
             let foundUser = self.realm.objects(User.self).filter("userID = %@", thisUser ?? "thisone").first
             self.thisUserObject = foundUser
     }
+     */
     func createIntro() -> Intro {
         print("Creating Session Intro object")
         let newIntro = Intro(value: ["title": sessionTitle ?? "Session Title", "body": sessionIntro ?? "Session intro"])
@@ -238,10 +237,21 @@ extension HostController: UITextViewDelegate{
         } // became first responder
         
         func textViewShouldEndEditing(_ textView: UITextView) -> Bool{
-            sessionIntro = textView.text
             print("Textfield should end editing")
-            if(sessionIntro != nil){
-                return true
+            if (textView == introTextView){
+                sessionIntro = textView.text
+                if(sessionIntro != nil){
+                    return true
+                }else{
+                return false
+                }
+            }else if(textView == descTextView){
+                sessionDesc = textView.text
+                if(sessionDesc != nil){
+                    return true
+                }else{
+                    return false
+                }
             }else{
                 return false
             }
@@ -249,18 +259,26 @@ extension HostController: UITextViewDelegate{
         
         func textViewDidEndEditing(_ textView: UITextView){
             print("textfield did end editing")
-            if(sessionIntro != nil){
-                textView.resignFirstResponder()
-            }else{
-                print("no name selected")
-                textView.becomeFirstResponder()
+
+            if (textView == introTextView){
+                if(sessionIntro != nil){
+                    textView.resignFirstResponder()
+                }else{
+                    print("no intro")
+                    textView.becomeFirstResponder()
+                }
+            }else if(textView == descTextView){
+                if(sessionIntro != nil){
+                    textView.resignFirstResponder()
+                }else{
+                    print("no description")
+                    textView.becomeFirstResponder()
+                }
             }
-    }
+        }
             func textView(_ textView: UITextView, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
                 print("changing characters")
-                let allowedCharacters = CharacterSet.letters
-                let characterSet = CharacterSet(charactersIn: string)
-                return allowedCharacters.isSuperset(of: characterSet)
+                return true
             } // return NO to not change text
             
             
@@ -270,17 +288,31 @@ extension HostController: UITextViewDelegate{
             
             func textViewShouldReturn(_ textView: UITextView) -> Bool{
                 print("returning")
-                sessionTitle = textView.text
-                if (sessionTitle != ""){
-                    textView.resignFirstResponder()
-                    return true
+                if(textView == introTextView){
+                    sessionIntro = textView.text
+                    if (sessionTitle != ""){
+                        textView.resignFirstResponder()
+                        return true
+                    }else{
+                        let alert = UIAlertController(title: "Incorrect title", message: "Please input a proper session title", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated:true,completion: nil)
+                        return false
+                    }
+                }else if(textView == descTextView){
+                    sessionDesc = textView.text
+                    if (sessionDesc != ""){
+                        textView.resignFirstResponder()
+                        return true
+                    }else{
+                        let alert = UIAlertController(title: "Incorrect title", message: "Please input a proper session title", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated:true,completion: nil)
+                        return false
+                    }
                 }else{
-                    let alert = UIAlertController(title: "Incorrect title", message: "Please input a proper session title", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated:true,completion: nil)
                     return false
                 }
-                
             } // called when 'return' key pressed. return NO to ignore.
 }
 extension HostController: UITableViewDelegate, UITableViewDataSource {
