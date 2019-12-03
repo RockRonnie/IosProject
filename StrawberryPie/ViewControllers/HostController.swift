@@ -28,16 +28,17 @@ class HostController: UIViewController {
     var sessionTitle: String?
     var sessionIntro: String?
     var sessionDesc: String?
-    var objectCount = 0
+    var selectedCategory: String?
+    var selectedProfession: String?
+    var selectedEducation: String?
+    
     var createdSession: QASession?
     var realm: Realm!
     var thisUser: String?
     var thisUserObject: User?
     var category = Category()
     var allCategories: Array<String> = []
-    var selectedCategory: String?
-    var selectedProfession: String?
-    var selectedEducation: String?
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
