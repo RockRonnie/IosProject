@@ -14,7 +14,6 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var notificationToken: NotificationToken?
 
-    @IBOutlet weak var HottestStudiesTableView: UITableView!
     var user: SyncUser?
     var realm: Realm!
     
@@ -33,6 +32,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         ExpertTableView.reloadData()
         //print(Realm.Configuration.defaultConfiguration.fileURL)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "QAController") {
             let selectedRow = ExpertTableView.indexPathForSelectedRow?.row
@@ -48,31 +48,6 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
             
         }
     }
-    /*
-    @IBAction func TestButton(_ sender: Any) {
-        
-        let feedOne = Feed()
-        feedOne.title = "Police"
-        feedOne.name = "Dog Boy"
-        feedOne.desc = "Skilled dog telling about the job..."
-        
-        //let feedTwo = Feed()
-        //feedTwo.title = "Bus driver"
-        //feedTwo.name = "Cheeky Brat"
-        //feedTwo.desc = "I'm an old bus driver who will be telling about my work..."
-        
-        //let feedThree = Feed()
-        //feedThree.title = "Drug Lord"
-        //feedThree.name = "Madam Mister"
-        //feedThree.desc = "I will be telling about my life on the street and how you can turn it around..."
-        
-        try! realm!.write {
-          realm!.add(feedOne)
-          //realm.add(feedTwo)
-          //realm.add(feedThree)
-        }
-    }
-    */
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

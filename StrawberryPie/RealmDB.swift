@@ -15,7 +15,7 @@ class RealmDB {
     var setup = false
     
     static let sharedInstance = RealmDB()
-    
+   /*
   func setupRealm(_ username: String,_ password: String,_ register: Bool) {
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
         SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: Constants.AUTH_URL) { user, error in
@@ -42,7 +42,7 @@ class RealmDB {
           }
         }
     }
-    
+    */
     func getUser() -> User? {
         let userObject = self.realm.objects(User.self).filter("userID = %@", user?.identity ?? "default").first
         return userObject
