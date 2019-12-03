@@ -37,6 +37,7 @@
 		6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E66672384368600F8340C /* .gitlab-ci.yml */; };
 		6A8C5DD3238AC59600C321E5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8C5DD2238AC59600C321E5 /* Host.storyboard */; };
 		6A8C5DD4238AC59600C321E5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8C5DD2238AC59600C321E5 /* Host.storyboard */; };
+		6A8DEA7A23967B3200B42FBB /* HostControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8DEA7923967B3200B42FBB /* HostControllerTest.swift */; };
 		6A9E89C02389461B0069DE71 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B7238946190069DE71 /* Intro.swift */; };
 		6A9E89C22389461B0069DE71 /* QAMessageBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B8238946190069DE71 /* QAMessageBoard.swift */; };
 		6A9E89C42389461B0069DE71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B92389461A0069DE71 /* User.swift */; };
@@ -130,6 +131,7 @@
 		6A7E6650238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7E66672384368600F8340C /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
 		6A8C5DD2238AC59600C321E5 /* Host.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Host.storyboard; sourceTree = "<group>"; };
+		6A8DEA7923967B3200B42FBB /* HostControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostControllerTest.swift; sourceTree = "<group>"; };
 		6A9E89B7238946190069DE71 /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		6A9E89B8238946190069DE71 /* QAMessageBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAMessageBoard.swift; sourceTree = "<group>"; };
 		6A9E89B92389461A0069DE71 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		6A7E664D238430AF00F8340C /* StrawberryPieTests */ = {
 			isa = PBXGroup;
 			children = (
+				6A8DEA7923967B3200B42FBB /* HostControllerTest.swift */,
 				684EEE1E2392847B00D68EC6 /* QAControllerTest.swift */,
 				6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */,
 				6A7E6650238430AF00F8340C /* Info.plist */,
@@ -299,8 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */,
-				6A0178B723952F0A000917B0 /* ExpertCellController.swift */,
 				6A9E89E72389466A0069DE71 /* HostController.swift */,
+				6A0178B723952F0A000917B0 /* ExpertCellController.swift */,
 				6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */,
 				6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */,
 				6A9E89E82389466A0069DE71 /* QASessionController.swift */,
@@ -703,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */,
+				6A8DEA7A23967B3200B42FBB /* HostControllerTest.swift in Sources */,
 				684EEE1F2392847B00D68EC6 /* QAControllerTest.swift in Sources */,
 				6A48A9BE2396616F00A962DA /* CoreDataTests.swift in Sources */,
 			);
