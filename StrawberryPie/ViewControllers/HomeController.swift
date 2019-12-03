@@ -27,6 +27,7 @@ class HomeController: UIViewController {
     var upcomingSessions: Results<QASession>?
     var liveSessions: Results<QASession>?
     var archivedSessions: Results<QASession>?
+    var expertImage: UIImage?
     
     var states: Array<String> = ["live","upcoming","archived"]
     var selectedState: String?
@@ -75,12 +76,25 @@ class HomeController: UIViewController {
     func setupExperts(){
         getSessions()
         getState()
+        getPic()
     }
     func getSessions(){
         liveSessions = realm.objects(QASession.self).filter("live = true")
         upcomingSessions = realm.objects(QASession.self).filter("upcoming = true")
         archivedSessions = realm.objects(QASession.self).filter("archived = true")
     }
+    
+    func getPic() {
+        let imageProcessor = UserImagePost()
+        imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
+            if let result = resultImage {
+                print("kuva saatu")
+                self.expertImage = result
+                self.ExpertTableView.reloadData()
+            }
+        }
+        )}
+    
     func getState(){
         switch selectedState {
         case "live":
@@ -223,9 +237,9 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         
             var object: QASession
             object = self.sessions[indexPath.row] as QASession
-        
+            cell.expertImage?.image = expertImage
             cell.expertDesc?.text = object.sessionDescription
-            cell.expertName?.text = object.host[0].userID
+            cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.expertTitle?.text = object.title
             //cell.expertImage?
             return cell

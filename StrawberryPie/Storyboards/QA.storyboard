@@ -76,9 +76,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="messageField:" destination="rbh-wZ-ci6" eventType="editingDidEnd" id="Uoe-Pc-pvs"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9P-ZH-Ho3">
                                 <rect key="frame" x="268" y="609" width="36" height="30"/>

@@ -102,8 +102,10 @@ class QAController: UIViewController {
             hostEducation = currentSession?.education
         }
         // Host avatar
+        if hostImage == nil {
         getPic()
         print ("Ajettu onnistuneesti")
+        }
     }
     
     func testiTesti() -> Int {
@@ -142,6 +144,10 @@ class QAController: UIViewController {
                 }
             }
         )}
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
         
     
     deinit {
