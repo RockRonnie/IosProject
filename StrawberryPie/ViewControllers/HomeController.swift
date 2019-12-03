@@ -10,26 +10,38 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class HomeController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class HomeController: UIViewController {
+    
+    @IBOutlet weak var ExpertTableView: ExpertTableViewController!
+    @IBOutlet weak var filterButton: UIButton!
+    let transparentView = UIView()
+    let filterView = UITableView()
+    var selectedView = UITextView()
     
     var notificationToken: NotificationToken?
 
     var user: SyncUser?
     var realm: Realm!
     
-    lazy var experts: Array<QASession> = []
-    var sessions: Results<QASession>?
+    lazy var sessions: Array<QASession> = []
+    var upcomingSessions: Results<QASession>?
+    var liveSessions: Results<QASession>?
+    var archivedSessions: Results<QASession>?
     
-    @IBOutlet weak var ExpertTableView: ExpertTableViewController!
+    var states: Array<String> = ["live","upcoming","archived"]
+    var selectedState: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(RealmDB.sharedInstance.setup)
         setupRealm("default", "default" , false)
-        
+        initialState()
         ExpertTableView.dataSource = self
         ExpertTableView.delegate = self
         ExpertTableView.reloadData()
+        filterView.delegate = self
+        filterView.dataSource = self
+        filterView.register(PickCategoryCell.self, forCellReuseIdentifier: "Cell")
         //print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     
@@ -38,7 +50,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
             let selectedRow = ExpertTableView.indexPathForSelectedRow?.row
             var realmSession: QASession?
             if let selectedRow = selectedRow {
-                realmSession = self.experts[selectedRow]
+                realmSession = self.sessions[selectedRow]
             }
             let destinationVC = segue.destination as? QAController
             
@@ -49,36 +61,44 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    @IBAction func filterAction(_ sender: UIButton) {
+        addTransparentView(frames: filterButton.frame)
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return experts.count
+    func setState(state: String){
+        selectedState = state
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
-       let row = indexPath.row
+    func initialState(){
+        setState(state: "live")
+        filterButton.setTitle(selectedState, for: .normal)
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
-        
-        var object: QASession
-        object = self.experts[indexPath.row] as QASession
-        
-        cell.expertDesc?.text = object.sessionDescription
-        cell.expertName?.text = object.host[0].userID
-        cell.expertTitle?.text = object.title
-        //cell.expertImage?
-        
-        return cell
-    }
+ 
     func setupExperts(){
-        let sessions = realm.objects(QASession.self)
-        experts = Array(sessions)
+        getSessions()
+        getState()
+    }
+    func getSessions(){
+        liveSessions = realm.objects(QASession.self).filter("live = true")
+        upcomingSessions = realm.objects(QASession.self).filter("upcoming = true")
+        archivedSessions = realm.objects(QASession.self).filter("archived = true")
+    }
+    func getState(){
+        switch selectedState {
+        case "live":
+            if let liveSessions = self.liveSessions {
+                self.sessions = Array(liveSessions)
+            }
+        case "upcoming":
+            if let upcomingSessions = self.upcomingSessions {
+                self.sessions = Array(upcomingSessions)
+            }
+        case "archived":
+            if let archivedSessions = self.archivedSessions {
+                self.sessions = Array(archivedSessions)
+            }
+        default: print("everything went to hell")
+        }
     }
     
-  
     func updateExpertFeed(){
         self.notificationToken = realm?.observe {_,_ in
             self.setupExperts()
@@ -126,10 +146,103 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
                 print(self.user?.identity ?? "No identity")
             }
     }
+    
+    // function for making the category tableview visible
+    func addTransparentView(frames: CGRect) {
+        let window = UIApplication.shared.keyWindow
+        transparentView.frame = window?.frame ?? self.view.frame
+        self.view.addSubview(transparentView)
+        
+        filterView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        self.view.addSubview(filterView)
+        filterView.layer.cornerRadius = 5
+        
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        filterView.reloadData()
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+        transparentView.addGestureRecognizer(tapgesture)
+        transparentView.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.filterView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5, width: frames.width, height: CGFloat(self.states.count * 50))
+        }, completion: nil)
+    }
+    
+    @objc func removeTransparentView() {
+        let frames = filterButton.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.filterView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        }, completion: nil)
+    }
+    
+    
 }
 
 //ExpertTableView
+
 class ExpertTableViewController: UITableView{
     
+}
+extension HomeController: UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+          if(tableView == ExpertTableView){
+            return 1
+            
+          }else{
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if(tableView == ExpertTableView){
+            return sessions.count
+        }else if(tableView == filterView){
+            return states.count
+        }else{
+            return 0
+        }
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
+        if(tableView == ExpertTableView){
+            let row = indexPath.row
+        }else if (tableView == filterView){
+            print("Setting the state for filter")
+            setState(state: states[indexPath.row])
+            print(states[indexPath.row])
+            filterButton.setTitle(states[indexPath.row], for: .normal)
+            removeTransparentView()
+            setupExperts()
+            self.ExpertTableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          if(tableView == ExpertTableView){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
+        
+            var object: QASession
+            object = self.sessions[indexPath.row] as QASession
+        
+            cell.expertDesc?.text = object.sessionDescription
+            cell.expertName?.text = object.host[0].userID
+            cell.expertTitle?.text = object.title
+            //cell.expertImage?
+            return cell
+          }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.textLabel?.text = states[indexPath.row]
+            return cell
+          }
+        
+    }
+    /*
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(tableView == filterView){
+            return 50
+        }else{
+            return 200
+        }
+    }*/
 }
 

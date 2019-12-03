@@ -125,9 +125,9 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-fE-m1Z">
                                 <rect key="frame" x="238" y="229" width="137" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Filter"/>
                                 <connections>
-                                    <segue destination="uhI-Ap-FkS" kind="show" identifier="QASessionButton" id="wRj-IT-WS9"/>
+                                    <action selector="filterAction:" destination="ciD-od-2sG" eventType="touchUpInside" id="wIO-cO-TWE"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igm-3d-w0q">
@@ -173,6 +173,7 @@
                     <navigationItem key="navigationItem" id="frC-6D-hOk"/>
                     <connections>
                         <outlet property="ExpertTableView" destination="yUB-SZ-ADC" id="5IM-n8-cAL"/>
+                        <outlet property="filterButton" destination="8fa-fE-m1Z" id="iPK-4e-FfO"/>
                         <outlet property="searchDisplayController" destination="K2O-F1-rgq" id="PPw-dn-zBu"/>
                     </connections>
                 </viewController>
@@ -198,7 +199,4 @@
             <point key="canvasLocation" x="598" y="-1115"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="e6F-E2-evP"/>
-    </inferredMetricsTieBreakers>
 </document>
