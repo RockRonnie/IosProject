@@ -73,9 +73,16 @@ class HostControllerTest: XCTestCase {
     func testFunctions(){
         host.setCategory(category: "Halp")
         XCTAssert(host.selectedCategory == "Halp", "Host category not set to Halp")
+        let categories = host.allCategories
+        host.setupDatabase()
+        XCTAssert(host.realm != nil, "realm doesnt exist")
+        XCTAssert(host.allCategories != categories, "coredata allcategories doesn't exist")
+        host.setupText()
+        XCTAssert(host.titleTextField.placeholder == "Session title", "Session title placeholder is wrong")
+        XCTAssert(host.profTextField.placeholder == "Profession", "Session profession placeholder is wrong")
+        XCTAssert(host.eduTextField.placeholder == "Education", "Session education placeholder is wrong")
     }
    
-    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }

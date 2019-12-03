@@ -78,19 +78,28 @@ class HostController: UIViewController {
     
     //Button actions for clearing the fields and creating the session
     @IBAction func clearButton(_ sender: UIButton) {
+        clear()
+    }
+    @IBAction func createButton(_ sender: Any) {
+        print("Starting the QA Session creation sequence")
+        validation()
+    }
+    // clearing the fields
+    
+    func clear() {
         introTextView.text = ""
         titleTextField.text = ""
         descTextView.text = ""
         profTextField.text = ""
         eduTextField.text = ""
     }
-    @IBAction func createButton(_ sender: Any) {
-        print("Starting the QA Session creation sequence")
+    // validating the fields so that none of them is empty, creating a new session, then adding it to the global realm
+    func validation() {
         if(sessionDesc != nil && sessionIntro != nil && sessionTitle != nil && selectedEducation != nil && selectedProfession != nil && selectedCategory != nil){
             createdSession = createSession()
             if let createdSession = createdSession {
                 try! realm.write {
-                realm.add(createdSession)
+                    realm.add(createdSession)
                 }
             }
         }else{
@@ -99,6 +108,7 @@ class HostController: UIViewController {
             self.present(alert, animated:true,completion: nil)
         }
     }
+    
     
     // function for making the category tableview visible
     func addTransparentView(frames: CGRect) {
@@ -139,7 +149,6 @@ class HostController: UIViewController {
     func setCategory(category: String) {
         selectedCategory = category
     }
-    
     
     //functions for creating the Realm objects
     func createSession() -> QASession{
