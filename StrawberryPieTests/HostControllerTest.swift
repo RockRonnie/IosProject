@@ -13,8 +13,6 @@ class HostControllerTest: XCTestCase {
     let host = HostController()
     let realm = RealmDB.sharedInstance.realm
     override func setUp() {
-        XCTAssert(realm == RealmDB.sharedInstance.realm, "Realm settings fail")
-        XCTAssert(host.realm == realm, "Host Realm settings fail")
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     func testFields(){
