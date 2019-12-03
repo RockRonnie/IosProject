@@ -35,6 +35,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j26-uu-ezh">
+                                <rect key="frame" x="29" y="61" width="96" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Picture"/>
+                                <connections>
+                                    <action selector="selectProfilePic:" destination="e3T-Aw-GOO" eventType="touchUpInside" id="HQX-ra-TVK"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aTw-O5-kEs">
+                                <rect key="frame" x="67" y="144" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -46,6 +58,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="yLo-EL-BVO"/>
                     <connections>
+                        <outlet property="testImage" destination="aTw-O5-kEs" id="sld-1H-PFw"/>
                         <outlet property="unameLabel" destination="35l-PO-21M" id="1So-cE-SsY"/>
                     </connections>
                 </viewController>

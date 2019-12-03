@@ -13,12 +13,35 @@ import RealmSwift
 
 class ProfileController: UIViewController {
   var realm: Realm!
-  
+    var url = String()
+    
   @IBOutlet weak var unameLabel: UILabel!
   
   
-  @IBOutlet weak var logOut: UIButton!
-  override func viewDidLoad() {
+    @IBOutlet weak var testImage: UIImageView!
+    @IBAction func selectProfilePic(_ sender: Any) {
+        ImagePickerManager().pickImage(self) {image in
+            let data = UIImage.pngData(image)
+            let imagePost = UserImagePost()
+            //calling the post request method and passing he image data and other paramters
+            imagePost.requestWith(endUrl: "", imageData: data(), parameters: ["photo" : FILE()], onCompletion: { (response) in
+                if let result = response {
+                    print("result JSON: \(result)")
+                    print("URL: \(result["uri"].stringValue)")
+                    //Converting string to URL and turning that into an UIImage
+                    let url = URL(string: result["uri"].stringValue)
+                    if let data = try? Data(contentsOf: url!){
+                        let img: UIImage = UIImage(data: data)!
+                        self.testImage.image = img
+                    }
+                }
+            }, onError: { (result) in
+                print(result as Any)
+            })
+        }
+    }
+    @IBOutlet weak var logOut: UIButton!
+   override func viewDidLoad() {
     super.viewDidLoad()
     
     
