@@ -46,7 +46,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "QAController") {
+        if (segue.identifier == "FromCatToQA") {
             let selectedRow = CategoryContentTable.indexPathForSelectedRow?.row
             var realmSession: QASession?
             if let selectedRow = selectedRow {
@@ -57,7 +57,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
             destinationVC?.currentSession = realmSession
             // destinationVC?.sessionID = realmSession?.sessionID
-            
         }
     }
     
@@ -86,6 +85,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         
         return cell
     }
+    //Filters the feed to specified category
     func setupExperts(){
         let sessions = realm.objects(QASession.self).filter("sessionCategory = %@", categoryObject[0].value(forKey: "categoryName") as? String ?? "dummyValue")
         

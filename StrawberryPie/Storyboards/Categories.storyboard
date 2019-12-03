@@ -155,6 +155,7 @@
                                             <outlet property="expertImage" destination="EXz-Q3-cEk" id="OWU-tj-YMX"/>
                                             <outlet property="expertName" destination="Fbl-5J-3pE" id="O7N-Hv-8y0"/>
                                             <outlet property="expertTitle" destination="TtK-T2-Bea" id="1KZ-nj-hBA"/>
+                                            <segue destination="cQe-dP-Izr" kind="show" identifier="FromCatToQA" id="uGt-AR-9bd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -189,6 +190,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hve-QI-2pa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="11.594202898550726" y="-243.08035714285714"/>
+        </scene>
+        <!--QAController-->
+        <scene sceneID="qam-zo-mwf">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="QAController" storyboardName="QA" referencedIdentifier="QAController" id="cQe-dP-Izr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="thE-Cz-093" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2879" y="-279"/>
         </scene>
     </scenes>
 </document>
