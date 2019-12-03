@@ -12,8 +12,6 @@ import SwiftyJSON
 
 public class UserImagePost {
 
-    
-    
     func requestWith(endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((JSON?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
         
         let url = "http://foxer153.asuscomm.com:3000/upload" //API URL

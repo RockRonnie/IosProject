@@ -15,6 +15,9 @@ class QAController: UIViewController {
     var realm: Realm?
     var notificationToken: NotificationToken?
     
+    var hostName: String?
+    var hostProfession: String?
+    var hostEducation: String?
     var topicSource: String?
     var answerSource: List<ChatMessage>?
     var questionSource: List<ChatMessage>?
@@ -87,9 +90,15 @@ class QAController: UIViewController {
         }
         // Käyttäjä
         userSource = RealmDB.sharedInstance.getUser()
-        print (userSource)
+        // print (userSource)
         if let gotUser = userSource {
             print("USERNAME", gotUser.userName)
+        }
+        // Host name, profile
+        if let gotHost = currentSession?.host[0] {
+            hostName = gotHost.firstName + " " + gotHost.lastName
+            hostProfession = currentSession?.profession
+            hostEducation = currentSession?.education
         }
         print ("Ajettu onnistuneesti")
     }
@@ -196,20 +205,20 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             let titleFont = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(500))
             let title = UILabel(frame: CGRect(x: 0, y: 25, width: cell.bounds.size.width, height: 20))
             title.textColor = UIColor.black
-            title.text = "Nurse"
+            title.text = hostProfession
             title.font = titleFont
             title.textAlignment = .center
             cell.contentView.addSubview(title)
             
             let name = UILabel(frame: CGRect(x: 0, y: 50, width: cell.bounds.size.width, height: 20))
             name.textColor = UIColor.black
-            name.text = "Gertrud Schmitz"
+            name.text = hostName
             name.textAlignment = .center
             cell.contentView.addSubview(name)
             
             let company = UILabel(frame: CGRect(x: 0, y: 75, width: cell.bounds.size.width, height: 20))
             company.textColor = UIColor.black
-            company.text = "Oy Hospital Ab"
+            company.text = hostEducation
             company.textAlignment = .center
             cell.contentView.addSubview(company)
         }
