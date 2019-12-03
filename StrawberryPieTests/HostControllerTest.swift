@@ -82,7 +82,20 @@ class HostControllerTest: XCTestCase {
         XCTAssert(host.profTextField.placeholder == "Profession", "Session profession placeholder is wrong")
         XCTAssert(host.eduTextField.placeholder == "Education", "Session education placeholder is wrong")
     }
-   
+    func realmTests(){
+        let intro = host.createIntro()
+        let secondintro = host.createIntro()
+        XCTAssert(intro != secondintro , "Intro is not unique")
+        let chat = host.createChat()
+        let chat2 = host.createChat()
+        XCTAssert(chat != chat2, "Chat is not unique")
+        let board = host.createBoard()
+        let board2 = host.createBoard()
+        XCTAssert(board != board2, "Board is not unique")
+        let session = host.createSession()
+        let session2 = host.createSession()
+        XCTAssert(session != session2, "session is not unique")
+    }
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }

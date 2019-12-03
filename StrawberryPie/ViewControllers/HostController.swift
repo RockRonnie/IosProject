@@ -84,8 +84,8 @@ class HostController: UIViewController {
         print("Starting the QA Session creation sequence")
         validation()
     }
-    // clearing the fields
     
+    // clearing the fields
     func clear() {
         introTextView.text = ""
         titleTextField.text = ""
@@ -93,19 +93,25 @@ class HostController: UIViewController {
         profTextField.text = ""
         eduTextField.text = ""
     }
+    
     // validating the fields so that none of them is empty, creating a new session, then adding it to the global realm
-    func validation() {
+    func validation(){
         if(sessionDesc != nil && sessionIntro != nil && sessionTitle != nil && selectedEducation != nil && selectedProfession != nil && selectedCategory != nil){
-            createdSession = createSession()
-            if let createdSession = createdSession {
-                try! realm.write {
-                    realm.add(createdSession)
-                }
-            }
+            sessiontoRealm()
         }else{
             let alert = UIAlertController(title: "Validation failed", message: "Please fill all the field and select a category", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated:true,completion: nil)
+        }
+    }
+    
+    // Creating the session object and sending it to realm cloud
+    func sessiontoRealm() {
+        createdSession = createSession()
+        if let createdSession = createdSession {
+            try! realm.write {
+                realm.add(createdSession)
+            }
         }
     }
     
