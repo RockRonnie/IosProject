@@ -103,7 +103,16 @@ class QAController: UIViewController {
         }
         // Host avatar
         if hostImage == nil {
-        getPic()
+            
+            let imgProcessor = UserImagePost()
+            imgProcessor.getPic(image: currentSession!.host[0].uImage, onCompletion: {(resultImage) in
+                if let result = resultImage{
+                    print("VITTU JES")
+                    self.hostImage = result
+                    self.hostCardCV.reloadData()
+                }
+            })
+        //getPic()
         print ("Ajettu onnistuneesti")
         }
     }
@@ -136,7 +145,6 @@ class QAController: UIViewController {
         let imageProcessor = UserImagePost()
         imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
             print ("kuvaa hakemassa")
-            print(resultImage)
             if let result = resultImage {
                 print("VITTU JES")
                 self.hostImage = result
