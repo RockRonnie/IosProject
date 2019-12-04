@@ -159,6 +159,7 @@
                                             <outlet property="expertImage" destination="21f-oU-BFj" id="efa-Ty-Yy7"/>
                                             <outlet property="expertName" destination="jcP-Nf-RJl" id="uu6-SY-CHF"/>
                                             <outlet property="expertTitle" destination="9LV-76-Tw9" id="UWJ-fu-uSb"/>
+                                            <segue destination="cQe-dP-Izr" kind="show" identifier="FromCatToQA" id="ewn-9O-8zu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

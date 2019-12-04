@@ -12,6 +12,10 @@ import RealmSwift
 @objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var categoryTable: UITableView!
+  @IBOutlet weak var interestOne: UILabel!
+  @IBOutlet weak var interestTwo: UILabel!
+  @IBOutlet weak var interestThree: UILabel!
+  @IBOutlet weak var interestError: UILabel!
   
   var signUpFormEnabled = Bool()
   let messageLabel = UILabel()
@@ -20,8 +24,6 @@ import RealmSwift
   let signUpButton = UIButton(type: .roundedRect)
   let cancelButton = UIButton(type: .roundedRect)
   let infoAddedButton = UIButton(type: .roundedRect)
-  
-  let errorLabel = UILabel()
   let userEmailField = UITextField()
   let usernameField = UITextField()
   let firstnameField = UITextField()
@@ -31,6 +33,10 @@ import RealmSwift
   let userpasswordField = UITextField()
   let userpwagainField = UITextField()
   
+  @IBOutlet weak var removeInterestOne: UIButton!
+  @IBOutlet weak var removeInterestTwo: UIButton!
+  @IBOutlet weak var removeInterestThree: UIButton!
+  
   var category = Category()
   
   var realm: Realm!
@@ -39,12 +45,14 @@ import RealmSwift
   let thisUser = User()
   
   
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.categoryTable.delegate = self
     self.categoryTable.dataSource = self
     self.categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-   
+    
+    
     usernameField.isHidden = false
     userpasswordField.isHidden = false
     userinfoField.isHidden = true
@@ -112,6 +120,13 @@ import RealmSwift
     container.addArrangedSubview(userinfoField)
     container.addArrangedSubview(userXtraInfoField)
     
+    interestOne.text = ""
+    interestTwo.text = ""
+    interestThree.text = ""
+    removeInterestOne.isHidden = true
+    removeInterestTwo.isHidden = true
+    removeInterestThree.isHidden = true
+    interestError.text = ""
     
     // Buttons
     // LOGIN BUTTON
@@ -150,37 +165,95 @@ import RealmSwift
     
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return category.getNames().count
+    let rowCount = category.getNames().count // When delete is implemented - self.thisUser.userInterests.count
+    return rowCount
   }
   
+  @IBAction func removeFirst(_ sender: Any) {
+    switch self.thisUser.userInterests.count {
+    case 0: break
+    default:
+    self.thisUser.userInterests.remove(at: 0)
+    self.interestOne.text = ""
+    self.removeInterestOne.isHidden = true
+    }
+    
+    
+  }
+  @IBAction func removeSecond(_ sender: Any) {
+    switch self.thisUser.userInterests.count {
+    case 0: break
+    default:
+    self.thisUser.userInterests.remove(at: 1)
+    self.interestTwo.text = ""
+    self.removeInterestTwo.isHidden = true
+    }
+  }
+  @IBAction func removeThird(_ sender: Any) {
+    switch self.thisUser.userInterests.count {
+    case 0: break
+    default:
+    self.thisUser.userInterests.remove(at: 2)
+    self.interestThree.text = ""
+    self.removeInterestThree.isHidden = true
+    }
+  }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    cell.textLabel?.text = category.getNames()[indexPath.item]
-    for i in thisUser.userInterests {
-      if i == category.getNames()[indexPath.item] {
-        cell.backgroundColor = UIColor.red
-      }
-    }
+    let interestCategories = category.getNames()
+    cell.textLabel?.text = interestCategories[indexPath.item]
     return cell
   }
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 35
   }
-  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
-    
-    let selectedCategory = category.getNames()[indexPath.item]
-    print(selectedCategory)
-    thisUser.userInterests.append(selectedCategory)
-    
-  }
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      thisUser.userInterests.remove(at: indexPath.row)
-      tableView.deleteRows(at: [indexPath], with: .fade)
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+    let interestCategories = category.getNames()
+    self.interestError.text = ""
+    let selectedCategory = interestCategories[indexPath.item]
+    // If userinterest list contains the picked tableview category
+    if self.thisUser.userInterests.contains(selectedCategory) {
+      self.interestError.text = "Category already picked"
+    } else {
+      // If it does not, add to userinterests
+      self.thisUser.userInterests.append(selectedCategory)
+    }
+    // Switch case for showing interests on the screen
+      switch self.thisUser.userInterests.count {
+      case 1:
+        self.interestOne.text = selectedCategory
+        removeInterestOne.isHidden = false
+      case 2:
+        self.interestTwo.text = selectedCategory
+        removeInterestTwo.isHidden = false
+      case 3:
+        self.interestThree.text = selectedCategory
+        removeInterestThree.isHidden = false
+      case 4:
+        self.interestError.text = "All 3 categories picked"
+      default:
+        removeInterestOne.isHidden = true
+        removeInterestTwo.isHidden = true
+        removeInterestThree.isHidden = true
+        self.interestOne.text = ""
+        self.interestTwo.text = ""
+        self.interestThree.text = ""
+      }
     }
   
-  }
-// Login function, check for username and password
+
+  
+  
+  
+  
+  // deletion func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+  //  if editingStyle == .delete {
+  //    self.thisUser.userInterests.remove(at: indexPath.row)
+  //    tableView.deleteRows(at: [indexPath], with: .fade)
+  //  }
+  
+  // }
+  // Login function, check for username and password
   func logIn(_ username: String,_ password: String,_ register: Bool) {
     if usernameField.text == "" {
       self.present(customAlert(title: "uname", reason: "Missing username"), animated: true, completion: nil)
@@ -202,7 +275,7 @@ import RealmSwift
     return alert
     
   }
-// Login function with username and password
+  // Login function with username and password
   func loginRealm(_ username: String,_ password: String,_ register: Bool){
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
     // Try Logging in
@@ -257,11 +330,11 @@ import RealmSwift
                    animated: true, completion: nil)
     } else if usernameField.text != "" && userpasswordField.text != "" && userpwagainField.text != "" {
       
-    // Textfields are not empty => Login
+      // Textfields are not empty => Login
       
       SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: true), server: Constants.AUTH_URL) { user, error in
         if let user = user {
-        // logout user in realm instance if exists
+          // logout user in realm instance if exists
           RealmDB.sharedInstance.user?.logOut()
           // Login successful
           // Create read/write permissions for the realm, username is the logged user
@@ -307,7 +380,7 @@ import RealmSwift
       
     }
   }
-
+  
   // Functions connecting to Buttons
   func signIn() {
     logIn(username ?? "", password ?? "", false)
@@ -362,14 +435,14 @@ import RealmSwift
       // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
       if let userUpdate = userUpdatedObj {
         self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
-        } else {
+      } else {
         print("No changes")
       }
     }
     // Succesful registration, login ensues
-      let alert = UIAlertController(title: "Success!", message: "Registration successful!", preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
-      self.present(alert, animated: true)
+    let alert = UIAlertController(title: "Success!", message: "Registration successful!", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
+    self.present(alert, animated: true)
     
   }
   
