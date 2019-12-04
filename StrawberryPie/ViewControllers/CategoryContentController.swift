@@ -77,10 +77,17 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         var object: QASession
         object = self.experts[indexPath.row] as QASession
         
+        let imageProcessor = UserImagePost()
+        imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
+            if let result = resultImage {
+                print("kuva saatu")
+                cell.expertImage?.image = result
+            }
+        })
         cell.expertDesc?.text = object.sessionDescription
         cell.expertName?.text = object.host[0].userID
         cell.expertTitle?.text = object.title
-        //cell.expertImage?
+    
         //IMAGE GOES HERE!!!!!!!!!!!!!!!!!!!!!!
         
         return cell

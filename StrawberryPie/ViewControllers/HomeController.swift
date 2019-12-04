@@ -83,18 +83,6 @@ class HomeController: UIViewController {
         upcomingSessions = realm.objects(QASession.self).filter("upcoming = true")
         archivedSessions = realm.objects(QASession.self).filter("archived = true")
     }
-    
-    func getPic() {
-        let imageProcessor = UserImagePost()
-        imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
-            if let result = resultImage {
-                print("kuva saatu")
-                self.expertImage = result
-                self.ExpertTableView.reloadData()
-            }
-        }
-        )}
-    
     func getState(){
         switch selectedState {
         case "live":
@@ -231,6 +219,17 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
+    func getPic() {
+        let imageProcessor = UserImagePost()
+        imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
+            if let result = resultImage {
+                print("kuva saatu")
+                self.expertImage = result
+                self.ExpertTableView.reloadData()
+            }
+        }
+        )}
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           if(tableView == ExpertTableView){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
@@ -239,7 +238,13 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             cell.expertImage?.contentMode = .scaleAspectFit
             var object: QASession
             object = self.sessions[indexPath.row] as QASession
-            cell.expertImage?.image = expertImage
+            let imageProcessor = UserImagePost()
+            imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
+                if let result = resultImage {
+                    print("kuva saatu")
+                    cell.expertImage?.image = result
+                }
+            })
             cell.expertDesc?.text = object.sessionDescription
             cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.expertTitle?.text = object.title
