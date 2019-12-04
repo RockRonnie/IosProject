@@ -233,6 +233,7 @@ class HostQAController: UIViewController {
         // Chattikilkkeet piiloon
         sendButton.isHidden = true
         messageField.isHidden = true
+        qaTable.rowHeight = 100.0
         qaTable.reloadData()
     }
     
@@ -328,7 +329,7 @@ extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextF
                 if gotQA.QAs.count > 0 {
                     cell.textLabel?.text = (gotQA.QAs[indexPath.row].question[0].body) + "\n" + (gotQA.QAs[indexPath.row].answer[0].body)
                     cell.textLabel?.numberOfLines = 0
-                    qaTable.rowHeight = 44.0 // palautetaan default korkeus topicin jäljiltä
+                    //qaTable.rowHeight = 44.0 // palautetaan default korkeus topicin jäljiltä
                 }
             }
         case "chat":
