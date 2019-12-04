@@ -19,6 +19,7 @@ class ProfileController: UIViewController {
   
   
     @IBOutlet weak var testImage: UIImageView!
+    
     @IBAction func selectProfilePic(_ sender: Any) {
         ImagePickerManager().pickImage(self) {image in
             let data = UIImage.pngData(image)
