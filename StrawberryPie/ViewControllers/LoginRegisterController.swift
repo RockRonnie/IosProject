@@ -106,7 +106,6 @@ import RealmSwift
     userpasswordField.placeholder = "Password"
     userpasswordField.borderStyle = .roundedRect
     userpasswordField.autocapitalizationType = .none
-    userpasswordField.passwordRules = UITextInputPasswordRules(descriptor: "required: upper; required: lower; required: digit; max-consecutive: 2; minlenght: 8;")
     userpwagainField.placeholder = "Password again"
     userpwagainField.borderStyle = .roundedRect
     userpwagainField.autocapitalizationType = .none
@@ -159,9 +158,26 @@ import RealmSwift
       ])
   }
   
+  
   // NOT IN USE, might be used later
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
+  }
+  // Validate email
+  func validateEmail(emailID: String) -> Bool {
+    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    let trimmedString = emailID.trimmingCharacters(in: .whitespaces)
+    let validateEmail = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+    let isValidateEmail = validateEmail.evaluate(with: trimmedString)
+    return isValidateEmail
+  }
+  // Validate password
+  func validatePassword(passwordID: String) -> Bool {
+    let passwordRegEx = "[A-Z0-9a-z]{3,15}"
+    let trimmedString = passwordID.trimmingCharacters(in: .whitespaces)
+    let validatePw = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+    let isValidPw = validatePw.evaluate(with: trimmedString)
+    return isValidPw
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let rowCount = category.getNames().count // When delete is implemented - self.thisUser.userInterests.count
@@ -174,33 +190,33 @@ import RealmSwift
   @IBAction func registerDone(_ sender: Any) {
     advancedSignup()
   }
+  
   @IBAction func removeFirst(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
     realm = RealmDB.sharedInstance.realm
-    // Check that user does not empty password field
     try! self.realm.write {
       
-    switch self.thisUser.userInterests.count {
-    case 0: break
-    case 1:
-      self.interestOne.text = ""
-      self.thisUser.userInterests.remove(at: 0)
-      self.removeInterestOne.isHidden = true
-    case 2:
-      self.thisUser.userInterests.remove(at: 0)
-      self.interestOne.text = self.interestTwo.text
-      self.interestTwo.text = ""
-      self.removeInterestOne.isHidden = false
-      self.removeInterestTwo.isHidden = true
-      self.removeInterestThree.isHidden = true
-    default:
-      self.thisUser.userInterests.remove(at: 0)
-      self.interestOne.text = self.interestTwo.text
-      self.interestTwo.text = self.interestThree.text
-      self.interestThree.text = ""
-      self.removeInterestOne.isHidden = false
-      self.removeInterestTwo.isHidden = false
-      self.removeInterestThree.isHidden = true
+      switch self.thisUser.userInterests.count {
+      case 0: break
+      case 1:
+        self.interestOne.text = ""
+        self.thisUser.userInterests.remove(at: 0)
+        self.removeInterestOne.isHidden = true
+      case 2:
+        self.thisUser.userInterests.remove(at: 0)
+        self.interestOne.text = self.interestTwo.text
+        self.interestTwo.text = ""
+        self.removeInterestOne.isHidden = false
+        self.removeInterestTwo.isHidden = true
+        self.removeInterestThree.isHidden = true
+      default:
+        self.thisUser.userInterests.remove(at: 0)
+        self.interestOne.text = self.interestTwo.text
+        self.interestTwo.text = self.interestThree.text
+        self.interestThree.text = ""
+        self.removeInterestOne.isHidden = false
+        self.removeInterestTwo.isHidden = false
+        self.removeInterestThree.isHidden = true
       }
       userUpdatedObj?.userInterests = self.thisUser.userInterests
       
@@ -212,36 +228,67 @@ import RealmSwift
       }
     }
   }
+  
   @IBAction func removeSecond(_ sender: Any) {
-    switch self.thisUser.userInterests.count {
-    case 0: break
-    case 1: break
-    case 2:
-      self.thisUser.userInterests.remove(at: 1)
-      self.interestTwo.text = self.interestThree.text
-      self.interestThree.text = ""
-      self.removeInterestTwo.isHidden = true
-      self.removeInterestThree.isHidden = true
-    default:
-      self.thisUser.userInterests.remove(at: 1)
-      self.interestTwo.text = self.interestThree.text
-      self.interestThree.text = ""
-      self.removeInterestTwo.isHidden = false
-      self.removeInterestThree.isHidden = true
+    let userUpdatedObj = RealmDB.sharedInstance.getUser()
+    realm = RealmDB.sharedInstance.realm
+    try! self.realm.write {
+      switch self.thisUser.userInterests.count {
+      case 0: break
+      case 1: break
+      case 2:
+        self.thisUser.userInterests.remove(at: 1)
+        self.interestTwo.text = self.interestThree.text
+        self.interestThree.text = ""
+        self.removeInterestTwo.isHidden = true
+        self.removeInterestThree.isHidden = true
+      default:
+        self.thisUser.userInterests.remove(at: 1)
+        self.interestTwo.text = self.interestThree.text
+        self.interestThree.text = ""
+        self.removeInterestTwo.isHidden = false
+        self.removeInterestThree.isHidden = true
+      }
+      userUpdatedObj?.userInterests = self.thisUser.userInterests
+      
+      // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
+      if let userUpdate = userUpdatedObj {
+        self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
+      } else {
+        print("No changes")
+      }
     }
   }
+  
+  
+  
+  
   @IBAction func removeThird(_ sender: Any) {
-    switch self.thisUser.userInterests.count {
-    case 0: break
-    case 1: break
-    case 2: break
-    default:
-      self.thisUser.userInterests.remove(at: 2)
-      self.interestThree.text = ""
-      self.removeInterestThree.isHidden = true
-    
+    let userUpdatedObj = RealmDB.sharedInstance.getUser()
+    realm = RealmDB.sharedInstance.realm
+    try! self.realm.write {
+      switch self.thisUser.userInterests.count {
+      case 0: break
+      case 1: break
+      case 2: break
+      default:
+        self.thisUser.userInterests.remove(at: 2)
+        self.interestThree.text = ""
+        self.removeInterestThree.isHidden = true
+        
+      }
+      userUpdatedObj?.userInterests = self.thisUser.userInterests
+      
+      // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
+      if let userUpdate = userUpdatedObj {
+        self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
+      } else {
+        print("No changes")
+      }
     }
   }
+  
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     let interestCategories = category.getNames()
@@ -277,7 +324,7 @@ import RealmSwift
       }
       
       
-    // Switch case for showing interests on the screen
+      // Switch case for showing interests on the screen
       
       switch self.thisUser.userInterests.count {
       case 1:
@@ -298,11 +345,11 @@ import RealmSwift
         self.interestOne.text = ""
         self.interestTwo.text = ""
         self.interestThree.text = ""
-        }
+      }
     }
   }
   
-
+  
   
   
   
@@ -386,60 +433,67 @@ import RealmSwift
     } else if userpasswordField.text == "" {
       self.present(customAlert(title: "upw", reason: "Missing password"),
                    animated: true, completion: nil)
-    } else if userpasswordField.text != "" && userpwagainField.text == "" {
+    } else if userpasswordField.text != "" && userpwagainField.text == "" || userpasswordField.text != userpwagainField.text {
       self.present(customAlert(title: "upw", reason: "Please confirm password"),
                    animated: true, completion: nil)
-    } else if usernameField.text != "" && userpasswordField.text != "" && userpwagainField.text != "" {
-      
-      // Textfields are not empty => Login
-      
-      SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: true), server: Constants.AUTH_URL) { user, error in
-        if let user = user {
-          // logout user in realm instance if exists
-          RealmDB.sharedInstance.user?.logOut()
-          // Login successful
-          // Create read/write permissions for the realm, username is the logged user
-          let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
-          user.apply(permission, callback: { (error) in
-            if error != nil {
-              print("Something went wrong: \(String(describing: error?.localizedDescription))")
-            } else {
-              print("success")
-            }
-          })
-          self.user = user
-          RealmDB.sharedInstance.user = self.user
-          // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
-          let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
-          self.realm = try! Realm(configuration: config)
-          RealmDB.sharedInstance.realm = self.realm
-          guard let userIdentity = self.user?.identity else {
-            self.present(self.customAlert(title: "Register Error!", reason: "userIdentity not found"), animated: true, completion: nil)
-            return }
-          self.thisUser.userID = userIdentity
-          self.thisUser.userName = username
-          try! self.realm.write {
-            self.realm.add(self.thisUser)
+    } else if validatePassword(passwordID: userpasswordField.text ?? "") != true {
+      self.present(customAlert(title: "password", reason: "Invalid password"),
+                   animated: true, completion: nil)
+    } else {
+    
+    // Textfields are not empty and valid => Login
+    
+    SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: true), server: Constants.AUTH_URL) { user, error in
+      if let user = user {
+        // logout user in realm instance if exists
+        RealmDB.sharedInstance.user?.logOut()
+        // Login successful
+        // Create read/write permissions for the realm, username is the logged user
+        let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
+        user.apply(permission, callback: { (error) in
+          if error != nil {
+            print("Something went wrong: \(String(describing: error?.localizedDescription))")
+          } else {
+            print("success")
           }
-          let alert = UIAlertController(title: "Customize?", message: "Do you want to customize your profile now?", preferredStyle: .alert)
-          alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in self.createUserMoreInfo() }))
-          alert.addAction(UIAlertAction(title: "Do it later", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
-          self.present(alert, animated: true)
-          print("Realm connection has been setup")
-          print("Changing navigators")
-        } else if let error = error {
-          print("Signup error!: \(error)")
-          self.present(self.customAlert(title: "Signup", reason: "User exists"), animated: true, completion: nil)
+        })
+        self.user = user
+        RealmDB.sharedInstance.user = self.user
+        // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
+        let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
+        self.realm = try! Realm(configuration: config)
+        RealmDB.sharedInstance.realm = self.realm
+        guard let userIdentity = self.user?.identity else {
+          self.present(self.customAlert(title: "Register Error!", reason: "userIdentity not found"), animated: true, completion: nil)
+          return }
+        self.thisUser.userID = userIdentity
+        self.thisUser.userName = username
+        try! self.realm.write {
+          self.realm.add(self.thisUser)
         }
-        
-        
-        
-        
+        let alert = UIAlertController(title: "Customize?", message: "Do you want to customize your profile now?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in self.createUserMoreInfo() }))
+        alert.addAction(UIAlertAction(title: "Do it later", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
+        self.present(alert, animated: true)
+        print("Realm connection has been setup")
+        print("Changing navigators")
+      } else if let error = error {
+        print("Signup error!: \(error)")
+        self.present(self.customAlert(title: "Signup", reason: "User exists"), animated: true, completion: nil)
       }
       
       
       
+      
+      
     }
+    }
+    
+    
+    
+    
+    
+    
   }
   
   // Functions connecting to Buttons
@@ -453,7 +507,7 @@ import RealmSwift
   // Enable user fields for registration phase 2
   func createUserMoreInfo() {
     // SHOW RELEVANT FIELDS
- 
+    
     self.doneBtn.isHidden = false
     self.cancelBtn.isHidden = false
     self.usernameField.isHidden = true
@@ -480,6 +534,11 @@ import RealmSwift
   // Registration phase 2 function
   func advancedSignup() {
     // Settings for realm
+    let isValidateEmail = self.validateEmail(emailID: self.userEmailField.text ?? "")
+    if (isValidateEmail == false){
+      self.interestError.text = "Invalid email"
+      return
+    }
     let config = self.user?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
     if let cfg = config {
       self.realm = try! Realm(configuration: cfg)
