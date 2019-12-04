@@ -15,6 +15,10 @@ class QAController: UIViewController {
     var realm: Realm?
     var notificationToken: NotificationToken?
     
+    var hostImage: UIImage?
+    var hostName: String?
+    var hostProfession: String?
+    var hostEducation: String?
     var topicSource: String?
     var answerSource: List<ChatMessage>?
     var questionSource: List<ChatMessage>?
@@ -87,11 +91,21 @@ class QAController: UIViewController {
         }
         // Käyttäjä
         userSource = RealmDB.sharedInstance.getUser()
-        print (userSource)
+        // print (userSource)
         if let gotUser = userSource {
             print("USERNAME", gotUser.userName)
         }
+        // Host name, profile
+        if let gotHost = currentSession?.host[0] {
+            hostName = gotHost.firstName + " " + gotHost.lastName
+            hostProfession = currentSession?.profession
+            hostEducation = currentSession?.education
+        }
+        // Host avatar
+        if hostImage == nil {
+        getPic()
         print ("Ajettu onnistuneesti")
+        }
     }
     
     func testiTesti() -> Int {
@@ -117,6 +131,24 @@ class QAController: UIViewController {
             currentSession!.QABoard[0].QAs.last!.answer.append(defaultAnswer)
         }
     }
+    
+    func getPic() {
+        let imageProcessor = UserImagePost()
+        imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
+            print ("kuvaa hakemassa")
+            print(resultImage)
+            if let result = resultImage {
+                print("VITTU JES")
+                self.hostImage = result
+                self.hostCardCV.reloadData()
+                }
+            }
+        )}
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+        
     
     deinit {
     notificationToken?.invalidate()
@@ -186,31 +218,31 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hostcardcell", for: indexPath)
         
         if indexPath.row == 0  {
-            let title = UILabel(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: 40))
-            title.textColor = UIColor.black
-            title.text = "Kuva"
-            title.textAlignment = .left
-            cell.contentView.addSubview(title)
+            let pic = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: cell.bounds.size.height))
+            pic.image = hostImage
+            cell.contentView.addSubview(pic)
         }
         else {
             let titleFont = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(500))
             let title = UILabel(frame: CGRect(x: 0, y: 25, width: cell.bounds.size.width, height: 20))
             title.textColor = UIColor.black
-            title.text = "Nurse"
+            title.text = hostProfession
             title.font = titleFont
             title.textAlignment = .center
             cell.contentView.addSubview(title)
             
             let name = UILabel(frame: CGRect(x: 0, y: 50, width: cell.bounds.size.width, height: 20))
             name.textColor = UIColor.black
-            name.text = "Gertrud Schmitz"
+            name.text = hostName
             name.textAlignment = .center
             cell.contentView.addSubview(name)
             
-            let company = UILabel(frame: CGRect(x: 0, y: 75, width: cell.bounds.size.width, height: 20))
+            let company = UILabel(frame: CGRect(x: 0, y: 65, width: cell.bounds.size.width, height: 60))
             company.textColor = UIColor.black
-            company.text = "Oy Hospital Ab"
+            company.text = hostEducation
             company.textAlignment = .center
+            company.numberOfLines = 0
+            company.lineBreakMode = .byTruncatingTail
             cell.contentView.addSubview(company)
         }
         

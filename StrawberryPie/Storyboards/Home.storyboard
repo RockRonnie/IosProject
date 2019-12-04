@@ -61,6 +61,7 @@
                                                     <rect key="frame" x="15" y="7" width="80" height="112"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="LQJ-PW-xVo"/>
+                                                        <constraint firstAttribute="height" constant="112" id="QeM-wj-F9Z"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="JobTitleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-vv-yEL">
@@ -125,9 +126,9 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-fE-m1Z">
                                 <rect key="frame" x="238" y="229" width="137" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Filter"/>
                                 <connections>
-                                    <segue destination="uhI-Ap-FkS" kind="show" identifier="QASessionButton" id="wRj-IT-WS9"/>
+                                    <action selector="filterAction:" destination="ciD-od-2sG" eventType="touchUpInside" id="wIO-cO-TWE"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igm-3d-w0q">
@@ -173,6 +174,7 @@
                     <navigationItem key="navigationItem" id="frC-6D-hOk"/>
                     <connections>
                         <outlet property="ExpertTableView" destination="yUB-SZ-ADC" id="5IM-n8-cAL"/>
+                        <outlet property="filterButton" destination="8fa-fE-m1Z" id="iPK-4e-FfO"/>
                         <outlet property="searchDisplayController" destination="K2O-F1-rgq" id="PPw-dn-zBu"/>
                     </connections>
                 </viewController>
@@ -198,7 +200,4 @@
             <point key="canvasLocation" x="598" y="-1115"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="e6F-E2-evP"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -22,8 +22,9 @@ class HostController: UIViewController {
     
     let transparentView = UIView()
     let tableView = UITableView()
-    var selectedButton = UIButton()
     var selectedView = UITextView()
+    var selectedButton = UIButton()
+  
     
     var sessionTitle: String?
     var sessionIntro: String?

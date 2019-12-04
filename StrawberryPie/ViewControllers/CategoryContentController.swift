@@ -11,13 +11,12 @@ import CoreData
 import RealmSwift
 
 class CategoryContentController: UIViewController,UITableViewDataSource, UITableViewDelegate {
-
-    var notificationToken: NotificationToken?
     
+    @IBOutlet weak var CategoryContentTable: ExpertTableViewController!
+    var notificationToken: NotificationToken?
     var topText = String()
     var categoryObject = [NSManagedObject]()
     
-    @IBOutlet weak var CategoryContentTable: ExpertTableViewController!
     
     var user: SyncUser?
     var realm: Realm!
@@ -82,6 +81,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         cell.expertName?.text = object.host[0].userID
         cell.expertTitle?.text = object.title
         //cell.expertImage?
+        //IMAGE GOES HERE!!!!!!!!!!!!!!!!!!!!!!
         
         return cell
     }
