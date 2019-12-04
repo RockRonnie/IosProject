@@ -28,6 +28,7 @@ class PersonalFeedController: UIViewController {
     lazy var personalQA: Array<QA> = []
     
     var personalMessages: List<ChatMessage>?
+    var privateMessages: List<ChatMessage>?
     var hostedSessions: Results<QASession>?
     var recommendedSessions: Results<QASession>?
     var answeredQA: Results<QA>?
@@ -42,6 +43,7 @@ class PersonalFeedController: UIViewController {
     }
     func setup(){
         hideButton()
+        initialTab()
         realm = RealmDB.sharedInstance.realm
         user = RealmDB.sharedInstance.getUser()
         checkExpert(user: user)
@@ -52,6 +54,9 @@ class PersonalFeedController: UIViewController {
     }
     func setTab(tab: String){
         selectedTab = tab
+    }
+    func initialTab(){
+        selectedTab = "Feed"
     }
     
     func checkExpert(user: User?){
@@ -92,6 +97,8 @@ class PersonalFeedController: UIViewController {
         case true: setupHost()
         }
         expertStatus()
+        setupPersonalQA()
+        setupPrivateMessages()
     }
     // normal user
     func setupPersonalFeed(){
@@ -99,12 +106,18 @@ class PersonalFeedController: UIViewController {
     }
     func setupPersonalQA(){
         if let user = user{
-            answeredQA = realm?.objects(QA.self).filter("ANY question.sender = %@", user.userName)
+            answeredQA = realm?.objects(QA.self).filter("ANY question.messageSender = %@", user.userName)
+            if let answeredQA = answeredQA {
+                self.personalQA = Array(answeredQA)
+            }
         }
     }
     func setupPrivateMessages(){
         if let user = user{
             personalMessages = user.userPrivateMessages
+            if let personalMessages = personalMessages{
+                privateMessages = personalMessages
+            }
         }
     }
    // EXPERT
@@ -129,12 +142,15 @@ class PersonalFeedController: UIViewController {
     
     @IBAction func perFeedAction(_ sender: UIButton) {
         setTab(tab: "Feed")
+        personalFeedTableView.reloadData()
     }
     @IBAction func QaAction(_ sender: UIButton) {
         setTab(tab: "QA")
+        personalFeedTableView.reloadData()
     }
     @IBAction func privMsgAction(_ sender: UIButton) {
         setTab(tab: "privMsg")
+        personalFeedTableView.reloadData()
     }
     
     
@@ -146,7 +162,21 @@ class PersonalFeedController: UIViewController {
 extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        switch selectedTab{
+        case "Feed":
             return personalFeed.count
+        
+        case "QA":
+            return personalQA.count
+        case "privMsg":
+            if let privateMessages = privateMessages {
+                return privateMessages.count
+            }else{
+                return 0
+            }
+        default:
+            return 1
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,24 +184,47 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
-        
-        //Scaleing the image to fit ImageView
-        cell.expertImage?.contentMode = .scaleAspectFit
-        var object: QASession
-        object = self.personalFeed[indexPath.row] as QASession
-        let imageProcessor = UserImagePost()
-        imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
+    
+        switch selectedTab{
+        case "Feed":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
+            
+            //Scaleing the image to fit ImageView
+            cell.expertImage?.contentMode = .scaleAspectFit
+            var object: QASession
+            object = self.personalFeed[indexPath.row] as QASession
+            let imageProcessor = UserImagePost()
+            imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
-                print("kuva saatu")
-                cell.expertImage?.image = result
+            print("kuva saatu")
+            cell.expertImage?.image = result
             }
-        })
-        cell.expertDesc?.text = object.sessionDescription
-        cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
-        cell.expertTitle?.text = object.title
+            })
+            cell.expertDesc?.text = object.sessionDescription
+            cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
+            cell.expertTitle?.text = object.title
+            return cell
+        case "QA":
+            let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
+            let qa = self.personalQA[indexPath.row] as QA
+            cell.textLabel?.text = qa.question[0].messageSender
+            cell.textLabel?.text = qa.question[0].body
+            cell.textLabel?.text = qa.answer[0].messageSender
+            cell.textLabel?.text = qa.answer[0].body
+            return cell
+        case "privMsg":
+             let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "privMsg")
+             let message = self.privateMessages?[indexPath.row] as ChatMessage?
+             cell.textLabel?.text = message?.messageSender
+             cell.textLabel?.text = message?.body
+            return cell
+            
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
+            cell.textLabel?.text = "🆘 Nyt levis koodi"
+            return cell
+        }
         
-        return cell
     }
     
     
