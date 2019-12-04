@@ -73,7 +73,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
-        
+        cell.expertImage?.contentMode = .scaleAspectFit
         var object: QASession
         object = self.experts[indexPath.row] as QASession
         

@@ -105,7 +105,7 @@ class QAController: UIViewController {
         if hostImage == nil {
             
             let imgProcessor = UserImagePost()
-            imgProcessor.getPic(image: currentSession!.host[0].uImage, onCompletion: {(resultImage) in
+            imgProcessor.getPic(image: (currentSession?.host[0].uImage)!, onCompletion: {(resultImage) in
                 if let result = resultImage{
                     print("VITTU JES")
                     self.hostImage = result
