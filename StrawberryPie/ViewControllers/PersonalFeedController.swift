@@ -24,6 +24,10 @@ class PersonalFeedController: UIViewController {
     var user: User?
     var expert: Bool = false
     
+    lazy var personalFeed: Array<QASession> = []
+    var hostedSessions: Results<QASession>?
+    var recommendedSessions: Results<QASession>?
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +58,33 @@ class PersonalFeedController: UIViewController {
     func showButton(){
         hostBtn.isHidden = false
     }
+    
+    func expertStatus(){
+        switch expert {
+        case true:
+            if let hostedSessions = self.hostedSessions {
+                self.personalFeed = Array(hostedSessions)
+            }
+        case false:
+            if let recommendedSessions = self.recommendedSessions {
+                self.personalFeed = Array(recommendedSessions)
+            }
+        }
+    }
+    
     func setupPersonalItems(){
-        
+        expertStatus()
     }
     // normal user
-    func setupPersonalFeed(){}
+    func setupPersonalFeed(){
+        recommendedSessions = realm?.objects(QASession.self).filter("live = true")
+    }
     func setupPersonalQA(){}
     func setupPrivateMessages(){}
    // EXPERT
-    func setupHost(){}
+    func setupHost(){
+        hostedSessions = self.realm?.objects(QASession.self).filter("host[0].userID = %@", user?.userID ?? "default")
+    }
 
     
     

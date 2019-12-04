@@ -23,7 +23,7 @@ class HostControllerTest: XCTestCase {
         XCTAssert(host.selectedEducation == nil, "selected education is not nill")
         
         //prof
-        host.selectedEducation = "prof"
+        host.selectedProfession = "prof"
         XCTAssert(host.selectedProfession == "prof", "selected profession is not prof")
         host.selectedProfession = nil
         XCTAssert(host.selectedProfession == nil, "selected profession is not nill")

@@ -217,7 +217,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         if(tableView == ExpertTableView){
             let row = indexPath.row
         }
-        if (tableView == filterView){
+        else if (tableView == filterView){
             print("Setting the state for filter")
             setState(state: states[indexPath.row])
             print(states[indexPath.row])
