@@ -22,7 +22,6 @@ class HostController: UIViewController {
     
     let transparentView = UIView()
     let tableView = UITableView()
-    var selectedView = UITextView()
     var selectedButton = UIButton()
   
     
