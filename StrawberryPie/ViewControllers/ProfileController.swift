@@ -19,6 +19,7 @@ class ProfileController: UIViewController {
   
   
     @IBOutlet weak var testImage: UIImageView!
+    
     @IBAction func selectProfilePic(_ sender: Any) {
         ImagePickerManager().pickImage(self) {image in
             let data = UIImage.pngData(image)
@@ -30,6 +31,10 @@ class ProfileController: UIViewController {
                     print("URL: \(result["uri"].stringValue)")
                     //Converting string to URL and turning that into an UIImage
                     let url = URL(string: result["uri"].stringValue)
+                    let userObj = RealmDB.sharedInstance.getUser()
+                    try! self.realm.write {
+                            userObj?.uImage = result["uri"].stringValue
+                    }
                     if let data = try? Data(contentsOf: url!){
                         let img: UIImage = UIImage(data: data)!
                         self.testImage.image = img

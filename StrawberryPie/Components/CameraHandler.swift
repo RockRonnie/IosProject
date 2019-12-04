@@ -52,6 +52,7 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         alert.dismiss(animated: true, completion: nil)
         picker.sourceType = .photoLibrary
         self.viewController!.present(picker, animated: true, completion: nil)
+        
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
@@ -60,6 +61,7 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
+        //picker.allowsEditing = true
         guard let image = info[.originalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }

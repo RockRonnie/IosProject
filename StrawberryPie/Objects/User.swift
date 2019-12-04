@@ -19,6 +19,7 @@ import RealmSwift
     dynamic var lastName: String = ""
     dynamic var info: String = ""
     dynamic var extraInfo: String = ""
+    dynamic var uImage: String = ""
     let userInterests = List<String>()
     let userPrivateMessages = List<ChatMessage>()
     dynamic var Account_created: Date = Date()
