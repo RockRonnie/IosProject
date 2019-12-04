@@ -207,7 +207,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             return 0
         }
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if(tableView == ExpertTableView){
             let row = indexPath.row
         }

@@ -18,6 +18,7 @@ class HostController: UIViewController {
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var introTextView: UITextView!
+    let feed = UIStoryboard(name: "Feed", bundle: nil)
     
     
     let transparentView = UIView()
@@ -107,11 +108,13 @@ class HostController: UIViewController {
     
     // Creating the session object and sending it to realm cloud
     func sessiontoRealm() {
+        let personalFeed: UIViewController? = feed.instantiateViewController(withIdentifier: "PersonalFeedController") as UIViewController
         createdSession = createSession()
         if let createdSession = createdSession {
             try! realm.write {
                 realm.add(createdSession)
             }
+            self.present(personalFeed!, animated:true, completion: nil)
         }
     }
     
@@ -159,7 +162,7 @@ class HostController: UIViewController {
     //functions for creating the Realm objects
     func createSession() -> QASession{
         print("Creating Session object")
-        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionDesc ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "sessionCategory": selectedCategory ?? "No category", "profession": selectedProfession ?? "no profession", "education": selectedEducation ?? "no education"])
+        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionDesc ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "sessionCategory": selectedCategory ?? "No category", "profession": selectedProfession ?? "no profession", "education": selectedEducation ?? "no education", "upcoming":"true"])
             return newSession
     }
     func createChat() -> Chat {

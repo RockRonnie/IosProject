@@ -31,7 +31,7 @@
         <!--Personal Feed Controller-->
         <scene sceneID="Hgc-x8-5Z2">
             <objects>
-                <viewController storyboardIdentifier="PersonalFeedController" id="Yy9-W3-V5p" customClass="PersonalFeedController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonalFeedController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yy9-W3-V5p" customClass="PersonalFeedController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fpF-6I-cfM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
