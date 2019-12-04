@@ -25,6 +25,9 @@ class PersonalFeedController: UIViewController {
     var expert: Bool = false
     
     lazy var personalFeed: Array<QASession> = []
+    lazy var personalMessage: Array<ChatMessage> = []
+    lazy var personalQA: Array<QA> = []
+    
     var hostedSessions: Results<QASession>?
     var recommendedSessions: Results<QASession>?
   
@@ -73,6 +76,10 @@ class PersonalFeedController: UIViewController {
     }
     
     func setupPersonalItems(){
+        switch expert{
+        case false: setupPersonalFeed()
+        case true: setupHost()
+        }
         expertStatus()
     }
     // normal user
@@ -107,4 +114,33 @@ class PersonalFeedController: UIViewController {
     
 
 
+}
+
+extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
+        
+        //Scaleing the image to fit ImageView
+        cell.expertImage?.contentMode = .scaleAspectFit
+        var object: QASession
+        object = self.personalFeed[indexPath.row] as QASession
+        let imageProcessor = UserImagePost()
+        imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
+            if let result = resultImage {
+                print("kuva saatu")
+                cell.expertImage?.image = result
+            }
+        })
+        cell.expertDesc?.text = object.sessionDescription
+        cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
+        cell.expertTitle?.text = object.title
+        
+        return cell
+    }
+    
+    
 }
