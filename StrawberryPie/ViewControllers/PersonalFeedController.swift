@@ -94,7 +94,12 @@ class PersonalFeedController: UIViewController {
     func setupPrivateMessages(){}
    // EXPERT
     func setupHost(){
-        hostedSessions = realm?.objects(QASession.self).filter("host[0].userID = %@", user?.userID ?? "default")
+        print("setup host")
+        print(user?.userID ?? "Dick")
+        if let user = user{
+            hostedSessions = realm?.objects(QASession.self).filter("ANY host.userID = %@", user.userID)
+            print("läpi meni")
+        }
     }
 
     
