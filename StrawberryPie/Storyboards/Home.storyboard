@@ -37,17 +37,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get help from the experts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noi-15-Wgc">
-                                <rect key="frame" x="0.0" y="234" width="196" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="QMP-d5-QcU"/>
-                                    <constraint firstAttribute="width" constant="196" id="R8T-5l-OAj"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="224" width="196" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yUB-SZ-ADC" customClass="ExpertTableViewController" customModule="StrawberryPie" customModuleProvider="target">
-                                <rect key="frame" x="16" y="263" width="343" height="355"/>
+                                <rect key="frame" x="16" y="253" width="343" height="365"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpertCell" rowHeight="128" id="ZdF-1Z-E8r" customClass="ExpertCellController" customModule="StrawberryPie" customModuleProvider="target">
@@ -103,14 +99,13 @@
                                                 <constraint firstItem="Iak-vB-mzj" firstAttribute="top" secondItem="LWX-aB-rKV" secondAttribute="bottom" constant="7" id="Jbf-Ek-Uqf"/>
                                                 <constraint firstAttribute="bottom" secondItem="Fry-QB-FTm" secondAttribute="bottom" constant="8.5" id="MNX-cN-iNQ"/>
                                                 <constraint firstItem="5NC-vv-yEL" firstAttribute="top" secondItem="mxc-Mz-Zes" secondAttribute="top" constant="7" id="WTm-qR-f06"/>
-                                                <constraint firstItem="LWX-aB-rKV" firstAttribute="leading" secondItem="Fry-QB-FTm" secondAttribute="trailing" constant="29" id="Xgf-Fz-wg3"/>
                                                 <constraint firstItem="Fry-QB-FTm" firstAttribute="leading" secondItem="mxc-Mz-Zes" secondAttribute="leading" constant="15" id="Yjw-IT-xNp"/>
-                                                <constraint firstItem="Iak-vB-mzj" firstAttribute="leading" secondItem="Fry-QB-FTm" secondAttribute="trailing" constant="29" id="ZHM-uu-ugl"/>
                                                 <constraint firstItem="LWX-aB-rKV" firstAttribute="top" secondItem="5NC-vv-yEL" secondAttribute="bottom" constant="4" id="a85-vd-4tk"/>
                                                 <constraint firstItem="Fry-QB-FTm" firstAttribute="top" secondItem="mxc-Mz-Zes" secondAttribute="top" constant="7" id="aKi-jO-NOJ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Iak-vB-mzj" secondAttribute="bottom" constant="1" id="ak7-5b-rbl"/>
                                                 <constraint firstItem="Iak-vB-mzj" firstAttribute="trailing" secondItem="mxc-Mz-Zes" secondAttribute="trailingMargin" id="gSA-IY-Cnx"/>
                                                 <constraint firstItem="Iak-vB-mzj" firstAttribute="top" secondItem="LWX-aB-rKV" secondAttribute="bottom" constant="7" id="u9c-i5-RzM"/>
+                                                <constraint firstItem="LWX-aB-rKV" firstAttribute="leading" secondItem="5NC-vv-yEL" secondAttribute="leading" id="usw-YS-bcG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -124,13 +119,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-fE-m1Z">
-                                <rect key="frame" x="238" y="229" width="137" height="30"/>
-                                <state key="normal" title="Filter"/>
-                                <connections>
-                                    <action selector="filterAction:" destination="ciD-od-2sG" eventType="touchUpInside" id="wIO-cO-TWE"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igm-3d-w0q">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <items>
@@ -147,25 +135,32 @@
                                     <outlet property="delegate" destination="ciD-od-2sG" id="drW-FH-quP"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-fE-m1Z">
+                                <rect key="frame" x="245" y="169" width="102" height="30"/>
+                                <state key="normal" title="Filter"/>
+                                <connections>
+                                    <action selector="filterAction:" destination="ciD-od-2sG" eventType="touchUpInside" id="wIO-cO-TWE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="noi-15-Wgc" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" id="4YV-lL-n2D"/>
                             <constraint firstItem="AMi-cQ-h6c" firstAttribute="top" secondItem="igm-3d-w0q" secondAttribute="bottom" id="AKj-jf-K3J"/>
                             <constraint firstItem="AMi-cQ-h6c" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" id="Aco-Mf-o5G"/>
                             <constraint firstItem="igm-3d-w0q" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" id="FZo-rM-UtG"/>
-                            <constraint firstItem="yUB-SZ-ADC" firstAttribute="top" secondItem="8fa-fE-m1Z" secondAttribute="bottom" constant="4" id="GJk-Cp-cyl"/>
                             <constraint firstItem="WKZ-cr-NjJ" firstAttribute="trailing" secondItem="yUB-SZ-ADC" secondAttribute="trailing" constant="16" id="Inc-DQ-nzo"/>
                             <constraint firstItem="yUB-SZ-ADC" firstAttribute="bottom" secondItem="WKZ-cr-NjJ" secondAttribute="bottom" id="IxF-ue-fcd"/>
                             <constraint firstItem="igm-3d-w0q" firstAttribute="top" secondItem="WKZ-cr-NjJ" secondAttribute="top" id="O0X-VT-38M"/>
-                            <constraint firstItem="WKZ-cr-NjJ" firstAttribute="trailing" secondItem="8fa-fE-m1Z" secondAttribute="trailing" id="OOF-pu-zbj"/>
-                            <constraint firstItem="noi-15-Wgc" firstAttribute="top" secondItem="AMi-cQ-h6c" secondAttribute="bottom" constant="70" id="Olv-kt-vbg"/>
+                            <constraint firstItem="yUB-SZ-ADC" firstAttribute="top" secondItem="noi-15-Wgc" secondAttribute="bottom" constant="8" id="VRU-Vf-w0x"/>
                             <constraint firstItem="AMi-cQ-h6c" firstAttribute="trailing" secondItem="WKZ-cr-NjJ" secondAttribute="trailing" id="XJe-Qj-1yU"/>
-                            <constraint firstItem="yUB-SZ-ADC" firstAttribute="top" secondItem="noi-15-Wgc" secondAttribute="bottom" constant="8" id="gnu-cK-4UB"/>
+                            <constraint firstItem="8fa-fE-m1Z" firstAttribute="top" secondItem="AMi-cQ-h6c" secondAttribute="bottom" constant="5" id="cqr-6h-kzL"/>
+                            <constraint firstItem="WKZ-cr-NjJ" firstAttribute="trailing" secondItem="8fa-fE-m1Z" secondAttribute="trailing" constant="28" id="e4e-OC-HlI"/>
+                            <constraint firstItem="noi-15-Wgc" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" constant="16" id="fYK-mz-TCt"/>
                             <constraint firstItem="AMi-cQ-h6c" firstAttribute="top" secondItem="igm-3d-w0q" secondAttribute="bottom" id="iQL-J9-HWa"/>
                             <constraint firstItem="igm-3d-w0q" firstAttribute="trailing" secondItem="WKZ-cr-NjJ" secondAttribute="trailing" id="lDr-HO-tqi"/>
+                            <constraint firstItem="yUB-SZ-ADC" firstAttribute="top" secondItem="8fa-fE-m1Z" secondAttribute="bottom" constant="54" id="tqS-Dy-VkT"/>
                             <constraint firstItem="AMi-cQ-h6c" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" id="vPD-Ci-2Tf"/>
-                            <constraint firstItem="8fa-fE-m1Z" firstAttribute="leading" secondItem="noi-15-Wgc" secondAttribute="trailing" constant="42" id="wns-rt-Vr1"/>
+                            <constraint firstItem="8fa-fE-m1Z" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" constant="245" id="vqv-Ry-VRr"/>
                             <constraint firstItem="AMi-cQ-h6c" firstAttribute="trailing" secondItem="WKZ-cr-NjJ" secondAttribute="trailing" id="ww5-qK-o0g"/>
                             <constraint firstItem="yUB-SZ-ADC" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" constant="16" id="zA0-Sy-wOe"/>
                         </constraints>
