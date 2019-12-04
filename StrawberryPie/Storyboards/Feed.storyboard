@@ -82,6 +82,7 @@
                         <outlet property="PrivMsgBtn" destination="Lio-XU-Wsw" id="xNO-lo-S2y"/>
                         <outlet property="QABtn" destination="a2z-sU-bkc" id="yF0-YZ-s1r"/>
                         <outlet property="feedBtn" destination="SFj-GP-f2z" id="xov-nd-324"/>
+                        <outlet property="hostBtn" destination="CgH-YS-WS4" id="XiI-5V-3sC"/>
                         <outlet property="personalFeedTableView" destination="CZn-O6-g0f" id="0XK-jf-wvM"/>
                     </connections>
                 </viewController>
