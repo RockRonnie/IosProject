@@ -9,27 +9,35 @@
 import UIKit
 import RealmSwift
 
-class QAController: UIViewController {
+class HostQAController: UIViewController {
+    
+    let transparentView = UIView()
+    let questionLabel = UILabel()
+    let answerField = UITextField()
+    var answerButton = UIButton()
+    var cancelButton = UIButton()
+
     
     var currentSession: QASession?
     var realm: Realm?
     var notificationToken: NotificationToken?
     
-    var qaSource: QAMessageBoard?
+    var questionText: String?
+    var selectedMessage: ChatMessage?
     
     var hostImage: UIImage?
     var hostName: String?
     var hostProfession: String?
     var hostEducation: String?
     var topicSource: String?
+    //kopsaa tämä QA puolelle myös
+    var qaSource: QAMessageBoard?
     var chatSource: List<ChatMessage>?
     var userSource: User?
     
-    let feed = UIStoryboard(name: "HostQA", bundle: nil)
-    
     // Tabin valinta, oletuksena aihe
     var selectedTab = "topic"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = RealmDB.sharedInstance.realm
@@ -59,7 +67,7 @@ class QAController: UIViewController {
                 self.populateSources()
             }
             self.qaTable.reloadData()
-            self.scrollToBottom()
+            //self.scrollToBottom()
             
             }
         }
@@ -86,8 +94,10 @@ class QAController: UIViewController {
         }
         // Kysymykset ja vastaukset
         if let qaBoard = currentSession?.QABoard[0] {
-        qaSource = qaBoard
+        if qaBoard.QAs.count > 0 {
+            qaSource = qaBoard
             }
+        }
         // Käyttäjä
         userSource = RealmDB.sharedInstance.getUser()
         // print (userSource)
@@ -126,18 +136,21 @@ class QAController: UIViewController {
         }
     }
     
-    func messageToQA(data: ChatMessage) {
+    func messageToQA(question: ChatMessage, answer: ChatMessage) {
         let defaultAnswer = ChatMessage()
         defaultAnswer.body = "Tässä vastaus"
-        let selectedQuestion = data
         let qaSet = QA()
         print("QAID", qaSet.QAID)
+        qaSet.question.append(question)
+        qaSet.answer.append(answer)
         try! realm!.write {
-            currentSession!.chat[0].chatMessages.append(data)
+            //currentSession!.chat[0].chatMessages.append(data)
             currentSession!.QABoard[0].QAs.append(qaSet)
-            currentSession!.QABoard[0].QAs.last!.question.append(selectedQuestion)
-            currentSession!.QABoard[0].QAs.last!.answer.append(defaultAnswer)
+            //currentSession!.QABoard[0].QAs.last!.question.append(selectedQuestion)
+            //currentSession!.QABoard[0].QAs.last!.answer.append(defaultAnswer)
         }
+        sendButton.isHidden = true
+        messageField.isHidden = true
     }
     
     func getPic() {
@@ -152,16 +165,6 @@ class QAController: UIViewController {
             }
         )}
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "HostQAController") {
-            let destinationVC = segue.destination as? HostQAController
-            // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
-            destinationVC?.currentSession = currentSession
-            // destinationVC?.sessionID = realmSession?.sessionID
-            
-        }
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -173,8 +176,6 @@ class QAController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBAction func toHostSession(_ sender: Any) {
-    }
     @IBOutlet weak var hostCardCV: UICollectionView!
     
     
@@ -182,20 +183,46 @@ class QAController: UIViewController {
         // Vaihdetaan cellin pohjaa ja reloadData()
         selectedTab = "chat"
         if userSource?.userName != "default" && userSource?.userName != nil {
-        messageField.isHidden = false
-        sendButton.isHidden = false
+        //messageField.isHidden = false
+        //sendButton.isHidden = false
         }
         qaTable.reloadData()
-        scrollToBottom()
+        //scrollToBottom()
+    }
+    
+    func addTransparentView(frames: CGRect) {
+        let window = UIApplication.shared.keyWindow
+        transparentView.frame = window?.frame ?? self.view.frame
+        self.view.addSubview(transparentView)
+        
+        answerField.frame = CGRect(x: 200, y: 200, width: 200, height: 150)
+        self.view.addSubview(answerField)
+        
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        //let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+        //transparentView.addGestureRecognizer(tapgesture)
+        transparentView.alpha = 0
+    }
+
+    // function for removing the transparent view (making the tableview for selecting the category invisible)
+    @objc func removeTransparentView() {
+        let frames = answerButton.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.answerField.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        }, completion: nil)
     }
     
     @IBOutlet weak var messageField: UITextField!
     
     @IBAction func sendButton(_ sender: UIButton) {
         // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username
-        let newMessage = ChatMessage()
-        newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
-        messageToRealm(data: newMessage)
+        let message = selectedMessage
+        let answer = ChatMessage()
+        if let question = message {
+            answer.body = "Vastaus: " + (messageField.text ?? "Tapahtui virhe")
+            messageToQA(question: question, answer: answer)
+        }
     }
     
     @IBOutlet weak var sendButton: UIButton!
@@ -223,7 +250,7 @@ class QAController: UIViewController {
     
 }
 
-extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -312,5 +339,23 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             cell.textLabel?.text = "🆘 Nyt levis koodi"
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        if selectedTab == "chat" {
+            let selectedCell = qaTable.cellForRow(at: indexPath)
+            let cellText = selectedCell?.textLabel?.text
+            if let gotText = cellText {
+                selectedMessage = ChatMessage()
+                selectedMessage?.body = "Kysymys: " + gotText
+                messageField.isHidden = false
+                sendButton.isHidden = false
+                
+                //messageToQA(data: selectedMessage)
+                //addTransparentView(frames: titleLabel.frame)
+            }
+        }
+        
+        
     }
 }
