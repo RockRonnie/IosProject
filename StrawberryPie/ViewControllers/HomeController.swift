@@ -34,12 +34,18 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        filterButton.layer.cornerRadius = 10
+        filterButton.layer.borderWidth = 1
+        
         print(RealmDB.sharedInstance.setup)
         setupRealm("default", "default" , false)
         initialState()
+        
         ExpertTableView.dataSource = self
         ExpertTableView.delegate = self
         ExpertTableView.reloadData()
+        
         filterView.delegate = self
         filterView.dataSource = self
         filterView.register(PickCategoryCell.self, forCellReuseIdentifier: "Cell")
