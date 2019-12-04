@@ -12,6 +12,10 @@ import RealmSwift
 @objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var categoryTable: UITableView!
+  @IBOutlet weak var interestOne: UILabel!
+  @IBOutlet weak var interestTwo: UILabel!
+  @IBOutlet weak var interestThree: UILabel!
+  @IBOutlet weak var interestError: UILabel!
   
   var signUpFormEnabled = Bool()
   let messageLabel = UILabel()
@@ -39,11 +43,14 @@ import RealmSwift
   let thisUser = User()
   
   
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.categoryTable.delegate = self
     self.categoryTable.dataSource = self
     self.categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    
    
     usernameField.isHidden = false
     userpasswordField.isHidden = false
@@ -112,6 +119,10 @@ import RealmSwift
     container.addArrangedSubview(userinfoField)
     container.addArrangedSubview(userXtraInfoField)
     
+    interestOne.text = ""
+    interestTwo.text = ""
+    interestThree.text = ""
+    errorLabel.text = ""
     
     // Buttons
     // LOGIN BUTTON
@@ -150,32 +161,35 @@ import RealmSwift
     
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return category.getNames().count
+    let rowCount = category.getNames().count - self.thisUser.userInterests.count
+    return rowCount
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    cell.textLabel?.text = category.getNames()[indexPath.item]
-    for i in thisUser.userInterests {
-      if i == category.getNames()[indexPath.item] {
-        cell.backgroundColor = UIColor.red
-      }
-    }
+    let interestCategories = category.getNames()
+    cell.textLabel?.text = interestCategories[indexPath.item]
     return cell
   }
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 35
   }
   func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
-    
-    let selectedCategory = category.getNames()[indexPath.item]
-    print(selectedCategory)
-    thisUser.userInterests.append(selectedCategory)
+    let interestCategories = category.getNames()
+    let selectedCategory = interestCategories[indexPath.item]
+    self.thisUser.userInterests.append(selectedCategory)
+    if self.interestOne.text == "" {
+      self.interestOne.text = selectedCategory
+    } else if self.interestTwo.text == "" && self.interestOne.text != "" {
+      self.interestTwo.text = selectedCategory
+    } else if self.interestThree.text == "" && self.interestTwo.text != "" {
+      self.interestThree.text = selectedCategory
+    }
     
   }
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      thisUser.userInterests.remove(at: indexPath.row)
+      self.thisUser.userInterests.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
   
