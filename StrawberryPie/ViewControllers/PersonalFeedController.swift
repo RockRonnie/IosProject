@@ -34,14 +34,18 @@ class PersonalFeedController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideButton()
         setup()
         // Do any additional setup after loading the view.
     }
     func setup(){
+        hideButton()
         realm = RealmDB.sharedInstance.realm
         user = RealmDB.sharedInstance.getUser()
         checkExpert(user: user)
+        setupPersonalItems()
+        personalFeedTableView.dataSource = self
+        personalFeedTableView.delegate = self
+        personalFeedTableView.reloadData()
     }
     func checkExpert(user: User?){
         if let user = user{
@@ -90,7 +94,7 @@ class PersonalFeedController: UIViewController {
     func setupPrivateMessages(){}
    // EXPERT
     func setupHost(){
-        hostedSessions = self.realm?.objects(QASession.self).filter("host[0].userID = %@", user?.userID ?? "default")
+        hostedSessions = realm?.objects(QASession.self).filter("host[0].userID = %@", user?.userID ?? "default")
     }
 
     
@@ -117,8 +121,13 @@ class PersonalFeedController: UIViewController {
 }
 
 extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+            return personalFeed.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

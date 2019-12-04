@@ -35,14 +35,9 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        filterButton.layer.cornerRadius = 10
-        filterButton.layer.borderWidth = 1
-        
+
         print(RealmDB.sharedInstance.setup)
         setupRealm("default", "default" , false)
-        initialState()
-        
         ExpertTableView.dataSource = self
         ExpertTableView.delegate = self
         ExpertTableView.reloadData()
@@ -51,6 +46,10 @@ class HomeController: UIViewController {
         filterView.dataSource = self
         filterView.register(PickCategoryCell.self, forCellReuseIdentifier: "Cell")
         //print(Realm.Configuration.defaultConfiguration.fileURL)
+    }
+    func filterButtonStyling(){
+        filterButton.layer.cornerRadius = 10
+        filterButton.layer.borderWidth = 1
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,10 +68,7 @@ class HomeController: UIViewController {
         }
     }
     
-    @IBAction func filterAction(_ sender: UIButton) {
-        selectedButton = filterButton
-        addTransparentView(frames: filterButton.frame)
-    }
+    
     func setState(state: String){
         selectedState = state
     }
@@ -137,6 +133,7 @@ class HomeController: UIViewController {
                 let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
                 self.realm = try! Realm(configuration: config)
                 print("Realm connection has been setup")
+                self.initialState()
                 RealmDB.sharedInstance.realm = self.realm
                 RealmDB.sharedInstance.setup = true
                 print(RealmDB.sharedInstance.setup = true)
@@ -148,6 +145,7 @@ class HomeController: UIViewController {
             }
             }
             }else{
+                self.initialState()
                 self.realm = RealmDB.sharedInstance.realm
                 self.user = RealmDB.sharedInstance.user
                 self.updateExpertFeed()
@@ -155,6 +153,11 @@ class HomeController: UIViewController {
                 self.ExpertTableView.reloadData()
                 print(self.user?.identity ?? "No identity")
             }
+    }
+    // Button action for filterin. Followed by Transparentview connected to it.
+    @IBAction func filterAction(_ sender: UIButton) {
+        selectedButton = filterButton
+        addTransparentView(frames: filterButton.frame)
     }
     
     // function for making the filter filterView visible
@@ -177,7 +180,7 @@ class HomeController: UIViewController {
             self.filterView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5, width: frames.width, height: CGFloat(self.states.count * 50))
         }, completion: nil)
     }
-    
+    // Removing the filterview from the screen
     @objc func removeTransparentView() {
         let frames = selectedButton.frame
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
