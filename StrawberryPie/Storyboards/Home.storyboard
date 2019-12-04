@@ -61,6 +61,7 @@
                                                     <rect key="frame" x="15" y="7" width="80" height="112"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="LQJ-PW-xVo"/>
+                                                        <constraint firstAttribute="height" constant="112" id="QeM-wj-F9Z"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="JobTitleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-vv-yEL">

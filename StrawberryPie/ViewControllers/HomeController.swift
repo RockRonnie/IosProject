@@ -235,13 +235,15 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
           if(tableView == ExpertTableView){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
         
+            //Scaleing the image to fit ImageView
+            cell.expertImage?.contentMode = .scaleAspectFit
             var object: QASession
             object = self.sessions[indexPath.row] as QASession
             cell.expertImage?.image = expertImage
             cell.expertDesc?.text = object.sessionDescription
             cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.expertTitle?.text = object.title
-            //cell.expertImage?
+    
             return cell
           }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
