@@ -13,7 +13,7 @@
         <!--QA Scene-->
         <scene sceneID="Wbk-gp-9zP">
             <objects>
-                <viewController storyboardIdentifier="QAController" title="QA Scene" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rbh-wZ-ci6" customClass="QAController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HostQAController" title="QA Scene" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rbh-wZ-ci6" customClass="HostQAController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Jb-lh-l2E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,17 +108,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYO-DU-XRt">
-                                <rect key="frame" x="16" y="609" width="33" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Host">
-                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="toHostSession:" destination="rbh-wZ-ci6" eventType="touchUpInside" id="FqE-Rv-C59"/>
-                                    <segue destination="aYW-HB-1xq" kind="show" identifier="HostQAController" id="8uB-pw-SRg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nOg-Mg-cx9"/>
@@ -134,14 +123,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhN-vS-nFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-223.19999999999999" y="23.838080959520241"/>
-        </scene>
-        <!--HostQAController-->
-        <scene sceneID="0e4-J7-XCQ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="HostQA" referencedIdentifier="HostQAController" id="aYW-HB-1xq" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VtK-zh-z8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="286" y="-117"/>
         </scene>
     </scenes>
 </document>
