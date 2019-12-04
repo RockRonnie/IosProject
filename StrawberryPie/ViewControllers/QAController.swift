@@ -27,7 +27,7 @@ class QAController: UIViewController {
     
     // Tabin valinta, oletuksena aihe
     var selectedTab = "topic"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         realm = RealmDB.sharedInstance.realm

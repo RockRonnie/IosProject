@@ -25,11 +25,14 @@ class PersonalFeedController: UIViewController {
     var expert: Bool = false
     
     lazy var personalFeed: Array<QASession> = []
-    lazy var personalMessage: Array<ChatMessage> = []
     lazy var personalQA: Array<QA> = []
     
+    var personalMessages: List<ChatMessage>?
     var hostedSessions: Results<QASession>?
     var recommendedSessions: Results<QASession>?
+    var answeredQA: Results<QA>?
+    
+    var selectedTab: String?
   
     
     override func viewDidLoad() {
@@ -47,6 +50,10 @@ class PersonalFeedController: UIViewController {
         personalFeedTableView.delegate = self
         personalFeedTableView.reloadData()
     }
+    func setTab(tab: String){
+        selectedTab = tab
+    }
+    
     func checkExpert(user: User?){
         if let user = user{
             if (user.userExpert ==  true){
@@ -90,8 +97,16 @@ class PersonalFeedController: UIViewController {
     func setupPersonalFeed(){
         recommendedSessions = realm?.objects(QASession.self).filter("live = true")
     }
-    func setupPersonalQA(){}
-    func setupPrivateMessages(){}
+    func setupPersonalQA(){
+        if let user = user{
+            answeredQA = realm?.objects(QA.self).filter("ANY question.sender = %@", user.userName)
+        }
+    }
+    func setupPrivateMessages(){
+        if let user = user{
+            personalMessages = user.userPrivateMessages
+        }
+    }
    // EXPERT
     func setupHost(){
         print("setup host")
@@ -113,10 +128,13 @@ class PersonalFeedController: UIViewController {
     
     
     @IBAction func perFeedAction(_ sender: UIButton) {
+        setTab(tab: "Feed")
     }
     @IBAction func QaAction(_ sender: UIButton) {
+        setTab(tab: "QA")
     }
     @IBAction func privMsgAction(_ sender: UIButton) {
+        setTab(tab: "privMsg")
     }
     
     
