@@ -172,30 +172,55 @@ import RealmSwift
   @IBAction func removeFirst(_ sender: Any) {
     switch self.thisUser.userInterests.count {
     case 0: break
+    case 1:
+      self.interestOne.text = ""
+      self.thisUser.userInterests.remove(at: 0)
+      self.removeInterestOne.isHidden = true
+    case 2:
+      self.thisUser.userInterests.remove(at: 0)
+      self.interestOne.text = self.interestTwo.text
+      self.interestTwo.text = ""
+      self.removeInterestOne.isHidden = false
+      self.removeInterestTwo.isHidden = true
+      self.removeInterestThree.isHidden = true
     default:
-    self.thisUser.userInterests.remove(at: 0)
-    self.interestOne.text = ""
-    self.removeInterestOne.isHidden = true
+      self.thisUser.userInterests.remove(at: 0)
+      self.interestOne.text = self.interestTwo.text
+      self.interestTwo.text = self.interestThree.text
+      self.interestThree.text = ""
+      self.removeInterestOne.isHidden = false
+      self.removeInterestTwo.isHidden = false
+      self.removeInterestThree.isHidden = true
     }
-    
-    
   }
   @IBAction func removeSecond(_ sender: Any) {
     switch self.thisUser.userInterests.count {
     case 0: break
+    case 1: break
+    case 2:
+      self.thisUser.userInterests.remove(at: 1)
+      self.interestTwo.text = self.interestThree.text
+      self.interestThree.text = ""
+      self.removeInterestTwo.isHidden = true
+      self.removeInterestThree.isHidden = true
     default:
-    self.thisUser.userInterests.remove(at: 1)
-    self.interestTwo.text = ""
-    self.removeInterestTwo.isHidden = true
+      self.thisUser.userInterests.remove(at: 1)
+      self.interestTwo.text = self.interestThree.text
+      self.interestThree.text = ""
+      self.removeInterestTwo.isHidden = false
+      self.removeInterestThree.isHidden = true
     }
   }
   @IBAction func removeThird(_ sender: Any) {
     switch self.thisUser.userInterests.count {
     case 0: break
+    case 1: break
+    case 2: break
     default:
-    self.thisUser.userInterests.remove(at: 2)
-    self.interestThree.text = ""
-    self.removeInterestThree.isHidden = true
+      self.thisUser.userInterests.remove(at: 2)
+      self.interestThree.text = ""
+      self.removeInterestThree.isHidden = true
+    
     }
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -217,7 +242,6 @@ import RealmSwift
     } else {
       // If it does not, add to userinterests
       self.thisUser.userInterests.append(selectedCategory)
-    }
     // Switch case for showing interests on the screen
       switch self.thisUser.userInterests.count {
       case 1:
@@ -240,6 +264,7 @@ import RealmSwift
         self.interestThree.text = ""
       }
     }
+  }
   
 
   
