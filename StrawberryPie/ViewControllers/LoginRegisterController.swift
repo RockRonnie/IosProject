@@ -22,7 +22,6 @@ import RealmSwift
   let changeFormButton = UIButton(type: .roundedRect)
   let loginButton = UIButton(type: .roundedRect)
   let signUpButton = UIButton(type: .roundedRect)
-  let cancelButton = UIButton(type: .roundedRect)
   let infoAddedButton = UIButton(type: .roundedRect)
   let userEmailField = UITextField()
   let usernameField = UITextField()
@@ -36,6 +35,8 @@ import RealmSwift
   @IBOutlet weak var removeInterestOne: UIButton!
   @IBOutlet weak var removeInterestTwo: UIButton!
   @IBOutlet weak var removeInterestThree: UIButton!
+  @IBOutlet weak var cancelBtn: UIButton!
+  @IBOutlet weak var doneBtn: UIButton!
   
   var category = Category()
   
@@ -43,8 +44,6 @@ import RealmSwift
   var user: SyncUser?
   let main = UIStoryboard(name: "Main", bundle: nil)
   let thisUser = User()
-  
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -63,9 +62,10 @@ import RealmSwift
     lastnameField.isHidden = true
     loginButton.isHidden = true
     signUpButton.isHidden = true
-    cancelButton.isHidden = true
     changeFormButton.isHidden = false
     infoAddedButton.isHidden = true
+    cancelBtn.isHidden = true
+    doneBtn.isHidden = true
     
     // Initial swap of forms to get Loginform to show
     self.signUpFormEnabled = true
@@ -120,12 +120,17 @@ import RealmSwift
     container.addArrangedSubview(userinfoField)
     container.addArrangedSubview(userXtraInfoField)
     
-    interestOne.text = ""
-    interestTwo.text = ""
-    interestThree.text = ""
+    categoryTable.isHidden = true
+    interestOne.isHidden = true
+    interestTwo.isHidden = true
+    interestThree.isHidden = true
     removeInterestOne.isHidden = true
     removeInterestTwo.isHidden = true
     removeInterestThree.isHidden = true
+    
+    interestOne.text = ""
+    interestTwo.text = ""
+    interestThree.text = ""
     interestError.text = ""
     
     // Buttons
@@ -135,27 +140,21 @@ import RealmSwift
     // SIGNUP BUTTON
     signUpButton.setTitle("Sign up", for: .normal)
     signUpButton.addTarget(self, action: #selector(createUser), for: .touchUpInside)
-    // DONE BUTTON TO CONTINUE FOR SIGNUP PT. 2
-    infoAddedButton.setTitle("Done", for: .normal)
-    infoAddedButton.addTarget(self, action: #selector(advancedSignup), for: .touchUpInside)
-    changeFormButton.addTarget(self, action: #selector(switchForm),
-                               for: .touchUpInside)
-    // IF YOU DONT WANT TO SET USER CUSTOMIZATION NOW
-    cancelButton.setTitle("Cancel, you can modify later", for: .normal)
-    cancelButton.addTarget(self, action: #selector(cancelRegister), for: .touchUpInside)
+    
+    changeFormButton.setTitle("No account? Register", for: .normal)
+    changeFormButton.addTarget(self, action: #selector(switchForm), for: .touchUpInside)
     
     // Add buttons, cancelButton for cancelling extra signup details
     container.addArrangedSubview(loginButton)
     container.addArrangedSubview(signUpButton)
-    container.addArrangedSubview(changeFormButton)
-    container.addArrangedSubview(cancelButton)
     container.addArrangedSubview(infoAddedButton)
+    container.addArrangedSubview(changeFormButton)
     
     // Container's location on the screen
     let guide = view.safeAreaLayoutGuide
     NSLayoutConstraint.activate([
       container.centerXAnchor.constraint(equalTo: guide.centerXAnchor, constant: 0),
-      container.centerYAnchor.constraint(equalTo: guide.centerYAnchor, constant: -100),
+      container.centerYAnchor.constraint(equalTo: guide.centerYAnchor, constant: -180),
       
       ])
   }
@@ -168,8 +167,19 @@ import RealmSwift
     let rowCount = category.getNames().count // When delete is implemented - self.thisUser.userInterests.count
     return rowCount
   }
-  
+  // Buttons for finishing register or canceling it
+  @IBAction func cancelRegister(_ sender: Any) {
+    cancelRegister()
+  }
+  @IBAction func registerDone(_ sender: Any) {
+    advancedSignup()
+  }
   @IBAction func removeFirst(_ sender: Any) {
+    let userUpdatedObj = RealmDB.sharedInstance.getUser()
+    realm = RealmDB.sharedInstance.realm
+    // Check that user does not empty password field
+    try! self.realm.write {
+      
     switch self.thisUser.userInterests.count {
     case 0: break
     case 1:
@@ -191,6 +201,15 @@ import RealmSwift
       self.removeInterestOne.isHidden = false
       self.removeInterestTwo.isHidden = false
       self.removeInterestThree.isHidden = true
+      }
+      userUpdatedObj?.userInterests = self.thisUser.userInterests
+      
+      // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
+      if let userUpdate = userUpdatedObj {
+        self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
+      } else {
+        print("No changes")
+      }
     }
   }
   @IBAction func removeSecond(_ sender: Any) {
@@ -240,9 +259,26 @@ import RealmSwift
     if self.thisUser.userInterests.contains(selectedCategory) {
       self.interestError.text = "Category already picked"
     } else {
+      
       // If it does not, add to userinterests
-      self.thisUser.userInterests.append(selectedCategory)
+      let userUpdatedObj = RealmDB.sharedInstance.getUser()
+      realm = RealmDB.sharedInstance.realm
+      // Check that user does not empty password field
+      try! self.realm.write {
+        self.thisUser.userInterests.append(selectedCategory)
+        userUpdatedObj?.userInterests = self.thisUser.userInterests
+        
+        // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
+        if let userUpdate = userUpdatedObj {
+          self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
+        } else {
+          print("No changes")
+        }
+      }
+      
+      
     // Switch case for showing interests on the screen
+      
       switch self.thisUser.userInterests.count {
       case 1:
         self.interestOne.text = selectedCategory
@@ -262,7 +298,7 @@ import RealmSwift
         self.interestOne.text = ""
         self.interestTwo.text = ""
         self.interestThree.text = ""
-      }
+        }
     }
   }
   
@@ -417,6 +453,9 @@ import RealmSwift
   // Enable user fields for registration phase 2
   func createUserMoreInfo() {
     // SHOW RELEVANT FIELDS
+ 
+    self.doneBtn.isHidden = false
+    self.cancelBtn.isHidden = false
     self.usernameField.isHidden = true
     self.userpasswordField.isHidden = true
     self.userpwagainField.isHidden = true
@@ -424,11 +463,14 @@ import RealmSwift
     self.lastnameField.isHidden = false
     self.changeFormButton.isHidden = true
     self.signUpButton.isHidden = true
-    self.cancelButton.isHidden = false
     self.userEmailField.isHidden = false
     self.userXtraInfoField.isHidden = false
     self.userinfoField.isHidden = false
     self.infoAddedButton.isHidden = false
+    self.categoryTable.isHidden = false
+    self.interestOne.isHidden = false
+    self.interestTwo.isHidden = false
+    self.interestThree.isHidden = false
   }
   // Go out of register and present logged in tab bar, should only be used for user that has logged in already
   func cancelRegister() {
@@ -457,6 +499,8 @@ import RealmSwift
       userUpdatedObj?.userEmail = self.userEmailField.text ?? ""
       userUpdatedObj?.info = self.userinfoField.text ?? ""
       userUpdatedObj?.extraInfo = self.userXtraInfoField.text ?? ""
+      userUpdatedObj?.userInterests = self.thisUser.userInterests
+      
       // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
       if let userUpdate = userUpdatedObj {
         self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
@@ -481,6 +525,7 @@ import RealmSwift
       self.messageLabel.text = "Please enter your login information"
       self.userpwagainField.isHidden = true
       self.loginButton.isHidden = false
+      
       self.signUpButton.isHidden = true
       changeFormButton.setTitle("Sign up instead", for: .normal)
     } else if
@@ -488,7 +533,8 @@ import RealmSwift
       signUpFormEnabled = true
       self.messageLabel.text = "Please fill out the registration form"
       // SIGNUP Form chosen -> Show signup fields
-      
+      self.cancelBtn.isHidden = true
+      self.doneBtn.isHidden = true
       self.userpwagainField.isHidden = false
       self.loginButton.isHidden = true
       self.signUpButton.isHidden = false
