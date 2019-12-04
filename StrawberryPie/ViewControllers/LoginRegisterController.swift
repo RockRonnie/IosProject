@@ -24,8 +24,6 @@ import RealmSwift
   let signUpButton = UIButton(type: .roundedRect)
   let cancelButton = UIButton(type: .roundedRect)
   let infoAddedButton = UIButton(type: .roundedRect)
-  
-  let errorLabel = UILabel()
   let userEmailField = UITextField()
   let usernameField = UITextField()
   let firstnameField = UITextField()
@@ -34,6 +32,10 @@ import RealmSwift
   let userXtraInfoField = UITextField()
   let userpasswordField = UITextField()
   let userpwagainField = UITextField()
+  
+  @IBOutlet weak var removeInterestOne: UIButton!
+  @IBOutlet weak var removeInterestTwo: UIButton!
+  @IBOutlet weak var removeInterestThree: UIButton!
   
   var category = Category()
   
@@ -44,14 +46,13 @@ import RealmSwift
   
   
   
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.categoryTable.delegate = self
     self.categoryTable.dataSource = self
     self.categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     
-   
+    
     usernameField.isHidden = false
     userpasswordField.isHidden = false
     userinfoField.isHidden = true
@@ -122,7 +123,10 @@ import RealmSwift
     interestOne.text = ""
     interestTwo.text = ""
     interestThree.text = ""
-    errorLabel.text = ""
+    removeInterestOne.isHidden = true
+    removeInterestTwo.isHidden = true
+    removeInterestThree.isHidden = true
+    interestError.text = ""
     
     // Buttons
     // LOGIN BUTTON
@@ -161,10 +165,39 @@ import RealmSwift
     
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let rowCount = category.getNames().count - self.thisUser.userInterests.count
+    let rowCount = category.getNames().count // When delete is implemented - self.thisUser.userInterests.count
     return rowCount
   }
   
+  @IBAction func removeFirst(_ sender: Any) {
+    switch self.thisUser.userInterests.count {
+    case 0: break
+    default:
+    self.thisUser.userInterests.remove(at: 0)
+    self.interestOne.text = ""
+    self.removeInterestOne.isHidden = true
+    }
+    
+    
+  }
+  @IBAction func removeSecond(_ sender: Any) {
+    switch self.thisUser.userInterests.count {
+    case 0: break
+    default:
+    self.thisUser.userInterests.remove(at: 1)
+    self.interestTwo.text = ""
+    self.removeInterestTwo.isHidden = true
+    }
+  }
+  @IBAction func removeThird(_ sender: Any) {
+    switch self.thisUser.userInterests.count {
+    case 0: break
+    default:
+    self.thisUser.userInterests.remove(at: 2)
+    self.interestThree.text = ""
+    self.removeInterestThree.isHidden = true
+    }
+  }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     let interestCategories = category.getNames()
@@ -174,27 +207,53 @@ import RealmSwift
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 35
   }
-  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
     let interestCategories = category.getNames()
+    self.interestError.text = ""
     let selectedCategory = interestCategories[indexPath.item]
-    self.thisUser.userInterests.append(selectedCategory)
-    if self.interestOne.text == "" {
-      self.interestOne.text = selectedCategory
-    } else if self.interestTwo.text == "" && self.interestOne.text != "" {
-      self.interestTwo.text = selectedCategory
-    } else if self.interestThree.text == "" && self.interestTwo.text != "" {
-      self.interestThree.text = selectedCategory
+    // If userinterest list contains the picked tableview category
+    if self.thisUser.userInterests.contains(selectedCategory) {
+      self.interestError.text = "Category already picked"
+    } else {
+      // If it does not, add to userinterests
+      self.thisUser.userInterests.append(selectedCategory)
     }
-    
-  }
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      self.thisUser.userInterests.remove(at: indexPath.row)
-      tableView.deleteRows(at: [indexPath], with: .fade)
+    // Switch case for showing interests on the screen
+      switch self.thisUser.userInterests.count {
+      case 1:
+        self.interestOne.text = selectedCategory
+        removeInterestOne.isHidden = false
+      case 2:
+        self.interestTwo.text = selectedCategory
+        removeInterestTwo.isHidden = false
+      case 3:
+        self.interestThree.text = selectedCategory
+        removeInterestThree.isHidden = false
+      case 4:
+        self.interestError.text = "All 3 categories picked"
+      default:
+        removeInterestOne.isHidden = true
+        removeInterestTwo.isHidden = true
+        removeInterestThree.isHidden = true
+        self.interestOne.text = ""
+        self.interestTwo.text = ""
+        self.interestThree.text = ""
+      }
     }
   
-  }
-// Login function, check for username and password
+
+  
+  
+  
+  
+  // deletion func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+  //  if editingStyle == .delete {
+  //    self.thisUser.userInterests.remove(at: indexPath.row)
+  //    tableView.deleteRows(at: [indexPath], with: .fade)
+  //  }
+  
+  // }
+  // Login function, check for username and password
   func logIn(_ username: String,_ password: String,_ register: Bool) {
     if usernameField.text == "" {
       self.present(customAlert(title: "uname", reason: "Missing username"), animated: true, completion: nil)
@@ -216,7 +275,7 @@ import RealmSwift
     return alert
     
   }
-// Login function with username and password
+  // Login function with username and password
   func loginRealm(_ username: String,_ password: String,_ register: Bool){
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
     // Try Logging in
@@ -271,11 +330,11 @@ import RealmSwift
                    animated: true, completion: nil)
     } else if usernameField.text != "" && userpasswordField.text != "" && userpwagainField.text != "" {
       
-    // Textfields are not empty => Login
+      // Textfields are not empty => Login
       
       SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: true), server: Constants.AUTH_URL) { user, error in
         if let user = user {
-        // logout user in realm instance if exists
+          // logout user in realm instance if exists
           RealmDB.sharedInstance.user?.logOut()
           // Login successful
           // Create read/write permissions for the realm, username is the logged user
@@ -321,7 +380,7 @@ import RealmSwift
       
     }
   }
-
+  
   // Functions connecting to Buttons
   func signIn() {
     logIn(username ?? "", password ?? "", false)
@@ -376,14 +435,14 @@ import RealmSwift
       // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
       if let userUpdate = userUpdatedObj {
         self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
-        } else {
+      } else {
         print("No changes")
       }
     }
     // Succesful registration, login ensues
-      let alert = UIAlertController(title: "Success!", message: "Registration successful!", preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
-      self.present(alert, animated: true)
+    let alert = UIAlertController(title: "Success!", message: "Registration successful!", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
+    self.present(alert, animated: true)
     
   }
   

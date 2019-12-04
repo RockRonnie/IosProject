@@ -20,8 +20,8 @@ import RealmSwift
     dynamic var info: String = ""
     dynamic var extraInfo: String = ""
     dynamic var uImage: String = ""
-    let userInterests = List<String>()
-    let userPrivateMessages = List<ChatMessage>()
+    var userInterests = List<String>()
+    var userPrivateMessages = List<ChatMessage>()
     dynamic var Account_created: Date = Date()
     
     // THIS IS JUST A DUMMY VERSION. REAL ONE NEEDS TO HAVE ALL THE NECESSARY INFORMATION FOR USER PROFILE, IT ALSO NEEDS TO STORE USERS PRIVATE MESSAGES ETC.
