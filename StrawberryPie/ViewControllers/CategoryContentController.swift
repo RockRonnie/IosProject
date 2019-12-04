@@ -11,13 +11,12 @@ import CoreData
 import RealmSwift
 
 class CategoryContentController: UIViewController,UITableViewDataSource, UITableViewDelegate {
-
-    var notificationToken: NotificationToken?
     
+    @IBOutlet weak var CategoryContentTable: ExpertTableViewController!
+    var notificationToken: NotificationToken?
     var topText = String()
     var categoryObject = [NSManagedObject]()
     
-    @IBOutlet weak var CategoryContentTable: ExpertTableViewController!
     
     var user: SyncUser?
     var realm: Realm!
@@ -74,14 +73,22 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
-        
+        cell.expertImage?.contentMode = .scaleAspectFit
         var object: QASession
         object = self.experts[indexPath.row] as QASession
         
+        let imageProcessor = UserImagePost()
+        imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
+            if let result = resultImage {
+                print("kuva saatu")
+                cell.expertImage?.image = result
+            }
+        })
         cell.expertDesc?.text = object.sessionDescription
         cell.expertName?.text = object.host[0].userID
         cell.expertTitle?.text = object.title
-        //cell.expertImage?
+    
+        //IMAGE GOES HERE!!!!!!!!!!!!!!!!!!!!!!
         
         return cell
     }

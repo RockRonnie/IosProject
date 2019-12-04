@@ -50,7 +50,7 @@ public class UserImagePost {
     func getPic(image: String, onCompletion: ((UIImage?) -> Void)? = nil) {
         var resultImage: UIImage?
         print("haetaan kuvaa")
-        Alamofire.request("http://foxer153.asuscomm.com/images/53bf7ebb568d8b78f51a8bbcf295a8b8").responseData(completionHandler: { response in
+        Alamofire.request(image).responseData(completionHandler: { response in
             if let imageData = response.data
             {
                 print ("Kuva löytyi")

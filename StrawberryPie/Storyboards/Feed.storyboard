@@ -28,20 +28,49 @@
             </objects>
             <point key="canvasLocation" x="-966" y="-1699"/>
         </scene>
-        <!--View Controller-->
+        <!--Personal Feed Controller-->
         <scene sceneID="Hgc-x8-5Z2">
             <objects>
-                <viewController id="Yy9-W3-V5p" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonalFeedController" id="Yy9-W3-V5p" customClass="PersonalFeedController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fpF-6I-cfM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgH-YS-WS4">
-                                <rect key="frame" x="136" y="374" width="102" height="30"/>
+                                <rect key="frame" x="136" y="583" width="102" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Host A session"/>
                                 <connections>
                                     <segue destination="LSA-DS-syc" kind="show" identifier="HostSession" id="haZ-lV-8Rr"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CZn-O6-g0f">
+                                <rect key="frame" x="16" y="119" width="343" height="456"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFj-GP-f2z">
+                                <rect key="frame" x="16" y="81" width="98" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Personal Feed"/>
+                                <connections>
+                                    <action selector="perFeedAction:" destination="Yy9-W3-V5p" eventType="touchUpInside" id="nox-uM-GLD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lio-XU-Wsw">
+                                <rect key="frame" x="238" y="81" width="121" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Private Messages"/>
+                                <connections>
+                                    <action selector="privMsgAction:" destination="Yy9-W3-V5p" eventType="touchUpInside" id="Cbe-gk-mHc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2z-sU-bkc">
+                                <rect key="frame" x="163" y="81" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Q&amp;A"/>
+                                <connections>
+                                    <action selector="QaAction:" destination="Yy9-W3-V5p" eventType="touchUpInside" id="Zdy-rQ-vfH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -49,10 +78,16 @@
                         <viewLayoutGuide key="safeArea" id="jpY-4w-q1d"/>
                     </view>
                     <navigationItem key="navigationItem" id="hbd-uQ-HMZ"/>
+                    <connections>
+                        <outlet property="PrivMsgBtn" destination="Lio-XU-Wsw" id="xNO-lo-S2y"/>
+                        <outlet property="QABtn" destination="a2z-sU-bkc" id="yF0-YZ-s1r"/>
+                        <outlet property="feedBtn" destination="SFj-GP-f2z" id="xov-nd-324"/>
+                        <outlet property="personalFeedTableView" destination="CZn-O6-g0f" id="0XK-jf-wvM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntO-5B-449" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="-1698"/>
+            <point key="canvasLocation" x="5.5999999999999996" y="-1698.8005997001501"/>
         </scene>
         <!--HostController-->
         <scene sceneID="skU-lg-fpx">

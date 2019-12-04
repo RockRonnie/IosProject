@@ -14,9 +14,10 @@ class HomeController: UIViewController {
     
     @IBOutlet weak var ExpertTableView: ExpertTableViewController!
     @IBOutlet weak var filterButton: UIButton!
+    
     let transparentView = UIView()
     let filterView = UITableView()
-    var selectedView = UITextView()
+    var selectedButton = UIButton()
     
     var notificationToken: NotificationToken?
 
@@ -69,6 +70,7 @@ class HomeController: UIViewController {
     }
     
     @IBAction func filterAction(_ sender: UIButton) {
+        selectedButton = filterButton
         addTransparentView(frames: filterButton.frame)
     }
     func setState(state: String){
@@ -89,18 +91,6 @@ class HomeController: UIViewController {
         upcomingSessions = realm.objects(QASession.self).filter("upcoming = true")
         archivedSessions = realm.objects(QASession.self).filter("archived = true")
     }
-    
-    func getPic() {
-        let imageProcessor = UserImagePost()
-        imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
-            if let result = resultImage {
-                print("kuva saatu")
-                self.expertImage = result
-                self.ExpertTableView.reloadData()
-            }
-        }
-        )}
-    
     func getState(){
         switch selectedState {
         case "live":
@@ -167,7 +157,7 @@ class HomeController: UIViewController {
             }
     }
     
-    // function for making the category tableview visible
+    // function for making the filter filterView visible
     func addTransparentView(frames: CGRect) {
         let window = UIApplication.shared.keyWindow
         transparentView.frame = window?.frame ?? self.view.frame
@@ -189,7 +179,7 @@ class HomeController: UIViewController {
     }
     
     @objc func removeTransparentView() {
-        let frames = filterButton.frame
+        let frames = selectedButton.frame
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
             self.transparentView.alpha = 0
             self.filterView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
@@ -226,16 +216,28 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
         if(tableView == ExpertTableView){
             let row = indexPath.row
-        }else if (tableView == filterView){
+        }
+        if (tableView == filterView){
             print("Setting the state for filter")
             setState(state: states[indexPath.row])
             print(states[indexPath.row])
-            filterButton.setTitle(states[indexPath.row], for: .normal)
-            removeTransparentView()
+            selectedButton.setTitle(states[indexPath.row], for: .normal)
             setupExperts()
+            removeTransparentView()
             self.ExpertTableView.reloadData()
         }
     }
+    
+    func getPic() {
+        let imageProcessor = UserImagePost()
+        imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
+            if let result = resultImage {
+                print("kuva saatu")
+                self.expertImage = result
+                self.ExpertTableView.reloadData()
+            }
+        }
+        )}
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           if(tableView == ExpertTableView){
@@ -245,17 +247,27 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             cell.expertImage?.contentMode = .scaleAspectFit
             var object: QASession
             object = self.sessions[indexPath.row] as QASession
-            cell.expertImage?.image = expertImage
+            let imageProcessor = UserImagePost()
+            imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
+                if let result = resultImage {
+                    print("kuva saatu")
+                    cell.expertImage?.image = result
+                }
+            })
             cell.expertDesc?.text = object.sessionDescription
             cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.expertTitle?.text = object.title
     
             return cell
+          }else if (tableView == filterView){
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+                cell.textLabel?.text = states[indexPath.row]
+                return cell
           }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             cell.textLabel?.text = states[indexPath.row]
             return cell
-          }
+        }
         
     }
     /*
@@ -265,6 +277,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         }else{
             return 200
         }
-    }*/
+    }
+ */
 }
+
 
