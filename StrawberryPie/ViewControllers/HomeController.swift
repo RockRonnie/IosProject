@@ -220,13 +220,13 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
         if(tableView == ExpertTableView){
             let row = indexPath.row
-        }else if (tableView == filterView){
+        }else{
             print("Setting the state for filter")
             setState(state: states[indexPath.row])
             print(states[indexPath.row])
             filterButton.setTitle(states[indexPath.row], for: .normal)
-            removeTransparentView()
             setupExperts()
+            removeTransparentView()
             self.ExpertTableView.reloadData()
         }
     }
@@ -259,6 +259,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         }else{
             return 200
         }
-    }*/
+    }
+ */
 }
 
