@@ -35,7 +35,7 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = "Team Työkkäri ReEdu"
         print(RealmDB.sharedInstance.setup)
         setupRealm("default", "default" , false)
         ExpertTableView.dataSource = self

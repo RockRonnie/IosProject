@@ -56,7 +56,6 @@ public class Category: NSManagedObject {
             print(error)
         }
     }
-    
     //Fetches data from the given gategory
     func getCategoryData(name: String){
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return}

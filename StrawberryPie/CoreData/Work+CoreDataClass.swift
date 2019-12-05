@@ -2,7 +2,7 @@
 //  Work+CoreDataClass.swift
 //  
 //
-//  Created by iosdev on 22/11/2019.
+//  Created by Arttu Jokinen on 22/11/2019.
 //
 //  Methods for handling coredata related to Work entity. Basic CRUD funcionality
 
