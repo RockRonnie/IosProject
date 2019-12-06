@@ -11,6 +11,7 @@ import RealmSwift
 
 
 class HostController: UIViewController {
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var eduTextField: UITextField!
     @IBOutlet weak var profTextField: UITextField!
@@ -18,13 +19,11 @@ class HostController: UIViewController {
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var introTextView: UITextView!
-    let feed = UIStoryboard(name: "Feed", bundle: nil)
-    
+    let main = UIStoryboard(name: "Main", bundle: nil)
     
     let transparentView = UIView()
     let tableView = UITableView()
     var selectedButton = UIButton()
-  
     
     var sessionTitle: String?
     var sessionIntro: String?
@@ -39,7 +38,6 @@ class HostController: UIViewController {
     var thisUserObject: User?
     var category = Category()
     var allCategories: Array<String> = []
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,13 +106,14 @@ class HostController: UIViewController {
     
     // Creating the session object and sending it to realm cloud
     func sessiontoRealm() {
-        let personalFeed: UIViewController? = feed.instantiateViewController(withIdentifier: "PersonalFeedController") as UIViewController
+        /*let personalFeed: UIViewController? = feed.instantiateViewController(withIdentifier: "PersonalFeedController") as UIViewController*/
+        let perFeed: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
         createdSession = createSession()
         if let createdSession = createdSession {
             try! realm.write {
                 realm.add(createdSession)
             }
-            self.present(personalFeed!, animated:true, completion: nil)
+            self.present(perFeed!, animated:true, completion: nil)
         }
     }
     
