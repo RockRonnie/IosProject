@@ -51,7 +51,6 @@ import RealmSwift
     self.categoryTable.dataSource = self
     self.categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     
-    
     usernameField.isHidden = false
     userpasswordField.isHidden = false
     userinfoField.isHidden = true

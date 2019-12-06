@@ -37,13 +37,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get help from the experts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noi-15-Wgc">
-                                <rect key="frame" x="16" y="181" width="196" height="21"/>
+                                <rect key="frame" x="16" y="135" width="196" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yUB-SZ-ADC" customClass="ExpertTableViewController" customModule="StrawberryPie" customModuleProvider="target">
-                                <rect key="frame" x="16" y="210" width="343" height="408"/>
+                                <rect key="frame" x="16" y="164" width="343" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpertCell" rowHeight="128" id="ZdF-1Z-E8r" customClass="ExpertCellController" customModule="StrawberryPie" customModuleProvider="target">
@@ -120,7 +120,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-fE-m1Z">
-                                <rect key="frame" x="109" y="130" width="157" height="30"/>
+                                <rect key="frame" x="109" y="84" width="157" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Yr3-iF-y8X"/>
                                 </constraints>
@@ -130,33 +130,18 @@
                                     <action selector="filterAction:" destination="ciD-od-2sG" eventType="touchUpInside" id="wIO-cO-TWE"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" restorationIdentifier="HomeSearchBar" translatesAutoresizingMaskIntoConstraints="NO" id="AMi-cQ-h6c">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="eEh-RC-2Zg"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ciD-od-2sG" id="drW-FH-quP"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="noi-15-Wgc" firstAttribute="top" secondItem="8fa-fE-m1Z" secondAttribute="bottom" constant="21" id="76k-lA-mJo"/>
-                            <constraint firstItem="AMi-cQ-h6c" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" id="Aco-Mf-o5G"/>
                             <constraint firstItem="WKZ-cr-NjJ" firstAttribute="trailing" secondItem="8fa-fE-m1Z" secondAttribute="trailing" constant="109" id="CZZ-1m-fZR"/>
                             <constraint firstItem="WKZ-cr-NjJ" firstAttribute="trailing" secondItem="yUB-SZ-ADC" secondAttribute="trailing" constant="16" id="Inc-DQ-nzo"/>
                             <constraint firstItem="yUB-SZ-ADC" firstAttribute="bottom" secondItem="WKZ-cr-NjJ" secondAttribute="bottom" id="IxF-ue-fcd"/>
                             <constraint firstItem="yUB-SZ-ADC" firstAttribute="top" secondItem="noi-15-Wgc" secondAttribute="bottom" constant="8" id="VRU-Vf-w0x"/>
-                            <constraint firstItem="AMi-cQ-h6c" firstAttribute="trailing" secondItem="WKZ-cr-NjJ" secondAttribute="trailing" id="XJe-Qj-1yU"/>
+                            <constraint firstItem="8fa-fE-m1Z" firstAttribute="top" secondItem="WKZ-cr-NjJ" secondAttribute="top" constant="20" id="Vf9-1J-yLP"/>
                             <constraint firstItem="noi-15-Wgc" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" constant="16" id="fYK-mz-TCt"/>
-                            <constraint firstItem="8fa-fE-m1Z" firstAttribute="top" secondItem="AMi-cQ-h6c" secondAttribute="bottom" constant="10" id="r0E-VW-Jbg"/>
                             <constraint firstItem="8fa-fE-m1Z" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" constant="109" id="tr8-R1-h57"/>
-                            <constraint firstItem="AMi-cQ-h6c" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" id="vPD-Ci-2Tf"/>
-                            <constraint firstItem="AMi-cQ-h6c" firstAttribute="trailing" secondItem="WKZ-cr-NjJ" secondAttribute="trailing" id="ww5-qK-o0g"/>
                             <constraint firstItem="yUB-SZ-ADC" firstAttribute="leading" secondItem="WKZ-cr-NjJ" secondAttribute="leading" constant="16" id="zA0-Sy-wOe"/>
-                            <constraint firstItem="AMi-cQ-h6c" firstAttribute="top" secondItem="WKZ-cr-NjJ" secondAttribute="top" id="zWU-7I-Ytl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WKZ-cr-NjJ"/>
                     </view>
@@ -164,19 +149,9 @@
                     <connections>
                         <outlet property="ExpertTableView" destination="yUB-SZ-ADC" id="5IM-n8-cAL"/>
                         <outlet property="filterButton" destination="8fa-fE-m1Z" id="iPK-4e-FfO"/>
-                        <outlet property="searchDisplayController" destination="K2O-F1-rgq" id="PPw-dn-zBu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9P-U8-B0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="K2O-F1-rgq">
-                    <connections>
-                        <outlet property="delegate" destination="ciD-od-2sG" id="c4U-hZ-81k"/>
-                        <outlet property="searchBar" destination="AMi-cQ-h6c" id="21a-oS-tIq"/>
-                        <outlet property="searchContentsController" destination="ciD-od-2sG" id="XTe-Ei-GW7"/>
-                        <outlet property="searchResultsDataSource" destination="ciD-od-2sG" id="413-rD-kfQ"/>
-                        <outlet property="searchResultsDelegate" destination="ciD-od-2sG" id="OnT-nA-hyi"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="12" y="-986.35682158920542"/>
         </scene>

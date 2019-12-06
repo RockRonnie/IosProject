@@ -11,9 +11,10 @@ import UIKit
 import RealmSwift
 
 class HomeController: UIViewController {
-    
     @IBOutlet weak var ExpertTableView: ExpertTableViewController!
     @IBOutlet weak var filterButton: UIButton!
+    
+    let SearchController = UISearchController(searchResultsController: nil)
     
     let transparentView = UIView()
     let filterView = UITableView()
@@ -25,6 +26,7 @@ class HomeController: UIViewController {
     var realm: Realm!
     
     lazy var sessions: Array<QASession> = []
+    lazy var filteredSessions: Array<QASession> = []
     var upcomingSessions: Results<QASession>?
     var liveSessions: Results<QASession>?
     var archivedSessions: Results<QASession>?
@@ -32,26 +34,29 @@ class HomeController: UIViewController {
     
     var states: Array<String> = ["live","upcoming","archived"]
     var selectedState: String?
+    var isSearchBarEmpty: Bool {
+        return SearchController.searchBar.text?.isEmpty ?? true
+    }
+    var isFiltering: Bool {
+        return SearchController.isActive && !isSearchBarEmpty
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Team Työkkäri ReEdu"
         print(RealmDB.sharedInstance.setup)
         setupRealm("default", "default" , false)
-        ExpertTableView.dataSource = self
-        ExpertTableView.delegate = self
-        ExpertTableView.reloadData()
-        
-        filterView.delegate = self
-        filterView.dataSource = self
-        filterView.register(PickCategoryCell.self, forCellReuseIdentifier: "Cell")
-        //print(Realm.Configuration.defaultConfiguration.fileURL)
+        setupSearchBar()
+        setupTables()
     }
+    
+    // Button styling
     func filterButtonStyling(){
         filterButton.layer.cornerRadius = 10
         filterButton.layer.borderWidth = 1
     }
     
+    // prepare for seque to transfer the QASession information to QASession viewcontroller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "QAController") {
             let selectedRow = ExpertTableView.indexPathForSelectedRow?.row
@@ -68,25 +73,33 @@ class HomeController: UIViewController {
         }
     }
     
-    
+    // State for filterbutton
     func setState(state: String){
         selectedState = state
     }
+    
+    //Initial state of the filterbutton(live)
     func initialState(){
         setState(state: "live")
         filterButton.setTitle(selectedState, for: .normal)
     }
- 
+    
+    //function for loading the data that is ran every time home view is selected.
+    
     func setupExperts(){
         getSessions()
         getState()
         getPic()
     }
+    
+    //getting the sessions from realm.
     func getSessions(){
         liveSessions = realm.objects(QASession.self).filter("live = true")
         upcomingSessions = realm.objects(QASession.self).filter("upcoming = true")
         archivedSessions = realm.objects(QASession.self).filter("archived = true")
     }
+    
+    //updating the sessions array based on selected filter state.
     func getState(){
         switch selectedState {
         case "live":
@@ -105,12 +118,15 @@ class HomeController: UIViewController {
         }
     }
     
+    //setting up the notification token for observing the realm to achieve full synchronization and reactive UI
     func updateExpertFeed(){
         self.notificationToken = realm?.observe {_,_ in
             self.setupExperts()
             self.ExpertTableView.reloadData()
         }
     }
+    
+    //INITIAL realm setup. logs in with default guest user the first time app is ran.
     func setupRealm(_ username: String,_ password: String,_ register: Bool) {
         if(RealmDB.sharedInstance.setup == false){
         // Yritä kirjautua sisään --> Vaihda kovakoodatut tunnarit pois
@@ -154,6 +170,35 @@ class HomeController: UIViewController {
                 print(self.user?.identity ?? "No identity")
             }
     }
+    // Setting up tableviews
+    func setupTables(){
+        ExpertTableView.dataSource = self
+        ExpertTableView.delegate = self
+        ExpertTableView.reloadData()
+        
+        filterView.delegate = self
+        filterView.dataSource = self
+        filterView.register(PickCategoryCell.self, forCellReuseIdentifier: "Cell")
+        //print(Realm.Configuration.defaultConfiguration.fileURL)
+    }
+    // Setting up searchbar searchcontroller
+    func setupSearchBar(){
+        SearchController.searchResultsUpdater = self
+        SearchController.obscuresBackgroundDuringPresentation = false
+        SearchController.searchBar.placeholder = "Search Sessions"
+        navigationItem.searchController = SearchController
+        definesPresentationContext = true
+    }
+    // Filtering function for searchbar
+    func filterContentForSearchText(_ searchText: String?) {
+        if let searchText = searchText{
+            filteredSessions = sessions.filter { (session) -> Bool in
+                return session.title.lowercased().contains(searchText.lowercased())
+            }
+            ExpertTableView.reloadData()
+        }
+    }
+    
     // Button action for filterin. Followed by Transparentview connected to it.
     @IBAction func filterAction(_ sender: UIButton) {
         selectedButton = filterButton
@@ -193,7 +238,6 @@ class HomeController: UIViewController {
 }
 
 //ExpertTableView
-
 class ExpertTableViewController: UITableView{
     
 }
@@ -209,6 +253,9 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if(tableView == ExpertTableView){
+            if isFiltering {
+                return filteredSessions.count
+            }
             return sessions.count
         }else if(tableView == filterView){
             return states.count
@@ -249,7 +296,11 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             //Scaleing the image to fit ImageView
             cell.expertImage?.contentMode = .scaleAspectFit
             var object: QASession
-            object = self.sessions[indexPath.row] as QASession
+            if isFiltering {
+                object = filteredSessions[indexPath.row] as QASession
+            } else {
+                object = sessions[indexPath.row] as QASession
+            }
             let imageProcessor = UserImagePost()
             imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
                 if let result = resultImage {
@@ -283,5 +334,14 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     }
  */
 }
+
+extension HomeController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text)
+        
+    }
+}
+
 
 
