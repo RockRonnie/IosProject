@@ -16,6 +16,7 @@ import RealmSwift
   @IBOutlet weak var interestTwo: UILabel!
   @IBOutlet weak var interestThree: UILabel!
   @IBOutlet weak var interestError: UILabel!
+  @IBOutlet weak var chooseLabel: UILabel!
   
   var signUpFormEnabled = Bool()
   let messageLabel = UILabel()
@@ -125,6 +126,7 @@ import RealmSwift
     removeInterestOne.isHidden = true
     removeInterestTwo.isHidden = true
     removeInterestThree.isHidden = true
+    chooseLabel.isHidden = true
     
     interestOne.text = ""
     interestTwo.text = ""
@@ -156,11 +158,8 @@ import RealmSwift
       
       ])
   }
-  
-  
   // NOT IN USE, might be used later
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
   }
   // Validate email
   func validateEmail(emailID: String) -> Bool {
@@ -479,20 +478,9 @@ import RealmSwift
       } else if let error = error {
         print("Signup error!: \(error)")
         self.present(self.customAlert(title: "Signup", reason: "User exists"), animated: true, completion: nil)
+        }
       }
-      
-      
-      
-      
-      
     }
-    }
-    
-    
-    
-    
-    
-    
   }
   
   // Functions connecting to Buttons
@@ -516,6 +504,7 @@ import RealmSwift
     self.lastnameField.isHidden = false
     self.changeFormButton.isHidden = true
     self.signUpButton.isHidden = true
+    self.chooseLabel.isHidden = false
     self.userEmailField.isHidden = false
     self.userXtraInfoField.isHidden = false
     self.userinfoField.isHidden = false
@@ -642,5 +631,3 @@ import RealmSwift
     }
   }
 }
-
-
