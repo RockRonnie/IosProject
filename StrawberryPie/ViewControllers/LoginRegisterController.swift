@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 @objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
-
+  
   var category = Category()
   var realm: Realm!
   var user: SyncUser?
@@ -66,8 +66,7 @@ import RealmSwift
     infoAddedButton.isHidden = true
     cancelBtn.isHidden = true
     doneBtn.isHidden = true
-    /
-      / Enabling signup and switching it back again to set initial values to match login form
+    // Enabling signup and switching it back again to set initial values to match login form
     self.signUpFormEnabled = true
     self.switchForm()
     
@@ -412,46 +411,46 @@ import RealmSwift
       self.present(customAlert(title: "password", reason: "Invalid password"),
                    animated: true, completion: nil)
     } else {
-    
-    // Textfields are not empty and valid => Login
-    
-    SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: true), server: Constants.AUTH_URL) { user, error in
-      if let user = user {
-        // logout user in realm instance if exists
-        RealmDB.sharedInstance.user?.logOut()
-        // Login successful
-        // Create read/write permissions for the realm, username is the logged user
-        let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
-        user.apply(permission, callback: { (error) in
-          if error != nil {
-            print("Something went wrong: \(String(describing: error?.localizedDescription))")
-          } else {
-            print("success")
+      
+      // Textfields are not empty and valid => Login
+      
+      SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: true), server: Constants.AUTH_URL) { user, error in
+        if let user = user {
+          // logout user in realm instance if exists
+          RealmDB.sharedInstance.user?.logOut()
+          // Login successful
+          // Create read/write permissions for the realm, username is the logged user
+          let permission = SyncPermission(realmPath: Constants.REALM_URL.absoluteString, username: "\(username)", accessLevel: .write)
+          user.apply(permission, callback: { (error) in
+            if error != nil {
+              print("Something went wrong: \(String(describing: error?.localizedDescription))")
+            } else {
+              print("success")
+            }
+          })
+          self.user = user
+          RealmDB.sharedInstance.user = self.user
+          // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
+          let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
+          self.realm = try! Realm(configuration: config)
+          RealmDB.sharedInstance.realm = self.realm
+          guard let userIdentity = self.user?.identity else {
+            self.present(self.customAlert(title: "Register Error!", reason: "userIdentity not found"), animated: true, completion: nil)
+            return }
+          self.thisUser.userID = userIdentity
+          self.thisUser.userName = username
+          try! self.realm.write {
+            self.realm.add(self.thisUser)
           }
-        })
-        self.user = user
-        RealmDB.sharedInstance.user = self.user
-        // Leivotaan realmia varten asetukset. realmURL: Constants.REALM_URL --> Katso Constants.swift
-        let config = user.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
-        self.realm = try! Realm(configuration: config)
-        RealmDB.sharedInstance.realm = self.realm
-        guard let userIdentity = self.user?.identity else {
-          self.present(self.customAlert(title: "Register Error!", reason: "userIdentity not found"), animated: true, completion: nil)
-          return }
-        self.thisUser.userID = userIdentity
-        self.thisUser.userName = username
-        try! self.realm.write {
-          self.realm.add(self.thisUser)
-        }
-        let alert = UIAlertController(title: "Customize?", message: "Do you want to customize your profile now?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in self.createUserMoreInfo() }))
-        alert.addAction(UIAlertAction(title: "Do it later", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
-        self.present(alert, animated: true)
-        print("Realm connection has been setup")
-        print("Changing navigators")
-      } else if let error = error {
-        print("Signup error!: \(error)")
-        self.present(self.customAlert(title: "Signup", reason: "User exists"), animated: true, completion: nil)
+          let alert = UIAlertController(title: "Customize?", message: "Do you want to customize your profile now?", preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in self.createUserMoreInfo() }))
+          alert.addAction(UIAlertAction(title: "Do it later", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
+          self.present(alert, animated: true)
+          print("Realm connection has been setup")
+          print("Changing navigators")
+        } else if let error = error {
+          print("Signup error!: \(error)")
+          self.present(self.customAlert(title: "Signup", reason: "User exists"), animated: true, completion: nil)
         }
       }
     }
@@ -595,4 +594,5 @@ import RealmSwift
       return userpasswordField.text
     }
   }
+}
 
