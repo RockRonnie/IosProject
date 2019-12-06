@@ -10,14 +10,27 @@ import UIKit
 import RealmSwift
 
 @objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+
+  var category = Category()
+  var realm: Realm!
+  var user: SyncUser?
+  let main = UIStoryboard(name: "Main", bundle: nil)
+  let thisUser = User()
   
+  // Interestlist outlets
   @IBOutlet weak var categoryTable: UITableView!
   @IBOutlet weak var interestOne: UILabel!
   @IBOutlet weak var interestTwo: UILabel!
   @IBOutlet weak var interestThree: UILabel!
   @IBOutlet weak var interestError: UILabel!
   @IBOutlet weak var chooseLabel: UILabel!
+  @IBOutlet weak var removeInterestOne: UIButton!
+  @IBOutlet weak var removeInterestTwo: UIButton!
+  @IBOutlet weak var removeInterestThree: UIButton!
+  @IBOutlet weak var cancelBtn: UIButton!
+  @IBOutlet weak var doneBtn: UIButton!
   
+  // Create page content
   var signUpFormEnabled = Bool()
   let messageLabel = UILabel()
   let changeFormButton = UIButton(type: .roundedRect)
@@ -33,25 +46,12 @@ import RealmSwift
   let userpasswordField = UITextField()
   let userpwagainField = UITextField()
   
-  @IBOutlet weak var removeInterestOne: UIButton!
-  @IBOutlet weak var removeInterestTwo: UIButton!
-  @IBOutlet weak var removeInterestThree: UIButton!
-  @IBOutlet weak var cancelBtn: UIButton!
-  @IBOutlet weak var doneBtn: UIButton!
-  
-  var category = Category()
-  
-  var realm: Realm!
-  var user: SyncUser?
-  let main = UIStoryboard(name: "Main", bundle: nil)
-  let thisUser = User()
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.categoryTable.delegate = self
     self.categoryTable.dataSource = self
     self.categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    
+    // Show only login fields
     usernameField.isHidden = false
     userpasswordField.isHidden = false
     userinfoField.isHidden = true
@@ -66,15 +66,13 @@ import RealmSwift
     infoAddedButton.isHidden = true
     cancelBtn.isHidden = true
     doneBtn.isHidden = true
-    
-    // Initial swap of forms to get Loginform to show
+    /
+      / Enabling signup and switching it back again to set initial values to match login form
     self.signUpFormEnabled = true
-    
     self.switchForm()
     
     // Container, can be used for additional information on the screen, is built programmatically
     let container = UIStackView()
-    
     messageLabel.numberOfLines = 0
     messageLabel.text = "Please enter your login information"
     container.addArrangedSubview(messageLabel)
@@ -119,6 +117,7 @@ import RealmSwift
     container.addArrangedSubview(userinfoField)
     container.addArrangedSubview(userXtraInfoField)
     
+    // Hide interest table initially
     categoryTable.isHidden = true
     interestOne.isHidden = true
     interestTwo.isHidden = true
@@ -127,20 +126,18 @@ import RealmSwift
     removeInterestTwo.isHidden = true
     removeInterestThree.isHidden = true
     chooseLabel.isHidden = true
-    
     interestOne.text = ""
     interestTwo.text = ""
     interestThree.text = ""
     interestError.text = ""
     
-    // Buttons
     // LOGIN BUTTON
     loginButton.setTitle("Login", for: .normal)
     loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     // SIGNUP BUTTON
     signUpButton.setTitle("Sign up", for: .normal)
     signUpButton.addTarget(self, action: #selector(createUser), for: .touchUpInside)
-    
+    // SWAP FORMS BUTTON
     changeFormButton.setTitle("No account? Register", for: .normal)
     changeFormButton.addTarget(self, action: #selector(switchForm), for: .touchUpInside)
     
@@ -161,53 +158,32 @@ import RealmSwift
   // NOT IN USE, might be used later
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
   }
-  // Validate email
-  func validateEmail(emailID: String) -> Bool {
-    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-    let trimmedString = emailID.trimmingCharacters(in: .whitespaces)
-    let validateEmail = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-    let isValidateEmail = validateEmail.evaluate(with: trimmedString)
-    return isValidateEmail
-  }
-  // Validate password
-  func validatePassword(passwordID: String) -> Bool {
-    let passwordRegEx = "[A-Z0-9a-z]{3,15}"
-    let trimmedString = passwordID.trimmingCharacters(in: .whitespaces)
-    let validatePw = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
-    let isValidPw = validatePw.evaluate(with: trimmedString)
-    return isValidPw
-  }
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let rowCount = category.getNames().count // When delete is implemented - self.thisUser.userInterests.count
-    return rowCount
-  }
-  // Buttons for finishing register or canceling it
+  // Buttons for finishing register or cancelling it
   @IBAction func cancelRegister(_ sender: Any) {
     cancelRegister()
   }
   @IBAction func registerDone(_ sender: Any) {
     advancedSignup()
   }
-  
+  // Removebutton for first item in the list
   @IBAction func removeFirst(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
     realm = RealmDB.sharedInstance.realm
     try! self.realm.write {
-      
       switch self.thisUser.userInterests.count {
       case 0: break
-      case 1:
+      case 1: // If one item, remove the first
         self.interestOne.text = ""
         self.thisUser.userInterests.remove(at: 0)
         self.removeInterestOne.isHidden = true
-      case 2:
+      case 2: // If two items, move second to first
         self.thisUser.userInterests.remove(at: 0)
         self.interestOne.text = self.interestTwo.text
         self.interestTwo.text = ""
         self.removeInterestOne.isHidden = false
         self.removeInterestTwo.isHidden = true
         self.removeInterestThree.isHidden = true
-      default:
+      default: // If three items, remove first and move 3 -> 2 2 -> 1
         self.thisUser.userInterests.remove(at: 0)
         self.interestOne.text = self.interestTwo.text
         self.interestTwo.text = self.interestThree.text
@@ -217,7 +193,6 @@ import RealmSwift
         self.removeInterestThree.isHidden = true
       }
       userUpdatedObj?.userInterests = self.thisUser.userInterests
-      
       // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
       if let userUpdate = userUpdatedObj {
         self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
@@ -226,7 +201,7 @@ import RealmSwift
       }
     }
   }
-  
+  // Remove button for second item in the list
   @IBAction func removeSecond(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
     realm = RealmDB.sharedInstance.realm
@@ -234,13 +209,13 @@ import RealmSwift
       switch self.thisUser.userInterests.count {
       case 0: break
       case 1: break
-      case 2:
+      case 2: // If 2 items in the list, only remove second item and hide remove button
         self.thisUser.userInterests.remove(at: 1)
-        self.interestTwo.text = self.interestThree.text
+        self.interestTwo.text = ""
         self.interestThree.text = ""
         self.removeInterestTwo.isHidden = true
         self.removeInterestThree.isHidden = true
-      default:
+      default: // If 3 items in the list, move third item in place of second
         self.thisUser.userInterests.remove(at: 1)
         self.interestTwo.text = self.interestThree.text
         self.interestThree.text = ""
@@ -248,8 +223,7 @@ import RealmSwift
         self.removeInterestThree.isHidden = true
       }
       userUpdatedObj?.userInterests = self.thisUser.userInterests
-      
-      // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
+      // Update realm, userUpdate is the User object referring to the realm user object
       if let userUpdate = userUpdatedObj {
         self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
       } else {
@@ -257,27 +231,23 @@ import RealmSwift
       }
     }
   }
-  
-  
-  
-  
+  // Remove button for third item in the list
   @IBAction func removeThird(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
     realm = RealmDB.sharedInstance.realm
     try! self.realm.write {
       switch self.thisUser.userInterests.count {
-      case 0: break
-      case 1: break
-      case 2: break
-      default:
+      case 0: break // 0 items
+      case 1: break // 1 item in the list (cant be third item present)
+      case 2: break // 2 items in the list (cant be third item present)
+      default: // remove third item
         self.thisUser.userInterests.remove(at: 2)
         self.interestThree.text = ""
         self.removeInterestThree.isHidden = true
         
       }
       userUpdatedObj?.userInterests = self.thisUser.userInterests
-      
-      // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
+      // Update realm, userUpdate is the User object referring to the realm user object
       if let userUpdate = userUpdatedObj {
         self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
       } else {
@@ -285,17 +255,23 @@ import RealmSwift
       }
     }
   }
-  
-  
+  // Tableview rowcount to match CoreData
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    let rowCount = category.getNames().count
+    return rowCount
+  }
+  // Populate tableview with CoreData
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     let interestCategories = category.getNames()
     cell.textLabel?.text = interestCategories[indexPath.item]
     return cell
   }
+  // Set height
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 35
   }
+  // Category picked already or not
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
     let interestCategories = category.getNames()
     self.interestError.text = ""
@@ -304,7 +280,6 @@ import RealmSwift
     if self.thisUser.userInterests.contains(selectedCategory) {
       self.interestError.text = "Category already picked"
     } else {
-      
       // If it does not, add to userinterests
       let userUpdatedObj = RealmDB.sharedInstance.getUser()
       realm = RealmDB.sharedInstance.realm
@@ -312,7 +287,6 @@ import RealmSwift
       try! self.realm.write {
         self.thisUser.userInterests.append(selectedCategory)
         userUpdatedObj?.userInterests = self.thisUser.userInterests
-        
         // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
         if let userUpdate = userUpdatedObj {
           self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
@@ -434,7 +408,7 @@ import RealmSwift
     } else if userpasswordField.text != "" && userpwagainField.text == "" || userpasswordField.text != userpwagainField.text {
       self.present(customAlert(title: "upw", reason: "Please confirm password"),
                    animated: true, completion: nil)
-    } else if validatePassword(passwordID: userpasswordField.text ?? "") != true {
+    } else if RegisterValidation.validatePassword(passwordID: userpasswordField.text ?? "") != true {
       self.present(customAlert(title: "password", reason: "Invalid password"),
                    animated: true, completion: nil)
     } else {
@@ -522,7 +496,7 @@ import RealmSwift
   // Registration phase 2 function
   func advancedSignup() {
     // Settings for realm
-    let isValidateEmail = self.validateEmail(emailID: self.userEmailField.text ?? "")
+    let isValidateEmail = RegisterValidation.validateEmail(emailID: self.userEmailField.text ?? "")
     if (isValidateEmail == false){
       self.interestError.text = "Invalid email"
       return
@@ -606,7 +580,7 @@ import RealmSwift
       return userinfoField.text
     }
   }
-  public var currentUser: User {
+  var currentUser: User {
     get {
       return thisUser
     }
@@ -621,13 +595,4 @@ import RealmSwift
       return userpasswordField.text
     }
   }
-  // NOT USED but might be useful, can set and get bool
-  var userDef: Bool {
-    get {
-      return UserDefaults.standard.bool(forKey: "userExists")
-    }
-    set {
-      UserDefaults.standard.set(newValue, forKey: "userExists")
-    }
-  }
-}
+
