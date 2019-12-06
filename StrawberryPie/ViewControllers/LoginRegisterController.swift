@@ -579,6 +579,11 @@ import RealmSwift
       return userinfoField.text
     }
   }
+  var moreInfo: String? {
+    get {
+      return userXtraInfoField.text
+    }
+  }
   var currentUser: User {
     get {
       return thisUser
