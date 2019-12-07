@@ -72,7 +72,7 @@
         <scene sceneID="Bxn-gY-LKe">
             <objects>
                 <viewControllerPlaceholder storyboardName="Home" id="x37-Hb-ozh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rr5-qQ-KHL"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icons8-home-10" id="rr5-qQ-KHL"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FjV-78-yHA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,7 +82,7 @@
         <scene sceneID="EPa-Zh-W1m">
             <objects>
                 <viewControllerPlaceholder storyboardName="Categories" id="pwG-Mq-SaR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="RD7-fD-jSH"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icons8-categorize-30" id="RD7-fD-jSH"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7T-wV-813" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,6 +99,10 @@
             <point key="canvasLocation" x="-859" y="187"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-categorize-30" width="30" height="30"/>
+        <image name="icons8-home-10" width="10" height="10"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jO1-JY-mv8"/>
         <segue reference="2Ae-Kh-JK6"/>
