@@ -68,7 +68,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         return experts.count
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
-        let row = indexPath.row
+        _ = indexPath.row
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

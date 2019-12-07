@@ -265,7 +265,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if(tableView == ExpertTableView){
-            let row = indexPath.row
+            _ = indexPath.row
         }
         else if (tableView == filterView){
             print("Setting the state for filter")
