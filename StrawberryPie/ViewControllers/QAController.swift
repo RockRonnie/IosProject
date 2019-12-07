@@ -167,8 +167,10 @@ class QAController: UIViewController {
         messageField.isHidden = false
         if userSource?.userName != "default" && userSource?.userName != nil {
         sendButton.isHidden = false
+        messageField.isUserInteractionEnabled = true
         }
         else {
+            messageField.isUserInteractionEnabled = false
             messageField.text = "Please log in first"
         }
         qaTable.reloadData()
