@@ -180,7 +180,7 @@
         <scene sceneID="lIt-vp-jKB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gMy-VR-6ip" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Categories" id="ZcQ-Fu-cAE"/>
+                    <tabBarItem key="tabBarItem" title="Categories" image="icons8-categorize-30" id="ZcQ-Fu-cAE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xDR-a6-6Iu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -204,4 +204,7 @@
             <point key="canvasLocation" x="2879" y="-279"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-categorize-30" width="30" height="30"/>
+    </resources>
 </document>

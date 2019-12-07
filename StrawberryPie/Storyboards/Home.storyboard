@@ -14,7 +14,7 @@
         <scene sceneID="GRS-0E-vK9">
             <objects>
                 <navigationController id="0x7-Uc-ffs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="72e-ts-Nwy"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="icons8-home-30" id="72e-ts-Nwy"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JnQ-8i-Aj2">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -164,4 +164,7 @@
             <point key="canvasLocation" x="598" y="-1115"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-home-30" width="30" height="30"/>
+    </resources>
 </document>

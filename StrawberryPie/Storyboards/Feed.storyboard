@@ -14,7 +14,7 @@
         <scene sceneID="08K-ZV-XZV">
             <objects>
                 <navigationController id="wIL-4C-EUL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="dMS-is-V3t"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="icons8-activity-feed-30" id="dMS-is-V3t"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bJY-zn-Gv0">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -171,4 +171,7 @@
             <point key="canvasLocation" x="536" y="-1787"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-activity-feed-30" width="30" height="30"/>
+    </resources>
 </document>

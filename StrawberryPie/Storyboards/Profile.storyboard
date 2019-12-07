@@ -56,7 +56,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cJI-8X-8Tw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="yLo-EL-BVO"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="icons8-user-30" id="yLo-EL-BVO"/>
                     <connections>
                         <outlet property="testImage" destination="aTw-O5-kEs" id="sld-1H-PFw"/>
                         <outlet property="unameLabel" destination="35l-PO-21M" id="1So-cE-SsY"/>
@@ -67,4 +67,7 @@
             <point key="canvasLocation" x="20" y="-2365.3673163418293"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-user-30" width="30" height="30"/>
+    </resources>
 </document>

@@ -181,7 +181,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Login / Register" id="h9f-FB-dwx"/>
+                    <tabBarItem key="tabBarItem" title="Login / Register" image="icons8-login-30" id="h9f-FB-dwx"/>
                     <connections>
                         <outlet property="cancelBtn" destination="Og0-Gn-6M1" id="TjU-71-LAv"/>
                         <outlet property="categoryTable" destination="rYc-mK-Cgb" id="Oom-ju-mkZ"/>
@@ -201,4 +201,7 @@
             <point key="canvasLocation" x="-31.199999999999999" y="443.92803598200902"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-login-30" width="30" height="30"/>
+    </resources>
 </document>
