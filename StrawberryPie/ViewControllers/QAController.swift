@@ -42,6 +42,10 @@ class QAController: UIViewController {
         hostCardCV.dataSource = self
         hostCardCV.delegate = self
         
+        if RealmDB.sharedInstance.getUser()?.userID != currentSession?.host[0].userID {
+            hostButton.isHidden = true
+        }
+        
         //viestin kirjoitus piiloon aluksi
         sendButton.isHidden = true
         messageField.isHidden = true
@@ -115,7 +119,7 @@ class QAController: UIViewController {
         print ("Ajettu onnistuneesti")
         }
     }
-    
+     // POISTA KUN UNIT TESTIT ON TEHTY KUNNOLLA !!!!!!!!!
     func testiTesti() -> Int {
         return 1
     }
@@ -124,28 +128,13 @@ class QAController: UIViewController {
         try! realm!.write {
             currentSession!.chat[0].chatMessages.append(data)
         }
-    }
-    
-    func messageToQA(data: ChatMessage) {
-        let defaultAnswer = ChatMessage()
-        defaultAnswer.body = "Tässä vastaus"
-        let selectedQuestion = data
-        let qaSet = QA()
-        print("QAID", qaSet.QAID)
-        try! realm!.write {
-            currentSession!.chat[0].chatMessages.append(data)
-            currentSession!.QABoard[0].QAs.append(qaSet)
-            currentSession!.QABoard[0].QAs.last!.question.append(selectedQuestion)
-            currentSession!.QABoard[0].QAs.last!.answer.append(defaultAnswer)
-        }
+        messageField.text = nil
     }
     
     func getPic() {
         let imageProcessor = UserImagePost()
         imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
-            print ("kuvaa hakemassa")
             if let result = resultImage {
-                print("VITTU JES")
                 self.hostImage = result
                 self.hostCardCV.reloadData()
                 }
@@ -157,49 +146,43 @@ class QAController: UIViewController {
             let destinationVC = segue.destination as? HostQAController
             // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
             destinationVC?.currentSession = currentSession
-            // destinationVC?.sessionID = realmSession?.sessionID
-            
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-        
     
     deinit {
     notificationToken?.invalidate()
     }
     
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBAction func toHostSession(_ sender: Any) {
     }
     @IBOutlet weak var hostCardCV: UICollectionView!
-    
-    
     @IBAction func chatButton(_ sender: UIButton) {
         // Vaihdetaan cellin pohjaa ja reloadData()
         selectedTab = "chat"
-        if userSource?.userName != "default" && userSource?.userName != nil {
         messageField.isHidden = false
+        if userSource?.userName != "default" && userSource?.userName != nil {
         sendButton.isHidden = false
+        }
+        else {
+            messageField.text = "Please log in first"
         }
         qaTable.reloadData()
         scrollToBottom()
     }
-    
+    @IBOutlet weak var hostButton: UIButton!
     @IBOutlet weak var messageField: UITextField!
-    
     @IBAction func sendButton(_ sender: UIButton) {
         // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username
         let newMessage = ChatMessage()
         newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
         messageToRealm(data: newMessage)
     }
-    
     @IBOutlet weak var sendButton: UIButton!
-    
     @IBAction func pinnedButton(_ sender: UIButton) {
         // Vaihdetaan cellin pohjaa ja reloadData()
         selectedTab = "pinned"
@@ -208,7 +191,6 @@ class QAController: UIViewController {
         messageField.isHidden = true
         qaTable.reloadData()
     }
-    
     @IBAction func topicButton(_ sender: UIButton) {
         // Vaihdetaan cellin pohjaa ja reloadData()
         selectedTab = "topic"
@@ -218,24 +200,18 @@ class QAController: UIViewController {
         messageField.isHidden = true
         qaTable.reloadData()
     }
-    
     @IBOutlet weak var qaTable: UITableView!
-    
 }
 
 extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hostcardcell", for: indexPath)
-        
         if indexPath.row == 0  {
             let pic = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: cell.bounds.size.height))
             pic.image = hostImage
@@ -264,14 +240,11 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             company.lineBreakMode = .byTruncatingTail
             cell.contentView.addSubview(company)
         }
-        
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item + 1)
     }
-
     // Päivitetään tableviewiin tavarat sisälle
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var numberOfRows: Int
@@ -287,7 +260,6 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
         }
         return (numberOfRows)
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
         
@@ -301,7 +273,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
                 if gotQA.QAs.count > 0 {
                     cell.textLabel?.text = (gotQA.QAs[indexPath.row].question[0].body) + "\n" + (gotQA.QAs[indexPath.row].answer[0].body)
                     cell.textLabel?.numberOfLines = 0
-                    qaTable.rowHeight = 44.0 // palautetaan default korkeus topicin jäljiltä
+                    qaTable.rowHeight = 100.0 // palautetaan default korkeus topicin jäljiltä
                 }
             }
         case "chat":

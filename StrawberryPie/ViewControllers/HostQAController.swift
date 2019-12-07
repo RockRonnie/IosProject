@@ -17,14 +17,11 @@ class HostQAController: UIViewController {
     var answerButton = UIButton()
     var cancelButton = UIButton()
 
-    
     var currentSession: QASession?
     var realm: Realm?
     var notificationToken: NotificationToken?
-    
     var questionText: String?
     var selectedMessage: ChatMessage?
-    
     var hostImage: UIImage?
     var hostName: String?
     var hostProfession: String?
@@ -34,7 +31,6 @@ class HostQAController: UIViewController {
     var qaSource: QAMessageBoard?
     var chatSource: List<ChatMessage>?
     var userSource: User?
-    
     // Tabin valinta, oletuksena aihe
     var selectedTab = "topic"
 
@@ -68,7 +64,6 @@ class HostQAController: UIViewController {
             }
             self.qaTable.reloadData()
             //self.scrollToBottom()
-            
             }
         }
     
@@ -80,7 +75,6 @@ class HostQAController: UIViewController {
             }
         }
     }
-    
     
     func populateSources() {
         print ("Source data")
@@ -144,11 +138,9 @@ class HostQAController: UIViewController {
         qaSet.question.append(question)
         qaSet.answer.append(answer)
         try! realm!.write {
-            //currentSession!.chat[0].chatMessages.append(data)
             currentSession!.QABoard[0].QAs.append(qaSet)
-            //currentSession!.QABoard[0].QAs.last!.question.append(selectedQuestion)
-            //currentSession!.QABoard[0].QAs.last!.answer.append(defaultAnswer)
         }
+        messageField.text = nil
         sendButton.isHidden = true
         messageField.isHidden = true
     }
@@ -168,17 +160,13 @@ class HostQAController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-        
     
     deinit {
     notificationToken?.invalidate()
     }
     
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var hostCardCV: UICollectionView!
-    
-    
     @IBAction func chatButton(_ sender: UIButton) {
         // Vaihdetaan cellin pohjaa ja reloadData()
         selectedTab = "chat"
@@ -189,21 +177,17 @@ class HostQAController: UIViewController {
         qaTable.reloadData()
         //scrollToBottom()
     }
-    
     func addTransparentView(frames: CGRect) {
         let window = UIApplication.shared.keyWindow
         transparentView.frame = window?.frame ?? self.view.frame
         self.view.addSubview(transparentView)
-        
         answerField.frame = CGRect(x: 200, y: 200, width: 200, height: 150)
         self.view.addSubview(answerField)
-        
         transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         //let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
         //transparentView.addGestureRecognizer(tapgesture)
         transparentView.alpha = 0
     }
-
     // function for removing the transparent view (making the tableview for selecting the category invisible)
     @objc func removeTransparentView() {
         let frames = answerButton.frame
@@ -212,7 +196,6 @@ class HostQAController: UIViewController {
             self.answerField.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
         }, completion: nil)
     }
-    
     @IBOutlet weak var messageField: UITextField!
     
     @IBAction func sendButton(_ sender: UIButton) {
@@ -224,9 +207,7 @@ class HostQAController: UIViewController {
             messageToQA(question: question, answer: answer)
         }
     }
-    
     @IBOutlet weak var sendButton: UIButton!
-    
     @IBAction func pinnedButton(_ sender: UIButton) {
         // Vaihdetaan cellin pohjaa ja reloadData()
         selectedTab = "pinned"
@@ -236,7 +217,6 @@ class HostQAController: UIViewController {
         qaTable.rowHeight = 100.0
         qaTable.reloadData()
     }
-    
     @IBAction func topicButton(_ sender: UIButton) {
         // Vaihdetaan cellin pohjaa ja reloadData()
         selectedTab = "topic"
@@ -246,11 +226,8 @@ class HostQAController: UIViewController {
         messageField.isHidden = true
         qaTable.reloadData()
     }
-    
     @IBOutlet weak var qaTable: UITableView!
-    
 }
-
 extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -318,7 +295,6 @@ extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextF
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
-        
         // Täytetään celli valitan tabin perusteella
         switch selectedTab {
         case "topic":
@@ -329,7 +305,6 @@ extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextF
                 if gotQA.QAs.count > 0 {
                     cell.textLabel?.text = (gotQA.QAs[indexPath.row].question[0].body) + "\n" + (gotQA.QAs[indexPath.row].answer[0].body)
                     cell.textLabel?.numberOfLines = 0
-                    //qaTable.rowHeight = 44.0 // palautetaan default korkeus topicin jäljiltä
                 }
             }
         case "chat":
@@ -351,12 +326,7 @@ extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextF
                 selectedMessage?.body = "Kysymys: " + gotText
                 messageField.isHidden = false
                 sendButton.isHidden = false
-                
-                //messageToQA(data: selectedMessage)
-                //addTransparentView(frames: titleLabel.frame)
             }
         }
-        
-        
     }
 }

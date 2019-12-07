@@ -124,6 +124,7 @@
                         <viewLayoutGuide key="safeArea" id="nOg-Mg-cx9"/>
                     </view>
                     <connections>
+                        <outlet property="hostButton" destination="DYO-DU-XRt" id="Nqb-Db-lS1"/>
                         <outlet property="hostCardCV" destination="b3R-bH-bZT" id="ipZ-rf-1vd"/>
                         <outlet property="messageField" destination="YHw-E5-McQ" id="Hat-HD-7Ln"/>
                         <outlet property="qaTable" destination="izR-vc-5F2" id="6Uh-Pq-4rL"/>
