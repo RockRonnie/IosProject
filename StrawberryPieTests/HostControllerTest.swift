@@ -16,7 +16,7 @@ class HostControllerTest: XCTestCase {
     }
     func testFields(){
         //edu
-        
+    
         host.selectedEducation = "derp"
         XCTAssert(host.selectedEducation == "derp", "selected education is not derp")
         host.selectedEducation = nil

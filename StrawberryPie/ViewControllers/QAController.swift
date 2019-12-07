@@ -14,7 +14,6 @@ class QAController: UIViewController {
     var currentSession: QASession?
     var realm: Realm?
     var notificationToken: NotificationToken?
-    
     var qaSource: QAMessageBoard?
     
     var hostImage: UIImage?
@@ -77,7 +76,6 @@ class QAController: UIViewController {
         }
     }
     
-    
     func populateSources() {
         print ("Source data")
         // Title
@@ -106,22 +104,15 @@ class QAController: UIViewController {
         }
         // Host avatar
         if hostImage == nil {
-            
             let imgProcessor = UserImagePost()
             imgProcessor.getPic(image: (currentSession?.host[0].uImage)!, onCompletion: {(resultImage) in
                 if let result = resultImage{
-                    print("VITTU JES")
                     self.hostImage = result
                     self.hostCardCV.reloadData()
                 }
             })
-        //getPic()
         print ("Ajettu onnistuneesti")
         }
-    }
-     // POISTA KUN UNIT TESTIT ON TEHTY KUNNOLLA !!!!!!!!!
-    func testiTesti() -> Int {
-        return 1
     }
     
     func messageToRealm(data: ChatMessage) {
