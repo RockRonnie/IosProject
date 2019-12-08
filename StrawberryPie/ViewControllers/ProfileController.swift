@@ -46,9 +46,10 @@ class ProfileController: UIViewController {
         }
     }
     @IBOutlet weak var logOut: UIButton!
+    
+    
    override func viewDidLoad() {
     super.viewDidLoad()
-    
     
     realm = RealmDB.sharedInstance.realm
     let users = realm.objects(User.self)
