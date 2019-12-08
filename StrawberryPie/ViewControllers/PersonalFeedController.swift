@@ -102,13 +102,22 @@ class PersonalFeedController: UIViewController {
     }
     // normal user
     func setupPersonalFeed(){
-        recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+        if let user = user{
+            if user.userInterests.isEmpty {
+                recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+            }else{
+                recommendedSessions = realm?.objects(QASession.self).filter("sessionCategory IN %@", user.userInterests)
+            }
+        }else{
+            recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+        }
+     
     }
     func setupPersonalQA(){
         if let user = user{
             print(user.userName)
             let answeredQA = realm?.objects(QA.self).filter("ANY question.messageUser.userID == %@", user.userID)
-            if let answeredQA = answeredQA{
+            if let answeredQA = answeredQA {
                 self.personalQA = Array(answeredQA)
             }
         }
