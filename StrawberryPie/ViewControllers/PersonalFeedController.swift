@@ -102,11 +102,11 @@ class PersonalFeedController: UIViewController {
     }
     // normal user
     func setupPersonalFeed(){
-        recommendedSessions = realm?.objects(QASession.self).filter("live = true")
+        recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
     }
     func setupPersonalQA(){
         if let user = user{
-            answeredQA = realm?.objects(QA.self).filter("ANY question.messageSender = %@", user.userName)
+            answeredQA = realm?.objects(QA.self).filter("ANY question.messageUser.userID = %@", user.userID)
             if let answeredQA = answeredQA {
                 self.personalQA = Array(answeredQA)
             }
@@ -182,6 +182,36 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
             return 1
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        switch selectedTab{
+        case "Feed":
+            if expert == true{
+                let hostsession = UIStoryboard(name: "HostQA", bundle: nil)
+                let session = hostsession.instantiateViewController(withIdentifier: "HostQAController") as? HostQAController
+                var realmSession: QASession?
+                realmSession = self.personalFeed[indexPath.row] as QASession
+                session?.currentSession = realmSession
+                if let session = session{
+                    self.navigationController?.pushViewController(session, animated: true)
+                }
+            }else{
+                let normalsession = UIStoryboard(name: "QA", bundle: nil)
+                let session = normalsession.instantiateViewController(withIdentifier: "QAController") as? QAController
+                var realmSession: QASession?
+                realmSession = self.personalFeed[indexPath.row] as QASession
+                session?.currentSession = realmSession
+                if let session = session{
+                    self.navigationController?.pushViewController(session, animated: true)
+                }
+            }
+        case "QA":
+            print("QA")
+        case "privMsg":
+            print("privMsg")
+        default:
+            print("error")
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
@@ -224,8 +254,5 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             cell.textLabel?.text = "🆘 Nyt levis koodi"
             return cell
         }
-        
     }
-    
-    
 }
