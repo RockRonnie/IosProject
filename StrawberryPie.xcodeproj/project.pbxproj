@@ -70,6 +70,7 @@
 		6A9E89ED2389466B0069DE71 /* QASessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E82389466A0069DE71 /* QASessionController.swift */; };
 		6A9E89EF2389466B0069DE71 /* PersonalFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */; };
 		6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */; };
+		6AA5C265239D4C8C000B677A /* PrivateChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA5C263239D4C8C000B677A /* PrivateChat.storyboard */; };
 		6AACF22C238EAEFB006ECBF4 /* ExpertFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */; };
 		6AC642CC2385892500E2906F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC642CB2385892500E2906F /* ProfileController.swift */; };
 		6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
@@ -184,6 +185,7 @@
 		6A9E89E82389466A0069DE71 /* QASessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QASessionController.swift; sourceTree = "<group>"; };
 		6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalFeedController.swift; sourceTree = "<group>"; };
 		6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageController.swift; sourceTree = "<group>"; };
+		6AA5C264239D4C8C000B677A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PrivateChat.storyboard; sourceTree = "<group>"; };
 		6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertFeed.swift; sourceTree = "<group>"; };
 		6AACF22F2393C29B006ECBF4 /* ExpertCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6AC642CB2385892500E2906F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				6869F7D5239CFBC400694E3D /* QA.storyboard */,
 				689803D8238A860400FE39CF /* QaTest.storyboard */,
 				6869F7FA239D05D400694E3D /* Host.storyboard */,
+				6AA5C263239D4C8C000B677A /* PrivateChat.storyboard */,
 			);
 			name = Storyboards;
 			path = Storyboards/Base.lproj;
@@ -560,6 +563,7 @@
 				6869F7C9239CF80B00694E3D /* LaunchScreen.storyboard in Resources */,
 				6869F7CD239CF8F000694E3D /* Localizable.strings in Resources */,
 				689803D9238A860400FE39CF /* QaTest.storyboard in Resources */,
+				6AA5C265239D4C8C000B677A /* PrivateChat.storyboard in Resources */,
 				6869F7D9239CFF3B00694E3D /* HostQA.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -870,6 +874,14 @@
 				6869F7FC239D05DC00694E3D /* fi */,
 			);
 			name = Host.storyboard;
+			sourceTree = "<group>";
+		};
+		6AA5C263239D4C8C000B677A /* PrivateChat.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AA5C264239D4C8C000B677A /* Base */,
+			);
+			name = PrivateChat.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

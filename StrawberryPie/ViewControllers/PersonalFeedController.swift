@@ -106,8 +106,9 @@ class PersonalFeedController: UIViewController {
     }
     func setupPersonalQA(){
         if let user = user{
-            answeredQA = realm?.objects(QA.self).filter("ANY question.messageUser.userID = %@", user.userID)
-            if let answeredQA = answeredQA {
+            print(user.userName)
+            let answeredQA = realm?.objects(QA.self).filter("ANY question.messageUser.userID == %@", user.userID)
+            if let answeredQA = answeredQA{
                 self.personalQA = Array(answeredQA)
             }
         }
@@ -132,7 +133,7 @@ class PersonalFeedController: UIViewController {
     }
     func findSessionforQA(qa: QA) -> QASession {
         print("Finding session based on QA")
-        let foundSession = realm?.objects(QASession.self).filter("ANY QA.QAID = %@", qa.QAID).first
+        let foundSession = realm?.objects(QASession.self).filter("ANY QABoard.QAs.QAID = %@", qa.QAID).first
         if let foundSession = foundSession{
             return foundSession
             
@@ -174,7 +175,7 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             return personalFeed.count
         
         case "QA":
-            return personalQA.count
+                return personalQA.count
         case "privMsg":
             if let privateMessages = privateMessages {
                 return privateMessages.count
@@ -212,6 +213,7 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
                 }
             }
         case "QA":
+            print("QA")
             let normalsession = UIStoryboard(name: "QA", bundle: nil)
             let session = normalsession.instantiateViewController(withIdentifier: "QAController") as? QAController
             var realmSession: QASession?
@@ -251,11 +253,15 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case "QA":
             let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
-            let qa = self.personalQA[indexPath.row] as QA
-            cell.textLabel?.text = qa.question[0].messageUser[0].userName
-            cell.textLabel?.text = qa.question[0].body
-            cell.textLabel?.text = qa.answer[0].messageUser[0].userName
-            cell.textLabel?.text = qa.answer[0].body
+            let qa = self.personalQA[indexPath.row] as QA?
+            if let qa = qa {
+                cell.textLabel?.text = qa.question[0].messageUser[0].userName
+                cell.textLabel?.text = qa.question[0].body
+               /* cell.textLabel?.text = qa.answer[0].messageUser[0].userName
+                cell.textLabel?.text = qa.answer[0].body*/
+            }else{
+                cell.textLabel?.text = "Nothing here"
+            }
             return cell
         case "privMsg":
              let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "privMsg")
