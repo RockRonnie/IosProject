@@ -207,15 +207,15 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
         case "QA":
             let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
             let qa = self.personalQA[indexPath.row] as QA
-            cell.textLabel?.text = qa.question[0].messageSender
+            cell.textLabel?.text = qa.question[0].messageUser[0].userName
             cell.textLabel?.text = qa.question[0].body
-            cell.textLabel?.text = qa.answer[0].messageSender
+            cell.textLabel?.text = qa.answer[0].messageUser[0].userName
             cell.textLabel?.text = qa.answer[0].body
             return cell
         case "privMsg":
              let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "privMsg")
              let message = self.privateMessages?[indexPath.row] as ChatMessage?
-             cell.textLabel?.text = message?.messageSender
+             cell.textLabel?.text = message?.messageUser[0].userName
              cell.textLabel?.text = message?.body
             return cell
             

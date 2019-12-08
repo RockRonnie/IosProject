@@ -173,7 +173,13 @@ class QAController: UIViewController {
         // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username
         let newMessage = ChatMessage()
         newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
-        messageToRealm(data: newMessage)
+        if let gotUser = RealmDB.sharedInstance.getUser() {
+            newMessage.messageUser.append(gotUser)
+            messageToRealm(data: newMessage)
+        }
+        else {
+            print ("moi")
+        }
     }
     @IBOutlet weak var sendButton: UIButton!
     @IBAction func pinnedButton(_ sender: UIButton) {
