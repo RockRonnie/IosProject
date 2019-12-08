@@ -35,8 +35,6 @@ class PrivateMessageController: UIViewController {
         setupMessages()
         updateMessages()
         setupTables()
-        
-        
     }
     
     func realmSetup(){
@@ -71,6 +69,7 @@ class PrivateMessageController: UIViewController {
                 if user.userID != self.user?.userID{
                     chatPartner = user
                     print(chatPartner)
+                    usernameLabel.text = chatPartner?.userName ?? "Not chatting with anyone"
                 }
             }
         }
@@ -95,7 +94,6 @@ class PrivateMessageController: UIViewController {
     @IBAction func sendAction(_ sender: UIButton) {
         sendMessage()
     }
-    
 }
 extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

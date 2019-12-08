@@ -29,12 +29,13 @@ class PersonalFeedController: UIViewController {
     
     var personalMessages: List<ChatMessage>?
     var privateMessages: List<ChatMessage>?
+    
+    var privateChats: Array<Chat>?
     var hostedSessions: Results<QASession>?
     var recommendedSessions: Results<QASession>?
     var answeredQA: Results<QA>?
     
     var selectedTab: String?
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +99,7 @@ class PersonalFeedController: UIViewController {
         }
         expertStatus()
         setupPersonalQA()
-        setupPrivateMessages()
+        setupPrivateChats()
     }
     // normal user
     func setupPersonalFeed(){
@@ -115,21 +116,21 @@ class PersonalFeedController: UIViewController {
     }
     func setupPersonalQA(){
         if let user = user{
-            print(user.userName)
             let answeredQA = realm?.objects(QA.self).filter("ANY question.messageUser.userID == %@", user.userID)
             if let answeredQA = answeredQA {
                 self.personalQA = Array(answeredQA)
             }
         }
     }
-    func setupPrivateMessages(){
+    func setupPrivateChats(){
         if let user = user{
-            personalMessages = user.userPrivateMessages
-            if let personalMessages = personalMessages{
-                privateMessages = personalMessages
+            let chats = realm?.objects(Chat.self).filter("ANY userList.userID = %@", user.userID)
+            if let chats = chats{
+                privateChats = Array(chats)
             }
         }
     }
+    
    // EXPERT
     
     func setupHost(){
@@ -186,8 +187,8 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
         case "QA":
                 return personalQA.count
         case "privMsg":
-            if let privateMessages = privateMessages {
-                return privateMessages.count
+            if let privateChats = privateChats {
+                return privateChats.count
             }else{
                 return 0
             }
@@ -274,9 +275,8 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case "privMsg":
              let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "privMsg")
-             let message = self.privateMessages?[indexPath.row] as ChatMessage?
-             cell.textLabel?.text = message?.messageUser[0].userName
-             cell.textLabel?.text = message?.body
+             let chat = self.privateChats?[indexPath.row] as Chat?
+             cell.textLabel?.text = chat?.title
             return cell
             
         default:
