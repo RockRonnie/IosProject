@@ -51,6 +51,8 @@ import RealmSwift
     self.categoryTable.delegate = self
     self.categoryTable.dataSource = self
     self.categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    // Init realm
+    realm = RealmDB.sharedInstance.realm
     // Show only login fields
     usernameField.isHidden = false
     userpasswordField.isHidden = false
@@ -101,9 +103,12 @@ import RealmSwift
     userXtraInfoField.placeholder = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
     userXtraInfoField.borderStyle = .roundedRect
     userpasswordField.placeholder = NSLocalizedString("Password", value: "Password", comment: "Password")
+    // Disable iOS 12 password autofill
+    userpasswordField.textContentType = .oneTimeCode
     userpasswordField.borderStyle = .roundedRect
     userpasswordField.autocapitalizationType = .none
     userpwagainField.placeholder = NSLocalizedString("Confirm Password", value: "Confirm Password", comment: "Confirmpw")
+    userpwagainField.textContentType = .oneTimeCode
     userpwagainField.borderStyle = .roundedRect
     userpwagainField.autocapitalizationType = .none
     // Add every text field to container
@@ -167,7 +172,6 @@ import RealmSwift
   // Removebutton for first item in the list
   @IBAction func removeFirst(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
-    realm = RealmDB.sharedInstance.realm
     try! self.realm.write {
       switch self.thisUser.userInterests.count {
       case 0: break
@@ -203,7 +207,6 @@ import RealmSwift
   // Remove button for second item in the list
   @IBAction func removeSecond(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
-    realm = RealmDB.sharedInstance.realm
     try! self.realm.write {
       switch self.thisUser.userInterests.count {
       case 0: break
@@ -233,7 +236,6 @@ import RealmSwift
   // Remove button for third item in the list
   @IBAction func removeThird(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
-    realm = RealmDB.sharedInstance.realm
     try! self.realm.write {
       switch self.thisUser.userInterests.count {
       case 0: break // 0 items
@@ -281,7 +283,6 @@ import RealmSwift
     } else {
       // If it does not, add to userinterests
       let userUpdatedObj = RealmDB.sharedInstance.getUser()
-      realm = RealmDB.sharedInstance.realm
       // Check that user does not empty password field
       try! self.realm.write {
         self.thisUser.userInterests.append(selectedCategory)
