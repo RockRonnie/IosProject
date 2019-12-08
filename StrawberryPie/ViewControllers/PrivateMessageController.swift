@@ -7,23 +7,114 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PrivateMessageController: UIViewController {
+    @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var messageField: UITextField!
+    @IBOutlet weak var sendBtn: UIButton!
+    
+    var chatInstance: Chat?
+    var realm: Realm?
+    var user: User?
+    var chatPartner: User?
+    
+    var notificationToken: NotificationToken?
+    var messages: List<ChatMessage>?
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setup()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setup(){
+        realmSetup()
+        setPartner()
+        setupMessages()
+        updateMessages()
+        setupTables()
+        
+        
     }
-    */
-
+    
+    func realmSetup(){
+        realm = RealmDB.sharedInstance.realm
+        user = RealmDB.sharedInstance.getUser()
+    }
+    
+    func setupTables(){
+        chatTableView.delegate = self
+        chatTableView.dataSource = self
+        chatTableView.reloadData()
+    }
+    
+    func setupMessages(){
+        let chatMessages = chatInstance?.chatMessages
+        if let chatMessages = chatMessages{
+            messages = chatMessages
+        }
+    }
+    
+    func updateMessages(){
+        self.notificationToken = realm?.observe {_,_ in
+            self.setupMessages()
+            self.chatTableView.reloadData()
+        }
+    }
+    
+    func setPartner(){
+        let chatters = chatInstance?.userList
+        if let chatters = chatters {
+            for user in chatters{
+                if user.userID != self.user?.userID{
+                    chatPartner = user
+                    print(chatPartner)
+                }
+            }
+        }
+    }
+    func sendMessage() {
+        let body = messageField.text ?? "forgot to send"
+        let sender = user ?? User()
+        let message = createMessage(sender: sender, body: body)
+        try! realm!.write {
+             chatInstance?.chatMessages.append(message)
+        }
+        messageField.text = nil
+    }
+    
+    func createMessage (sender: User, body: String ) -> ChatMessage {
+        let newMessage = ChatMessage()
+        newMessage.messageUser.append(sender)
+        newMessage.body = body
+        return newMessage
+    }
+    
+    @IBAction func sendAction(_ sender: UIButton) {
+        sendMessage()
+    }
+    
 }
+extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let messages = messages{
+             return messages.count
+        }else{
+        return 1
+        }
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let row = indexPath.row
+        if let messages = messages {
+            cell.textLabel?.text = messages[row].body
+        }
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+}
+

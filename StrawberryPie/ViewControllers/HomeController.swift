@@ -316,7 +316,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             return cell
           }else if (tableView == filterView){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            let buttonTitle = NSLocalizedString(states[indexPath.row], value: states[indexPath.row], comment: "Home filter state title")
+                let buttonTitle = NSLocalizedString(states[indexPath.row], value: states[indexPath.row], comment: "Home filter state title")
                 cell.textLabel?.text = buttonTitle
                 return cell
           }else{
