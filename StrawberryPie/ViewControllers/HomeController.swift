@@ -271,7 +271,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             print("Setting the state for filter")
             setState(state: states[indexPath.row])
             print(states[indexPath.row])
-            selectedButton.setTitle(states[indexPath.row], for: .normal)
+            let buttonTitle = NSLocalizedString(states[indexPath.row], value: states[indexPath.row], comment: "Home filter state title")
+            selectedButton.setTitle(buttonTitle, for: .normal)
             setupExperts()
             removeTransparentView()
             self.ExpertTableView.reloadData()
@@ -315,11 +316,13 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             return cell
           }else if (tableView == filterView){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-                cell.textLabel?.text = states[indexPath.row]
+            let buttonTitle = NSLocalizedString(states[indexPath.row], value: states[indexPath.row], comment: "Home filter state title")
+                cell.textLabel?.text = buttonTitle
                 return cell
           }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = states[indexPath.row]
+            let buttonTitle = NSLocalizedString(states[indexPath.row], value: states[indexPath.row], comment: "Home filter state title")
+            cell.textLabel?.text = buttonTitle
             return cell
         }
         
