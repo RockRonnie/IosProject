@@ -27,7 +27,6 @@
 		6869F7F7239D05D400694E3D /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7FA239D05D400694E3D /* Host.storyboard */; };
 		6869F7F8239D05D400694E3D /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7FA239D05D400694E3D /* Host.storyboard */; };
 		689803D9238A860400FE39CF /* QaTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 689803D8238A860400FE39CF /* QaTest.storyboard */; };
-		689803DB238A864F00FE39CF /* QaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689803DA238A864F00FE39CF /* QaTest.swift */; };
 		68B0A18F2391934B00404D7A /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A367A1B238C2D750006D64A /* RealmDB.swift */; };
 		68B0A191239193A900404D7A /* HostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E72389466A0069DE71 /* HostController.swift */; };
 		68B0A19C23919C8000404D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6640238430AF00F8340C /* Assets.xcassets */; };
@@ -140,7 +139,6 @@
 		6869F7F9239D05D400694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Host.storyboard; sourceTree = "<group>"; };
 		6869F7FC239D05DC00694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Host.strings; sourceTree = "<group>"; };
 		689803D8238A860400FE39CF /* QaTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QaTest.storyboard; sourceTree = "<group>"; };
-		689803DA238A864F00FE39CF /* QaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QaTest.swift; sourceTree = "<group>"; };
 		68D7B6352398237E0082BFBA /* HostQAController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostQAController.swift; sourceTree = "<group>"; };
 		68E1B8B923958378003055E4 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A0178B723952F0A000917B0 /* ExpertCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
@@ -294,8 +292,8 @@
 				6A7E663D238430AD00F8340C /* StrawberryPie.xcdatamodeld */,
 				6A367A1B238C2D750006D64A /* RealmDB.swift */,
 				6A7D3411238830630079BFB7 /* Constants.swift */,
-				6AD541E2238C364A00DF16DA /* Images */,
 				6869F7CF239CF8F000694E3D /* Localizable.strings */,
+				6AD541E2238C364A00DF16DA /* Images */,
 			);
 			path = StrawberryPie;
 			sourceTree = "<group>";
@@ -347,7 +345,6 @@
 				6A7E6638238430AD00F8340C /* LoginRegisterController.swift */,
 				6AC642CB2385892500E2906F /* ProfileController.swift */,
 				6857458F238935DE0002A538 /* QAController.swift */,
-				689803DA238A864F00FE39CF /* QaTest.swift */,
 				6AE09EB52389508A0040E87E /* CategoryViewController.swift */,
 				6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */,
 				6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */,
@@ -723,7 +720,6 @@
 				68B0A1A92391A5A000404D7A /* Studies+CoreDataClass.swift in Sources */,
 				6A7D3412238830630079BFB7 /* Constants.swift in Sources */,
 				6A9E89D9238946450069DE71 /* HottestCell.swift in Sources */,
-				689803DB238A864F00FE39CF /* QaTest.swift in Sources */,
 				6A9E89CE2389461B0069DE71 /* Chat.swift in Sources */,
 				6AE09EB2238827760040E87E /* Category+CoreDataProperties.swift in Sources */,
 				6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */,

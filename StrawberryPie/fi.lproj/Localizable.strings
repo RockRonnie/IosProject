@@ -5,4 +5,26 @@
   Created by Ilias Doukas on 08/12/2019.
   Copyright © 2019 Team Työkkäri. All rights reserved.
 */
-"Kaj-il-Skr.normalTitle" = "Aihe";
+
+//QAController.swift
+"Please log in first" = "Kirjaudu ensin sisään";
+
+// CategoryViewController
+"ICT" = "Tietotekniikka";
+"Humanities and Arts" = "Humanistiset ja taiteet";
+"Social sectors" = "Sosiaalisektori";
+"Education Sciences" = "Koulutus";
+"Trade, Admnistration and Law" = "Kauppa, hallinto ja laki";
+"Natural Sciences" = "Luonnontieteet";
+"Technical Fields" = "Tekniikan alat";
+"Agriculture and Forestry" = "Maa- ja metsätalous";
+"Health and Wellbeing" = "Terveys- ja hyvinvointi";
+"Service Industry" = "Palveluala";
+"General Education" = "Yleissivistävä";
+"Misc & Unkown" = "Muu & Tuntematon";
+
+// HomeController
+"live" = "suora";
+"upcoming" = "tulevat";
+"archived" = "arkistoitu";
+
