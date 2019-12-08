@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "Profession"; ObjectID = "CED-u6-Nid"; */
+"CED-u6-Nid.text" = "Ammatti";
+
+/* Class = "UIButton"; normalTitle = "Create Session"; ObjectID = "Ej7-aN-iAE"; */
+"Ej7-aN-iAE.normalTitle" = "Luo tapahtuma";
+
+/* Class = "UITextView"; text = "Short description of your QA Session."; ObjectID = "GxL-ph-tkA"; */
+"GxL-ph-tkA.text" = "K&V -tapahtuman lyhyt kuvaus";
+
+/* Class = "UILabel"; text = "Intro"; ObjectID = "Hki-Zv-bEm"; */
+"Hki-Zv-bEm.text" = "Esittely";
+
+/* Class = "UILabel"; text = "Session Title"; ObjectID = "Itg-ek-VNZ"; */
+"Itg-ek-VNZ.text" = "Tapahtuman otsikko";
+
+/* Class = "UIButton"; normalTitle = "Pick a Category"; ObjectID = "OB9-cg-EDK"; */
+"OB9-cg-EDK.normalTitle" = "Valitse kategoria";
+
+/* Class = "UITextView"; text = "Full intro for your session"; ObjectID = "S86-az-V3k"; */
+"S86-az-V3k.text" = "Täysi tapahtumaesittely";
+
+/* Class = "UITextField"; accessibilityHint = "Title here"; ObjectID = "Xwv-Zc-SgS"; */
+"Xwv-Zc-SgS.accessibilityHint" = "Otsikko tähän";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "Zr6-na-lJ8"; */
+"Zr6-na-lJ8.text" = "Kuvaus";
+
+/* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "cJf-rx-ktB"; */
+"cJf-rx-ktB.normalTitle" = "Tyhjennä";
+
+/* Class = "UILabel"; text = "Education"; ObjectID = "j0n-sv-tlY"; */
+"j0n-sv-tlY.text" = "Koulutus";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "mWe-AA-Wet"; */
+"mWe-AA-Wet.text" = "Käyttäjänimi";
+
+/* Class = "UILabel"; text = "Hosting a Q&A Session"; ObjectID = "xqH-ZD-AIa"; */
+"xqH-ZD-AIa.text" = "Isännöi K&V -tapahtumaa";
