@@ -807,8 +807,7 @@
 				6869F7D8239CFDE800694E3D /* fi */,
 			);
 			name = QA.storyboard;
-			path = "/Users/ilias/Documents/Xcode Projects/strawberrypie/StrawberryPie/Storyboards/Base.lproj";
-			sourceTree = "<absolute>";
+			sourceTree = "<group>";
 		};
 		6869F7DB239CFF3B00694E3D /* HostQA.storyboard */ = {
 			isa = PBXVariantGroup;
