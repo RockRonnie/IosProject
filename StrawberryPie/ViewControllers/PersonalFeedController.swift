@@ -121,6 +121,7 @@ class PersonalFeedController: UIViewController {
         }
     }
    // EXPERT
+    
     func setupHost(){
         print("setup host")
         print(user?.userID ?? "Dick")
@@ -129,7 +130,18 @@ class PersonalFeedController: UIViewController {
             print("läpi meni")
         }
     }
-
+    func findSessionforQA(qa: QA) -> QASession {
+        print("Finding session based on QA")
+        let foundSession = realm?.objects(QASession.self).filter("ANY QA.QAID = %@", qa.QAID).first
+        if let foundSession = foundSession{
+            return foundSession
+            
+        }
+        else{
+            print("Something went wrong")
+            return QASession()
+        }
+    }
     
     
     func updatePersonalFeed(){
@@ -138,8 +150,6 @@ class PersonalFeedController: UIViewController {
             self.personalFeedTableView.reloadData()
         }
     }
-    
-    
     @IBAction func perFeedAction(_ sender: UIButton) {
         setTab(tab: "Feed")
         personalFeedTableView.reloadData()
@@ -154,9 +164,6 @@ class PersonalFeedController: UIViewController {
     }
     
     
-    
-
-
 }
 
 extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
@@ -205,7 +212,15 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
                 }
             }
         case "QA":
-            print("QA")
+            let normalsession = UIStoryboard(name: "QA", bundle: nil)
+            let session = normalsession.instantiateViewController(withIdentifier: "QAController") as? QAController
+            var realmSession: QASession?
+            let qa = self.personalQA[indexPath.row] as QA
+            realmSession = findSessionforQA(qa: qa)
+            session?.currentSession = realmSession
+            if let session = session{
+                self.navigationController?.pushViewController(session, animated: true)
+            }
         case "privMsg":
             print("privMsg")
         default:
