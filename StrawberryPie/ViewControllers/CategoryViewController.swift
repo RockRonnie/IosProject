@@ -35,8 +35,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     //Sets up the collectionview
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        cell.categoryNameLabel.text = category.getNames()[indexPath.item]
-        cell.categoryImageView.image = category.getImages()[indexPath.item]
+        cell.categoryNameLabel.text = NSLocalizedString(category.getNames()[indexPath.item], value: category.getNames()[indexPath.item], comment: "Category name")
+        cell.categoryImageView.image = category.getImages()[indexPath.item] //category.getImages()[indexPath.item]
         //Adding some styling here
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.5

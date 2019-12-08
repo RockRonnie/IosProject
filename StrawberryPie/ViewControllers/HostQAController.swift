@@ -308,6 +308,7 @@ extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextF
                 }
             }
         case "chat":
+            
             cell.textLabel?.text = chatSource?[indexPath.row].body
             cell.textLabel?.numberOfLines = 2
             qaTable.rowHeight = 44.0
@@ -319,11 +320,9 @@ extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextF
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if selectedTab == "chat" {
-            let selectedCell = qaTable.cellForRow(at: indexPath)
-            let cellText = selectedCell?.textLabel?.text
-            if let gotText = cellText {
-                selectedMessage = ChatMessage()
-                selectedMessage?.body = "Kysymys: " + gotText
+            let cellChat = chatSource?[indexPath.row]
+            if let gotChat = cellChat {
+                selectedMessage = gotChat
                 messageField.isHidden = false
                 sendButton.isHidden = false
             }

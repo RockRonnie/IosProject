@@ -111,7 +111,6 @@ class QAController: UIViewController {
                     self.hostCardCV.reloadData()
                 }
             })
-        print ("Ajettu onnistuneesti")
         }
     }
     
@@ -122,15 +121,15 @@ class QAController: UIViewController {
         messageField.text = nil
     }
     
-    func getPic() {
-        let imageProcessor = UserImagePost()
-        imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
-            if let result = resultImage {
-                self.hostImage = result
-                self.hostCardCV.reloadData()
-                }
-            }
-        )}
+//    func getPic() {
+//        let imageProcessor = UserImagePost()
+//        imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
+//            if let result = resultImage {
+//                self.hostImage = result
+//                self.hostCardCV.reloadData()
+//                }
+//            }
+//        )}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "HostQAController") {
@@ -162,7 +161,7 @@ class QAController: UIViewController {
         }
         else {
             messageField.isUserInteractionEnabled = false
-            messageField.text = "Please log in first"
+            messageField.text = NSLocalizedString("Please log in first", value: "Please log in first", comment: "Please log in first")
         }
         qaTable.reloadData()
         scrollToBottom()
@@ -178,6 +177,7 @@ class QAController: UIViewController {
             messageToRealm(data: newMessage)
         }
         else {
+            // ALERT VIESTIN LÄHETYS EPÄONNISTUI
             print ("moi")
         }
     }
