@@ -174,6 +174,7 @@ class QAController: UIViewController {
         newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
         if let gotUser = RealmDB.sharedInstance.getUser() {
             newMessage.messageUser.append(gotUser)
+            newMessage.messageSender = gotUser.userName
             messageToRealm(data: newMessage)
         }
         else {
