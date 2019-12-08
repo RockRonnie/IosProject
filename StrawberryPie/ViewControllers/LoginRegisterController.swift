@@ -73,7 +73,7 @@ import RealmSwift
     // Container, can be used for additional information on the screen, is built programmatically
     let container = UIStackView()
     messageLabel.numberOfLines = 0
-    messageLabel.text = "Please enter your login information"
+    messageLabel.text = NSLocalizedString("Please enter your login information", value: "Please enter your login information", comment: "LoginInfo")
     container.addArrangedSubview(messageLabel)
     container.translatesAutoresizingMaskIntoConstraints = false
     container.axis = .vertical
@@ -87,23 +87,23 @@ import RealmSwift
     userpwagainField.isSecureTextEntry = true
     userpasswordField.isSecureTextEntry = true
     userinfoField.frame.size.height = 100
-    usernameField.placeholder = "Username"
+    usernameField.placeholder = NSLocalizedString("Username", value: "Username", comment: "Username")
     usernameField.borderStyle = .roundedRect
     usernameField.autocapitalizationType = .none
-    firstnameField.placeholder = "First name"
+    firstnameField.placeholder = NSLocalizedString("First Name", value: "First Name", comment: "Firstname")
     firstnameField.borderStyle = .roundedRect
-    lastnameField.placeholder = "Last name"
+    lastnameField.placeholder = NSLocalizedString("Last Name", value: "Last Name", comment: "Lastname")
     lastnameField.borderStyle = .roundedRect
-    userEmailField.placeholder = "Email"
+    userEmailField.placeholder = NSLocalizedString("Email", value: "Email", comment: "Email")
     userEmailField.borderStyle = .roundedRect
-    userinfoField.placeholder = "Info"
+    userinfoField.placeholder = NSLocalizedString("Info", value: "Info", comment: "Info")
     userinfoField.borderStyle = .roundedRect
-    userXtraInfoField.placeholder = "More Info"
+    userXtraInfoField.placeholder = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
     userXtraInfoField.borderStyle = .roundedRect
-    userpasswordField.placeholder = "Password"
+    userpasswordField.placeholder = NSLocalizedString("Password", value: "Password", comment: "Password")
     userpasswordField.borderStyle = .roundedRect
     userpasswordField.autocapitalizationType = .none
-    userpwagainField.placeholder = "Password again"
+    userpwagainField.placeholder = NSLocalizedString("Confirm Password", value: "Confirm Password", comment: "Confirmpw")
     userpwagainField.borderStyle = .roundedRect
     userpwagainField.autocapitalizationType = .none
     // Add every text field to container
@@ -131,13 +131,13 @@ import RealmSwift
     interestError.text = ""
     
     // LOGIN BUTTON
-    loginButton.setTitle("Login", for: .normal)
+    loginButton.setTitle(NSLocalizedString("Login", value: "Login", comment: "Logintext"), for: .normal)
     loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     // SIGNUP BUTTON
-    signUpButton.setTitle("Sign up", for: .normal)
+    signUpButton.setTitle(NSLocalizedString("Sign up", value: "Sign up", comment: "Signuptext"), for: .normal)
     signUpButton.addTarget(self, action: #selector(createUser), for: .touchUpInside)
     // SWAP FORMS BUTTON
-    changeFormButton.setTitle("No account? Register", for: .normal)
+    changeFormButton.setTitle(NSLocalizedString("No account? Register", value: "No account? Register", comment: "No account switch"), for: .normal)
     changeFormButton.addTarget(self, action: #selector(switchForm), for: .touchUpInside)
     
     // Add buttons, cancelButton for cancelling extra signup details
@@ -497,7 +497,7 @@ import RealmSwift
     // Settings for realm
     let isValidateEmail = RegisterValidation.validateEmail(emailID: self.userEmailField.text ?? "")
     if (isValidateEmail == false){
-      self.interestError.text = "Invalid email"
+      self.interestError.text = NSLocalizedString("Invalid email", value: "Invalid email", comment: "Emailerror")
       return
     }
     let config = self.user?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
@@ -529,7 +529,8 @@ import RealmSwift
       }
     }
     // Succesful registration, login ensues
-    let alert = UIAlertController(title: "Success!", message: "Registration successful!", preferredStyle: .alert)
+    let alertTitle = NSLocalizedString("Success!", value: "Success!", comment: "AlertSuccess")
+    let alert = UIAlertController(title: alertTitle, message: NSLocalizedString("Registration Successful!", value: "Registration Successful!", comment: "AlertSuccess2"), preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
     self.present(alert, animated: true)
     
@@ -542,23 +543,24 @@ import RealmSwift
     if signUpFormEnabled {
       // LOGIN Form chosen -> Show login fields
       signUpFormEnabled = false
-      self.messageLabel.text = "Please enter your login information"
+      self.messageLabel.text = NSLocalizedString("Please enter your login information", value: "Please enter your login information", comment: "LoginInfo")
       self.userpwagainField.isHidden = true
       self.loginButton.isHidden = false
       
       self.signUpButton.isHidden = true
-      changeFormButton.setTitle("Sign up instead", for: .normal)
+      let changeFormButtonTextSignup = NSLocalizedString("Sign up instead", value: "Sign up instead", comment: "Change form button text signup")
+      changeFormButton.setTitle(changeFormButtonTextSignup, for: .normal)
     } else if
       !signUpFormEnabled {
       signUpFormEnabled = true
-      self.messageLabel.text = "Please fill out the registration form"
+      self.messageLabel.text = NSLocalizedString("Please fill out the registration form", value: "Please fill out the registration form", comment: "Register Message Label")
       // SIGNUP Form chosen -> Show signup fields
       self.cancelBtn.isHidden = true
       self.doneBtn.isHidden = true
       self.userpwagainField.isHidden = false
       self.loginButton.isHidden = true
       self.signUpButton.isHidden = false
-      changeFormButton.setTitle("Already have an account? Login instead", for: .normal)
+      changeFormButton.setTitle(NSLocalizedString("Already have an account? Login instead", value: "Already have an account? Login instead", comment: "Change form button text login"), for: .normal)
     }
     
     

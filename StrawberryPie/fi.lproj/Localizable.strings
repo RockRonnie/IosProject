@@ -2,7 +2,7 @@
   Localizable.strings
   StrawberryPie
 
-  Created by Ilias Doukas on 08/12/2019.
+  Created by Ilias Doukas / Markus Saronsalo on 08/12/2019.
   Copyright © 2019 Team Työkkäri. All rights reserved.
 */
 
@@ -24,7 +24,27 @@
 "Misc & Unkown" = "Muu & Tuntematon";
 
 // HomeController
-"live" = "suora";
+"live" = "käynnissä olevat";
 "upcoming" = "tulevat";
 "archived" = "arkistoitu";
+
+// LoginRegisterController
+"Please fill out the registration form" = "Täytä rekisteröintilomake";
+"Please enter your login information" = "Syötä kirjautumistietosi";
+"Already have an account? Login instead" = "Onko sinulla jo tili? Kirjaudu sisään";
+"Sign up instead" = "Rekisteröintilomakkeeseen";
+"Invalid email" = "Virheellinen sähköpostiosoite";
+"No account? Register" = "Ei tiliä? Rekisteröidy";
+"Sign up" = "Rekisteröidy";
+"Login" = "Kirjaudu sisään";
+"First Name" = "Etunimi";
+"Last Name" = "Sukunimi";
+"Password" = "Salasana";
+"Confirm Password" = "Syötä salasana uudestaan";
+"Email" = "Sähköposti";
+"Username" = "Käyttäjänimi";
+"Info" = "Tietoja sinusta";
+"More Info" = "Lisätietoja";
+"Success!" = "Onnistui!";
+"Registration Successful!" = "Rekisteröinti onnistui!";
 
