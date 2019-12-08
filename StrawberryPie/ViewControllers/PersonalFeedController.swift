@@ -235,6 +235,15 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             }
         case "privMsg":
             print("privMsg")
+            let privChat = UIStoryboard(name: "PrivateChat", bundle: nil)
+            let chatNav = privChat.instantiateViewController(withIdentifier: "PrivateMessageController") as? PrivateMessageController
+            let chat = self.privateChats?[indexPath.row] as Chat?
+            chatNav?.chatInstance = chat
+            if let chatNav = chatNav{
+                self.navigationController?.pushViewController(chatNav, animated: true)
+            }else{
+                print("something went wrong")
+            }
         default:
             print("error")
         }

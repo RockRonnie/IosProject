@@ -30,6 +30,7 @@ class PrivateMessageController: UIViewController {
     }
     
     func setup(){
+        print("Private CHAT!")
         realmSetup()
         setPartner()
         setupMessages()

@@ -13,7 +13,7 @@
         <!--Private Message Controller-->
         <scene sceneID="y0a-aK-sEu">
             <objects>
-                <viewController id="x3B-De-YDF" customClass="PrivateMessageController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivateMessageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="x3B-De-YDF" customClass="PrivateMessageController" customModule="StrawberryPie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4DB-8E-fOu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
