@@ -14,7 +14,6 @@ class QAController: UIViewController {
     var currentSession: QASession?
     var realm: Realm?
     var notificationToken: NotificationToken?
-    
     var qaSource: QAMessageBoard?
     
     var hostImage: UIImage?
@@ -77,7 +76,6 @@ class QAController: UIViewController {
         }
     }
     
-    
     func populateSources() {
         print ("Source data")
         // Title
@@ -106,22 +104,15 @@ class QAController: UIViewController {
         }
         // Host avatar
         if hostImage == nil {
-            
             let imgProcessor = UserImagePost()
             imgProcessor.getPic(image: (currentSession?.host[0].uImage)!, onCompletion: {(resultImage) in
                 if let result = resultImage{
-                    print("VITTU JES")
                     self.hostImage = result
                     self.hostCardCV.reloadData()
                 }
             })
-        //getPic()
         print ("Ajettu onnistuneesti")
         }
-    }
-     // POISTA KUN UNIT TESTIT ON TEHTY KUNNOLLA !!!!!!!!!
-    func testiTesti() -> Int {
-        return 1
     }
     
     func messageToRealm(data: ChatMessage) {
@@ -167,8 +158,10 @@ class QAController: UIViewController {
         messageField.isHidden = false
         if userSource?.userName != "default" && userSource?.userName != nil {
         sendButton.isHidden = false
+        messageField.isUserInteractionEnabled = true
         }
         else {
+            messageField.isUserInteractionEnabled = false
             messageField.text = "Please log in first"
         }
         qaTable.reloadData()
@@ -180,7 +173,13 @@ class QAController: UIViewController {
         // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username
         let newMessage = ChatMessage()
         newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
-        messageToRealm(data: newMessage)
+        if let gotUser = RealmDB.sharedInstance.getUser() {
+            newMessage.messageUser.append(gotUser)
+            messageToRealm(data: newMessage)
+        }
+        else {
+            print ("moi")
+        }
     }
     @IBOutlet weak var sendButton: UIButton!
     @IBAction func pinnedButton(_ sender: UIButton) {

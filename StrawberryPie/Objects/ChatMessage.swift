@@ -9,7 +9,9 @@
 import RealmSwift
 
 @objcMembers class ChatMessage: Object {
-    dynamic var messageSender: String = ""
+    // Poista messageSender Realmiä uudelleenluotaessa
+    dynamic var messageSender = ""
+    dynamic var messageUser = List<User>()
     dynamic var messageId: String = UUID().uuidString
     dynamic var body: String = ""
     dynamic var timestamp: Date = Date()

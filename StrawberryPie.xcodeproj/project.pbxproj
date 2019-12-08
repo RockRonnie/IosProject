@@ -14,7 +14,18 @@
 		68574593238940B80002A538 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68574592238940B80002A538 /* HomeController.swift */; };
 		685D424623895F2400059014 /* QaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D424523895F2400059014 /* QaTable.swift */; };
 		685D424823895F3700059014 /* QaHostCardTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D424723895F3700059014 /* QaHostCardTable.swift */; };
-		6877CD2A238855B700CBCEDE /* QA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6877CD29238855B700CBCEDE /* QA.storyboard */; };
+		6869F7C9239CF80B00694E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7C5239CF80B00694E3D /* LaunchScreen.storyboard */; };
+		6869F7CA239CF80B00694E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7C7239CF80B00694E3D /* Main.storyboard */; };
+		6869F7CD239CF8F000694E3D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7CF239CF8F000694E3D /* Localizable.strings */; };
+		6869F7D3239CFBC400694E3D /* QA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7D5239CFBC400694E3D /* QA.storyboard */; };
+		6869F7D9239CFF3B00694E3D /* HostQA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7DB239CFF3B00694E3D /* HostQA.storyboard */; };
+		6869F7DE239D044000694E3D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7E0239D044000694E3D /* Home.storyboard */; };
+		6869F7E3239D049C00694E3D /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7E5239D049C00694E3D /* Categories.storyboard */; };
+		6869F7E8239D04E700694E3D /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7EA239D04E700694E3D /* Feed.storyboard */; };
+		6869F7ED239D053700694E3D /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7EF239D053700694E3D /* LoginRegister.storyboard */; };
+		6869F7F2239D059100694E3D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7F4239D059100694E3D /* Profile.storyboard */; };
+		6869F7F7239D05D400694E3D /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7FA239D05D400694E3D /* Host.storyboard */; };
+		6869F7F8239D05D400694E3D /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7FA239D05D400694E3D /* Host.storyboard */; };
 		689803D9238A860400FE39CF /* QaTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 689803D8238A860400FE39CF /* QaTest.storyboard */; };
 		689803DB238A864F00FE39CF /* QaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689803DA238A864F00FE39CF /* QaTest.swift */; };
 		68B0A18F2391934B00404D7A /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A367A1B238C2D750006D64A /* RealmDB.swift */; };
@@ -24,7 +35,6 @@
 		68B0A1A92391A5A000404D7A /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
 		68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
 		68D7B6362398237E0082BFBA /* HostQAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7B6352398237E0082BFBA /* HostQAController.swift */; };
-		68D7B638239824290082BFBA /* HostQA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D7B637239824290082BFBA /* HostQA.storyboard */; };
 		6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B723952F0A000917B0 /* ExpertCellController.swift */; };
 		6A0178BA23952F15000917B0 /* HomeExpertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */; };
 		6A0D53B42395858100706AF9 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0D53B22395858100706AF9 /* CategoryTableViewCell.xib */; };
@@ -39,10 +49,7 @@
 		6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6638238430AD00F8340C /* LoginRegisterController.swift */; };
 		6A7E663F238430AD00F8340C /* StrawberryPie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E663D238430AD00F8340C /* StrawberryPie.xcdatamodeld */; };
 		6A7E6641238430AF00F8340C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6640238430AF00F8340C /* Assets.xcassets */; };
-		6A7E6644238430AF00F8340C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */; };
 		6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E66672384368600F8340C /* .gitlab-ci.yml */; };
-		6A8C5DD3238AC59600C321E5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8C5DD2238AC59600C321E5 /* Host.storyboard */; };
-		6A8C5DD4238AC59600C321E5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8C5DD2238AC59600C321E5 /* Host.storyboard */; };
 		6A8DEA7A23967B3200B42FBB /* HostControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8DEA7923967B3200B42FBB /* HostControllerTest.swift */; };
 		6A9C169C2397AF2900448A57 /* HostControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C169B2397AF2800448A57 /* HostControllerUITests.swift */; };
 		6A9C169E2397C1FE00448A57 /* pickState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C169D2397C1FE00448A57 /* pickState.swift */; };
@@ -66,12 +73,6 @@
 		6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */; };
 		6AACF22C238EAEFB006ECBF4 /* ExpertFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */; };
 		6AC642CC2385892500E2906F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC642CB2385892500E2906F /* ProfileController.swift */; };
-		6AC642D62385915000E2906F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642D42385915000E2906F /* Main.storyboard */; };
-		6AC642E02385932E00E2906F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642DF2385932E00E2906F /* Profile.storyboard */; };
-		6AC642E22385937100E2906F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642E12385937100E2906F /* Feed.storyboard */; };
-		6AC642E42385939500E2906F /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642E32385939500E2906F /* Home.storyboard */; };
-		6AC642E6238593BB00E2906F /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642E5238593BB00E2906F /* Categories.storyboard */; };
-		6AC642E8238593E100E2906F /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC642E7238593E100E2906F /* LoginRegister.storyboard */; };
 		6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
 		6AD541E3238C364A00DF16DA /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 6AD541E2238C364A00DF16DA /* Images */; };
 		6AD541E5238C49AC00DF16DA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */; };
@@ -116,11 +117,31 @@
 		68574592238940B80002A538 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		685D424523895F2400059014 /* QaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QaTable.swift; sourceTree = "<group>"; };
 		685D424723895F3700059014 /* QaHostCardTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QaHostCardTable.swift; sourceTree = "<group>"; };
-		6877CD29238855B700CBCEDE /* QA.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QA.storyboard; sourceTree = "<group>"; };
+		6869F7C6239CF80B00694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6869F7C8239CF80B00694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		6869F7CE239CF8F000694E3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6869F7D0239CF91800694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = ../fi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		6869F7D1239CF91A00694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = ../fi.lproj/Main.strings; sourceTree = "<group>"; };
+		6869F7D2239CF91C00694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6869F7D6239CFDDE00694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/QA.storyboard; sourceTree = "<group>"; };
+		6869F7D8239CFDE800694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/QA.strings; sourceTree = "<group>"; };
+		6869F7DA239CFF3B00694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HostQA.storyboard; sourceTree = "<group>"; };
+		6869F7DD239CFF4300694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/HostQA.strings; sourceTree = "<group>"; };
+		6869F7DF239D044000694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		6869F7E2239D044900694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Home.strings; sourceTree = "<group>"; };
+		6869F7E4239D049C00694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Categories.storyboard; sourceTree = "<group>"; };
+		6869F7E7239D04A500694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Categories.strings; sourceTree = "<group>"; };
+		6869F7E9239D04E700694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feed.storyboard; sourceTree = "<group>"; };
+		6869F7EC239D04EF00694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Feed.strings; sourceTree = "<group>"; };
+		6869F7EE239D053700694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginRegister.storyboard; sourceTree = "<group>"; };
+		6869F7F1239D054600694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/LoginRegister.strings; sourceTree = "<group>"; };
+		6869F7F3239D059100694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		6869F7F6239D05B600694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Profile.strings; sourceTree = "<group>"; };
+		6869F7F9239D05D400694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Host.storyboard; sourceTree = "<group>"; };
+		6869F7FC239D05DC00694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Host.strings; sourceTree = "<group>"; };
 		689803D8238A860400FE39CF /* QaTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QaTest.storyboard; sourceTree = "<group>"; };
 		689803DA238A864F00FE39CF /* QaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QaTest.swift; sourceTree = "<group>"; };
 		68D7B6352398237E0082BFBA /* HostQAController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostQAController.swift; sourceTree = "<group>"; };
-		68D7B637239824290082BFBA /* HostQA.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HostQA.storyboard; sourceTree = "<group>"; };
 		68E1B8B923958378003055E4 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A0178B723952F0A000917B0 /* ExpertCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeExpertTableCell.swift; sourceTree = "<group>"; };
@@ -138,13 +159,11 @@
 		6A7E6638238430AD00F8340C /* LoginRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterController.swift; sourceTree = "<group>"; };
 		6A7E663E238430AD00F8340C /* StrawberryPie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StrawberryPie.xcdatamodel; sourceTree = "<group>"; };
 		6A7E6640238430AF00F8340C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6A7E6643238430AF00F8340C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A7E6645238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrawberryPieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieTests.swift; sourceTree = "<group>"; };
 		6A7E6650238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7E66672384368600F8340C /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
-		6A8C5DD2238AC59600C321E5 /* Host.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Host.storyboard; sourceTree = "<group>"; };
 		6A8DEA7923967B3200B42FBB /* HostControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostControllerTest.swift; sourceTree = "<group>"; };
 		6A9C169B2397AF2800448A57 /* HostControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostControllerUITests.swift; sourceTree = "<group>"; };
 		6A9C169D2397C1FE00448A57 /* pickState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickState.swift; sourceTree = "<group>"; };
@@ -170,12 +189,6 @@
 		6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertFeed.swift; sourceTree = "<group>"; };
 		6AACF22F2393C29B006ECBF4 /* ExpertCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6AC642CB2385892500E2906F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		6AC642D52385915000E2906F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6AC642DF2385932E00E2906F /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		6AC642E12385937100E2906F /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
-		6AC642E32385939500E2906F /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		6AC642E5238593BB00E2906F /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
-		6AC642E7238593E100E2906F /* LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
 		6ACB98092386747A0070CCF6 /* QASession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QASession.swift; sourceTree = "<group>"; };
 		6AD541E2238C364A00DF16DA /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		6AD541E4238C49AC00DF16DA /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -282,6 +295,7 @@
 				6A367A1B238C2D750006D64A /* RealmDB.swift */,
 				6A7D3411238830630079BFB7 /* Constants.swift */,
 				6AD541E2238C364A00DF16DA /* Images */,
+				6869F7CF239CF8F000694E3D /* Localizable.strings */,
 			);
 			path = StrawberryPie;
 			sourceTree = "<group>";
@@ -303,19 +317,20 @@
 		6ACB980423866F8C0070CCF6 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				68D7B637239824290082BFBA /* HostQA.storyboard */,
-				6AC642D42385915000E2906F /* Main.storyboard */,
-				6AC642E5238593BB00E2906F /* Categories.storyboard */,
-				6AC642E12385937100E2906F /* Feed.storyboard */,
-				6AC642E32385939500E2906F /* Home.storyboard */,
-				6AC642E7238593E100E2906F /* LoginRegister.storyboard */,
-				6AC642DF2385932E00E2906F /* Profile.storyboard */,
-				6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */,
-				6877CD29238855B700CBCEDE /* QA.storyboard */,
+				6869F7DB239CFF3B00694E3D /* HostQA.storyboard */,
+				6869F7C5239CF80B00694E3D /* LaunchScreen.storyboard */,
+				6869F7C7239CF80B00694E3D /* Main.storyboard */,
+				6869F7E5239D049C00694E3D /* Categories.storyboard */,
+				6869F7EA239D04E700694E3D /* Feed.storyboard */,
+				6869F7E0239D044000694E3D /* Home.storyboard */,
+				6869F7EF239D053700694E3D /* LoginRegister.storyboard */,
+				6869F7F4239D059100694E3D /* Profile.storyboard */,
+				6869F7D5239CFBC400694E3D /* QA.storyboard */,
 				689803D8238A860400FE39CF /* QaTest.storyboard */,
-				6A8C5DD2238AC59600C321E5 /* Host.storyboard */,
+				6869F7FA239D05D400694E3D /* Host.storyboard */,
 			);
-			path = Storyboards;
+			name = Storyboards;
+			path = Storyboards/Base.lproj;
 			sourceTree = "<group>";
 		};
 		6ACB980623866FB80070CCF6 /* ViewControllers */ = {
@@ -507,6 +522,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fi,
 			);
 			mainGroup = 6A7E662A238430AD00F8340C;
 			productRefGroup = 6A7E6634238430AD00F8340C /* Products */;
@@ -534,19 +550,20 @@
 			files = (
 				6AD541E3238C364A00DF16DA /* Images in Resources */,
 				6A0D53B42395858100706AF9 /* CategoryTableViewCell.xib in Resources */,
-				6AC642E42385939500E2906F /* Home.storyboard in Resources */,
-				6AC642E8238593E100E2906F /* LoginRegister.storyboard in Resources */,
+				6869F7DE239D044000694E3D /* Home.storyboard in Resources */,
+				6869F7ED239D053700694E3D /* LoginRegister.storyboard in Resources */,
 				6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */,
-				6AC642E6238593BB00E2906F /* Categories.storyboard in Resources */,
-				6A8C5DD3238AC59600C321E5 /* Host.storyboard in Resources */,
-				6877CD2A238855B700CBCEDE /* QA.storyboard in Resources */,
-				6A7E6644238430AF00F8340C /* LaunchScreen.storyboard in Resources */,
-				6AC642E22385937100E2906F /* Feed.storyboard in Resources */,
-				6AC642E02385932E00E2906F /* Profile.storyboard in Resources */,
+				6869F7E3239D049C00694E3D /* Categories.storyboard in Resources */,
+				6869F7CA239CF80B00694E3D /* Main.storyboard in Resources */,
+				6869F7F7239D05D400694E3D /* Host.storyboard in Resources */,
+				6869F7D3239CFBC400694E3D /* QA.storyboard in Resources */,
+				6869F7E8239D04E700694E3D /* Feed.storyboard in Resources */,
+				6869F7F2239D059100694E3D /* Profile.storyboard in Resources */,
 				6A7E6641238430AF00F8340C /* Assets.xcassets in Resources */,
+				6869F7C9239CF80B00694E3D /* LaunchScreen.storyboard in Resources */,
+				6869F7CD239CF8F000694E3D /* Localizable.strings in Resources */,
 				689803D9238A860400FE39CF /* QaTest.storyboard in Resources */,
-				6AC642D62385915000E2906F /* Main.storyboard in Resources */,
-				68D7B638239824290082BFBA /* HostQA.storyboard in Resources */,
+				6869F7D9239CFF3B00694E3D /* HostQA.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +573,7 @@
 			files = (
 				68B0A19C23919C8000404D7A /* Assets.xcassets in Resources */,
 				68B0A19E23919C8C00404D7A /* Images in Resources */,
-				6A8C5DD4238AC59600C321E5 /* Host.storyboard in Resources */,
+				6869F7F8239D05D400694E3D /* Host.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,20 +777,103 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6A7E6642238430AF00F8340C /* LaunchScreen.storyboard */ = {
+		6869F7C5239CF80B00694E3D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6A7E6643238430AF00F8340C /* Base */,
+				6869F7C6239CF80B00694E3D /* Base */,
+				6869F7D0239CF91800694E3D /* fi */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		6AC642D42385915000E2906F /* Main.storyboard */ = {
+		6869F7C7239CF80B00694E3D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6AC642D52385915000E2906F /* Base */,
+				6869F7C8239CF80B00694E3D /* Base */,
+				6869F7D1239CF91A00694E3D /* fi */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6869F7CF239CF8F000694E3D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6869F7CE239CF8F000694E3D /* en */,
+				6869F7D2239CF91C00694E3D /* fi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		6869F7D5239CFBC400694E3D /* QA.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6869F7D6239CFDDE00694E3D /* Base */,
+				6869F7D8239CFDE800694E3D /* fi */,
+			);
+			name = QA.storyboard;
+			sourceTree = "<group>";
+		};
+		6869F7DB239CFF3B00694E3D /* HostQA.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6869F7DA239CFF3B00694E3D /* Base */,
+				6869F7DD239CFF4300694E3D /* fi */,
+			);
+			name = HostQA.storyboard;
+			sourceTree = "<group>";
+		};
+		6869F7E0239D044000694E3D /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6869F7DF239D044000694E3D /* Base */,
+				6869F7E2239D044900694E3D /* fi */,
+			);
+			name = Home.storyboard;
+			sourceTree = "<group>";
+		};
+		6869F7E5239D049C00694E3D /* Categories.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6869F7E4239D049C00694E3D /* Base */,
+				6869F7E7239D04A500694E3D /* fi */,
+			);
+			name = Categories.storyboard;
+			sourceTree = "<group>";
+		};
+		6869F7EA239D04E700694E3D /* Feed.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6869F7E9239D04E700694E3D /* Base */,
+				6869F7EC239D04EF00694E3D /* fi */,
+			);
+			name = Feed.storyboard;
+			sourceTree = "<group>";
+		};
+		6869F7EF239D053700694E3D /* LoginRegister.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6869F7EE239D053700694E3D /* Base */,
+				6869F7F1239D054600694E3D /* fi */,
+			);
+			name = LoginRegister.storyboard;
+			sourceTree = "<group>";
+		};
+		6869F7F4239D059100694E3D /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6869F7F3239D059100694E3D /* Base */,
+				6869F7F6239D05B600694E3D /* fi */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		6869F7FA239D05D400694E3D /* Host.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6869F7F9239D05D400694E3D /* Base */,
+				6869F7FC239D05DC00694E3D /* fi */,
+			);
+			name = Host.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -823,6 +923,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -884,6 +985,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

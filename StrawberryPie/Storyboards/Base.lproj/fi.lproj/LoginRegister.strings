@@ -1,0 +1,36 @@
+
+/* Class = "UIButton"; normalTitle = "remove"; ObjectID = "2az-2r-XkZ"; */
+"2az-2r-XkZ.normalTitle" = "Poista";
+
+/* Class = "UILabel"; text = "Interest3"; ObjectID = "4NS-N1-sCG"; */
+"4NS-N1-sCG.text" = "Interest3";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "59S-LP-eBr"; */
+"59S-LP-eBr.text" = "Luokitus";
+
+/* Class = "UILabel"; text = "Choose 3 interests"; ObjectID = "7dB-He-DnL"; */
+"7dB-He-DnL.text" = "Valitse 3 kiinnostuksen kohdetta";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Og0-Gn-6M1"; */
+"Og0-Gn-6M1.normalTitle" = "Peruuta";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "RdN-mF-LPI"; */
+"RdN-mF-LPI.normalTitle" = "Valmis";
+
+/* Class = "UIButton"; normalTitle = "remove"; ObjectID = "Wkn-UU-rvH"; */
+"Wkn-UU-rvH.normalTitle" = "poista";
+
+/* Class = "UILabel"; text = "Interest1"; ObjectID = "ZG1-N2-SQY"; */
+"ZG1-N2-SQY.text" = "Interest1";
+
+/* Class = "UILabel"; text = "ErrorLabel"; ObjectID = "gn9-Uv-FuV"; */
+"gn9-Uv-FuV.text" = "ErrorLabel";
+
+/* Class = "UITabBarItem"; title = "Login / Register"; ObjectID = "h9f-FB-dwx"; */
+"h9f-FB-dwx.title" = "Kirjaudu / Rekisteröidy";
+
+/* Class = "UIButton"; normalTitle = "remove"; ObjectID = "jqU-FJ-ZoG"; */
+"jqU-FJ-ZoG.normalTitle" = "poista";
+
+/* Class = "UILabel"; text = "Interest2"; ObjectID = "w7b-1T-Iuz"; */
+"w7b-1T-Iuz.text" = "Interest2";
