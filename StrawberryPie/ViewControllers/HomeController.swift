@@ -43,6 +43,7 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.view.backgroundColor = UIColor.orange
         self.navigationItem.title = "Team Työkkäri ReEdu"
         print(RealmDB.sharedInstance.setup)
         setupRealm("default", "default" , false)

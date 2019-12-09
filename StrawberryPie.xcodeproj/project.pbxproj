@@ -253,6 +253,13 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		6A6F9D76239D585A00B8C0E9 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		6A7E662A238430AD00F8340C = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +288,7 @@
 		6A7E6635238430AD00F8340C /* StrawberryPie */ = {
 			isa = PBXGroup;
 			children = (
+				6A6F9D76239D585A00B8C0E9 /* Styles */,
 				6AE09EA62388275D0040E87E /* CoreData */,
 				6ACB980823866FDD0070CCF6 /* Objects */,
 				6ACB980723866FC40070CCF6 /* Components */,
