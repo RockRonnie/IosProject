@@ -16,6 +16,8 @@ class ProfileController: UIViewController {
     var url = String()
     
   @IBOutlet weak var unameLabel: UILabel!
+  @IBOutlet weak var joinDateLabel: UILabel!
+  @IBOutlet weak var myInfoLabel: UILabel!
   
   
     @IBOutlet weak var testImage: UIImageView!
@@ -58,6 +60,7 @@ class ProfileController: UIViewController {
       print(user)
       if user.userID == RealmDB.sharedInstance.user?.identity {
         unameLabel.text = user.userName
+        joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
         imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
                 self.testImage.image = result
@@ -93,6 +96,19 @@ class ProfileController: UIViewController {
   
   
 }
+// Date formatting
+extension Date
+{
+  func dateToString (dateFormat format: String) -> String
+  {
+    let formatter = DateFormatter()
+    formatter.dateFormat = format
+    return formatter.string(from: self)
+  }
+  
+}
+
+
 
 
 /*

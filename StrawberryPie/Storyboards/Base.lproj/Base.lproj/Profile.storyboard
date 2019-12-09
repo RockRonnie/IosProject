@@ -110,6 +110,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="icons8-user-30" id="yLo-EL-BVO"/>
                     <connections>
+                        <outlet property="joinDateLabel" destination="RLK-wt-OF9" id="Pw3-8h-BuJ"/>
+                        <outlet property="myInfoLabel" destination="gqD-eX-C8Z" id="WQL-Mb-rsf"/>
                         <outlet property="testImage" destination="aTw-O5-kEs" id="sld-1H-PFw"/>
                         <outlet property="unameLabel" destination="35l-PO-21M" id="1So-cE-SsY"/>
                     </connections>
