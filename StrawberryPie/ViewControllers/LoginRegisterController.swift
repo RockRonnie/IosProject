@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-@objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+@objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
   
   var category = Category()
   var realm: Realm!
@@ -41,16 +41,21 @@ import RealmSwift
   let usernameField = UITextField()
   let firstnameField = UITextField()
   let lastnameField = UITextField()
-  let userinfoField = UITextField()
-  let userXtraInfoField = UITextField()
+  let userinfoField = UITextView()
+  let userXtraInfoField = UITextView()
   let userpasswordField = UITextField()
   let userpwagainField = UITextField()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.categoryTable.delegate = self
-    self.categoryTable.dataSource = self
-    self.categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    categoryTable.delegate = self
+    categoryTable.dataSource = self
+    categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    userinfoField.delegate = self
+    userXtraInfoField.delegate = self
+    userinfoField.setPlaceHolderInfoField()
+    userXtraInfoField.setPlaceHolderXtraInfoField()
+    
     // Init realm
     realm = RealmDB.sharedInstance.realm
     // Show only login fields
@@ -86,31 +91,48 @@ import RealmSwift
     // Create Register / Login Form
     // Styling etc. could be moved to another separate styling file
     // --------------------------------------
+    // Password secure text entry
     userpwagainField.isSecureTextEntry = true
     userpasswordField.isSecureTextEntry = true
-    userinfoField.frame.size.height = 100
+    
     usernameField.placeholder = NSLocalizedString("Username", value: "Username", comment: "Username")
-    usernameField.borderStyle = .roundedRect
-    usernameField.autocapitalizationType = .none
     firstnameField.placeholder = NSLocalizedString("First Name", value: "First Name", comment: "Firstname")
-    firstnameField.borderStyle = .roundedRect
     lastnameField.placeholder = NSLocalizedString("Last Name", value: "Last Name", comment: "Lastname")
-    lastnameField.borderStyle = .roundedRect
     userEmailField.placeholder = NSLocalizedString("Email", value: "Email", comment: "Email")
-    userEmailField.borderStyle = .roundedRect
-    userinfoField.placeholder = NSLocalizedString("Info", value: "Info", comment: "Info")
-    userinfoField.borderStyle = .roundedRect
-    userXtraInfoField.placeholder = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
-    userXtraInfoField.borderStyle = .roundedRect
+    // Mimic placeholder text
+    userinfoField.textColor = UIColor.lightGray
+    userXtraInfoField.textColor = UIColor.lightGray
     userpasswordField.placeholder = NSLocalizedString("Password", value: "Password", comment: "Password")
-    // Disable iOS 12 password autofill
-    userpasswordField.textContentType = .oneTimeCode
-    userpasswordField.borderStyle = .roundedRect
-    userpasswordField.autocapitalizationType = .none
     userpwagainField.placeholder = NSLocalizedString("Confirm Password", value: "Confirm Password", comment: "Confirmpw")
-    userpwagainField.textContentType = .oneTimeCode
+    
+    usernameField.borderStyle = .roundedRect
+    firstnameField.borderStyle = .roundedRect
+    lastnameField.borderStyle = .roundedRect
+    userEmailField.borderStyle = .roundedRect
+    // Modify info and extra info field height
+    let infoHeightConstraint = NSLayoutConstraint(item: userinfoField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 60)
+    let xtraInfoHeightConstraint = NSLayoutConstraint(item: userXtraInfoField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40)
+    let widthConstraint = userinfoField.widthAnchor.constraint(equalToConstant: 370)
+    userinfoField.addConstraint(infoHeightConstraint)
+    userXtraInfoField.addConstraint(xtraInfoHeightConstraint)
+    userinfoField.addConstraint(widthConstraint)
+    userpasswordField.borderStyle = .roundedRect
     userpwagainField.borderStyle = .roundedRect
+    userinfoField.layer.borderWidth = 1.0
+    userinfoField.layer.cornerRadius = 6
+    userinfoField.font = UIFont.systemFont(ofSize: 17.0)
+    userXtraInfoField.font = UIFont.systemFont(ofSize: 17.0)
+    userXtraInfoField.layer.borderWidth = 1.0
+    userXtraInfoField.layer.cornerRadius = 6
+    
+    // Disable autocapitalization on most of the fields except first name and last name
+    usernameField.autocapitalizationType = .none
+    userEmailField.autocapitalizationType = .none
+    userinfoField.autocapitalizationType = .none
+    userXtraInfoField.autocapitalizationType = .none
+    userpasswordField.autocapitalizationType = .none
     userpwagainField.autocapitalizationType = .none
+    
     // Add every text field to container
     container.addArrangedSubview(usernameField)
     container.addArrangedSubview(firstnameField)
@@ -158,9 +180,6 @@ import RealmSwift
       container.centerYAnchor.constraint(equalTo: guide.centerYAnchor, constant: -180),
       
       ])
-  }
-  // NOT IN USE, might be used later
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
   }
   // Buttons for finishing register or cancelling it
   @IBAction func cancelRegister(_ sender: Any) {
@@ -245,7 +264,6 @@ import RealmSwift
         self.thisUser.userInterests.remove(at: 2)
         self.interestThree.text = ""
         self.removeInterestThree.isHidden = true
-        
       }
       userUpdatedObj?.userInterests = self.thisUser.userInterests
       // Update realm, userUpdate is the User object referring to the realm user object
@@ -256,6 +274,11 @@ import RealmSwift
       }
     }
   }
+  func textViewDidChange(_ textView: UITextView) {
+    userinfoField.checkPlaceHolderInfo()
+    userXtraInfoField.checkPlaceHolderXtraInfo()
+  }
+ 
   // Tableview rowcount to match CoreData
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let rowCount = category.getNames().count
@@ -605,4 +628,30 @@ import RealmSwift
     }
   }
 }
-
+// Add placeholder text for UiTextViews, not working yet
+extension UITextView {
+  func setPlaceHolderInfoField() {
+    let placeHolderLabelforInfo = UILabel()
+    placeHolderLabelforInfo.text = NSLocalizedString("Info", value: "Info", comment: "Info")
+    placeHolderLabelforInfo.sizeToFit()
+    placeHolderLabelforInfo.tag = 1
+  }
+  func setPlaceHolderXtraInfoField() {
+    let placeHolderLabelforXtraInfo = UILabel()
+    placeHolderLabelforXtraInfo.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
+    placeHolderLabelforXtraInfo.sizeToFit()
+    placeHolderLabelforXtraInfo.tag = 2
+  }
+  func checkPlaceHolderInfo() {
+    if let placeHolderLabelforInfo = self.viewWithTag(1) as? UILabel
+    {
+    placeHolderLabelforInfo.isHidden = self.text.isEmpty
+    }
+  }
+  func checkPlaceHolderXtraInfo() {
+    if let placeHolderLabelforXtraInfo = self.viewWithTag(2) as? UILabel
+    {
+    placeHolderLabelforXtraInfo.isHidden = self.text.isEmpty
+    }
+  }
+}
