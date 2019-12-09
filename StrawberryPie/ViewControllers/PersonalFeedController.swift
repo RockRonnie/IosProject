@@ -281,9 +281,10 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             }
             return cell
         case "privMsg":
-             let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "ChatShell") as? PrivateChatCell
-             let chat = self.privateChats?[indexPath.row] as Chat?
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as? PrivateChatCell
+            let chat = self.privateChats?[indexPath.row] as Chat?
              if let cell = cell {
+                print("Cell found")
                 let chatters = chat?.userList
                 var partner: User?
                 if let chatters = chatters {
@@ -297,10 +298,17 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
                 let lastMessage = chat?.chatMessages.last
                 cell.lastUser.text = lastMessage?.messageUser[0].userName
                 cell.lastMessage.text = lastMessage?.body
-                formatter = DateFormatter()
-                cell.lastTimestamp.text = lastMessage?.timestamp
+                let myFormatter = Formatter()
+                let timestamp = lastMessage?.timestamp
+                if let timestamp = timestamp {
+                    let myStamp = myFormatter.dateformat(timestamp)
+                    cell.lastTimestamp.text = myStamp
+                }
                 return cell
                 
+             }else{
+                let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "ChatShell")
+                return cell
              }
             
         default:
