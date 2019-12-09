@@ -63,21 +63,28 @@
                                     <action selector="sendAction:" destination="x3B-De-YDF" eventType="touchUpInside" id="U55-X1-t4M"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Rr-2y-alM">
+                                <rect key="frame" x="301" y="23" width="58" height="46"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="96i-P8-1mw" firstAttribute="leading" secondItem="gJL-93-sGs" secondAttribute="trailing" constant="3" id="3Xi-II-nPK"/>
                             <constraint firstItem="63A-Fg-ju2" firstAttribute="trailing" secondItem="rbY-xa-yyY" secondAttribute="trailing" constant="16" id="8Xf-DT-LFM"/>
+                            <constraint firstItem="7Rr-2y-alM" firstAttribute="leading" secondItem="9fx-Le-3xo" secondAttribute="trailing" constant="44.5" id="JST-sI-UrO"/>
                             <constraint firstItem="gJL-93-sGs" firstAttribute="leading" secondItem="63A-Fg-ju2" secondAttribute="leading" constant="16" id="MXP-iZ-FKl"/>
                             <constraint firstItem="7Ck-bD-6Zv" firstAttribute="leading" secondItem="63A-Fg-ju2" secondAttribute="leading" constant="16" id="O19-6h-gMl"/>
                             <constraint firstItem="9fx-Le-3xo" firstAttribute="leading" secondItem="7Ck-bD-6Zv" secondAttribute="trailing" constant="50" id="OAf-tj-6tQ"/>
+                            <constraint firstItem="63A-Fg-ju2" firstAttribute="trailing" secondItem="7Rr-2y-alM" secondAttribute="trailing" constant="16" id="Wqd-lH-d09"/>
                             <constraint firstItem="rbY-xa-yyY" firstAttribute="top" secondItem="9fx-Le-3xo" secondAttribute="bottom" constant="8" id="YcC-ib-LuD"/>
                             <constraint firstItem="63A-Fg-ju2" firstAttribute="trailing" secondItem="96i-P8-1mw" secondAttribute="trailing" constant="16" id="YjZ-fa-Wbs"/>
+                            <constraint firstItem="rbY-xa-yyY" firstAttribute="top" secondItem="7Rr-2y-alM" secondAttribute="bottom" constant="11" id="ZXD-Pd-Dvl"/>
                             <constraint firstItem="rbY-xa-yyY" firstAttribute="top" secondItem="7Ck-bD-6Zv" secondAttribute="bottom" constant="8" id="coC-k9-hrz"/>
                             <constraint firstItem="rbY-xa-yyY" firstAttribute="leading" secondItem="63A-Fg-ju2" secondAttribute="leading" constant="16" id="hRa-g9-XCM"/>
                             <constraint firstItem="7Ck-bD-6Zv" firstAttribute="top" secondItem="63A-Fg-ju2" secondAttribute="top" id="hfh-vF-AIc"/>
                             <constraint firstItem="gJL-93-sGs" firstAttribute="top" secondItem="rbY-xa-yyY" secondAttribute="bottom" constant="48" id="hzn-jb-QfG"/>
                             <constraint firstItem="96i-P8-1mw" firstAttribute="top" secondItem="rbY-xa-yyY" secondAttribute="bottom" constant="48" id="q5t-KA-VkD"/>
+                            <constraint firstItem="7Rr-2y-alM" firstAttribute="top" secondItem="63A-Fg-ju2" secondAttribute="top" constant="3" id="v1O-Gt-dTY"/>
                             <constraint firstItem="9fx-Le-3xo" firstAttribute="top" secondItem="63A-Fg-ju2" secondAttribute="top" id="yi6-l3-a08"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="63A-Fg-ju2"/>
