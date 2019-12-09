@@ -11,6 +11,7 @@ import UIKit
 import RealmSwift
 
 class HomeController: UIViewController {
+    @IBOutlet weak var segmentBtns: UISegmentedControl!
     @IBOutlet weak var ExpertTableView: ExpertTableViewController!
     @IBOutlet weak var filterButton: UIButton!
     
@@ -32,7 +33,6 @@ class HomeController: UIViewController {
     var archivedSessions: Results<QASession>?
     var expertImage: UIImage?
     
-    var states: Array<String> = ["live","upcoming","archived"]
     var selectedState: String?
     var isSearchBarEmpty: Bool {
         return SearchController.searchBar.text?.isEmpty ?? true
@@ -50,11 +50,28 @@ class HomeController: UIViewController {
         setupTables()
     }
     
-    // Button styling
-    func filterButtonStyling(){
-        filterButton.layer.cornerRadius = 10
-        filterButton.layer.borderWidth = 1
+    @IBAction func segmentAction(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+              print("live")
+              setState(state: "live")
+              getState()
+              ExpertTableView.reloadData()
+        case 1:
+              print("upcoming")
+              setState(state: "upcoming")
+              getState()
+              ExpertTableView.reloadData()
+        case 2:
+              print("archived")
+              setState(state: "archived")
+              getState()
+              ExpertTableView.reloadData()
+        default:
+            print("ERROR 404")
+        }
     }
+    
     
     // prepare for seque to transfer the QASession information to QASession viewcontroller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,7 +98,6 @@ class HomeController: UIViewController {
     //Initial state of the filterbutton(live)
     func initialState(){
         setState(state: "live")
-        filterButton.setTitle(selectedState, for: .normal)
     }
     
     //function for loading the data that is ran every time home view is selected.
@@ -175,10 +191,6 @@ class HomeController: UIViewController {
         ExpertTableView.dataSource = self
         ExpertTableView.delegate = self
         ExpertTableView.reloadData()
-        
-        filterView.delegate = self
-        filterView.dataSource = self
-        filterView.register(PickCategoryCell.self, forCellReuseIdentifier: "Cell")
         //print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     // Setting up searchbar searchcontroller
@@ -198,42 +210,6 @@ class HomeController: UIViewController {
             ExpertTableView.reloadData()
         }
     }
-    
-    // Button action for filterin. Followed by Transparentview connected to it.
-    @IBAction func filterAction(_ sender: UIButton) {
-        selectedButton = filterButton
-        addTransparentView(frames: filterButton.frame)
-    }
-    
-    // function for making the filter filterView visible
-    func addTransparentView(frames: CGRect) {
-        let window = UIApplication.shared.keyWindow
-        transparentView.frame = window?.frame ?? self.view.frame
-        self.view.addSubview(transparentView)
-        
-        filterView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
-        self.view.addSubview(filterView)
-        filterView.layer.cornerRadius = 5
-        
-        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
-        filterView.reloadData()
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
-        transparentView.addGestureRecognizer(tapgesture)
-        transparentView.alpha = 0
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-            self.transparentView.alpha = 0.5
-            self.filterView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5, width: frames.width, height: CGFloat(self.states.count * 50))
-        }, completion: nil)
-    }
-    // Removing the filterview from the screen
-    @objc func removeTransparentView() {
-        let frames = selectedButton.frame
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-            self.transparentView.alpha = 0
-            self.filterView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
-        }, completion: nil)
-    }
-    
     
 }
 
@@ -257,8 +233,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
                 return filteredSessions.count
             }
             return sessions.count
-        }else if(tableView == filterView){
-            return states.count
         }else{
             return 0
         }
@@ -266,16 +240,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if(tableView == ExpertTableView){
             _ = indexPath.row
-        }
-        else if (tableView == filterView){
-            print("Setting the state for filter")
-            setState(state: states[indexPath.row])
-            print(states[indexPath.row])
-            let buttonTitle = NSLocalizedString(states[indexPath.row], value: states[indexPath.row], comment: "Home filter state title")
-            selectedButton.setTitle(buttonTitle, for: .normal)
-            setupExperts()
-            removeTransparentView()
-            self.ExpertTableView.reloadData()
         }
     }
     
@@ -291,9 +255,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         )}
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          if(tableView == ExpertTableView){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
         
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
             //Scaleing the image to fit ImageView
             cell.expertImage?.contentMode = .scaleAspectFit
             var object: QASession
@@ -314,18 +277,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             cell.expertTitle?.text = object.title
     
             return cell
-          }else if (tableView == filterView){
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-                let buttonTitle = NSLocalizedString(states[indexPath.row], value: states[indexPath.row], comment: "Home filter state title")
-                cell.textLabel?.text = buttonTitle
-                return cell
-          }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            let buttonTitle = NSLocalizedString(states[indexPath.row], value: states[indexPath.row], comment: "Home filter state title")
-            cell.textLabel?.text = buttonTitle
-            return cell
-        }
-        
     }
     /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
