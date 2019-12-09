@@ -36,24 +36,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgH-YS-WS4">
-                                <rect key="frame" x="136" y="583" width="102" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgH-YS-WS4">
+                                <rect key="frame" x="116" y="583" width="144" height="30"/>
                                 <state key="normal" title="Host A session"/>
                                 <connections>
                                     <segue destination="LSA-DS-syc" kind="show" identifier="HostSession" id="haZ-lV-8Rr"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CZn-O6-g0f">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZn-O6-g0f">
                                 <rect key="frame" x="16" y="119" width="343" height="456"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="456" id="Py9-Zh-Tu6"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpertCell" rowHeight="128" id="Frm-fP-tMP" customClass="ExpertCellController" customModule="StrawberryPie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ExperCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Frm-fP-tMP" id="C0Q-nt-vme">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="127.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Uz-s5-9ad">
@@ -121,9 +122,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZI5-J1-dOB">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZI5-J1-dOB">
                                 <rect key="frame" x="16" y="77" width="343" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Personal Feed"/>
                                     <segment title="Q&amp;A"/>
@@ -135,6 +135,17 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jpY-4w-q1d" firstAttribute="trailing" secondItem="ZI5-J1-dOB" secondAttribute="trailing" constant="16" id="DEt-XS-8Dq"/>
+                            <constraint firstItem="CgH-YS-WS4" firstAttribute="top" secondItem="CZn-O6-g0f" secondAttribute="bottom" constant="8" id="EHP-Vd-Gih"/>
+                            <constraint firstItem="ZI5-J1-dOB" firstAttribute="leading" secondItem="jpY-4w-q1d" secondAttribute="leading" constant="16" id="Jv9-1P-Nfv"/>
+                            <constraint firstItem="CZn-O6-g0f" firstAttribute="top" secondItem="ZI5-J1-dOB" secondAttribute="bottom" constant="14" id="NGS-CX-Qzc"/>
+                            <constraint firstItem="jpY-4w-q1d" firstAttribute="trailing" secondItem="CZn-O6-g0f" secondAttribute="trailing" constant="16" id="Xou-jY-Zfb"/>
+                            <constraint firstItem="CgH-YS-WS4" firstAttribute="leading" secondItem="jpY-4w-q1d" secondAttribute="leading" constant="116" id="Z84-3r-tYd"/>
+                            <constraint firstItem="CZn-O6-g0f" firstAttribute="leading" secondItem="jpY-4w-q1d" secondAttribute="leading" constant="16" id="b8q-Yq-zap"/>
+                            <constraint firstItem="jpY-4w-q1d" firstAttribute="trailing" secondItem="CgH-YS-WS4" secondAttribute="trailing" constant="115" id="fYu-fK-exO"/>
+                            <constraint firstItem="ZI5-J1-dOB" firstAttribute="top" secondItem="jpY-4w-q1d" secondAttribute="top" constant="13" id="lSg-mn-AuM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jpY-4w-q1d"/>
                     </view>
                     <navigationItem key="navigationItem" id="hbd-uQ-HMZ"/>

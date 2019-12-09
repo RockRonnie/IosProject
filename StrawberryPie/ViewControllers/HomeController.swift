@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  StrawberryPie
 //
-//  Created by iosdev on 22/11/2019.
+//  Created by Joachim Grotenfelt on 22/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 
@@ -276,6 +276,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             cell.expertDesc?.text = object.sessionDescription
             cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.expertTitle?.text = object.title
+            
     
             return cell
     }
