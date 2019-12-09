@@ -29,12 +29,13 @@ class PersonalFeedController: UIViewController {
     
     var personalMessages: List<ChatMessage>?
     var privateMessages: List<ChatMessage>?
+    
+    var privateChats: Array<Chat>?
     var hostedSessions: Results<QASession>?
     var recommendedSessions: Results<QASession>?
     var answeredQA: Results<QA>?
     
     var selectedTab: String?
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,28 +99,38 @@ class PersonalFeedController: UIViewController {
         }
         expertStatus()
         setupPersonalQA()
-        setupPrivateMessages()
+        setupPrivateChats()
     }
     // normal user
     func setupPersonalFeed(){
-        recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+        if let user = user{
+            if user.userInterests.isEmpty {
+                recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+            }else{
+                recommendedSessions = realm?.objects(QASession.self).filter("sessionCategory IN %@", user.userInterests)
+            }
+        }else{
+            recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+        }
+     
     }
     func setupPersonalQA(){
         if let user = user{
-            answeredQA = realm?.objects(QA.self).filter("ANY question.messageUser.userID = %@", user.userID)
+            let answeredQA = realm?.objects(QA.self).filter("ANY question.messageUser.userID == %@", user.userID)
             if let answeredQA = answeredQA {
                 self.personalQA = Array(answeredQA)
             }
         }
     }
-    func setupPrivateMessages(){
+    func setupPrivateChats(){
         if let user = user{
-            personalMessages = user.userPrivateMessages
-            if let personalMessages = personalMessages{
-                privateMessages = personalMessages
+            let chats = realm?.objects(Chat.self).filter("ANY userList.userID = %@", user.userID)
+            if let chats = chats{
+                privateChats = Array(chats)
             }
         }
     }
+    
    // EXPERT
     
     func setupHost(){
@@ -132,7 +143,7 @@ class PersonalFeedController: UIViewController {
     }
     func findSessionforQA(qa: QA) -> QASession {
         print("Finding session based on QA")
-        let foundSession = realm?.objects(QASession.self).filter("ANY QA.QAID = %@", qa.QAID).first
+        let foundSession = realm?.objects(QASession.self).filter("ANY QABoard.QAs.QAID = %@", qa.QAID).first
         if let foundSession = foundSession{
             return foundSession
             
@@ -174,10 +185,10 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             return personalFeed.count
         
         case "QA":
-            return personalQA.count
+                return personalQA.count
         case "privMsg":
-            if let privateMessages = privateMessages {
-                return privateMessages.count
+            if let privateChats = privateChats {
+                return privateChats.count
             }else{
                 return 0
             }
@@ -212,6 +223,7 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
                 }
             }
         case "QA":
+            print("QA")
             let normalsession = UIStoryboard(name: "QA", bundle: nil)
             let session = normalsession.instantiateViewController(withIdentifier: "QAController") as? QAController
             var realmSession: QASession?
@@ -223,6 +235,15 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             }
         case "privMsg":
             print("privMsg")
+            let privChat = UIStoryboard(name: "PrivateChat", bundle: nil)
+            let chatNav = privChat.instantiateViewController(withIdentifier: "PrivateMessageController") as? PrivateMessageController
+            let chat = self.privateChats?[indexPath.row] as Chat?
+            chatNav?.chatInstance = chat
+            if let chatNav = chatNav{
+                self.navigationController?.pushViewController(chatNav, animated: true)
+            }else{
+                print("something went wrong")
+            }
         default:
             print("error")
         }
@@ -251,17 +272,20 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case "QA":
             let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
-            let qa = self.personalQA[indexPath.row] as QA
-            cell.textLabel?.text = qa.question[0].messageUser[0].userName
-            cell.textLabel?.text = qa.question[0].body
-            cell.textLabel?.text = qa.answer[0].messageUser[0].userName
-            cell.textLabel?.text = qa.answer[0].body
+            let qa = self.personalQA[indexPath.row] as QA?
+            if let qa = qa {
+                cell.textLabel?.text = qa.question[0].messageUser[0].userName
+                cell.textLabel?.text = qa.question[0].body
+               /* cell.textLabel?.text = qa.answer[0].messageUser[0].userName
+                cell.textLabel?.text = qa.answer[0].body*/
+            }else{
+                cell.textLabel?.text = "Nothing here"
+            }
             return cell
         case "privMsg":
              let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "privMsg")
-             let message = self.privateMessages?[indexPath.row] as ChatMessage?
-             cell.textLabel?.text = message?.messageUser[0].userName
-             cell.textLabel?.text = message?.body
+             let chat = self.privateChats?[indexPath.row] as Chat?
+             cell.textLabel?.text = chat?.title
             return cell
             
         default:

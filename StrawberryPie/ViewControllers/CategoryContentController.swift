@@ -4,7 +4,7 @@
 //
 //  Created by iosdev on 27/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
-//  Class for handling Category Content view.
+//  Class for handling Category Content view. Populates the tableview with the picked categorys contents only.
 
 import UIKit
 import CoreData
@@ -16,7 +16,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     var notificationToken: NotificationToken?
     var topText = String()
     var categoryObject = [NSManagedObject]()
-    
     
     var user: SyncUser?
     var realm: Realm!
@@ -58,8 +57,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             // destinationVC?.sessionID = realmSession?.sessionID
         }
     }
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -85,11 +82,8 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             }
         })
         cell.expertDesc?.text = object.sessionDescription
-        cell.expertName?.text = object.host[0].userID
+        cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
         cell.expertTitle?.text = object.title
-    
-        //IMAGE GOES HERE!!!!!!!!!!!!!!!!!!!!!!
-        
         return cell
     }
     //Filters the feed to specified category
@@ -98,8 +92,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         
         experts = Array(sessions)
     }
-    
-    
     func updateExpertFeed(){
         self.notificationToken = realm?.observe {_,_ in
             self.setupExperts()
@@ -145,9 +137,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             self.setupExperts()
             self.CategoryContentTable.reloadData()
             print(self.user?.identity ?? "No identity")
-        }
-        
+        }        
     }
-    
-    
 }
