@@ -42,5 +42,20 @@ class StrawberryPieUITests: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
+    func testCategoryWithNoContent(){
+        let app = XCUIApplication()
+        app.tabBars.buttons["Categories"].tap()
+        app.collectionViews.cells.otherElements.containing(.staticText, identifier:"General Education").element.tap()
+        let test = app.staticTexts["NoContentLabel"].exists
+        XCTAssertTrue(test, "There was content")
+    }
+    
+    func testCategoryWithContent(){
+        let app = XCUIApplication()
+        app.tabBars.buttons["Categories"].tap()
+        app.collectionViews.cells.otherElements.containing(.staticText, identifier:"ICT").element.tap()
+        let test = app.staticTexts["NoContentLabel"].exists
+        XCTAssertFalse(test, "There was no content")
+    }
+    
 }
