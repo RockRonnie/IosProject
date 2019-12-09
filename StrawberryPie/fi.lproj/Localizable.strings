@@ -8,6 +8,8 @@
 
 //QAController.swift
 "Please log in first" = "Kirjaudu ensin sisään";
+"Topic" = "Aihe";
+"Pinned" = "Nostot";
 
 // CategoryViewController
 "ICT" = "Tietotekniikka";
@@ -24,9 +26,9 @@
 "Misc & Unkown" = "Muu & Tuntematon";
 
 // HomeController
-"live" = "käynnissä olevat";
-"upcoming" = "tulevat";
-"archived" = "arkistoitu";
+"Live" = "Käynnissä";
+"Upcoming" = "Tulossa";
+"Archived" = "Arkistoitu";
 
 // LoginRegisterController
 "Please fill out the registration form" = "Täytä rekisteröintilomake";

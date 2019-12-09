@@ -82,6 +82,10 @@ class QAController: UIViewController {
         titleLabel.text = currentSession?.title ?? "No title"
         // Aihe
         topicSource = currentSession?.intro[0].body ?? "Topic text missing"
+        // Segment palkki
+        scSegment?.setTitle((NSLocalizedString("Topic", value: "Topic", comment: "Selected segment")), forSegmentAt: 0)
+        scSegment?.setTitle((NSLocalizedString("Pinned", value: "Pinned", comment: "Selected segment")), forSegmentAt: 1)
+        scSegment?.setTitle((NSLocalizedString("Chat", value: "Chat", comment: "Selected segment")), forSegmentAt: 2)
         // Chatviestit
         if let chat = currentSession?.chat[0] {
             chatSource = chat.chatMessages
@@ -161,6 +165,8 @@ class QAController: UIViewController {
         case 0:
             // Vaihdetaan cellin pohjaa ja reloadData()
             selectedTab = "topic"
+//            scSegment?.setTitle((NSLocalizedString("Topic", value: "Topic", comment: "Selected segment")), forSegmentAt: 0)
+
             qaTable.rowHeight = 500.0
             // Chattikilkkeet piiloon
             sendButton.isHidden = true
