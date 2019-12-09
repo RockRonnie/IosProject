@@ -1,4 +1,5 @@
-//Class to handle camera and gallery to let user to either pick a image from the gallery or take a new picture and add that as his/hers profile pic
+// Class to handle camera and gallery to let user to either pick a image from the gallery or
+// take a new picture and add that as his/hers profile pic.
 
 import Foundation
 import UIKit
@@ -13,7 +14,7 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     override init(){
         super.init()
     }
-    
+    // Menu for selecting either Camera or Gallery when picking the profile picture.
     func pickImage(_ viewController: UIViewController, _ callback: @escaping ((UIImage) -> ())) {
         pickImageCallback = callback;
         self.viewController = viewController;
@@ -38,6 +39,7 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         alert.popoverPresentationController?.sourceView = self.viewController!.view
         viewController.present(alert, animated: true, completion: nil)
     }
+    // Opens the camera
     func openCamera(){
         alert.dismiss(animated: true, completion: nil)
         if(UIImagePickerController .isSourceTypeAvailable(.camera)){
@@ -48,6 +50,7 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
             alertWarning.show()
         }
     }
+    // Opens Gallery
     func openGallery(){
         alert.dismiss(animated: true, completion: nil)
         picker.sourceType = .photoLibrary
@@ -58,7 +61,6 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         picker.dismiss(animated: true, completion: nil)
     }
     
-
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         //picker.allowsEditing = true
