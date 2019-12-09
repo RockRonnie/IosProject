@@ -61,12 +61,12 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="JobTitleLabel" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-vv-yEL">
-                                                    <rect key="frame" x="124" y="7" width="147" height="21"/>
+                                                    <rect key="frame" x="124" y="7" width="204" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="147" id="Dap-1V-62c"/>
+                                                        <constraint firstAttribute="width" constant="204" id="Dap-1V-62c"/>
                                                         <constraint firstAttribute="height" constant="21" id="gkM-81-fa8"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -76,7 +76,7 @@
                                                         <constraint firstAttribute="width" constant="147" id="OTo-Sn-ad4"/>
                                                         <constraint firstAttribute="height" constant="21" id="rJs-Va-EeN"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

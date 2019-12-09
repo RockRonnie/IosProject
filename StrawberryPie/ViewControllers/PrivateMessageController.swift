@@ -46,7 +46,7 @@ class PrivateMessageController: UIViewController {
     func setupTables(){
         chatTableView.delegate = self
         chatTableView.dataSource = self
-        chatTableView.register(PrivMsgCell.self, forCellReuseIdentifier: "Cell")
+        chatTableView.register(UINib(nibName: "PrivMsgCell", bundle: nil), forCellReuseIdentifier: "PrivCell")
         chatTableView.reloadData()
     }
     
@@ -91,6 +91,13 @@ class PrivateMessageController: UIViewController {
         newMessage.body = body
         return newMessage
     }
+    func dateformat(_ timestamp: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let thisTimestamp = formatter.string(from: timestamp)
+        //let thisTimestamp = formatter.date(from: timestamp)
+        return thisTimestamp
+    }
     
     @IBAction func sendAction(_ sender: UIButton) {
         sendMessage()
@@ -105,12 +112,15 @@ extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PrivCell", for: indexPath) as! PrivMsgCell
         let row = indexPath.row
         if let messages = messages {
-            cell.textLabel?.text = messages[row].body
+            cell.username.text = messages[row].messageUser[0].userName
+            cell.messagefield.text = messages[row].body
+            let timestamp = dateformat(messages[row].timestamp)
+            cell.timestamp.text = timestamp
         }
-        return cell
+         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50

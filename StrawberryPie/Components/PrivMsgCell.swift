@@ -9,5 +9,8 @@
 import UIKit
 
 class PrivMsgCell: UITableViewCell {
-    
+    @IBOutlet weak var timestamp: UILabel!
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var messagefield: UILabel!
+    @IBOutlet weak var portrait: UIImageView!
 }

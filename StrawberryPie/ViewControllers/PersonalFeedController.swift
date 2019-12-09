@@ -12,9 +12,6 @@ import RealmSwift
 class PersonalFeedController: UIViewController {
     
     //Outlets
-    @IBOutlet weak var feedBtn: UIButton!
-    @IBOutlet weak var QABtn: UIButton!
-    @IBOutlet weak var PrivMsgBtn: UIButton!
     @IBOutlet weak var personalFeedTableView: UITableView!
     @IBOutlet weak var hostBtn: UIButton!
     
@@ -40,7 +37,6 @@ class PersonalFeedController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        // Do any additional setup after loading the view.
     }
     func setup(){
         hideButton()
@@ -60,6 +56,21 @@ class PersonalFeedController: UIViewController {
         selectedTab = "Feed"
     }
     
+    @IBAction func feedTabAction(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
+            setTab(tab: "Feed")
+            personalFeedTableView.reloadData()
+        case 1:
+            setTab(tab: "QA")
+            personalFeedTableView.reloadData()
+        case 2:
+            setTab(tab: "privMsg")
+            personalFeedTableView.reloadData()
+        default:
+            print("Something went wrong")
+        }
+    }
     func checkExpert(user: User?){
         if let user = user{
             if (user.userExpert ==  true){
@@ -161,20 +172,6 @@ class PersonalFeedController: UIViewController {
             self.personalFeedTableView.reloadData()
         }
     }
-    @IBAction func perFeedAction(_ sender: UIButton) {
-        setTab(tab: "Feed")
-        personalFeedTableView.reloadData()
-    }
-    @IBAction func QaAction(_ sender: UIButton) {
-        setTab(tab: "QA")
-        personalFeedTableView.reloadData()
-    }
-    @IBAction func privMsgAction(_ sender: UIButton) {
-        setTab(tab: "privMsg")
-        personalFeedTableView.reloadData()
-    }
-    
-    
 }
 
 extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
