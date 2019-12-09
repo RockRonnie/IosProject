@@ -440,6 +440,8 @@ import RealmSwift
             return }
           self.thisUser.userID = userIdentity
           self.thisUser.userName = username
+          // Default profile picture 
+          self.thisUser.uImage = "http://foxer153.asuscomm.com/images/2ebdb6e4494324fc7923f543e9bdb4bc"
           try! self.realm.write {
             self.realm.add(self.thisUser)
           }
