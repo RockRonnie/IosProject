@@ -53,11 +53,16 @@ class ProfileController: UIViewController {
     
     realm = RealmDB.sharedInstance.realm
     let users = realm.objects(User.self)
-      
+    let imagePost = UserImagePost()
     for user in users {
       print(user)
       if user.userID == RealmDB.sharedInstance.user?.identity {
         unameLabel.text = user.userName
+        imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
+            if let result = resultImage {
+                self.testImage.image = result
+            }
+        })
       }
     }
   

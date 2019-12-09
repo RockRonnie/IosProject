@@ -4,7 +4,7 @@
 //
 //  Created by iosdev on 27/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
-//  Class for handling Category Content view.
+//  Class for handling Category Content view. Populates the tableview with the picked categorys contents only.
 
 import UIKit
 import CoreData
@@ -16,7 +16,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     var notificationToken: NotificationToken?
     var topText = String()
     var categoryObject = [NSManagedObject]()
-    
     
     var user: SyncUser?
     var realm: Realm!
@@ -58,8 +57,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             // destinationVC?.sessionID = realmSession?.sessionID
         }
     }
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -75,8 +72,8 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
         cell.expertImage?.contentMode = .scaleAspectFit
         var object: QASession
-        object = self.experts[indexPath.row] as QASession
         
+        object = self.experts[indexPath.row] as QASession
         let imageProcessor = UserImagePost()
         imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
@@ -85,11 +82,8 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             }
         })
         cell.expertDesc?.text = object.sessionDescription
-        cell.expertName?.text = object.host[0].userID
+        cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
         cell.expertTitle?.text = object.title
-    
-        //IMAGE GOES HERE!!!!!!!!!!!!!!!!!!!!!!
-        
         return cell
     }
     //Filters the feed to specified category
@@ -97,9 +91,19 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         let sessions = realm.objects(QASession.self).filter("sessionCategory = %@", categoryObject[0].value(forKey: "categoryName") as? String ?? "dummyValue")
         
         experts = Array(sessions)
+        if experts.count == 0 { // If the array is empty this creates a label to the center of the screen indicating that there is no sessions available for the picked category
+            print("No sessions found")
+            CategoryContentTable.isHidden = true
+            let label = UILabel(frame: CGRect(x:0,y:0,width:200, height:21))
+            label.center.x = self.view.center.x
+            label.center.y = self.view.center.y
+            label.textAlignment = .center
+            label.text = "There seems to be no sessions available for \(categoryObject[0].value(forKey: "categoryName")!)"
+            label.numberOfLines = 3
+            label.sizeToFit()
+            self.view.addSubview(label)
+        }
     }
-    
-    
     func updateExpertFeed(){
         self.notificationToken = realm?.observe {_,_ in
             self.setupExperts()
@@ -145,9 +149,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             self.setupExperts()
             self.CategoryContentTable.reloadData()
             print(self.user?.identity ?? "No identity")
-        }
-        
+        }        
     }
-    
-    
 }

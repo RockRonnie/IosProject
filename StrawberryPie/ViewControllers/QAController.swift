@@ -151,21 +151,43 @@ class QAController: UIViewController {
     @IBAction func toHostSession(_ sender: Any) {
     }
     @IBOutlet weak var hostCardCV: UICollectionView!
-    @IBAction func chatButton(_ sender: UIButton) {
-        // Vaihdetaan cellin pohjaa ja reloadData()
-        selectedTab = "chat"
-        messageField.isHidden = false
-        if userSource?.userName != "default" && userSource?.userName != nil {
-        sendButton.isHidden = false
-        messageField.isUserInteractionEnabled = true
+    
+    @IBOutlet weak var scSegment: UISegmentedControl!
+    
+    @IBAction func scSegmentPressed(_ sender: Any) {
+        let getIndex = scSegment.selectedSegmentIndex
+        
+        switch (getIndex) {
+        case 0:
+            // Vaihdetaan cellin pohjaa ja reloadData()
+            selectedTab = "topic"
+            qaTable.rowHeight = 500.0
+            // Chattikilkkeet piiloon
+            sendButton.isHidden = true
+            messageField.isHidden = true
+            qaTable.reloadData()
+        case 1:
+            // Vaihdetaan cellin pohjaa ja reloadData()
+            selectedTab = "pinned"
+            // Chattikilkkeet piiloon
+            sendButton.isHidden = true
+            messageField.isHidden = true
+            qaTable.rowHeight = 100.0
+            qaTable.reloadData()
+        case 2:
+            // Vaihdetaan cellin pohjaa ja reloadData()
+            selectedTab = "chat"
+            if userSource?.userName != "default" && userSource?.userName != nil {
+                //messageField.isHidden = false
+                //sendButton.isHidden = false
+            }
+            qaTable.reloadData()
+        //scrollToBottom()
+        default:
+            print("non selected")
         }
-        else {
-            messageField.isUserInteractionEnabled = false
-            messageField.text = NSLocalizedString("Please log in first", value: "Please log in first", comment: "Please log in first")
-        }
-        qaTable.reloadData()
-        scrollToBottom()
     }
+    
     @IBOutlet weak var hostButton: UIButton!
     @IBOutlet weak var messageField: UITextField!
     @IBAction func sendButton(_ sender: UIButton) {
@@ -183,23 +205,7 @@ class QAController: UIViewController {
         }
     }
     @IBOutlet weak var sendButton: UIButton!
-    @IBAction func pinnedButton(_ sender: UIButton) {
-        // Vaihdetaan cellin pohjaa ja reloadData()
-        selectedTab = "pinned"
-        // Chattikilkkeet piiloon
-        sendButton.isHidden = true
-        messageField.isHidden = true
-        qaTable.reloadData()
-    }
-    @IBAction func topicButton(_ sender: UIButton) {
-        // Vaihdetaan cellin pohjaa ja reloadData()
-        selectedTab = "topic"
-        qaTable.rowHeight = 500.0
-        // Chattikilkkeet piiloon
-        sendButton.isHidden = true
-        messageField.isHidden = true
-        qaTable.reloadData()
-    }
+
     @IBOutlet weak var qaTable: UITableView!
 }
 

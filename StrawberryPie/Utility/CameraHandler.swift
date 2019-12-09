@@ -1,4 +1,5 @@
-//Class to handle camera and gallery to let user to either pick a image from the gallery or take a new picture and add that as his/hers profile pic
+// Class to handle camera and gallery to let user to either pick a image from the gallery or
+// take a new picture and add that as his/hers profile pic
 
 import Foundation
 import UIKit
