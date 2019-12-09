@@ -11,21 +11,18 @@ import RealmSwift
 
 
 
-class ProfileController: UIViewController, UITextFieldDelegate {
+class ProfileController: UIViewController, UITextViewDelegate {
   var realm: Realm!
     var url = String()
     
   @IBOutlet weak var unameLabel: UILabel!
   @IBOutlet weak var joinDateLabel: UILabel!
-  @IBOutlet weak var userInfoField: UITextField!
-
   @IBOutlet weak var companyInfo: UILabel!
   @IBOutlet weak var editProfileBtn: UIButton!
-  @IBOutlet weak var companyField: UITextField!
+  @IBOutlet weak var testImage: UIImageView!
+  @IBOutlet weak var xtraInfo: UITextView!
+  @IBOutlet weak var userInfoView: UITextView!
   
-  
-    @IBOutlet weak var testImage: UIImageView!
-    
     @IBAction func selectProfilePic(_ sender: Any) {
         ImagePickerManager().pickImage(self) {image in
             let data = UIImage.pngData(image)
@@ -57,22 +54,29 @@ class ProfileController: UIViewController, UITextFieldDelegate {
    override func viewDidLoad() {
     super.viewDidLoad()
     
-    userInfoField.delegate = self
+    xtraInfo.delegate = self
+    userInfoView.delegate = self
+    
     realm = RealmDB.sharedInstance.realm
     let users = realm.objects(User.self)
     let imagePost = UserImagePost()
     editProfileBtn.isHidden = true
-    userInfoField.isEnabled = false
-    companyField.isEnabled = false
+    userInfoView.isEditable = false
+    xtraInfo.isEditable = false
+    userInfoView.layer.borderWidth = 0.5
+    userInfoView.layer.borderColor = UIColor.black.cgColor
+    xtraInfo.layer.borderWidth = 0.5
+    xtraInfo.layer.borderColor = UIColor.black.cgColor
+    
     for user in users {
       print(user)
       if user.userID == RealmDB.sharedInstance.user?.identity {
         editProfileBtn.isHidden = false
         unameLabel.text = user.userName
-        companyField.text = user.extraInfo
+        xtraInfo.text = user.extraInfo
         joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
-        userInfoField.text = user.info
-        companyInfo.text = user.extraInfo
+        userInfoView.text = user.info
+        companyInfo.text = "About me"
         imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
                 self.testImage.image = result
@@ -80,38 +84,29 @@ class ProfileController: UIViewController, UITextFieldDelegate {
         })
       }
     }
-  
-
-    
-    
-    
-    
-    
     // Do any additional setup after loading the view.
   }
   // Edit Profile and update to realm, switch between Edit and Save
   @IBAction func editProfile(_ sender: UIButton!) {
     if editProfileBtn.titleLabel?.text == "Edit Profile" {
-      editProfileBtn.titleLabel?.text = "Save"
-      userInfoField.isEnabled = true
-      companyField.isEnabled = true
-    } else if editProfileBtn.titleLabel?.text == "Save" {
+      userInfoView.isEditable = true
+      xtraInfo.isEditable = true
+    }
+    if editProfileBtn.titleLabel?.text == "Save" {
       let users = realm.objects(User.self)
       for user in users {
         print(user)
         if user.userID == RealmDB.sharedInstance.user?.identity {
           try! self.realm.write {
-            user.info = self.userInfoField.text ?? ""
-            user.extraInfo = self.companyField.text ?? ""
+            user.info = self.userInfoView.text ?? ""
+            user.extraInfo = self.xtraInfo.text ?? ""
             self.realm.add(user, update: Realm.UpdatePolicy.modified)
           }
         }
       }
-      editProfileBtn.titleLabel?.text = "Edit Profile"
-      userInfoField.isEnabled = false
-      companyField.isEnabled = false
     }
   }
+  
   @IBAction func logOut(_ sender: UIButton!) {
     //Create alert to confirm logout
     let alertController = UIAlertController(title: "Logout", message: "", preferredStyle: .alert)
@@ -127,15 +122,8 @@ class ProfileController: UIViewController, UITextFieldDelegate {
     alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
     self.present(alertController, animated: true, completion: nil)
   }
-  
-  func textFieldDidBeginEditing(_ textField: UITextField) {
-    editProfileBtn.titleLabel?.text = "Save"
-  }
-  func textFieldDidEndEditing(_ textField: UITextField) {
-    editProfileBtn.titleLabel?.text = "Edit Profile"
-  }
-  
 }
+
 // Date formatting
 extension Date
 {
