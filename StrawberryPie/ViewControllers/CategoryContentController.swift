@@ -85,7 +85,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             }
         })
         cell.expertDesc?.text = object.sessionDescription
-        cell.expertName?.text = object.host[0].userID
+        cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
         cell.expertTitle?.text = object.title
     
         //IMAGE GOES HERE!!!!!!!!!!!!!!!!!!!!!!
