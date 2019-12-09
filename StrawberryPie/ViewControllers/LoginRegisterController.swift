@@ -278,15 +278,40 @@ import RealmSwift
   }
   // Mimic placeholder text
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if userinfoField.textColor == UIColor.lightGray {
+    if textView == userinfoField && userinfoField.text == NSLocalizedString("Info", value: "Info", comment: "Info"){
       userinfoField.text = nil
       userinfoField.textColor = UIColor.black
-    } else if
-      userXtraInfoField.textColor == UIColor.lightGray {
+    }
+    if textView == userXtraInfoField && userXtraInfoField.text == NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo"){
       userXtraInfoField.text = nil
       userXtraInfoField.textColor = UIColor.black
     }
   }
+  
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if textView == userinfoField {
+      switch self.userinfoField.text {
+      case "": userinfoField.text = NSLocalizedString("Info", value: "Info", comment: "Info")
+      userinfoField.textColor = UIColor.lightGray
+      case nil: userinfoField.text = NSLocalizedString("Info", value: "Info", comment: "Info")
+      userinfoField.textColor = UIColor.lightGray
+      default: userinfoField.textColor = UIColor.black
+      }
+    }
+    if textView == userXtraInfoField {
+      switch self.userXtraInfoField.text {
+      case "": userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
+      userXtraInfoField.textColor = UIColor.lightGray
+      case nil: userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
+      userXtraInfoField.textColor = UIColor.lightGray
+      default:
+        userXtraInfoField.textColor = UIColor.black
+      }
+    }
+  }
+  
+  
+  
  
   // Tableview rowcount to match CoreData
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
