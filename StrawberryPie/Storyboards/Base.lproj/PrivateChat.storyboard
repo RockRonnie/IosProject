@@ -92,6 +92,7 @@
                     <connections>
                         <outlet property="chatTableView" destination="rbY-xa-yyY" id="wUj-BF-ieh"/>
                         <outlet property="messageField" destination="gJL-93-sGs" id="8xH-Ti-jNd"/>
+                        <outlet property="partnerPic" destination="7Rr-2y-alM" id="Z3r-6G-wv3"/>
                         <outlet property="sendBtn" destination="96i-P8-1mw" id="CBB-XB-vdx"/>
                         <outlet property="usernameLabel" destination="9fx-Le-3xo" id="XS9-E5-lom"/>
                     </connections>

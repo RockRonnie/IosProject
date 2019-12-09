@@ -15,6 +15,7 @@ class PrivateMessageController: UIViewController {
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     
+    @IBOutlet weak var partnerPic: UIImageView!
     var chatInstance: Chat?
     var realm: Realm?
     var user: User?
@@ -71,10 +72,22 @@ class PrivateMessageController: UIViewController {
                 if user.userID != self.user?.userID{
                     chatPartner = user
                     usernameLabel.text = chatPartner?.userName ?? "Not chatting with anyone"
+                    getPartnerPic(user)
                 }
             }
         }
     }
+    
+    func getPartnerPic(_ user: User) {
+        let imageProcessor = UserImagePost()
+        imageProcessor.getPic(image: user.uImage, onCompletion: {(resultImage) in
+            if let result = resultImage {
+                print("kuva saatu")
+                self.partnerPic.image = result
+            }
+        })
+    }
+    
     func sendMessage() {
         let body = messageField.text ?? "forgot to send"
         let sender = user ?? User()
@@ -92,10 +105,12 @@ class PrivateMessageController: UIViewController {
         return newMessage
     }
     func dateformat(_ timestamp: Date) -> String {
+        print(timestamp)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let thisTimestamp = formatter.string(from: timestamp)
         //let thisTimestamp = formatter.date(from: timestamp)
+        print(thisTimestamp)
         return thisTimestamp
     }
     
@@ -118,12 +133,14 @@ extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
             cell.username.text = messages[row].messageUser[0].userName
             cell.messagefield.text = messages[row].body
             let timestamp = dateformat(messages[row].timestamp)
+            print(timestamp)
             cell.timestamp.text = timestamp
+            
         }
          return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 200
     }
 }
 
