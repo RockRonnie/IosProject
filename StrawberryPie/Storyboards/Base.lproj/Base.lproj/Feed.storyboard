@@ -53,7 +53,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpertCell" rowHeight="128" id="Frm-fP-tMP" customClass="ExpertCellController" customModule="StrawberryPie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ExperCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Frm-fP-tMP" id="C0Q-nt-vme">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" restorationIdentifier="ExperCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Frm-fP-tMP" id="C0Q-nt-vme">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -105,6 +105,8 @@
                                                 <constraint firstItem="HNv-13-mfr" firstAttribute="top" secondItem="4Ha-Fs-PaS" secondAttribute="bottom" constant="4" id="PLa-Rb-MH5"/>
                                                 <constraint firstAttribute="bottom" secondItem="3Uz-s5-9ad" secondAttribute="bottom" constant="8.5" id="Q1m-OW-Uh2"/>
                                                 <constraint firstItem="HNv-13-mfr" firstAttribute="top" secondItem="4Ha-Fs-PaS" secondAttribute="bottom" constant="4" id="UYu-NE-b9z"/>
+                                                <constraint firstItem="qkd-aQ-35f" firstAttribute="leading" secondItem="3Uz-s5-9ad" secondAttribute="trailing" constant="29" id="cHy-Vf-tUg"/>
+                                                <constraint firstItem="HNv-13-mfr" firstAttribute="leading" secondItem="3Uz-s5-9ad" secondAttribute="trailing" constant="29" id="gFq-aK-CUB"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qkd-aQ-35f" secondAttribute="bottom" constant="1" id="hMb-ve-l1c"/>
                                                 <constraint firstItem="qkd-aQ-35f" firstAttribute="top" secondItem="HNv-13-mfr" secondAttribute="bottom" constant="7" id="hy6-g0-YOY"/>
                                                 <constraint firstItem="qkd-aQ-35f" firstAttribute="trailing" secondItem="C0Q-nt-vme" secondAttribute="trailingMargin" id="j4j-tr-M7Q"/>
