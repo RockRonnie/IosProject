@@ -121,39 +121,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFj-GP-f2z">
-                                <rect key="frame" x="16" y="81" width="98" height="30"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZI5-J1-dOB">
+                                <rect key="frame" x="16" y="77" width="343" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Personal Feed"/>
+                                <segments>
+                                    <segment title="Personal Feed"/>
+                                    <segment title="Q&amp;A"/>
+                                    <segment title="Private Messages"/>
+                                </segments>
                                 <connections>
-                                    <action selector="perFeedAction:" destination="Yy9-W3-V5p" eventType="touchUpInside" id="nox-uM-GLD"/>
+                                    <action selector="feedTabAction:" destination="Yy9-W3-V5p" eventType="valueChanged" id="jAr-4O-Czp"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lio-XU-Wsw">
-                                <rect key="frame" x="238" y="81" width="121" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Private Messages"/>
-                                <connections>
-                                    <action selector="privMsgAction:" destination="Yy9-W3-V5p" eventType="touchUpInside" id="Cbe-gk-mHc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2z-sU-bkc">
-                                <rect key="frame" x="163" y="81" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Q&amp;A"/>
-                                <connections>
-                                    <action selector="QaAction:" destination="Yy9-W3-V5p" eventType="touchUpInside" id="Zdy-rQ-vfH"/>
-                                </connections>
-                            </button>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jpY-4w-q1d"/>
                     </view>
                     <navigationItem key="navigationItem" id="hbd-uQ-HMZ"/>
                     <connections>
-                        <outlet property="PrivMsgBtn" destination="Lio-XU-Wsw" id="xNO-lo-S2y"/>
-                        <outlet property="QABtn" destination="a2z-sU-bkc" id="yF0-YZ-s1r"/>
-                        <outlet property="feedBtn" destination="SFj-GP-f2z" id="xov-nd-324"/>
                         <outlet property="hostBtn" destination="CgH-YS-WS4" id="XiI-5V-3sC"/>
                         <outlet property="personalFeedTableView" destination="CZn-O6-g0f" id="0XK-jf-wvM"/>
                     </connections>
