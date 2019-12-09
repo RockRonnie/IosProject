@@ -207,6 +207,42 @@ class HostQAController: UIViewController {
             messageToQA(question: question, answer: answer)
         }
     }
+    @IBOutlet weak var scSegment: UISegmentedControl!
+    
+    @IBAction func scSegmentTapped(_ sender: Any) {
+        let getIndex = scSegment.selectedSegmentIndex
+        
+        switch (getIndex) {
+        case 0:
+            // Vaihdetaan cellin pohjaa ja reloadData()
+            selectedTab = "topic"
+            qaTable.rowHeight = 500.0
+            // Chattikilkkeet piiloon
+            sendButton.isHidden = true
+            messageField.isHidden = true
+            qaTable.reloadData()
+        case 1:
+            // Vaihdetaan cellin pohjaa ja reloadData()
+            selectedTab = "pinned"
+            // Chattikilkkeet piiloon
+            sendButton.isHidden = true
+            messageField.isHidden = true
+            qaTable.rowHeight = 100.0
+            qaTable.reloadData()
+        case 2:
+            // Vaihdetaan cellin pohjaa ja reloadData()
+            selectedTab = "chat"
+            if userSource?.userName != "default" && userSource?.userName != nil {
+                //messageField.isHidden = false
+                //sendButton.isHidden = false
+            }
+            qaTable.reloadData()
+        //scrollToBottom()
+        default:
+            print("non selected")
+        }
+    }
+    
     @IBOutlet weak var sendButton: UIButton!
     @IBAction func pinnedButton(_ sender: UIButton) {
         // Vaihdetaan cellin pohjaa ja reloadData()

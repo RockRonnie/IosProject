@@ -36,7 +36,6 @@
 		68D7B6362398237E0082BFBA /* HostQAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7B6352398237E0082BFBA /* HostQAController.swift */; };
 		6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B723952F0A000917B0 /* ExpertCellController.swift */; };
 		6A0178BA23952F15000917B0 /* HomeExpertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */; };
-		6A0D53B42395858100706AF9 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0D53B22395858100706AF9 /* CategoryTableViewCell.xib */; };
 		6A14BC56239AC7F20009E676 /* RegisterValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14BC55239AC7F20009E676 /* RegisterValidation.swift */; };
 		6A14BC58239AD2060009E676 /* LoginRegisterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */; };
 		6A48A9BC2396470600A962DA /* PickCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48A9BB2396470600A962DA /* PickCategoryCell.swift */; };
@@ -145,7 +144,6 @@
 		68E1B8B923958378003055E4 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A0178B723952F0A000917B0 /* ExpertCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeExpertTableCell.swift; sourceTree = "<group>"; };
-		6A0D53B22395858100706AF9 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		6A14BC55239AC7F20009E676 /* RegisterValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidation.swift; sourceTree = "<group>"; };
 		6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterTest.swift; sourceTree = "<group>"; };
 		6A367A1B238C2D750006D64A /* RealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
@@ -257,6 +255,13 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		6A6F9D76239D585A00B8C0E9 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		6A7E662A238430AD00F8340C = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +290,7 @@
 		6A7E6635238430AD00F8340C /* StrawberryPie */ = {
 			isa = PBXGroup;
 			children = (
+				6A6F9D76239D585A00B8C0E9 /* Styles */,
 				6AE09EA62388275D0040E87E /* CoreData */,
 				6ACB980823866FDD0070CCF6 /* Objects */,
 				6ACB980723866FC40070CCF6 /* Components */,
@@ -371,7 +377,6 @@
 				6A9E89D8238946450069DE71 /* QAMessageCell.swift */,
 				685D424523895F2400059014 /* QaTable.swift */,
 				685D424723895F3700059014 /* QaHostCardTable.swift */,
-				6A0D53B22395858100706AF9 /* CategoryTableViewCell.xib */,
 				6A48A9BF23969CF900A962DA /* CameraHandler.swift */,
 				6A9C169D2397C1FE00448A57 /* pickState.swift */,
 				6A14BC55239AC7F20009E676 /* RegisterValidation.swift */,
@@ -552,8 +557,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AD541E3238C364A00DF16DA /* Images in Resources */,
-				6A0D53B42395858100706AF9 /* CategoryTableViewCell.xib in Resources */,
 				6A4CC2E5239E5353000166D6 /* PrivMsgCell.xib in Resources */,
+
 				6869F7DE239D044000694E3D /* Home.storyboard in Resources */,
 				6869F7ED239D053700694E3D /* LoginRegister.storyboard in Resources */,
 				6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */,
