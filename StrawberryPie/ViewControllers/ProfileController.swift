@@ -2,7 +2,7 @@
 //  ProfileController.swift
 //  StrawberryPie
 //
-//  Created by Markus Saronsalo on 23/11/2019, modified on 27/11/2019.
+//  Created by Markus Saronsalo / Joachim Grotenfelt on 23/11/2019, modified on 27/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 

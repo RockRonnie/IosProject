@@ -2,9 +2,9 @@
 //  LoginRegisterController.swift
 //  StrawberryPie
 //
-//  Created by Markus Saronsalo on 19/11/2019, modified on 27/11/2019.
+//  Created by Markus Saronsalo on 19/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
-//
+//  This class handles the login and register functions
 
 import UIKit
 import RealmSwift
@@ -53,8 +53,6 @@ import RealmSwift
     categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     userinfoField.delegate = self
     userXtraInfoField.delegate = self
-    userinfoField.setPlaceHolderInfoField()
-    userXtraInfoField.setPlaceHolderXtraInfoField()
     
     // Init realm
     realm = RealmDB.sharedInstance.realm
@@ -99,9 +97,10 @@ import RealmSwift
     firstnameField.placeholder = NSLocalizedString("First Name", value: "First Name", comment: "Firstname")
     lastnameField.placeholder = NSLocalizedString("Last Name", value: "Last Name", comment: "Lastname")
     userEmailField.placeholder = NSLocalizedString("Email", value: "Email", comment: "Email")
-    // Mimic placeholder text
-    userinfoField.textColor = UIColor.lightGray
-    userXtraInfoField.textColor = UIColor.lightGray
+    userinfoField.text = NSLocalizedString("Info", value: "Info", comment: "Info")
+    userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
+    
+    
     userpasswordField.placeholder = NSLocalizedString("Password", value: "Password", comment: "Password")
     userpwagainField.placeholder = NSLocalizedString("Confirm Password", value: "Confirm Password", comment: "Confirmpw")
     
@@ -116,6 +115,9 @@ import RealmSwift
     userinfoField.addConstraint(infoHeightConstraint)
     userXtraInfoField.addConstraint(xtraInfoHeightConstraint)
     userinfoField.addConstraint(widthConstraint)
+    // "Placeholder" for info and xtrainfo
+    userinfoField.textColor = UIColor.lightGray
+    userXtraInfoField.textColor = UIColor.lightGray
     userpasswordField.borderStyle = .roundedRect
     userpwagainField.borderStyle = .roundedRect
     userinfoField.layer.borderWidth = 1.0
@@ -274,9 +276,16 @@ import RealmSwift
       }
     }
   }
-  func textViewDidChange(_ textView: UITextView) {
-    userinfoField.checkPlaceHolderInfo()
-    userXtraInfoField.checkPlaceHolderXtraInfo()
+  // Mimic placeholder text
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    if userinfoField.textColor == UIColor.lightGray {
+      userinfoField.text = nil
+      userinfoField.textColor = UIColor.black
+    } else if
+      userXtraInfoField.textColor == UIColor.lightGray {
+      userXtraInfoField.text = nil
+      userXtraInfoField.textColor = UIColor.black
+    }
   }
  
   // Tableview rowcount to match CoreData
@@ -628,30 +637,4 @@ import RealmSwift
     }
   }
 }
-// Add placeholder text for UiTextViews, not working yet
-extension UITextView {
-  func setPlaceHolderInfoField() {
-    let placeHolderLabelforInfo = UILabel()
-    placeHolderLabelforInfo.text = NSLocalizedString("Info", value: "Info", comment: "Info")
-    placeHolderLabelforInfo.sizeToFit()
-    placeHolderLabelforInfo.tag = 1
-  }
-  func setPlaceHolderXtraInfoField() {
-    let placeHolderLabelforXtraInfo = UILabel()
-    placeHolderLabelforXtraInfo.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
-    placeHolderLabelforXtraInfo.sizeToFit()
-    placeHolderLabelforXtraInfo.tag = 2
-  }
-  func checkPlaceHolderInfo() {
-    if let placeHolderLabelforInfo = self.viewWithTag(1) as? UILabel
-    {
-    placeHolderLabelforInfo.isHidden = self.text.isEmpty
-    }
-  }
-  func checkPlaceHolderXtraInfo() {
-    if let placeHolderLabelforXtraInfo = self.viewWithTag(2) as? UILabel
-    {
-    placeHolderLabelforXtraInfo.isHidden = self.text.isEmpty
-    }
-  }
-}
+
