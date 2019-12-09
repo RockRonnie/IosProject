@@ -108,6 +108,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2xd-O0-DOS">
+                                <rect key="frame" x="64" y="192" width="240" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Topic"/>
+                                    <segment title="Pinned"/>
+                                    <segment title="Chat"/>
+                                </segments>
+                                <connections>
+                                    <action selector="scSegmentTapped:" destination="rbh-wZ-ci6" eventType="valueChanged" id="Chx-Vi-gEr"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nOg-Mg-cx9"/>
@@ -116,6 +128,7 @@
                         <outlet property="hostCardCV" destination="b3R-bH-bZT" id="ipZ-rf-1vd"/>
                         <outlet property="messageField" destination="YHw-E5-McQ" id="Hat-HD-7Ln"/>
                         <outlet property="qaTable" destination="izR-vc-5F2" id="6Uh-Pq-4rL"/>
+                        <outlet property="scSegment" destination="2xd-O0-DOS" id="96l-oh-mDR"/>
                         <outlet property="sendButton" destination="n9P-ZH-Ho3" id="bCY-O6-r8t"/>
                         <outlet property="titleLabel" destination="zLm-GV-bOL" id="yqb-ws-ZvD"/>
                     </connections>
