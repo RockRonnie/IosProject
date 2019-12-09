@@ -167,16 +167,7 @@ class HostQAController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hostCardCV: UICollectionView!
-    @IBAction func chatButton(_ sender: UIButton) {
-        // Vaihdetaan cellin pohjaa ja reloadData()
-        selectedTab = "chat"
-        if userSource?.userName != "default" && userSource?.userName != nil {
-        //messageField.isHidden = false
-        //sendButton.isHidden = false
-        }
-        qaTable.reloadData()
-        //scrollToBottom()
-    }
+
     func addTransparentView(frames: CGRect) {
         let window = UIApplication.shared.keyWindow
         transparentView.frame = window?.frame ?? self.view.frame
@@ -207,6 +198,7 @@ class HostQAController: UIViewController {
             messageToQA(question: question, answer: answer)
         }
     }
+    
     @IBOutlet weak var scSegment: UISegmentedControl!
     
     @IBAction func scSegmentTapped(_ sender: Any) {
@@ -244,24 +236,7 @@ class HostQAController: UIViewController {
     }
     
     @IBOutlet weak var sendButton: UIButton!
-    @IBAction func pinnedButton(_ sender: UIButton) {
-        // Vaihdetaan cellin pohjaa ja reloadData()
-        selectedTab = "pinned"
-        // Chattikilkkeet piiloon
-        sendButton.isHidden = true
-        messageField.isHidden = true
-        qaTable.rowHeight = 100.0
-        qaTable.reloadData()
-    }
-    @IBAction func topicButton(_ sender: UIButton) {
-        // Vaihdetaan cellin pohjaa ja reloadData()
-        selectedTab = "topic"
-        qaTable.rowHeight = 500.0
-        // Chattikilkkeet piiloon
-        sendButton.isHidden = true
-        messageField.isHidden = true
-        qaTable.reloadData()
-    }
+
     @IBOutlet weak var qaTable: UITableView!
 }
 extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
