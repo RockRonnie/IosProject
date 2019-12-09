@@ -47,6 +47,7 @@ class PersonalFeedController: UIViewController {
         setupPersonalItems()
         personalFeedTableView.dataSource = self
         personalFeedTableView.delegate = self
+        personalFeedTableView.register(UINib(nibName: "PrivateChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
         personalFeedTableView.reloadData()
     }
     func setTab(tab: String){
@@ -280,10 +281,27 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             }
             return cell
         case "privMsg":
-             let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "privMsg")
+             let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "ChatShell") as? PrivateChatCell
              let chat = self.privateChats?[indexPath.row] as Chat?
-             cell.textLabel?.text = chat?.title
-            return cell
+             if let cell = cell {
+                let chatters = chat?.userList
+                var partner: User?
+                if let chatters = chatters {
+                    for user in chatters{
+                        if user.userID != self.user?.userID{
+                            partner = user
+                            cell.chatPartner.text = partner?.userName ?? "Not chatting with anyone"
+                        }
+                    }
+                }
+                let lastMessage = chat?.chatMessages.last
+                cell.lastUser.text = lastMessage?.messageUser[0].userName
+                cell.lastMessage.text = lastMessage?.body
+                formatter = DateFormatter()
+                cell.lastTimestamp.text = lastMessage?.timestamp
+                return cell
+                
+             }
             
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
