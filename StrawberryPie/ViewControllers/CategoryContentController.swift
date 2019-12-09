@@ -72,8 +72,8 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
         cell.expertImage?.contentMode = .scaleAspectFit
         var object: QASession
-        object = self.experts[indexPath.row] as QASession
         
+        object = self.experts[indexPath.row] as QASession
         let imageProcessor = UserImagePost()
         imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
@@ -91,6 +91,18 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         let sessions = realm.objects(QASession.self).filter("sessionCategory = %@", categoryObject[0].value(forKey: "categoryName") as? String ?? "dummyValue")
         
         experts = Array(sessions)
+        if experts.count == 0 {
+            print("No sessions found")
+            CategoryContentTable.isHidden = true
+            let label = UILabel(frame: CGRect(x:0,y:0,width:200, height:21))
+            label.center.x = self.view.center.x
+            label.center.y = self.view.center.y
+            label.textAlignment = .center
+            label.text = "There seems to be no sessions available."
+            label.numberOfLines = 3
+            label.sizeToFit()
+            self.view.addSubview(label)
+        }
     }
     func updateExpertFeed(){
         self.notificationToken = realm?.observe {_,_ in
