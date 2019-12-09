@@ -46,6 +46,7 @@ class PrivateMessageController: UIViewController {
     func setupTables(){
         chatTableView.delegate = self
         chatTableView.dataSource = self
+        chatTableView.register(PrivMsgCell.self, forCellReuseIdentifier: "Cell")
         chatTableView.reloadData()
     }
     
@@ -69,7 +70,6 @@ class PrivateMessageController: UIViewController {
             for user in chatters{
                 if user.userID != self.user?.userID{
                     chatPartner = user
-                    print(chatPartner)
                     usernameLabel.text = chatPartner?.userName ?? "Not chatting with anyone"
                 }
             }
