@@ -316,5 +316,18 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             cell.textLabel?.text = "🆘 Nyt levis koodi"
             return cell
         }
+        
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch selectedTab{
+        case "Feed":
+            return 200
+        case "QA":
+            return 150
+        case "privMsg":
+            return 200
+        default:
+            return 100
+        }
     }
 }
