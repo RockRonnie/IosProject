@@ -91,14 +91,14 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         let sessions = realm.objects(QASession.self).filter("sessionCategory = %@", categoryObject[0].value(forKey: "categoryName") as? String ?? "dummyValue")
         
         experts = Array(sessions)
-        if experts.count == 0 {
+        if experts.count == 0 { // If the array is empty this creates a label to the center of the screen indicating that there is no sessions available for the picked category
             print("No sessions found")
             CategoryContentTable.isHidden = true
             let label = UILabel(frame: CGRect(x:0,y:0,width:200, height:21))
             label.center.x = self.view.center.x
             label.center.y = self.view.center.y
             label.textAlignment = .center
-            label.text = "There seems to be no sessions available."
+            label.text = "There seems to be no sessions available for \(categoryObject[0].value(forKey: "categoryName")!)"
             label.numberOfLines = 3
             label.sizeToFit()
             self.view.addSubview(label)
