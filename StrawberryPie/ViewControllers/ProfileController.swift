@@ -18,6 +18,7 @@ class ProfileController: UIViewController {
   @IBOutlet weak var unameLabel: UILabel!
   @IBOutlet weak var joinDateLabel: UILabel!
   @IBOutlet weak var myInfoLabel: UILabel!
+  @IBOutlet weak var companyInfo: UILabel!
   
   
     @IBOutlet weak var testImage: UIImageView!
@@ -61,6 +62,8 @@ class ProfileController: UIViewController {
       if user.userID == RealmDB.sharedInstance.user?.identity {
         unameLabel.text = user.userName
         joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
+        myInfoLabel.text = user.info
+        companyInfo.text = user.extraInfo
         imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
                 self.testImage.image = result
