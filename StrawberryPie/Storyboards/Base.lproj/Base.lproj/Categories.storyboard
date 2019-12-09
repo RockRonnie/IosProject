@@ -57,6 +57,9 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="CategoryCollectionView"/>
+                                </userDefinedRuntimeAttributes>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,6 +70,9 @@
                             <constraint firstItem="298-hh-pmE" firstAttribute="leading" secondItem="ZBa-hS-58W" secondAttribute="leading" constant="20" id="mNL-3n-wSR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZBa-hS-58W"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value=""/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="QFS-Jk-WCn"/>
                     <connections>
