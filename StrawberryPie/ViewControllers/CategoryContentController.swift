@@ -101,6 +101,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             label.text = "There seems to be no sessions available for \(categoryObject[0].value(forKey: "categoryName")!)"
             label.numberOfLines = 3
             label.sizeToFit()
+            label.accessibilityIdentifier = "NoContentLabel"
             self.view.addSubview(label)
         }
     }

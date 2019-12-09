@@ -2,7 +2,7 @@
 //  ProfileController.swift
 //  StrawberryPie
 //
-//  Created by Markus Saronsalo on 23/11/2019, modified on 27/11/2019.
+//  Created by Markus Saronsalo / Joachim Grotenfelt on 23/11/2019, modified on 27/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 
@@ -16,6 +16,9 @@ class ProfileController: UIViewController {
     var url = String()
     
   @IBOutlet weak var unameLabel: UILabel!
+  @IBOutlet weak var joinDateLabel: UILabel!
+  @IBOutlet weak var myInfoLabel: UILabel!
+  @IBOutlet weak var companyInfo: UILabel!
   
   
     @IBOutlet weak var testImage: UIImageView!
@@ -58,6 +61,9 @@ class ProfileController: UIViewController {
       print(user)
       if user.userID == RealmDB.sharedInstance.user?.identity {
         unameLabel.text = user.userName
+        joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
+        myInfoLabel.text = user.info
+        companyInfo.text = user.extraInfo
         imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
                 self.testImage.image = result
@@ -93,6 +99,19 @@ class ProfileController: UIViewController {
   
   
 }
+// Date formatting
+extension Date
+{
+  func dateToString (dateFormat format: String) -> String
+  {
+    let formatter = DateFormatter()
+    formatter.dateFormat = format
+    return formatter.string(from: self)
+  }
+  
+}
+
+
 
 
 /*
