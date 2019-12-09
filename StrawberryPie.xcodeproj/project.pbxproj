@@ -255,6 +255,16 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		6A4CC2E6239E6607000166D6 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				6A14BC55239AC7F20009E676 /* RegisterValidation.swift */,
+				6A48A9BF23969CF900A962DA /* CameraHandler.swift */,
+				6AD541F82394075F00DF16DA /* UserImageFetch.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		6A6F9D76239D585A00B8C0E9 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +300,7 @@
 		6A7E6635238430AD00F8340C /* StrawberryPie */ = {
 			isa = PBXGroup;
 			children = (
+				6A4CC2E6239E6607000166D6 /* Utility */,
 				6A6F9D76239D585A00B8C0E9 /* Styles */,
 				6AE09EA62388275D0040E87E /* CoreData */,
 				6ACB980823866FDD0070CCF6 /* Objects */,
@@ -377,9 +388,7 @@
 				6A9E89D8238946450069DE71 /* QAMessageCell.swift */,
 				685D424523895F2400059014 /* QaTable.swift */,
 				685D424723895F3700059014 /* QaHostCardTable.swift */,
-				6A48A9BF23969CF900A962DA /* CameraHandler.swift */,
 				6A9C169D2397C1FE00448A57 /* pickState.swift */,
-				6A14BC55239AC7F20009E676 /* RegisterValidation.swift */,
 				6A4CC2E2239E5353000166D6 /* PrivMsgCell.swift */,
 				6A4CC2E3239E5353000166D6 /* PrivMsgCell.xib */,
 			);
@@ -398,7 +407,6 @@
 				6A9E89B92389461A0069DE71 /* User.swift */,
 				6ACB98092386747A0070CCF6 /* QASession.swift */,
 				6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */,
-				6AD541F82394075F00DF16DA /* UserImageFetch.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -558,7 +566,6 @@
 			files = (
 				6AD541E3238C364A00DF16DA /* Images in Resources */,
 				6A4CC2E5239E5353000166D6 /* PrivMsgCell.xib in Resources */,
-
 				6869F7DE239D044000694E3D /* Home.storyboard in Resources */,
 				6869F7ED239D053700694E3D /* LoginRegister.storyboard in Resources */,
 				6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */,
