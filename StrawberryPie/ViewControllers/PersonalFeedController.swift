@@ -357,7 +357,7 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch selectedTab{
         case "Feed":
-            return 300
+            return 200
         case "QA":
             return 175
         case "privMsg":

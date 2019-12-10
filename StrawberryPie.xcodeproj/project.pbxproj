@@ -75,6 +75,7 @@
 		6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */; };
 		6AA5C265239D4C8C000B677A /* PrivateChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA5C263239D4C8C000B677A /* PrivateChat.storyboard */; };
 		6AA990B7239FB2C0007DCEB1 /* ProjectColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA990B6239FB2C0007DCEB1 /* ProjectColors.swift */; };
+		6AAA625C239FF6250078FFE9 /* ObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA625B239FF6250078FFE9 /* ObjectTests.swift */; };
 		6AACF22C238EAEFB006ECBF4 /* ExpertFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */; };
 		6AC642CC2385892500E2906F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC642CB2385892500E2906F /* ProfileController.swift */; };
 		6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
@@ -200,6 +201,7 @@
 		6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageController.swift; sourceTree = "<group>"; };
 		6AA5C264239D4C8C000B677A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PrivateChat.storyboard; sourceTree = "<group>"; };
 		6AA990B6239FB2C0007DCEB1 /* ProjectColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectColors.swift; sourceTree = "<group>"; };
+		6AAA625B239FF6250078FFE9 /* ObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTests.swift; sourceTree = "<group>"; };
 		6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertFeed.swift; sourceTree = "<group>"; };
 		6AACF22F2393C29B006ECBF4 /* ExpertCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6AC642CB2385892500E2906F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				6A48A9BD2396616F00A962DA /* CoreDataTests.swift */,
 				6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */,
 				6A6F9D74239BE6DA00B8C0E9 /* HomeControllerTest.swift */,
+				6AAA625B239FF6250078FFE9 /* ObjectTests.swift */,
 			);
 			path = StrawberryPieTests;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				6A8DEA7A23967B3200B42FBB /* HostControllerTest.swift in Sources */,
 				684EEE1F2392847B00D68EC6 /* QAControllerTest.swift in Sources */,
 				6A6F9D75239BE6DA00B8C0E9 /* HomeControllerTest.swift in Sources */,
+				6AAA625C239FF6250078FFE9 /* ObjectTests.swift in Sources */,
 				6A48A9BE2396616F00A962DA /* CoreDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
