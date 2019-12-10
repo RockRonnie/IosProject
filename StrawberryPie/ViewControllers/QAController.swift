@@ -174,8 +174,8 @@ class QAController: UIViewController {
             // Vaihdetaan cellin pohjaa ja reloadData()
             selectedTab = "chat"
             if userSource?.userName != "default" && userSource?.userName != nil {
-                //messageField.isHidden = false
-                //sendButton.isHidden = false
+                messageField.isHidden = false
+                sendButton.isHidden = false
             }
             qaTable.reloadData()
         //scrollToBottom()
@@ -277,7 +277,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
         case "pinned":
             if let gotQA = qaSource {
                 if gotQA.QAs.count > 0 {
-                    cell.textLabel?.text = (gotQA.QAs[indexPath.row].question[0].body) + "\n" + (gotQA.QAs[indexPath.row].answer[0].body)
+                    cell.textLabel?.text = ((NSLocalizedString("Question", value: "Question", comment: "QA Question")) + ": " + gotQA.QAs[indexPath.row].question[0].body) + "\n" + (NSLocalizedString("Answer", value: "Answer", comment: "QA Answer")) + ": " + (gotQA.QAs[indexPath.row].answer[0].body)
                     cell.textLabel?.numberOfLines = 0
                     qaTable.rowHeight = 100.0 // palautetaan default korkeus topicin jäljiltä
                 }

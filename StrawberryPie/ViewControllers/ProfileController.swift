@@ -53,10 +53,8 @@ class ProfileController: UIViewController, UITextViewDelegate {
     
    override func viewDidLoad() {
     super.viewDidLoad()
-    
     xtraInfo.delegate = self
     userInfoView.delegate = self
-    
     realm = RealmDB.sharedInstance.realm
     let users = realm.objects(User.self)
     let imagePost = UserImagePost()
@@ -67,7 +65,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
     userInfoView.layer.borderColor = UIColor.black.cgColor
     xtraInfo.layer.borderWidth = 0.5
     xtraInfo.layer.borderColor = UIColor.black.cgColor
-    
+ 
     for user in users {
       print(user)
       if user.userID == RealmDB.sharedInstance.user?.identity {
@@ -80,10 +78,14 @@ class ProfileController: UIViewController, UITextViewDelegate {
         imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
                 self.testImage.image = result
+                
             }
         })
       }
     }
+    testImage.layer.masksToBounds = true
+    testImage.layer.cornerRadius = 10
+    
     // Do any additional setup after loading the view.
   }
   // Edit Profile and update to realm, switch between Edit and Save
