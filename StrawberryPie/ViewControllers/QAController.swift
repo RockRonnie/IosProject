@@ -62,10 +62,11 @@ class QAController: UIViewController {
                 self.populateSources()
             }
             self.qaTable.reloadData()
-            self.scrollToBottom()
-            
+            if self.selectedTab == "chat" {
+                self.scrollToBottom()
             }
         }
+    }
     
     func scrollToBottom() {
         if let gotChat = self.chatSource {

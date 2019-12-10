@@ -62,19 +62,19 @@ class HostQAController: UIViewController {
             if self.qaSource == nil {
                 self.populateSources()
             }
-            self.qaTable.reloadData()
+            //self.qaTable.reloadData()
             //self.scrollToBottom()
             }
         }
     
-    func scrollToBottom() {
-        if let gotChat = self.chatSource {
-            if gotChat.count > 0 {
-                let indexPath = NSIndexPath(row: gotChat.count - 1, section: 0)
-                self.qaTable.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
-            }
-        }
-    }
+//    func scrollToBottom() {
+//        if let gotChat = self.chatSource {
+//            if gotChat.count > 0 {
+//                let indexPath = NSIndexPath(row: gotChat.count - 1, section: 0)
+//                self.qaTable.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+//            }
+//        }
+//    }
     
     func populateSources() {
         print ("Source data")
@@ -199,6 +199,8 @@ class HostQAController: UIViewController {
                     currentSession!.upcoming = false
                 }
                 liveButton.setTitle("Archive", for: .normal)
+                qaTable.reloadData()
+
         }
             else {
                 try! realm!.write {
@@ -206,6 +208,7 @@ class HostQAController: UIViewController {
                     currentSession!.live = false
                 }
                 liveButton.isHidden = true
+                qaTable.reloadData()
             }
         }
     }
