@@ -43,6 +43,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         CategoryContentTable.reloadData()
         CategoryContentTable.backgroundColor = judasGrey()
         self.view.backgroundColor = judasGrey()
+        CategoryContentTable.register(UINib(nibName: "QASessionCell", bundle: nil), forCellReuseIdentifier: "SessionCell")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,11 +69,20 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
         _ = indexPath.row
+        let normalsession = UIStoryboard(name: "QA", bundle: nil)
+        let session = normalsession.instantiateViewController(withIdentifier: "QAController") as? QAController
+        var realmSession: QASession?
+        realmSession = self.experts[indexPath.row] as QASession
+        session?.currentSession = realmSession
+        if let session = session{
+            self.navigationController?.pushViewController(session, animated: true)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
-        cell.expertImage?.contentMode = .scaleAspectFit
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
+        cell.profilePic?.contentMode = .scaleAspectFit
         var object: QASession
         
         object = self.experts[indexPath.row] as QASession
@@ -80,17 +90,30 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
                 print("kuva saatu")
-                cell.expertImage?.image = result
+                cell.profilePic?.image = result
             }
         })
-        cell.expertDesc?.text = object.sessionDescription
-        cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
-        cell.expertTitle?.text = object.title
+        cell.sessionDesc?.text = object.sessionDescription
+        cell.host?.text = object.host[0].firstName + " " + object.host[0].lastName
+        cell.title?.text = object.title
+        cell.category?.text = object.sessionCategory
+        cell.status?.text = statusCheck(object: object)
         cell.backgroundColor = judasGrey()
         cell.layer.borderColor = CgjudasBlack()
         cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 10
+        
         return cell
+    }
+    func statusCheck(object: QASession) -> String{
+        var status = ""
+        if (object.live) {
+            status = "LIVE"
+        }else if(object.upcoming){
+            status = "UPCOMING"
+        }else if(object.archived){
+            status = "ARCHIVED"
+        }
+        return status
     }
     //Filters the feed to specified category
     func setupExperts(){
