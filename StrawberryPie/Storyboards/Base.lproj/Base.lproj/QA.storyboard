@@ -35,8 +35,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QA Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLm-GV-bOL">
-                                <rect key="frame" x="46" y="45" width="303" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="QA Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLm-GV-bOL">
+                                <rect key="frame" x="46" y="45" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -100,9 +100,8 @@
                                     <action selector="scSegmentPressed:" destination="rbh-wZ-ci6" eventType="valueChanged" id="kZx-OG-GNf"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYO-DU-XRt">
-                                <rect key="frame" x="5" y="172" width="33" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYO-DU-XRt">
+                                <rect key="frame" x="268" y="40" width="70" height="30"/>
                                 <state key="normal" title="Host">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -118,18 +117,21 @@
                             <constraint firstItem="nOg-Mg-cx9" firstAttribute="trailing" secondItem="izR-vc-5F2" secondAttribute="trailing" constant="45" id="85c-fq-Nlm"/>
                             <constraint firstItem="zLm-GV-bOL" firstAttribute="top" secondItem="nOg-Mg-cx9" secondAttribute="top" constant="25" id="Ab1-Uw-Wov"/>
                             <constraint firstItem="n9P-ZH-Ho3" firstAttribute="top" secondItem="izR-vc-5F2" secondAttribute="bottom" constant="7" id="BSD-lb-xbO"/>
-                            <constraint firstItem="nOg-Mg-cx9" firstAttribute="trailing" secondItem="zLm-GV-bOL" secondAttribute="trailing" constant="26" id="Gmx-cr-dnT"/>
+                            <constraint firstItem="DYO-DU-XRt" firstAttribute="leading" secondItem="zLm-GV-bOL" secondAttribute="trailing" constant="18" id="FW8-S3-7Pl"/>
                             <constraint firstItem="tYq-OG-jVI" firstAttribute="top" secondItem="b3R-bH-bZT" secondAttribute="bottom" constant="8" id="Har-2H-k3e"/>
                             <constraint firstItem="nOg-Mg-cx9" firstAttribute="trailing" secondItem="tYq-OG-jVI" secondAttribute="trailing" constant="45" id="NdK-gw-XlS"/>
                             <constraint firstItem="tYq-OG-jVI" firstAttribute="leading" secondItem="nOg-Mg-cx9" secondAttribute="leading" constant="45" id="SWE-JL-RWN"/>
                             <constraint firstItem="b3R-bH-bZT" firstAttribute="top" secondItem="zLm-GV-bOL" secondAttribute="bottom" constant="8" id="Xb4-Zn-lfj"/>
                             <constraint firstItem="YHw-E5-McQ" firstAttribute="leading" secondItem="nOg-Mg-cx9" secondAttribute="leading" constant="46" id="atW-Md-Sv8"/>
+                            <constraint firstItem="DYO-DU-XRt" firstAttribute="top" secondItem="nOg-Mg-cx9" secondAttribute="top" constant="20" id="bas-4o-4ea"/>
                             <constraint firstItem="YHw-E5-McQ" firstAttribute="top" secondItem="izR-vc-5F2" secondAttribute="bottom" constant="8" id="e7J-y5-bbq"/>
                             <constraint firstItem="nOg-Mg-cx9" firstAttribute="trailing" secondItem="b3R-bH-bZT" secondAttribute="trailing" constant="45" id="fjb-36-eq5"/>
+                            <constraint firstItem="nOg-Mg-cx9" firstAttribute="trailing" secondItem="DYO-DU-XRt" secondAttribute="trailing" constant="37" id="gSB-iy-AKt"/>
                             <constraint firstItem="zLm-GV-bOL" firstAttribute="leading" secondItem="nOg-Mg-cx9" secondAttribute="leading" constant="46" id="i06-D1-q8U"/>
                             <constraint firstItem="izR-vc-5F2" firstAttribute="leading" secondItem="nOg-Mg-cx9" secondAttribute="leading" constant="46" id="oyd-Kp-MIp"/>
                             <constraint firstItem="b3R-bH-bZT" firstAttribute="leading" secondItem="nOg-Mg-cx9" secondAttribute="leading" constant="46" id="rGX-H4-Sxr"/>
                             <constraint firstItem="nOg-Mg-cx9" firstAttribute="trailing" secondItem="n9P-ZH-Ho3" secondAttribute="trailing" constant="71" id="sVN-MY-qi3"/>
+                            <constraint firstItem="b3R-bH-bZT" firstAttribute="top" secondItem="DYO-DU-XRt" secondAttribute="bottom" constant="4" id="xDN-zp-Kpe"/>
                             <constraint firstItem="n9P-ZH-Ho3" firstAttribute="leading" secondItem="YHw-E5-McQ" secondAttribute="trailing" constant="18" id="yaP-fo-0Ac"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nOg-Mg-cx9"/>
