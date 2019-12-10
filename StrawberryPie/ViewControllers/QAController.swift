@@ -125,16 +125,6 @@ class QAController: UIViewController {
         messageField.text = nil
     }
     
-//    func getPic() {
-//        let imageProcessor = UserImagePost()
-//        imageProcessor.getPic(image: "53bf7ebb568d8b78f51a8bbcf295a8b8", onCompletion: { (resultImage) in
-//            if let result = resultImage {
-//                self.hostImage = result
-//                self.hostCardCV.reloadData()
-//                }
-//            }
-//        )}
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "HostQAController") {
             let destinationVC = segue.destination as? HostQAController
@@ -198,16 +188,20 @@ class QAController: UIViewController {
     @IBOutlet weak var messageField: UITextField!
     @IBAction func sendButton(_ sender: UIButton) {
         // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username
-        let newMessage = ChatMessage()
-        newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
-        if let gotUser = RealmDB.sharedInstance.getUser() {
-            newMessage.messageUser.append(gotUser)
-            newMessage.messageSender = gotUser.userName
-            messageToRealm(data: newMessage)
-        }
-        else {
-            // ALERT VIESTIN LÄHETYS EPÄONNISTUI
-            print ("moi")
+        if let gotMessage = messageField.text {
+            if gotMessage.count <= 200 {
+                let newMessage = ChatMessage()
+                newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
+                if let gotUser = RealmDB.sharedInstance.getUser() {
+                    newMessage.messageUser.append(gotUser)
+                    newMessage.messageSender = gotUser.userName
+                    messageToRealm(data: newMessage)
+                }
+                else {
+                    // ALERT VIESTIN LÄHETYS EPÄONNISTUI
+                    print ("moi")
+                }
+            }
         }
     }
     @IBOutlet weak var sendButton: UIButton!

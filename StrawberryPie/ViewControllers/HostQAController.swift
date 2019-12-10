@@ -115,7 +115,6 @@ class HostQAController: UIViewController {
                     self.hostCardCV.reloadData()
                 }
             })
-        //getPic()
         print ("Ajettu onnistuneesti")
         }
     }
@@ -131,8 +130,6 @@ class HostQAController: UIViewController {
     }
     
     func messageToQA(question: ChatMessage, answer: ChatMessage) {
-        let defaultAnswer = ChatMessage()
-        defaultAnswer.body = "Tässä vastaus"
         let qaSet = QA()
         print("QAID", qaSet.QAID)
         qaSet.question.append(question)
@@ -175,11 +172,8 @@ class HostQAController: UIViewController {
         answerField.frame = CGRect(x: 200, y: 200, width: 200, height: 150)
         self.view.addSubview(answerField)
         transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
-        //let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
-        //transparentView.addGestureRecognizer(tapgesture)
         transparentView.alpha = 0
     }
-    // function for removing the transparent view (making the tableview for selecting the category invisible)
     @objc func removeTransparentView() {
         let frames = answerButton.frame
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
@@ -193,10 +187,11 @@ class HostQAController: UIViewController {
         // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username
         let message = selectedMessage
         let answer = ChatMessage()
-        if let question = message {
+        if let gotUser = RealmDB.sharedInstance.getUser(), let question = message  {
             answer.body = "Vastaus: " + (messageField.text ?? "Tapahtui virhe")
+            answer.messageUser.append(gotUser)
             messageToQA(question: question, answer: answer)
-        }
+    }
     }
     
     @IBOutlet weak var scSegment: UISegmentedControl!
@@ -236,7 +231,6 @@ class HostQAController: UIViewController {
     }
     
     @IBOutlet weak var sendButton: UIButton!
-
     @IBOutlet weak var qaTable: UITableView!
 }
 extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
