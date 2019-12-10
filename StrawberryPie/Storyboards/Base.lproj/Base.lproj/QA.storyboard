@@ -21,6 +21,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="izR-vc-5F2">
                                 <rect key="frame" x="46" y="258" width="284" height="344"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="344" id="kWr-DZ-NKQ"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="qacell" id="8yW-MN-yol">
                                         <rect key="frame" x="0.0" y="28" width="284" height="44"/>
@@ -110,9 +113,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nOg-Mg-cx9" firstAttribute="bottom" secondItem="YHw-E5-McQ" secondAttribute="bottom" constant="27" id="2uX-Op-pC3"/>
                             <constraint firstItem="izR-vc-5F2" firstAttribute="top" secondItem="tYq-OG-jVI" secondAttribute="bottom" constant="8" id="5L5-4M-fXd"/>
-                            <constraint firstItem="nOg-Mg-cx9" firstAttribute="bottom" secondItem="n9P-ZH-Ho3" secondAttribute="bottom" constant="28" id="6vX-Y7-5uc"/>
                             <constraint firstItem="nOg-Mg-cx9" firstAttribute="trailing" secondItem="izR-vc-5F2" secondAttribute="trailing" constant="45" id="85c-fq-Nlm"/>
                             <constraint firstItem="zLm-GV-bOL" firstAttribute="top" secondItem="nOg-Mg-cx9" secondAttribute="top" constant="25" id="Ab1-Uw-Wov"/>
                             <constraint firstItem="n9P-ZH-Ho3" firstAttribute="top" secondItem="izR-vc-5F2" secondAttribute="bottom" constant="7" id="BSD-lb-xbO"/>
@@ -152,7 +153,7 @@
                 <viewControllerPlaceholder storyboardName="HostQA" referencedIdentifier="HostQAController" id="aYW-HB-1xq" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VtK-zh-z8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="286" y="-117"/>
+            <point key="canvasLocation" x="359" y="-122"/>
         </scene>
     </scenes>
 </document>
