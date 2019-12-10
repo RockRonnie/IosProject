@@ -53,6 +53,7 @@ class HomeController: UIViewController {
         segmentBtns.setTitle((NSLocalizedString("Live", value: "Live", comment: "Selected segment")), forSegmentAt: 0)
        segmentBtns.setTitle((NSLocalizedString("Upcoming", value: "Upcoming", comment: "Selected segment")), forSegmentAt: 1)
         segmentBtns.setTitle((NSLocalizedString("Archived", value: "Archived", comment: "Selected segment")), forSegmentAt: 2)
+        segmentBtns.tintColor = judasOrange()
     }
     
     
@@ -77,7 +78,6 @@ class HomeController: UIViewController {
             print("ERROR 404")
         }
     }
-    
     
     // prepare for seque to transfer the QASession information to QASession viewcontroller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -263,7 +263,6 @@ class HomeController: UIViewController {
 
 //ExpertTableView
 class ExpertTableViewController: UITableView{
-
 }
 extension HomeController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
