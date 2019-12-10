@@ -26,6 +26,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
   @IBOutlet weak var xtraInfo: UITextView!
   @IBOutlet weak var userInfoView: UITextView!
   @IBOutlet weak var interestTableView: UITableView!
+  @IBOutlet weak var logOutBtn: UIButton!
   
   
   // Profile pic selection
@@ -61,17 +62,36 @@ class ProfileController: UIViewController, UITextViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    // SET COLORS and STYLES
+    self.view.backgroundColor = judasGrey()
+    editProfileBtn.tintColor = judasBlue()
+    logOutBtn.tintColor = judasBlue()
+    logOutBtn.layer.borderWidth = 2.0
+    logOutBtn.layer.borderColor = judasBlue().cgColor
+    editProfileBtn.layer.borderWidth = 2.0
+    editProfileBtn.layer.borderColor = judasBlue().cgColor
+    interestTableView.layer.borderWidth = 2.0
+    interestTableView.layer.borderColor = judasBlack().cgColor
+    userInfoView.layer.cornerRadius = 0
+    userInfoView.layer.borderColor = judasBlack().cgColor
+    userInfoView.layer.borderWidth = 2.0
+    xtraInfo.layer.borderWidth = 2.0
+    xtraInfo.layer.borderColor = judasBlack().cgColor
+    xtraInfo.layer.cornerRadius = 0
     xtraInfo.delegate = self
     userInfoView.delegate = self
     userInfoView.isEditable = false
     interestTableView.isHidden = true
     setupTable()
     realmSetup()
+    
     editProfileBtn.isHidden = true
     xtraInfo.isEditable = false
     xtraInfo.isHidden = false
     segmentButtons.setTitle((NSLocalizedString("About Me", value: "About Me", comment: "Selected segment")), forSegmentAt: 0)
-    segmentButtons.setTitle((NSLocalizedString("Interests", value: "Interests", comment: "Selected segment")), forSegmentAt: 1)
+    
+ segmentButtons.setTitle((NSLocalizedString("Interests", value: "Interests", comment: "Selected segment")), forSegmentAt: 1)
+    
     
     let users = realm.objects(User.self)
     let imagePost = UserImagePost()
@@ -79,7 +99,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
       print(user)
       if user.userID == RealmDB.sharedInstance.user?.identity {
         editProfileBtn.isHidden = false
-        editProfileBtn.setTitle("Edit Profile", for: .normal)
+        editProfileBtn.setTitle(NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile"), for: .normal)
         unameLabel.text = user.userName
         xtraInfo.text = user.extraInfo
         joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
@@ -136,16 +156,16 @@ class ProfileController: UIViewController, UITextViewDelegate {
   
   // Edit Profile and update to realm, switch between Edit and Save
   @IBAction func editProfile(_ sender: UIButton!) {
-    if editProfileBtn.titleLabel?.text == "Edit Profile" {
+    if editProfileBtn.titleLabel?.text == NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile") {
       userInfoView.isEditable = true
       xtraInfo.isEditable = true
       editProfileBtn.setTitle("Save", for: .normal)
-      userInfoView.layer.borderWidth = 0.5
-      userInfoView.layer.borderColor = UIColor.red.cgColor
-      xtraInfo.layer.borderWidth = 0.5
-      xtraInfo.layer.borderColor = UIColor.red.cgColor
+      userInfoView.layer.borderWidth = 3
+      userInfoView.layer.borderColor = judasOrange().cgColor
+      xtraInfo.layer.borderWidth = 3
+      xtraInfo.layer.borderColor = judasOrange().cgColor
     }
-    if editProfileBtn.titleLabel?.text == "Save" {
+    if editProfileBtn.titleLabel?.text == NSLocalizedString("Save", value: "Save", comment: "Save") {
       let users = realm.objects(User.self)
       for user in users {
         print(user)
@@ -158,10 +178,12 @@ class ProfileController: UIViewController, UITextViewDelegate {
           userInfoView.isEditable = false
           xtraInfo.isEditable = false
           editProfileBtn.setTitle("Edit Profile", for: .normal)
-          userInfoView.layer.borderWidth = 0
-          userInfoView.layer.borderColor = UIColor.black.cgColor
-          xtraInfo.layer.borderWidth = 0
-          xtraInfo.layer.borderColor = UIColor.black.cgColor
+          xtraInfo.layer.borderWidth = 2.0
+          xtraInfo.layer.borderColor = judasBlack().cgColor
+          xtraInfo.layer.cornerRadius = 10
+          userInfoView.layer.borderWidth = 2.0
+          userInfoView.layer.borderColor = judasBlack().cgColor
+          userInfoView.layer.cornerRadius = 10
         }
       }
     }
@@ -169,8 +191,8 @@ class ProfileController: UIViewController, UITextViewDelegate {
   // LOG OUT BUTTON
   @IBAction func logOut(_ sender: UIButton!) {
     //Create alert to confirm logout
-    let alertController = UIAlertController(title: "Logout", message: "", preferredStyle: .alert)
-    alertController.addAction(UIAlertAction(title: "Yes, Logout", style: .destructive, handler: {
+    let alertController = UIAlertController(title: NSLocalizedString("Log Out", value: "Log Out?", comment: "Log Out"), message: "", preferredStyle: .alert)
+    alertController.addAction(UIAlertAction(title: NSLocalizedString("Yes, Log Out", value: "Yes, Log Out", comment: "Yes, Log Out"), style: .destructive, handler: {
       alert -> Void in
       //SYNCUSER LOGOUT DOES NOT WORK CURRENTLY, NEEDS MORE RESEARCH, NOT A REAL LOGOUT
       let main = UIStoryboard(name: "Main", bundle: nil)
@@ -179,7 +201,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
       let loggedOut: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedOutTabBar") as? UITabBarController
       self.present(loggedOut!, animated:  true, completion: nil)
     }))
-    alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+    alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel Log Out", value: "Cancel Log Out", comment: "Cancel log out"), style: .destructive, handler: nil))
     self.present(alertController, animated: true, completion: nil)
   }
 }
