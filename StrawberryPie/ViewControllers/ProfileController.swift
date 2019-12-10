@@ -11,17 +11,17 @@ import RealmSwift
 
 
 
-class ProfileController: UIViewController, UITextViewDelegate {
+class ProfileController: UIViewController, UITextViewDelegate, UITableViewDelegate {
   var realm: Realm!
     var url = String()
     
   @IBOutlet weak var unameLabel: UILabel!
   @IBOutlet weak var joinDateLabel: UILabel!
-  @IBOutlet weak var companyInfo: UILabel!
   @IBOutlet weak var editProfileBtn: UIButton!
   @IBOutlet weak var testImage: UIImageView!
   @IBOutlet weak var xtraInfo: UITextView!
   @IBOutlet weak var userInfoView: UITextView!
+  @IBOutlet weak var interestTableView: UITableView!
   
     @IBAction func selectProfilePic(_ sender: Any) {
         ImagePickerManager().pickImage(self) {image in
@@ -55,17 +55,18 @@ class ProfileController: UIViewController, UITextViewDelegate {
     super.viewDidLoad()
     xtraInfo.delegate = self
     userInfoView.delegate = self
+    interestTableView.delegate = self
+    xtraInfo.isHidden = false
+    interestTableView.isHidden = true
+    editProfileBtn.setTitle("Edit Profile", for: .normal)
+
     realm = RealmDB.sharedInstance.realm
     let users = realm.objects(User.self)
     let imagePost = UserImagePost()
     editProfileBtn.isHidden = true
     userInfoView.isEditable = false
     xtraInfo.isEditable = false
-    userInfoView.layer.borderWidth = 0.5
-    userInfoView.layer.borderColor = UIColor.black.cgColor
-    xtraInfo.layer.borderWidth = 0.5
-    xtraInfo.layer.borderColor = UIColor.black.cgColor
- 
+
     for user in users {
       print(user)
       if user.userID == RealmDB.sharedInstance.user?.identity {
@@ -74,7 +75,6 @@ class ProfileController: UIViewController, UITextViewDelegate {
         xtraInfo.text = user.extraInfo
         joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
         userInfoView.text = user.info
-        companyInfo.text = "About me"
         imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
                 self.testImage.image = result
@@ -93,6 +93,11 @@ class ProfileController: UIViewController, UITextViewDelegate {
     if editProfileBtn.titleLabel?.text == "Edit Profile" {
       userInfoView.isEditable = true
       xtraInfo.isEditable = true
+      editProfileBtn.setTitle("Save", for: .normal)
+      userInfoView.layer.borderWidth = 0.5
+      userInfoView.layer.borderColor = UIColor.red.cgColor
+      xtraInfo.layer.borderWidth = 0.5
+      xtraInfo.layer.borderColor = UIColor.red.cgColor
     }
     if editProfileBtn.titleLabel?.text == "Save" {
       let users = realm.objects(User.self)
@@ -104,9 +109,25 @@ class ProfileController: UIViewController, UITextViewDelegate {
             user.extraInfo = self.xtraInfo.text ?? ""
             self.realm.add(user, update: Realm.UpdatePolicy.modified)
           }
+          userInfoView.isEditable = false
+          xtraInfo.isEditable = false
+          editProfileBtn.setTitle("Edit Profile", for: .normal)
+          userInfoView.layer.borderWidth = 0
+          userInfoView.layer.borderColor = UIColor.black.cgColor
+          xtraInfo.layer.borderWidth = 0
+          xtraInfo.layer.borderColor = UIColor.black.cgColor
         }
       }
     }
+  }
+  // If user modifies information, change button to Save
+  @IBAction func aboutMeBtn(_ sender: UIButton!) {
+    xtraInfo.isHidden = false
+    interestTableView.isHidden = true
+  }
+  @IBAction func myInterestsBtn(_ sender: UIButton!) {
+    xtraInfo.isHidden = true
+    interestTableView.isHidden = false
   }
   
   @IBAction func logOut(_ sender: UIButton!) {
