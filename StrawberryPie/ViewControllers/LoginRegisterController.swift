@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-@objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+@objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate {
   
   var category = Category()
   var realm: Realm!
@@ -41,7 +41,7 @@ import RealmSwift
   let usernameField = UITextField()
   let firstnameField = UITextField()
   let lastnameField = UITextField()
-  let userinfoField = UITextView()
+  let userOccupation = UITextField()
   let userXtraInfoField = UITextView()
   let userpasswordField = UITextField()
   let userpwagainField = UITextField()
@@ -51,15 +51,14 @@ import RealmSwift
     categoryTable.delegate = self
     categoryTable.dataSource = self
     categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    userinfoField.delegate = self
+    userOccupation.delegate = self
     userXtraInfoField.delegate = self
-    
     // Init realm
     realm = RealmDB.sharedInstance.realm
     // Show only login fields
     usernameField.isHidden = false
     userpasswordField.isHidden = false
-    userinfoField.isHidden = true
+    userOccupation.isHidden = true
     userpwagainField.isHidden = true
     userEmailField.isHidden = true
     userXtraInfoField.isHidden = true
@@ -74,7 +73,6 @@ import RealmSwift
     // Enabling signup and switching it back again to set initial values to match login form
     self.signUpFormEnabled = true
     self.switchForm()
-    
     // Container, can be used for additional information on the screen, is built programmatically
     let container = UIStackView()
     messageLabel.numberOfLines = 0
@@ -92,37 +90,28 @@ import RealmSwift
     // Password secure text entry
     userpwagainField.isSecureTextEntry = true
     userpasswordField.isSecureTextEntry = true
-    
     usernameField.placeholder = NSLocalizedString("Username", value: "Username", comment: "Username")
     firstnameField.placeholder = NSLocalizedString("First Name", value: "First Name", comment: "Firstname")
     lastnameField.placeholder = NSLocalizedString("Last Name", value: "Last Name", comment: "Lastname")
     userEmailField.placeholder = NSLocalizedString("Email", value: "Email", comment: "Email")
-    userinfoField.text = NSLocalizedString("Info", value: "Info", comment: "Info")
+    userOccupation.placeholder = NSLocalizedString("Occupation", value: "Occupation", comment: "Occupation")
     userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
-    
-    
     userpasswordField.placeholder = NSLocalizedString("Password", value: "Password", comment: "Password")
     userpwagainField.placeholder = NSLocalizedString("Confirm Password", value: "Confirm Password", comment: "Confirmpw")
-    
     usernameField.borderStyle = .roundedRect
     firstnameField.borderStyle = .roundedRect
     lastnameField.borderStyle = .roundedRect
     userEmailField.borderStyle = .roundedRect
-    // Modify info and extra info field height
-    let infoHeightConstraint = NSLayoutConstraint(item: userinfoField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 60)
-    let xtraInfoHeightConstraint = NSLayoutConstraint(item: userXtraInfoField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40)
-    let widthConstraint = userinfoField.widthAnchor.constraint(equalToConstant: 370)
-    userinfoField.addConstraint(infoHeightConstraint)
+    userOccupation.borderStyle = .roundedRect
+    // Modify info field height
+    let xtraInfoHeightConstraint = NSLayoutConstraint(item: userXtraInfoField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80)
+    let widthConstraint = userXtraInfoField.widthAnchor.constraint(equalToConstant: 370)
     userXtraInfoField.addConstraint(xtraInfoHeightConstraint)
-    userinfoField.addConstraint(widthConstraint)
+    userXtraInfoField.addConstraint(widthConstraint)
     // "Placeholder" for info and xtrainfo
-    userinfoField.textColor = UIColor.lightGray
     userXtraInfoField.textColor = UIColor.lightGray
     userpasswordField.borderStyle = .roundedRect
     userpwagainField.borderStyle = .roundedRect
-    userinfoField.layer.borderWidth = 1.0
-    userinfoField.layer.cornerRadius = 6
-    userinfoField.font = UIFont.systemFont(ofSize: 17.0)
     userXtraInfoField.font = UIFont.systemFont(ofSize: 17.0)
     userXtraInfoField.layer.borderWidth = 1.0
     userXtraInfoField.layer.cornerRadius = 6
@@ -130,10 +119,13 @@ import RealmSwift
     // Disable autocapitalization on most of the fields except first name and last name
     usernameField.autocapitalizationType = .none
     userEmailField.autocapitalizationType = .none
-    userinfoField.autocapitalizationType = .none
+    userOccupation.autocapitalizationType = .none
     userXtraInfoField.autocapitalizationType = .none
     userpasswordField.autocapitalizationType = .none
     userpwagainField.autocapitalizationType = .none
+    usernameField.autocorrectionType = .no
+    userEmailField.autocorrectionType = .no
+    userOccupation.autocorrectionType = .no
     
     // Add every text field to container
     container.addArrangedSubview(usernameField)
@@ -142,7 +134,7 @@ import RealmSwift
     container.addArrangedSubview(userEmailField)
     container.addArrangedSubview(userpasswordField)
     container.addArrangedSubview(userpwagainField)
-    container.addArrangedSubview(userinfoField)
+    container.addArrangedSubview(userOccupation)
     container.addArrangedSubview(userXtraInfoField)
     
     // Hide interest table initially
@@ -277,119 +269,7 @@ import RealmSwift
     }
   }
   // Mimic placeholder text
-  func textViewDidBeginEditing(_ textView: UITextView) {
-    if textView == userinfoField && userinfoField.text == NSLocalizedString("Info", value: "Info", comment: "Info"){
-      userinfoField.text = nil
-      userinfoField.textColor = UIColor.black
-    }
-    if textView == userXtraInfoField && userXtraInfoField.text == NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo"){
-      userXtraInfoField.text = nil
-      userXtraInfoField.textColor = UIColor.black
-    }
-  }
   
-  func textViewDidEndEditing(_ textView: UITextView) {
-    if textView == userinfoField {
-      switch self.userinfoField.text {
-      case "": userinfoField.text = NSLocalizedString("Info", value: "Info", comment: "Info")
-      userinfoField.textColor = UIColor.lightGray
-      case nil: userinfoField.text = NSLocalizedString("Info", value: "Info", comment: "Info")
-      userinfoField.textColor = UIColor.lightGray
-      default: userinfoField.textColor = UIColor.black
-      }
-    }
-    if textView == userXtraInfoField {
-      switch self.userXtraInfoField.text {
-      case "": userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
-      userXtraInfoField.textColor = UIColor.lightGray
-      case nil: userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
-      userXtraInfoField.textColor = UIColor.lightGray
-      default:
-        userXtraInfoField.textColor = UIColor.black
-      }
-    }
-  }
-  
-  
-  
- 
-  // Tableview rowcount to match CoreData
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let rowCount = category.getNames().count
-    return rowCount
-  }
-  // Populate tableview with CoreData
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    let interestCategories = category.getNames()
-    cell.textLabel?.text = interestCategories[indexPath.item]
-    return cell
-  }
-  // Set height
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 35
-  }
-  // Category picked already or not
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-    let interestCategories = category.getNames()
-    self.interestError.text = ""
-    let selectedCategory = interestCategories[indexPath.item]
-    // If userinterest list contains the picked tableview category
-    if self.thisUser.userInterests.contains(selectedCategory) {
-      self.interestError.text = "Category already picked"
-    } else {
-      // If it does not, add to userinterests
-      let userUpdatedObj = RealmDB.sharedInstance.getUser()
-      // Check that user does not empty password field
-      try! self.realm.write {
-        self.thisUser.userInterests.append(selectedCategory)
-        userUpdatedObj?.userInterests = self.thisUser.userInterests
-        // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
-        if let userUpdate = userUpdatedObj {
-          self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
-        } else {
-          print("No changes")
-        }
-      }
-      
-      
-      // Switch case for showing interests on the screen
-      
-      switch self.thisUser.userInterests.count {
-      case 1:
-        self.interestOne.text = selectedCategory
-        removeInterestOne.isHidden = false
-      case 2:
-        self.interestTwo.text = selectedCategory
-        removeInterestTwo.isHidden = false
-      case 3:
-        self.interestThree.text = selectedCategory
-        removeInterestThree.isHidden = false
-      case 4:
-        self.interestError.text = "All 3 categories picked"
-      default:
-        removeInterestOne.isHidden = true
-        removeInterestTwo.isHidden = true
-        removeInterestThree.isHidden = true
-        self.interestOne.text = ""
-        self.interestTwo.text = ""
-        self.interestThree.text = ""
-      }
-    }
-  }
-  
-  
-  
-  
-  
-  
-  // deletion func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-  //  if editingStyle == .delete {
-  //    self.thisUser.userInterests.remove(at: indexPath.row)
-  //    tableView.deleteRows(at: [indexPath], with: .fade)
-  //  }
-  
-  // }
   // Login function, check for username and password
   func logIn(_ username: String,_ password: String,_ register: Bool) {
     if usernameField.text == "" {
@@ -538,7 +418,7 @@ import RealmSwift
     self.chooseLabel.isHidden = false
     self.userEmailField.isHidden = false
     self.userXtraInfoField.isHidden = false
-    self.userinfoField.isHidden = false
+    self.userOccupation.isHidden = false
     self.infoAddedButton.isHidden = false
     self.categoryTable.isHidden = false
     self.interestOne.isHidden = false
@@ -571,11 +451,11 @@ import RealmSwift
     try! self.realm.write {
       userUpdatedObj?.firstName = self.firstnameField.text ?? ""
       userUpdatedObj?.lastName = self.lastnameField.text ?? ""
-      userUpdatedObj?.info = self.userinfoField.text ?? ""
+      userUpdatedObj?.info = self.userOccupation.text ?? ""
       // EXPERT STATUS TO BE IMPLEMENTED LATER
       userUpdatedObj?.userExpert = false
       userUpdatedObj?.userEmail = self.userEmailField.text ?? ""
-      userUpdatedObj?.info = self.userinfoField.text ?? ""
+      userUpdatedObj?.info = self.userOccupation.text ?? ""
       userUpdatedObj?.extraInfo = self.userXtraInfoField.text ?? ""
       userUpdatedObj?.userInterests = self.thisUser.userInterests
       
@@ -636,7 +516,7 @@ import RealmSwift
   }
   var info: String? {
     get {
-      return userinfoField.text
+      return userOccupation.text
     }
   }
   var moreInfo: String? {
@@ -657,6 +537,92 @@ import RealmSwift
   var password: String? {
     get {
       return userpasswordField.text
+    }
+  }
+}
+extension LoginRegisterController: UITableViewDataSource, UITableViewDelegate { // Tableview rowcount to match CoreData
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    let rowCount = category.getNames().count
+    return rowCount
+  }
+  // Populate tableview with CoreData
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    let interestCategories = category.getNames()
+    cell.textLabel?.text = interestCategories[indexPath.item]
+    return cell
+  }
+  // Set height
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 35
+  }
+  // Category picked already or not
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+    let interestCategories = category.getNames()
+    self.interestError.text = ""
+    let selectedCategory = interestCategories[indexPath.item]
+    // If userinterest list contains the picked tableview category
+    if self.thisUser.userInterests.contains(selectedCategory) {
+      self.interestError.text = "Category already picked"
+    } else {
+      // If it does not, add to userinterests
+      let userUpdatedObj = RealmDB.sharedInstance.getUser()
+      // Check that user does not empty password field
+      try! self.realm.write {
+        self.thisUser.userInterests.append(selectedCategory)
+        userUpdatedObj?.userInterests = self.thisUser.userInterests
+        // Update realm, userUpdate is the User object referring to the realm user object, might not be optimal, but works.
+        if let userUpdate = userUpdatedObj {
+          self.realm.add(userUpdate, update: Realm.UpdatePolicy.modified)
+        } else {
+          print("No changes")
+        }
+      }
+      
+      
+      // Switch case for showing interests on the screen
+      
+      switch self.thisUser.userInterests.count {
+      case 1:
+        self.interestOne.text = selectedCategory
+        removeInterestOne.isHidden = false
+      case 2:
+        self.interestTwo.text = selectedCategory
+        removeInterestTwo.isHidden = false
+      case 3:
+        self.interestThree.text = selectedCategory
+        removeInterestThree.isHidden = false
+      case 4:
+        self.interestError.text = "All 3 categories picked"
+      default:
+        removeInterestOne.isHidden = true
+        removeInterestTwo.isHidden = true
+        removeInterestThree.isHidden = true
+        self.interestOne.text = ""
+        self.interestTwo.text = ""
+        self.interestThree.text = ""
+      }
+    }
+  }
+}
+extension LoginRegisterController: UITextViewDelegate {
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    if textView == userXtraInfoField && userXtraInfoField.text == NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo"){
+      userXtraInfoField.text = nil
+      userXtraInfoField.textColor = UIColor.black
+    }
+  }
+  
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if textView == userXtraInfoField {
+      switch self.userXtraInfoField.text {
+      case "": userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
+      userXtraInfoField.textColor = UIColor.lightGray
+      case nil: userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
+      userXtraInfoField.textColor = UIColor.lightGray
+      default:
+        userXtraInfoField.textColor = UIColor.black
+      }
     }
   }
 }
