@@ -15,6 +15,9 @@ class HomeController: UIViewController {
     @IBOutlet weak var ExpertTableView: ExpertTableViewController!
     @IBOutlet weak var filterButton: UIButton!
     
+    let cellBorderColor = CgjudasBlack()
+    let tableBorderColor = CgjudasBlack()
+    
     let SearchController = UISearchController(searchResultsController: nil)
     
     let transparentView = UIView()
@@ -53,7 +56,8 @@ class HomeController: UIViewController {
         segmentBtns.setTitle((NSLocalizedString("Live", value: "Live", comment: "Selected segment")), forSegmentAt: 0)
        segmentBtns.setTitle((NSLocalizedString("Upcoming", value: "Upcoming", comment: "Selected segment")), forSegmentAt: 1)
         segmentBtns.setTitle((NSLocalizedString("Archived", value: "Archived", comment: "Selected segment")), forSegmentAt: 2)
-        segmentBtns.tintColor = judasOrange()
+        segmentBtns.tintColor = judasBlue()
+        UITabBar.appearance().tintColor = judasBlue()
     }
     
     
@@ -239,6 +243,8 @@ class HomeController: UIViewController {
         ExpertTableView.delegate = self
         ExpertTableView.reloadData()
         ExpertTableView.backgroundColor = UIColor.clear
+        ExpertTableView.layer.borderColor = tableBorderColor
+        ExpertTableView.layer.borderWidth = 2
         //print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     // Setting up searchbar searchcontroller
@@ -325,9 +331,10 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.expertTitle?.text = object.title
             cell.backgroundColor = judasGrey()
-            cell.layer.borderColor = CgjudasBlack()
+            cell.layer.borderColor = cellBorderColor
+        
             cell.layer.borderWidth = 1
-            cell.layer.cornerRadius = 10
+            //cell.layer.cornerRadius = 10
             return cell
     }
     

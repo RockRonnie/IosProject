@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="1" green="0.61262014590000002" blue="0.043816068499999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="0.12947133720000001" blue="0.045129191749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="x37-Hb-ozh" kind="relationship" relationship="viewControllers" id="y6b-74-IY9"/>
@@ -38,7 +38,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="1" green="0.61262014590000002" blue="0.043816068499999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="x37-Hb-ozh" kind="relationship" relationship="viewControllers" id="2Ae-Kh-JK6"/>
@@ -106,7 +105,7 @@
         <image name="icons8-home-10" width="10" height="10"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jO1-JY-mv8"/>
-        <segue reference="2Ae-Kh-JK6"/>
+        <segue reference="h2I-fJ-zbA"/>
+        <segue reference="y6b-74-IY9"/>
     </inferredMetricsTieBreakers>
 </document>
