@@ -11,9 +11,10 @@ import RealmSwift
 
 
 
-class ProfileController: UIViewController, UITextViewDelegate, UITableViewDelegate {
+class ProfileController: UIViewController, UITextViewDelegate {
   var realm: Realm!
-    var url = String()
+  var user: User?
+  var url = String()
     
   @IBOutlet weak var unameLabel: UILabel!
   @IBOutlet weak var joinDateLabel: UILabel!
@@ -55,22 +56,21 @@ class ProfileController: UIViewController, UITextViewDelegate, UITableViewDelega
     super.viewDidLoad()
     xtraInfo.delegate = self
     userInfoView.delegate = self
-    interestTableView.delegate = self
-    xtraInfo.isHidden = false
+    userInfoView.isEditable = false
     interestTableView.isHidden = true
-    editProfileBtn.setTitle("Edit Profile", for: .normal)
+    setupTable()
+    realmSetup()
+    editProfileBtn.isHidden = true
+    xtraInfo.isEditable = false
+    xtraInfo.isHidden = false
 
-    realm = RealmDB.sharedInstance.realm
     let users = realm.objects(User.self)
     let imagePost = UserImagePost()
-    editProfileBtn.isHidden = true
-    userInfoView.isEditable = false
-    xtraInfo.isEditable = false
-
     for user in users {
       print(user)
       if user.userID == RealmDB.sharedInstance.user?.identity {
         editProfileBtn.isHidden = false
+        editProfileBtn.setTitle("Edit Profile", for: .normal)
         unameLabel.text = user.userName
         xtraInfo.text = user.extraInfo
         joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
@@ -88,6 +88,17 @@ class ProfileController: UIViewController, UITextViewDelegate, UITableViewDelega
     
     // Do any additional setup after loading the view.
   }
+  func setupTable(){
+    interestTableView.delegate = self
+    interestTableView.dataSource = self
+    interestTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    interestTableView.reloadData()
+  }
+  func realmSetup(){
+    realm = RealmDB.sharedInstance.realm
+    user = RealmDB.sharedInstance.getUser()
+  }
+  
   // Edit Profile and update to realm, switch between Edit and Save
   @IBAction func editProfile(_ sender: UIButton!) {
     if editProfileBtn.titleLabel?.text == "Edit Profile" {
@@ -158,6 +169,25 @@ extension Date
   }
   
 }
+extension ProfileController: UITableViewDelegate, UITableViewDataSource {
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return user?.userInterests.count ?? 0
+  }
+  // Populate tableview with CoreData
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    cell.textLabel?.text = user?.userInterests[indexPath.item] ?? ""
+    return cell
+  }
+  
+  // Set height
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 35
+  }
+}
+
+
 
 
 
