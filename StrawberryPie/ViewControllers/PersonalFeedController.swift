@@ -49,6 +49,7 @@ class PersonalFeedController: UIViewController {
         personalFeedTableView.delegate = self
         personalFeedTableView.register(UINib(nibName: "PrivateChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
         personalFeedTableView.register(UINib(nibName: "QACell", bundle: nil), forCellReuseIdentifier: "QACell")
+        personalFeedTableView.register(UINib(nibName: "QASessionCell", bundle: nil), forCellReuseIdentifier: "SessionCell")
         personalFeedTableView.reloadData()
     }
     func setTab(tab: String){
@@ -174,6 +175,17 @@ class PersonalFeedController: UIViewController {
             self.personalFeedTableView.reloadData()
         }
     }
+    func statusCheck(object: QASession) -> String{
+        var status = ""
+        if (object.live) {
+            status = "LIVE"
+        }else if(object.upcoming){
+            status = "UPCOMING"
+        }else if(object.archived){
+            status = "ARCHIVED"
+        }
+        return status
+    }
 }
 
 extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
@@ -252,22 +264,24 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
     
         switch selectedTab{
         case "Feed":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
             
             //Scaleing the image to fit ImageView
-            cell.expertImage?.contentMode = .scaleAspectFit
+            cell.profilePic.contentMode = .scaleAspectFit
             var object: QASession
             object = self.personalFeed[indexPath.row] as QASession
             let imageProcessor = UserImagePost()
             imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
             print("kuva saatu")
-            cell.expertImage?.image = result
+            cell.profilePic.image = result
             }
             })
-            cell.expertDesc?.text = object.sessionDescription
-            cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
-            cell.expertTitle?.text = object.title
+            cell.sessionDesc?.text = object.sessionDescription
+            cell.host?.text = object.host[0].firstName + " " + object.host[0].lastName
+            cell.title?.text = object.title
+            cell.category.text = object.sessionCategory
+            cell.status.text = statusCheck(object: object)
             return cell
         case "QA":
             let cell = tableView.dequeueReusableCell(withIdentifier: "QACell", for: indexPath) as? QACell
@@ -328,7 +342,7 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch selectedTab{
         case "Feed":
-            return 200
+            return 300
         case "QA":
             return 175
         case "privMsg":
