@@ -10,6 +10,8 @@
 "Please log in first" = "Kirjaudu ensin sisään";
 "Topic" = "Aihe";
 "Pinned" = "Nostot";
+"Question" = "Kysymys";
+"Answer" = "Vastaus";
 
 // CategoryViewController
 "ICT" = "Tietotekniikka";

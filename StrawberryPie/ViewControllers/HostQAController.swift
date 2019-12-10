@@ -188,7 +188,7 @@ class HostQAController: UIViewController {
         let message = selectedMessage
         let answer = ChatMessage()
         if let gotUser = RealmDB.sharedInstance.getUser(), let question = message  {
-            answer.body = "Vastaus: " + (messageField.text ?? "Tapahtui virhe")
+            answer.body = messageField.text ?? "Tapahtui virhe"
             answer.messageUser.append(gotUser)
             messageToQA(question: question, answer: answer)
     }

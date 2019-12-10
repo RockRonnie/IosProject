@@ -48,6 +48,7 @@ class PersonalFeedController: UIViewController {
         personalFeedTableView.dataSource = self
         personalFeedTableView.delegate = self
         personalFeedTableView.register(UINib(nibName: "PrivateChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
+        personalFeedTableView.register(UINib(nibName: "QACell", bundle: nil), forCellReuseIdentifier: "QACell")
         personalFeedTableView.reloadData()
     }
     func setTab(tab: String){
@@ -269,17 +270,23 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             cell.expertTitle?.text = object.title
             return cell
         case "QA":
-            let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QACell", for: indexPath) as? QACell
             let qa = self.personalQA[indexPath.row] as QA?
-            if let qa = qa {
-                cell.textLabel?.text = qa.question[0].messageUser[0].userName
-                cell.textLabel?.text = qa.question[0].body
-               /* cell.textLabel?.text = qa.answer[0].messageUser[0].userName
-                cell.textLabel?.text = qa.answer[0].body*/
+            if let cell = cell {
+                if let qa = qa {
+                    cell.QuestionUser.text = qa.question[0].messageUser[0].userName
+                    cell.QuestionField.text = qa.question[0].body
+                    cell.AnswerUser.text = qa.answer[0].messageUser[0].userName
+                    cell.AnswerField.text = qa.answer[0].body
+                    return cell
+                }else{
+                    cell.textLabel?.text = "nothing here"
+                }
             }else{
+                let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "QACell")
                 cell.textLabel?.text = "Nothing here"
+                return cell
             }
-            return cell
         case "privMsg":
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as? PrivateChatCell
             let chat = self.privateChats?[indexPath.row] as Chat?
@@ -308,6 +315,7 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
                 
              }else{
                 let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "ChatShell")
+                cell.textLabel?.text = "Nothing here"
                 return cell
              }
             
@@ -316,14 +324,13 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             cell.textLabel?.text = "🆘 Nyt levis koodi"
             return cell
         }
-        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch selectedTab{
         case "Feed":
             return 200
         case "QA":
-            return 150
+            return 175
         case "privMsg":
             return 200
         default:

@@ -53,7 +53,6 @@ class ProfileController: UIViewController, UITextViewDelegate, UITableViewDelega
     
    override func viewDidLoad() {
     super.viewDidLoad()
-    
     xtraInfo.delegate = self
     userInfoView.delegate = self
     interestTableView.delegate = self
@@ -61,14 +60,13 @@ class ProfileController: UIViewController, UITextViewDelegate, UITableViewDelega
     interestTableView.isHidden = true
     editProfileBtn.setTitle("Edit Profile", for: .normal)
 
-    
     realm = RealmDB.sharedInstance.realm
     let users = realm.objects(User.self)
     let imagePost = UserImagePost()
     editProfileBtn.isHidden = true
     userInfoView.isEditable = false
     xtraInfo.isEditable = false
-    
+
     for user in users {
       print(user)
       if user.userID == RealmDB.sharedInstance.user?.identity {
@@ -80,10 +78,14 @@ class ProfileController: UIViewController, UITextViewDelegate, UITableViewDelega
         imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
             if let result = resultImage {
                 self.testImage.image = result
+                
             }
         })
       }
     }
+    testImage.layer.masksToBounds = true
+    testImage.layer.cornerRadius = 10
+    
     // Do any additional setup after loading the view.
   }
   // Edit Profile and update to realm, switch between Edit and Save
