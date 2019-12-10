@@ -74,7 +74,7 @@
 		6A9E89EF2389466B0069DE71 /* PersonalFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */; };
 		6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */; };
 		6AA5C265239D4C8C000B677A /* PrivateChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA5C263239D4C8C000B677A /* PrivateChat.storyboard */; };
-		6AA990B3239FAA87007DCEB1 /* HexaToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA990B2239FAA87007DCEB1 /* HexaToColor.swift */; };
+		6AA990B7239FB2C0007DCEB1 /* ProjectColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA990B6239FB2C0007DCEB1 /* ProjectColors.swift */; };
 		6AACF22C238EAEFB006ECBF4 /* ExpertFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */; };
 		6AC642CC2385892500E2906F /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC642CB2385892500E2906F /* ProfileController.swift */; };
 		6ACB980A2386747A0070CCF6 /* QASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB98092386747A0070CCF6 /* QASession.swift */; };
@@ -195,7 +195,7 @@
 		6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalFeedController.swift; sourceTree = "<group>"; };
 		6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageController.swift; sourceTree = "<group>"; };
 		6AA5C264239D4C8C000B677A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PrivateChat.storyboard; sourceTree = "<group>"; };
-		6AA990B2239FAA87007DCEB1 /* HexaToColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexaToColor.swift; sourceTree = "<group>"; };
+		6AA990B6239FB2C0007DCEB1 /* ProjectColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectColors.swift; sourceTree = "<group>"; };
 		6AACF22B238EAEFB006ECBF4 /* ExpertFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertFeed.swift; sourceTree = "<group>"; };
 		6AACF22F2393C29B006ECBF4 /* ExpertCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6AC642CB2385892500E2906F /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 		6AA990B1239FAA60007DCEB1 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				6AA990B2239FAA87007DCEB1 /* HexaToColor.swift */,
+				6AA990B6239FB2C0007DCEB1 /* ProjectColors.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -739,7 +739,6 @@
 				6A9E89E5238946450069DE71 /* QAMessageCell.swift in Sources */,
 				6AD541E5238C49AC00DF16DA /* CollectionViewCell.swift in Sources */,
 				6A4CC2E4239E5353000166D6 /* PrivMsgCell.swift in Sources */,
-				6AA990B3239FAA87007DCEB1 /* HexaToColor.swift in Sources */,
 				6AE09EB0238827760040E87E /* Work+CoreDataProperties.swift in Sources */,
 				6A4CC2E9239EC650000166D6 /* PrivateChatCell.swift in Sources */,
 				6A9E89DB238946450069DE71 /* FeedTableTableViewController.swift in Sources */,
@@ -773,6 +772,7 @@
 				6A9E89CA2389461B0069DE71 /* QA.swift in Sources */,
 				6A9E89E1238946450069DE71 /* Hottest.swift in Sources */,
 				6A14BC56239AC7F20009E676 /* RegisterValidation.swift in Sources */,
+				6AA990B7239FB2C0007DCEB1 /* ProjectColors.swift in Sources */,
 				6AD541F7238EC6A700DF16DA /* CategoryContentController.swift in Sources */,
 				68D7B6362398237E0082BFBA /* HostQAController.swift in Sources */,
 				6A9E89C42389461B0069DE71 /* User.swift in Sources */,

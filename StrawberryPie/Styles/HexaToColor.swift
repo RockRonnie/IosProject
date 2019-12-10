@@ -36,3 +36,12 @@ extension UIColor {
         return nil
     }
 }
+
+func judasRed() -> UIColor {
+    let judasRed = #colorLiteral(red: 0.7960784314, green: 0.01568627451, blue: 0.01568627451, alpha: 1)
+    let judasOrange = #colorLiteral(red: 1, green: 0.6196078431, blue: 0, alpha: 1)
+    let judasBlue = #colorLiteral(red: 0, green: 0.6901960784, blue: 1, alpha: 1)
+    let judasGrey = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+    let judasBlack = #colorLiteral(red: 0.1490196078, green: 0.1411764706, blue: 0.1411764706, alpha: 1)
+return judasRed
+}
