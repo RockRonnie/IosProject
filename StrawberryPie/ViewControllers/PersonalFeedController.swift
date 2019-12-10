@@ -287,7 +287,6 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
                 cell.textLabel?.text = "Nothing here"
                 return cell
             }
-         
         case "privMsg":
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as? PrivateChatCell
             let chat = self.privateChats?[indexPath.row] as Chat?
@@ -325,7 +324,6 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             cell.textLabel?.text = "🆘 Nyt levis koodi"
             return cell
         }
-        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch selectedTab{
