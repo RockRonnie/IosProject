@@ -153,6 +153,7 @@
                     <navigationItem key="navigationItem" id="hbd-uQ-HMZ"/>
                     <connections>
                         <outlet property="hostBtn" destination="CgH-YS-WS4" id="XiI-5V-3sC"/>
+                        <outlet property="personaFeedSegment" destination="ZI5-J1-dOB" id="Z89-3c-UOk"/>
                         <outlet property="personalFeedTableView" destination="CZn-O6-g0f" id="0XK-jf-wvM"/>
                     </connections>
                 </viewController>

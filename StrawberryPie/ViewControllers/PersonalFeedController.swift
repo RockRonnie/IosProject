@@ -14,6 +14,7 @@ class PersonalFeedController: UIViewController {
     //Outlets
     @IBOutlet weak var personalFeedTableView: UITableView!
     @IBOutlet weak var hostBtn: UIButton!
+    @IBOutlet weak var personaFeedSegment: UISegmentedControl!
     
     var notificationToken: NotificationToken?
     
@@ -37,8 +38,12 @@ class PersonalFeedController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = judasGrey()
-      self.personalFeedTableView.backgroundColor = judasGrey()
-        
+        self.personalFeedTableView.backgroundColor = judasGrey()
+        personaFeedSegment.tintColor = judasOrange()
+        hostBtn.setTitleColor(judasOrange(), for: .normal)
+        hostBtn.layer.borderWidth = 2.0
+        hostBtn.layer.borderColor = judasOrange().cgColor
+        hostBtn.layer.cornerRadius = 10
         setup()
     }
     func setup(){
