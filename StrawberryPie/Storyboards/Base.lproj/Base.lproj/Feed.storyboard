@@ -38,6 +38,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgH-YS-WS4">
                                 <rect key="frame" x="116" y="583" width="144" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="75N-o4-tan"/>
+                                </constraints>
                                 <state key="normal" title="Host A session"/>
                                 <connections>
                                     <segue destination="LSA-DS-syc" kind="show" identifier="HostSession" id="haZ-lV-8Rr"/>
@@ -46,9 +49,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FeedTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZn-O6-g0f">
                                 <rect key="frame" x="16" y="119" width="343" height="456"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="456" id="Py9-Zh-Tu6"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpertCell" rowHeight="128" id="Frm-fP-tMP" customClass="ExpertCellController" customModule="StrawberryPie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="128"/>
@@ -126,6 +126,9 @@
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZI5-J1-dOB">
                                 <rect key="frame" x="16" y="77" width="343" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="OPF-rT-SQ6"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Personal Feed"/>
                                     <segment title="Q&amp;A"/>
@@ -138,6 +141,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="jpY-4w-q1d" firstAttribute="bottom" secondItem="CgH-YS-WS4" secondAttribute="bottom" constant="5" id="2Y3-kA-fRp"/>
                             <constraint firstItem="jpY-4w-q1d" firstAttribute="trailing" secondItem="ZI5-J1-dOB" secondAttribute="trailing" constant="16" id="DEt-XS-8Dq"/>
                             <constraint firstItem="CgH-YS-WS4" firstAttribute="top" secondItem="CZn-O6-g0f" secondAttribute="bottom" constant="8" id="EHP-Vd-Gih"/>
                             <constraint firstItem="ZI5-J1-dOB" firstAttribute="leading" secondItem="jpY-4w-q1d" secondAttribute="leading" constant="16" id="Jv9-1P-Nfv"/>
