@@ -37,6 +37,7 @@ class PrivateMessageController: UIViewController {
         setupMessages()
         updateMessages()
         setupTables()
+        scrollToBottom()
     }
     
     func realmSetup(){
@@ -62,6 +63,7 @@ class PrivateMessageController: UIViewController {
         self.notificationToken = realm?.observe {_,_ in
             self.setupMessages()
             self.chatTableView.reloadData()
+            self.scrollToBottom()
         }
     }
     
@@ -98,6 +100,18 @@ class PrivateMessageController: UIViewController {
         messageField.text = nil
     }
     
+    func scrollToBottom() {
+        print("Scrolling")
+        if let gotChat = messages {
+            print("still scrolling")
+            if gotChat.count > 0 {
+                print("YesScrolliiiing")
+                let indexPath = NSIndexPath(row: gotChat.count - 1, section: 0)
+                self.chatTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+            }
+        }
+    }
+    
     func createMessage (sender: User, body: String ) -> ChatMessage {
         let newMessage = ChatMessage()
         newMessage.messageUser.append(sender)
@@ -105,12 +119,11 @@ class PrivateMessageController: UIViewController {
         return newMessage
     }
     func dateformat(_ timestamp: Date) -> String {
-        print(timestamp)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let thisTimestamp = formatter.string(from: timestamp)
         //let thisTimestamp = formatter.date(from: timestamp)
-        print(thisTimestamp)
+    
         return thisTimestamp
     }
     
