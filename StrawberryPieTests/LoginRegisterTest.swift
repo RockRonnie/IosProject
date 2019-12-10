@@ -21,14 +21,14 @@ class LoginRegisterTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
       logreg.firstnameField.text = ""
       logreg.lastnameField.text = ""
-      logreg.userinfoField.text = ""
+      logreg.userOccupation.text = ""
       logreg.userXtraInfoField.text = ""
     }
 
     func testExample() {
       logreg.firstnameField.text = "TestFirstname"
       logreg.lastnameField.text = "TestLastname"
-      logreg.userinfoField.text = "Info"
+      logreg.userOccupation.text = "Plumber"
       logreg.userXtraInfoField.text = "Xtra info"
       XCTAssert(logreg.firstname == "TestFirstname", "Wrong first name, is not TestFirstname")
       XCTAssert(logreg.lastname == "TestLastname", "Wrong last name, is not TestLastname")
