@@ -15,7 +15,10 @@ class ProfileController: UIViewController, UITextViewDelegate {
   var realm: Realm!
   var user: User?
   var url = String()
-    
+  var selectedState: String?
+  
+  
+  @IBOutlet weak var segmentButtons: UISegmentedControl!
   @IBOutlet weak var unameLabel: UILabel!
   @IBOutlet weak var joinDateLabel: UILabel!
   @IBOutlet weak var editProfileBtn: UIButton!
@@ -24,35 +27,39 @@ class ProfileController: UIViewController, UITextViewDelegate {
   @IBOutlet weak var userInfoView: UITextView!
   @IBOutlet weak var interestTableView: UITableView!
   
-    @IBAction func selectProfilePic(_ sender: Any) {
-        ImagePickerManager().pickImage(self) {image in
-            let data = UIImage.pngData(image)
-            let imagePost = UserImagePost()
-            //calling the post request method and passing he image data and other paramters
-            imagePost.requestWith(endUrl: "", imageData: data(), parameters: ["photo" : FILE()], onCompletion: { (response) in
-                if let result = response {
-                    print("result JSON: \(result)")
-                    print("URL: \(result["uri"].stringValue)")
-                    //Converting string to URL and turning that into an UIImage
-                    let url = URL(string: result["uri"].stringValue)
-                    let userObj = RealmDB.sharedInstance.getUser()
-                    try! self.realm.write {
-                            userObj?.uImage = result["uri"].stringValue
-                    }
-                    if let data = try? Data(contentsOf: url!){
-                        let img: UIImage = UIImage(data: data)!
-                        self.testImage.image = img
-                    }
-                }
-            }, onError: { (result) in
-                print(result as Any)
-            })
+  
+  // Profile pic selection
+  @IBAction func selectProfilePic(_ sender: Any) {
+    ImagePickerManager().pickImage(self) {image in
+      let data = UIImage.pngData(image)
+      let imagePost = UserImagePost()
+      //calling the post request method and passing he image data and other paramters
+      imagePost.requestWith(endUrl: "", imageData: data(), parameters: ["photo" : FILE()], onCompletion: { (response) in
+        if let result = response {
+          print("result JSON: \(result)")
+          print("URL: \(result["uri"].stringValue)")
+          //Converting string to URL and turning that into an UIImage
+          let url = URL(string: result["uri"].stringValue)
+          let userObj = RealmDB.sharedInstance.getUser()
+          try! self.realm.write {
+            userObj?.uImage = result["uri"].stringValue
+          }
+          if let data = try? Data(contentsOf: url!){
+            let img: UIImage = UIImage(data: data)!
+            self.testImage.image = img
+          }
         }
+      }, onError: { (result) in
+        print(result as Any)
+      })
     }
-    @IBOutlet weak var logOut: UIButton!
-    
-    
-   override func viewDidLoad() {
+  }
+  
+  
+  @IBOutlet weak var logOut: UIButton!
+  
+  
+  override func viewDidLoad() {
     super.viewDidLoad()
     xtraInfo.delegate = self
     userInfoView.delegate = self
@@ -63,7 +70,9 @@ class ProfileController: UIViewController, UITextViewDelegate {
     editProfileBtn.isHidden = true
     xtraInfo.isEditable = false
     xtraInfo.isHidden = false
-
+    segmentButtons.setTitle((NSLocalizedString("About Me", value: "About Me", comment: "Selected segment")), forSegmentAt: 0)
+    segmentButtons.setTitle((NSLocalizedString("Interests", value: "Interests", comment: "Selected segment")), forSegmentAt: 1)
+    
     let users = realm.objects(User.self)
     let imagePost = UserImagePost()
     for user in users {
@@ -76,17 +85,16 @@ class ProfileController: UIViewController, UITextViewDelegate {
         joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
         userInfoView.text = user.info
         imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
-            if let result = resultImage {
-                self.testImage.image = result
-                
-            }
+          if let result = resultImage {
+            self.testImage.image = result
+            
+          }
         })
       }
     }
+    
     testImage.layer.masksToBounds = true
     testImage.layer.cornerRadius = 10
-    
-    // Do any additional setup after loading the view.
   }
   func setupTable(){
     interestTableView.delegate = self
@@ -97,6 +105,33 @@ class ProfileController: UIViewController, UITextViewDelegate {
   func realmSetup(){
     realm = RealmDB.sharedInstance.realm
     user = RealmDB.sharedInstance.getUser()
+  }
+  // State for segmentButton
+  func setState(state: String){
+    selectedState = state
+  }
+  //Initial state of the segmentButton
+  func initialState(){
+    setState(state: "About Me")
+  }
+  // Setup tableview and realm
+  
+  
+  @IBAction func segmentAction(_ sender: UISegmentedControl) {
+    switch sender.selectedSegmentIndex {
+    case 0:
+      print("About Me")
+      setState(state: "About Me")
+      xtraInfo.isHidden = false
+      interestTableView.isHidden = true
+    case 1:
+      print("Interests")
+      setState(state: "Interests")
+      xtraInfo.isHidden = true
+      interestTableView.isHidden = false
+    default:
+      print("ERROR: Segment Error")
+    }
   }
   
   // Edit Profile and update to realm, switch between Edit and Save
@@ -131,16 +166,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
       }
     }
   }
-  // If user modifies information, change button to Save
-  @IBAction func aboutMeBtn(_ sender: UIButton!) {
-    xtraInfo.isHidden = false
-    interestTableView.isHidden = true
-  }
-  @IBAction func myInterestsBtn(_ sender: UIButton!) {
-    xtraInfo.isHidden = true
-    interestTableView.isHidden = false
-  }
-  
+  // LOG OUT BUTTON
   @IBAction func logOut(_ sender: UIButton!) {
     //Create alert to confirm logout
     let alertController = UIAlertController(title: "Logout", message: "", preferredStyle: .alert)
@@ -169,6 +195,7 @@ extension Date
   }
   
 }
+// TABLEVIEW EXTENSION
 extension ProfileController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -185,6 +212,7 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 35
   }
+  
 }
 
 
@@ -192,14 +220,6 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
 
 
 
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
+
 
 

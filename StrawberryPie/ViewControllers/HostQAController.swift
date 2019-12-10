@@ -31,8 +31,8 @@ class HostQAController: UIViewController {
     var qaSource: QAMessageBoard?
     var chatSource: List<ChatMessage>?
     var userSource: User?
-    // Tabin valinta, oletuksena aihe
-    var selectedTab = "topic"
+    // Tabin valinta, oletuksena chat
+    var selectedTab = "chat"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,18 +63,9 @@ class HostQAController: UIViewController {
                 self.populateSources()
             }
             self.qaTable.reloadData()
-            //self.scrollToBottom()
             }
         }
-    
-    func scrollToBottom() {
-        if let gotChat = self.chatSource {
-            if gotChat.count > 0 {
-                let indexPath = NSIndexPath(row: gotChat.count - 1, section: 0)
-                self.qaTable.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
-            }
-        }
-    }
+
     
     func populateSources() {
         print ("Source data")
@@ -117,12 +108,10 @@ class HostQAController: UIViewController {
             let imgProcessor = UserImagePost()
             imgProcessor.getPic(image: (currentSession?.host[0].uImage)!, onCompletion: {(resultImage) in
                 if let result = resultImage{
-                    print("VITTU JES")
                     self.hostImage = result
                     self.hostCardCV.reloadData()
                 }
             })
-        print ("Ajettu onnistuneesti")
         }
     }
     
@@ -199,6 +188,8 @@ class HostQAController: UIViewController {
                     currentSession!.upcoming = false
                 }
                 liveButton.setTitle("Archive", for: .normal)
+                qaTable.reloadData()
+
         }
             else {
                 try! realm!.write {
@@ -206,6 +197,7 @@ class HostQAController: UIViewController {
                     currentSession!.live = false
                 }
                 liveButton.isHidden = true
+                qaTable.reloadData()
             }
         }
     }
