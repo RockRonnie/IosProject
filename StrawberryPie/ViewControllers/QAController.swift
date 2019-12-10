@@ -296,7 +296,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatcell", for: indexPath) as! ChatMsgCell
             cell.msgBody.text = chatSource?[indexPath.row].body
             cell.msgSender.text = chatSource?[indexPath.row].messageUser[0].userName
-            qaTable.rowHeight = 200.0
+            qaTable.rowHeight = 100.0
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "qacell", for: indexPath)
