@@ -37,7 +37,6 @@ class PrivateMessageController: UIViewController {
         setupMessages()
         updateMessages()
         setupTables()
-        scrollToBottom()
     }
     
     func realmSetup(){
@@ -107,6 +106,7 @@ class PrivateMessageController: UIViewController {
             if gotChat.count > 0 {
                 print("YesScrolliiiing")
                 let indexPath = NSIndexPath(row: gotChat.count - 1, section: 0)
+                print(indexPath)
                 self.chatTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
             }
         }
@@ -143,12 +143,13 @@ extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrivCell", for: indexPath) as! PrivMsgCell
         let row = indexPath.row
         if let messages = messages {
+            self.scrollToBottom()
             cell.username.text = messages[row].messageUser[0].userName
             cell.messagefield.text = messages[row].body
-            let timestamp = dateformat(messages[row].timestamp)
+            let myFormatter = Formatter()
+            let timestamp = myFormatter.dateformat(messages[row].timestamp)
             print(timestamp)
             cell.timestamp.text = timestamp
-            
         }
          return cell
     }
