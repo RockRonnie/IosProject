@@ -43,11 +43,11 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.categoryImageView.image = category.getImages()[indexPath.item] //category.getImages()[indexPath.item]
         //Adding some styling here
         cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = 0.5
+        cell.layer.borderWidth = 0.25
         cell.layer.cornerRadius = 10
         cell.categoryNameLabel.layer.masksToBounds = true
         cell.categoryNameLabel.layer.cornerRadius = 10
-        cell.categoryNameLabel.layer.backgroundColor = UIColor(red: 0.0/255.0, green: 176.0/255.0, blue: 255.0/255.0, alpha: 0.75).cgColor
+        cell.categoryNameLabel.layer.backgroundColor = UIColor(red: 255.0/255.0, green: 158.0/255.0, blue: 0.0/255.0, alpha: 0.9).cgColor
         return cell
     }
     //Select item and increases the gray border size to indicate selection
@@ -75,7 +75,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = UIColor.lightGray.cgColor
-        cell?.layer.borderWidth = 0.5
+        cell?.layer.borderWidth = 0.25
         
     }
 
