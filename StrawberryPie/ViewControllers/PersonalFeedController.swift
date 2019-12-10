@@ -277,7 +277,7 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
                     cell.QuestionUser.text = qa.question[0].messageUser[0].userName
                     cell.QuestionField.text = qa.question[0].body
                     cell.AnswerUser.text = qa.answer[0].messageUser[0].userName
-                    cell.QuestionUser.text = qa.answer[0].body
+                    cell.AnswerField.text = qa.answer[0].body
                     return cell
                 }else{
                     cell.textLabel?.text = "nothing here"
@@ -332,7 +332,7 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
         case "Feed":
             return 200
         case "QA":
-            return 150
+            return 175
         case "privMsg":
             return 200
         default:
