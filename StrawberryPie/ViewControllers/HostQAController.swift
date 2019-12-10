@@ -80,6 +80,13 @@ class HostQAController: UIViewController {
         print ("Source data")
         // Title
         titleLabel.text = currentSession?.title ?? "No title"
+        // Session status
+        if currentSession?.archived == true {
+            liveButton.isHidden = true
+        }
+        if currentSession?.live == true {
+            liveButton.setTitle("Archive", for: .normal)
+        }
         // Aihe
         topicSource = currentSession?.intro[0].body ?? "Topic text missing"
         // Chatviestit
@@ -182,6 +189,30 @@ class HostQAController: UIViewController {
         }, completion: nil)
     }
     @IBOutlet weak var messageField: UITextField!
+    
+    @IBOutlet weak var liveButton: UIButton!
+    @IBAction func liveButton(_ sender: UIButton) {
+        if let gotSession = currentSession {
+            if gotSession.upcoming == true {
+                try! realm!.write {
+                    currentSession!.live = true
+                    currentSession!.upcoming = false
+                }
+                liveButton.setTitle("Archive", for: .normal)
+        }
+            else {
+                try! realm!.write {
+                    currentSession!.archived = true
+                    currentSession!.live = false
+                }
+                liveButton.isHidden = true
+            }
+        }
+    }
+    
+    
+    
+    
     
     @IBAction func sendButton(_ sender: UIButton) {
         // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username

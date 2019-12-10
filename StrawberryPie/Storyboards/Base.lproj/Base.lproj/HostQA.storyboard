@@ -91,6 +91,16 @@
                                     <action selector="scSegmentTapped:" destination="rbh-wZ-ci6" eventType="valueChanged" id="Chx-Vi-gEr"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQH-TI-75Y">
+                                <rect key="frame" x="16" y="172" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Live">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="liveButton:" destination="rbh-wZ-ci6" eventType="touchUpInside" id="Sml-zs-A8X"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -119,6 +129,7 @@
                     </view>
                     <connections>
                         <outlet property="hostCardCV" destination="b3R-bH-bZT" id="ipZ-rf-1vd"/>
+                        <outlet property="liveButton" destination="vQH-TI-75Y" id="fbC-rj-wPI"/>
                         <outlet property="messageField" destination="YHw-E5-McQ" id="Hat-HD-7Ln"/>
                         <outlet property="qaTable" destination="izR-vc-5F2" id="6Uh-Pq-4rL"/>
                         <outlet property="scSegment" destination="2xd-O0-DOS" id="96l-oh-mDR"/>
