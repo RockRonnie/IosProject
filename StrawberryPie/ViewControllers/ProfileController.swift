@@ -159,7 +159,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
     if editProfileBtn.titleLabel?.text == NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile") {
       userInfoView.isEditable = true
       xtraInfo.isEditable = true
-      editProfileBtn.setTitle("Save", for: .normal)
+      editProfileBtn.setTitle(NSLocalizedString("Save", value: "Save", comment: "Save"), for: .normal)
       userInfoView.layer.borderWidth = 3
       userInfoView.layer.borderColor = judasOrange().cgColor
       xtraInfo.layer.borderWidth = 3
@@ -177,7 +177,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
           }
           userInfoView.isEditable = false
           xtraInfo.isEditable = false
-          editProfileBtn.setTitle("Edit Profile", for: .normal)
+          editProfileBtn.setTitle(NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile"), for: .normal)
           xtraInfo.layer.borderWidth = 2.0
           xtraInfo.layer.borderColor = judasBlack().cgColor
           xtraInfo.layer.cornerRadius = 10
