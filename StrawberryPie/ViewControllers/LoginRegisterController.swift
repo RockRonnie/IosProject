@@ -401,9 +401,7 @@ import RealmSwift
       // ALL IS GOOD => LOGIN
       loginRealm(username, password, register)
     }
-    
   }
-  
   // Custom alert, can be modified later
   func customAlert(title: String, reason: String) -> UIAlertController {
     let alert = UIAlertController(title: title, message: reason, preferredStyle: .alert)
