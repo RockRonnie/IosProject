@@ -23,6 +23,7 @@ class QAController: UIViewController {
     var topicSource: String?
     var chatSource: List<ChatMessage>?
     var userSource: User?
+    let myFormatter = Formatter()
     
     let feed = UIStoryboard(name: "HostQA", bundle: nil)
     
@@ -99,9 +100,6 @@ class QAController: UIViewController {
             }
         // Käyttäjä
         userSource = RealmDB.sharedInstance.getUser()
-        // print (userSource)
-        if let gotUser = userSource {
-        }
         // Host name, profile
         if let gotHost = currentSession?.host[0] {
             hostName = gotHost.firstName + " " + gotHost.lastName
@@ -288,7 +286,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
                     //cell.msgTimestamp
                     
 //                    cell.textLabel?.text = ((NSLocalizedString("Question", value: "Question", comment: "QA Question")) + ": " + gotQA.QAs[indexPath.row].question[0].body) + "\n" + (NSLocalizedString("Answer", value: "Answer", comment: "QA Answer")) + ": " + (gotQA.QAs[indexPath.row].answer[0].body)
-                    qaTable.rowHeight = 175.0
+                    qaTable.rowHeight = 100.0
                 }
             }
             return cell
@@ -296,7 +294,12 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatcell", for: indexPath) as! ChatMsgCell
             cell.msgBody.text = chatSource?[indexPath.row].body
             cell.msgSender.text = chatSource?[indexPath.row].messageUser[0].userName
-            qaTable.rowHeight = 100.0
+            let timestamp = chatSource?[indexPath.row].timestamp
+            if let timestamp = timestamp {
+                let myStamp = myFormatter.dateformat(timestamp)
+                cell.msgTimestamp.text = myStamp
+            }
+            qaTable.rowHeight = 75.0
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "qacell", for: indexPath)
