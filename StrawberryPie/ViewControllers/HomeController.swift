@@ -54,7 +54,7 @@ class HomeController: UIViewController {
         self.view.backgroundColor = judasGrey()
 
         segmentBtns.setTitle((NSLocalizedString("Live", value: "Live", comment: "Selected segment")), forSegmentAt: 0)
-       segmentBtns.setTitle((NSLocalizedString("Upcoming", value: "Upcoming", comment: "Selected segment")), forSegmentAt: 1)
+        segmentBtns.setTitle((NSLocalizedString("Upcoming", value: "Upcoming", comment: "Selected segment")), forSegmentAt: 1)
         segmentBtns.setTitle((NSLocalizedString("Archived", value: "Archived", comment: "Selected segment")), forSegmentAt: 2)
         segmentBtns.tintColor = judasBlue()
         UITabBar.appearance().tintColor = judasBlue()
@@ -80,23 +80,6 @@ class HomeController: UIViewController {
               ExpertTableView.reloadData()
         default:
             print("ERROR 404")
-        }
-    }
-    
-    // prepare for seque to transfer the QASession information to QASession viewcontroller
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "QAController") {
-            let selectedRow = ExpertTableView.indexPathForSelectedRow?.row
-            var realmSession: QASession?
-            if let selectedRow = selectedRow {
-                realmSession = self.sessions[selectedRow]
-            }
-            let destinationVC = segue.destination as? QAController
-            
-            // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
-            destinationVC?.currentSession = realmSession
-            // destinationVC?.sessionID = realmSession?.sessionID
-            
         }
     }
     
@@ -243,8 +226,9 @@ class HomeController: UIViewController {
         ExpertTableView.delegate = self
         ExpertTableView.reloadData()
         ExpertTableView.backgroundColor = UIColor.clear
-        ExpertTableView.layer.borderColor = tableBorderColor
-        ExpertTableView.layer.borderWidth = 2
+        //ExpertTableView.layer.borderColor = tableBorderColor
+        //ExpertTableView.layer.borderWidth = 2
+        ExpertTableView.register(UINib(nibName: "QASessionCell", bundle: nil), forCellReuseIdentifier: "SessionCell")
         //print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     // Setting up searchbar searchcontroller
@@ -296,6 +280,14 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         if(tableView == ExpertTableView){
             _ = indexPath.row
         }
+        let normalsession = UIStoryboard(name: "QA", bundle: nil)
+        let session = normalsession.instantiateViewController(withIdentifier: "QAController") as? QAController
+        var realmSession: QASession?
+        realmSession = self.sessions[indexPath.row] as QASession
+        session?.currentSession = realmSession
+        if let session = session{
+            self.navigationController?.pushViewController(session, animated: true)
+        }
     }
     
     func getPic() {
@@ -308,12 +300,22 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             }
         }
         )}
+    func statusCheck(object: QASession) -> String{
+        var status = ""
+        if (object.live) {
+            status = "LIVE"
+        }else if(object.upcoming){
+            status = "UPCOMING"
+        }else if(object.archived){
+            status = "ARCHIVED"
+        }
+        return status
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ExpertCell", for: indexPath) as! ExpertCellController
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
             //Scaleing the image to fit ImageView
-            cell.expertImage?.contentMode = .scaleAspectFit
+            cell.profilePic?.contentMode = .scaleAspectFit
             var object: QASession
             if isFiltering {
                 object = filteredSessions[indexPath.row] as QASession
@@ -324,23 +326,20 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
                 if let result = resultImage {
                     print("kuva saatu")
-                    cell.expertImage?.image = result
+                    cell.profilePic?.image = result
                 }
             })
-            cell.expertDesc?.text = object.sessionDescription
-            cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
-            cell.expertTitle?.text = object.title
+            cell.sessionDesc?.text = object.sessionDescription
+            cell.host?.text = object.host[0].firstName + " " + object.host[0].lastName
+            cell.title?.text = object.title
+            cell.category?.text = object.sessionCategory
+            cell.status?.text = statusCheck(object: object)
             cell.backgroundColor = judasGrey()
             cell.layer.borderColor = cellBorderColor
-        
             cell.layer.borderWidth = 1
             //cell.layer.cornerRadius = 10
             return cell
     }
-    
-
-    
-    
     /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(tableView == filterView){
@@ -359,6 +358,3 @@ extension HomeController: UISearchResultsUpdating {
         
     }
 }
-
-
-
