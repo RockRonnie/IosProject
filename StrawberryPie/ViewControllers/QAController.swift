@@ -197,10 +197,11 @@ class QAController: UIViewController {
                     newMessage.messageSender = gotUser.userName
                     messageToRealm(data: newMessage)
                 }
-                else {
-                    // ALERT VIESTIN LÄHETYS EPÄONNISTUI
-                    print ("moi")
-                }
+            }
+            else {
+                let alert = UIAlertController(title: "Message too long", message: "Please limit your message to 200 characters", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self.present(alert, animated: true)
             }
         }
     }
