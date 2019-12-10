@@ -39,10 +39,10 @@ class PersonalFeedController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = judasGrey()
         self.personalFeedTableView.backgroundColor = judasGrey()
-        personaFeedSegment.tintColor = judasOrange()
-        hostBtn.setTitleColor(judasOrange(), for: .normal)
+        personaFeedSegment.tintColor = judasBlue()
+        hostBtn.setTitleColor(judasBlue(), for: .normal)
         hostBtn.layer.borderWidth = 2.0
-        hostBtn.layer.borderColor = judasOrange().cgColor
+        hostBtn.layer.borderColor = judasBlue().cgColor
         hostBtn.layer.cornerRadius = 10
         setup()
     }
@@ -280,8 +280,8 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             cell.backgroundColor = judasGrey()
             //Cell border values
             cell.layer.borderWidth = 2.0
-            cell.layer.borderColor = judasBlack().cgColor
-            cell.layer.cornerRadius = 10
+            cell.layer.borderColor = judasBlue().cgColor
+            //cell.layer.cornerRadius = 10
           
             var object: QASession
             object = self.personalFeed[indexPath.row] as QASession
