@@ -48,7 +48,6 @@ class HomeController: UIViewController {
         setupRealm("default", "default" , false)
         setupSearchBar()
         setupTables()
-        
         self.view.backgroundColor = judasGrey()
         segmentBtns.setTitle((NSLocalizedString("Live", value: "Live", comment: "Selected segment")), forSegmentAt: 0)
        segmentBtns.setTitle((NSLocalizedString("Upcoming", value: "Upcoming", comment: "Selected segment")), forSegmentAt: 1)
@@ -238,7 +237,7 @@ class HomeController: UIViewController {
         ExpertTableView.dataSource = self
         ExpertTableView.delegate = self
         ExpertTableView.reloadData()
-        ExpertTableView.backgroundColor = judasGrey()
+        ExpertTableView.backgroundColor = UIColor.clear
         //print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     // Setting up searchbar searchcontroller

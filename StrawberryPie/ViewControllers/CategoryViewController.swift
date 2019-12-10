@@ -27,6 +27,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         layout.minimumInteritemSpacing = 5
         layout.itemSize = CGSize(width: (self.collectionView.frame.size.width - 20)/2, height: self.collectionView.frame.size.height/6)
+        self.view.backgroundColor = judasGrey()
+        collectionView.backgroundColor = UIColor.clear
     }
     //The Amount of cells in the collectionview
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -45,6 +47,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.layer.cornerRadius = 10
         cell.categoryNameLabel.layer.masksToBounds = true
         cell.categoryNameLabel.layer.cornerRadius = 10
+        cell.categoryNameLabel.layer.backgroundColor = UIColor(red: 0.0/255.0, green: 176.0/255.0, blue: 255.0/255.0, alpha: 0.75).cgColor
         return cell
     }
     //Select item and increases the gray border size to indicate selection

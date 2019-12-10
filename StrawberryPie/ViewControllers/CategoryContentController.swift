@@ -41,6 +41,8 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         CategoryContentTable.dataSource = self
         CategoryContentTable.delegate = self
         CategoryContentTable.reloadData()
+        CategoryContentTable.backgroundColor = judasGrey()
+        self.view.backgroundColor = judasGrey()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -84,6 +86,10 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         cell.expertDesc?.text = object.sessionDescription
         cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
         cell.expertTitle?.text = object.title
+        cell.backgroundColor = judasGrey()
+        cell.layer.borderColor = CgjudasBlack()
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 10
         return cell
     }
     //Filters the feed to specified category
