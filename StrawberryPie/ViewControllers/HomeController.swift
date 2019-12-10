@@ -48,10 +48,6 @@ class HomeController: UIViewController {
         setupRealm("default", "default" , false)
         setupSearchBar()
         setupTables()
-<<<<<<< HEAD
-
-=======
->>>>>>> 1df81d392d38e237207069fc8970649344d2bccd
         self.view.backgroundColor = judasGrey()
 
         segmentBtns.setTitle((NSLocalizedString("Live", value: "Live", comment: "Selected segment")), forSegmentAt: 0)
