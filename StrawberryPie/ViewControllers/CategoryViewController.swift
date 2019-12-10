@@ -47,7 +47,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.layer.cornerRadius = 10
         cell.categoryNameLabel.layer.masksToBounds = true
         cell.categoryNameLabel.layer.cornerRadius = 10
-        cell.categoryNameLabel.layer.backgroundColor = UIColor(red: 255.0/255.0, green: 158.0/255.0, blue: 0.0/255.0, alpha: 0.9).cgColor
+        cell.categoryNameLabel.layer.backgroundColor = UIColor(red: 0.0/255.0, green: 176.0/255.0, blue: 255.0/255.0, alpha: 0.8).cgColor
         return cell
     }
     //Select item and increases the gray border size to indicate selection
