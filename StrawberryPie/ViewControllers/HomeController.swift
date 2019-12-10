@@ -15,6 +15,9 @@ class HomeController: UIViewController {
     @IBOutlet weak var ExpertTableView: ExpertTableViewController!
     @IBOutlet weak var filterButton: UIButton!
     
+    //Colors
+    let judasGrey = UIColor(hex: "#eeeeee")
+    
     let SearchController = UISearchController(searchResultsController: nil)
     
     let transparentView = UIView()
@@ -49,6 +52,8 @@ class HomeController: UIViewController {
         setupRealm("default", "default" , false)
         setupSearchBar()
         setupTables()
+        
+        //self.view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         segmentBtns.setTitle((NSLocalizedString("Live", value: "Live", comment: "Selected segment")), forSegmentAt: 0)
        segmentBtns.setTitle((NSLocalizedString("Upcoming", value: "Upcoming", comment: "Selected segment")), forSegmentAt: 1)
