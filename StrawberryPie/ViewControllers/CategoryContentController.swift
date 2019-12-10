@@ -46,20 +46,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         CategoryContentTable.register(UINib(nibName: "QASessionCell", bundle: nil), forCellReuseIdentifier: "SessionCell")
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "FromCatToQA") {
-            let selectedRow = CategoryContentTable.indexPathForSelectedRow?.row
-            var realmSession: QASession?
-            if let selectedRow = selectedRow {
-                realmSession = self.experts[selectedRow]
-            }
-            let destinationVC = segue.destination as? QAController
-            
-            // viedään seguen mukana tavaraa. dummyTitle ja dumyChat ovat muuttujia QAControllerissa.
-            destinationVC?.currentSession = realmSession
-            // destinationVC?.sessionID = realmSession?.sessionID
-        }
-    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
