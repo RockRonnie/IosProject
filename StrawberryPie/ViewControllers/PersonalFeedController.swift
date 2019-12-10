@@ -2,7 +2,7 @@
 //  PersonalFeedController.swift
 //  StrawberryPie
 //
-//  Created by iosdev on 23/11/2019.
+//  Created by Roni Jumpponen, Joachim Grotenfelt on 23/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 
@@ -280,7 +280,7 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             cell.backgroundColor = judasGrey()
             //Cell border values
             cell.layer.borderWidth = 2.0
-            cell.layer.borderColor = judasBlue().cgColor
+            cell.layer.borderColor = judasBlack().cgColor
             //cell.layer.cornerRadius = 10
           
             var object: QASession
