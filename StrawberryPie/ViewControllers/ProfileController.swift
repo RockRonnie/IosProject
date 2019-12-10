@@ -27,6 +27,8 @@ class ProfileController: UIViewController, UITextViewDelegate {
   @IBOutlet weak var userInfoView: UITextView!
   @IBOutlet weak var interestTableView: UITableView!
   @IBOutlet weak var logOutBtn: UIButton!
+  @IBOutlet weak var expertLabel: UILabel!
+  @IBOutlet weak var realNameLabel: UITextField!
   
   
   // Profile pic selection
@@ -75,16 +77,22 @@ class ProfileController: UIViewController, UITextViewDelegate {
     userInfoView.layer.cornerRadius = 0
     userInfoView.layer.borderColor = judasBlack().cgColor
     userInfoView.layer.borderWidth = 2.0
+    realNameLabel.layer.cornerRadius = 0
+    realNameLabel.layer.borderColor = judasBlack().cgColor
+    realNameLabel.layer.borderWidth = 2.0
     xtraInfo.layer.borderWidth = 2.0
     xtraInfo.layer.borderColor = judasBlack().cgColor
     xtraInfo.layer.cornerRadius = 0
     xtraInfo.delegate = self
+    xtraInfo.text = ""
+    userInfoView.text = ""
     userInfoView.delegate = self
     userInfoView.isEditable = false
     interestTableView.isHidden = true
+    expertLabel.textColor = judasRed()
     setupTable()
     realmSetup()
-    
+    getState()
     editProfileBtn.isHidden = true
     xtraInfo.isEditable = false
     xtraInfo.isHidden = false
@@ -101,9 +109,28 @@ class ProfileController: UIViewController, UITextViewDelegate {
         editProfileBtn.isHidden = false
         editProfileBtn.setTitle(NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile"), for: .normal)
         unameLabel.text = user.userName
-        xtraInfo.text = user.extraInfo
+        
+        // Check if user is an expert
+        if user.userExpert {
+          expertLabel.text = "Expert"
+        } else {
+          expertLabel.text = ""
+        }
         joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
-        userInfoView.text = user.info
+        realNameLabel.text = "\(user.firstName)" + " \(user.lastName)"
+        if user.info != "" {
+          userInfoView.text = user.info
+        } else {
+          userInfoView.isHidden = true
+        }
+        if user.extraInfo != "" {
+          xtraInfo.text = user.extraInfo
+        } else {
+          xtraInfo.isHidden = true
+        }
+        if user.userInterests.count > 0 {
+          interestTableView.isHidden = true
+        }
         imagePost.getPic(image: user.uImage, onCompletion: {(resultImage) in
           if let result = resultImage {
             self.testImage.image = result
@@ -125,6 +152,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
   func realmSetup(){
     realm = RealmDB.sharedInstance.realm
     user = RealmDB.sharedInstance.getUser()
+    
   }
   // State for segmentButton
   func setState(state: String){
@@ -141,16 +169,41 @@ class ProfileController: UIViewController, UITextViewDelegate {
     switch sender.selectedSegmentIndex {
     case 0:
       print("About Me")
-      setState(state: "About Me")
-      xtraInfo.isHidden = false
       interestTableView.isHidden = true
-    case 1:
-      print("Interests")
-      setState(state: "Interests")
+      setState(state: "About Me")
+      if xtraInfo.text != "" {
+      xtraInfo.isHidden = false
+      } else {
       xtraInfo.isHidden = true
+      }
+      case 1:
+      print("Interests")
+      xtraInfo.isHidden = true
+      setState(state: "Interests")
+      if interestTableView.visibleCells.isEmpty {
+      interestTableView.isHidden = true
+      } else {
       interestTableView.isHidden = false
+      }
     default:
       print("ERROR: Segment Error")
+    }
+  }
+  func getState(){
+    switch selectedState {
+    case "About Me":
+      if userInfoView.text == ""{
+        userInfoView.isHidden = true
+      } else {
+        userInfoView.isHidden = false
+      }
+    case "Interests":
+      if interestTableView.visibleCells.isEmpty {
+        interestTableView.isHidden = true
+      } else {
+        interestTableView.isHidden = false
+      }
+    default: print("No page to show")
     }
   }
   
@@ -160,6 +213,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
     if editProfileBtn.titleLabel?.text == NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile") {
       userInfoView.isEditable = true
       xtraInfo.isEditable = true
+      getState()
       editProfileBtn.setTitle(NSLocalizedString("Save", value: "Save", comment: "Save"), for: .normal)
       userInfoView.layer.borderWidth = 3
       userInfoView.layer.borderColor = judasOrange().cgColor
@@ -178,6 +232,10 @@ class ProfileController: UIViewController, UITextViewDelegate {
           }
           userInfoView.isEditable = false
           xtraInfo.isEditable = false
+          if userInfoView.text == "" {
+          userInfoView.isHidden = true
+          }
+          getState()
           editProfileBtn.setTitle(NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile"), for: .normal)
           xtraInfo.layer.borderWidth = 2.0
           xtraInfo.layer.borderColor = judasBlack().cgColor
