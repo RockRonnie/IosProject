@@ -49,7 +49,7 @@ class HomeController: UIViewController {
         setupSearchBar()
         setupTables()
         
-        self.view.backgroundColor = judasRed()
+        self.view.backgroundColor = judasGrey()
         segmentBtns.setTitle((NSLocalizedString("Live", value: "Live", comment: "Selected segment")), forSegmentAt: 0)
        segmentBtns.setTitle((NSLocalizedString("Upcoming", value: "Upcoming", comment: "Selected segment")), forSegmentAt: 1)
         segmentBtns.setTitle((NSLocalizedString("Archived", value: "Archived", comment: "Selected segment")), forSegmentAt: 2)
@@ -160,6 +160,7 @@ class HomeController: UIViewController {
         default: print("everything went to hell")
         }
     }
+    // Creates a subview label that indicates that there are no sessions available
     func createisEmptyLabel(){
         removeIsEmptyLabel()
         let label = UILabel(frame: CGRect(x:0,y:0,width:200, height:21))
@@ -173,6 +174,7 @@ class HomeController: UIViewController {
         label.tag = 69
         self.view.addSubview(label)
     }
+    // Removes the label from the view 
     func removeIsEmptyLabel(){
         if let viewWithTag = self.view.viewWithTag(69){
             viewWithTag.removeFromSuperview()
@@ -319,8 +321,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             cell.expertDesc?.text = object.sessionDescription
             cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.expertTitle?.text = object.title
-            
-    
+            cell.backgroundColor = judasGrey()
+                
             return cell
     }
     /*
