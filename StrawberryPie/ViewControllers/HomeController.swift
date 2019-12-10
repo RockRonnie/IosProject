@@ -120,25 +120,64 @@ class HomeController: UIViewController {
         archivedSessions = realm.objects(QASession.self).filter("archived = true")
     }
     
-    //updating the sessions array based on selected filter state.
+    // updating the sessions array based on selected filter state.
+    // also checks if selected state is empty or not. 
     func getState(){
         switch selectedState {
         case "live":
             if let liveSessions = self.liveSessions {
                 self.sessions = Array(liveSessions)
+                if liveSessions.isEmpty{
+                    ExpertTableView.isHidden = true
+                    createisEmptyLabel()
+                } else {
+                    ExpertTableView.isHidden = false
+                    removeIsEmptyLabel()
+                }
             }
         case "upcoming":
             if let upcomingSessions = self.upcomingSessions {
                 self.sessions = Array(upcomingSessions)
+                if upcomingSessions.isEmpty{
+                    ExpertTableView.isHidden = true
+                    createisEmptyLabel()
+                } else {
+                    ExpertTableView.isHidden = false
+                    removeIsEmptyLabel()
+                }
             }
         case "archived":
             if let archivedSessions = self.archivedSessions {
                 self.sessions = Array(archivedSessions)
+                if archivedSessions.isEmpty{
+                    ExpertTableView.isHidden = true
+                    createisEmptyLabel()
+                } else {
+                    ExpertTableView.isHidden = false
+                    removeIsEmptyLabel()
+                }
             }
         default: print("everything went to hell")
         }
     }
-    
+    func createisEmptyLabel(){
+        removeIsEmptyLabel()
+        let label = UILabel(frame: CGRect(x:0,y:0,width:200, height:21))
+        label.center.x = self.view.center.x
+        label.center.y = self.view.center.y
+        label.textAlignment = .center
+        label.text = "There seems to be no \(selectedState!) sessions available"
+        label.numberOfLines = 3
+        label.sizeToFit()
+        label.accessibilityIdentifier = "NoContentLabel"
+        label.tag = 69
+        self.view.addSubview(label)
+    }
+    func removeIsEmptyLabel(){
+        if let viewWithTag = self.view.viewWithTag(69){
+            viewWithTag.removeFromSuperview()
+        }
+    }
     //setting up the notification token for observing the realm to achieve full synchronization and reactive UI
     func updateExpertFeed(){
         self.notificationToken = realm?.observe {_,_ in
