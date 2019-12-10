@@ -36,6 +36,9 @@ class PersonalFeedController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = judasGrey()
+      self.personalFeedTableView.backgroundColor = judasGrey()
+        
         setup()
     }
     func setup(){
@@ -267,7 +270,14 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
             
             //Scaleing the image to fit ImageView
+
             cell.profilePic.contentMode = .scaleAspectFit
+            cell.backgroundColor = judasGrey()
+            //Cell border values
+            cell.layer.borderWidth = 2.0
+            cell.layer.borderColor = judasBlack().cgColor
+            cell.layer.cornerRadius = 10
+          
             var object: QASession
             object = self.personalFeed[indexPath.row] as QASession
             let imageProcessor = UserImagePost()
