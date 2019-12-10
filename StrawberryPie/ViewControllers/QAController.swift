@@ -156,8 +156,6 @@ class QAController: UIViewController {
         case 0:
             // Vaihdetaan cellin pohjaa ja reloadData()
             selectedTab = "topic"
-//            scSegment?.setTitle((NSLocalizedString("Topic", value: "Topic", comment: "Selected segment")), forSegmentAt: 0)
-
             qaTable.rowHeight = 500.0
             // Chattikilkkeet piiloon
             sendButton.isHidden = true
@@ -174,12 +172,11 @@ class QAController: UIViewController {
         case 2:
             // Vaihdetaan cellin pohjaa ja reloadData()
             selectedTab = "chat"
-            if userSource?.userName != "default" && userSource?.userName != nil {
+            if userSource?.userName != "default" && userSource?.userName != nil && currentSession?.live == true {
                 messageField.isHidden = false
                 sendButton.isHidden = false
             }
             qaTable.reloadData()
-        //scrollToBottom()
         default:
             print("non selected")
         }
