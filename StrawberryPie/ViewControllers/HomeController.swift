@@ -48,13 +48,17 @@ class HomeController: UIViewController {
         setupRealm("default", "default" , false)
         setupSearchBar()
         setupTables()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1df81d392d38e237207069fc8970649344d2bccd
         self.view.backgroundColor = judasGrey()
 
         segmentBtns.setTitle((NSLocalizedString("Live", value: "Live", comment: "Selected segment")), forSegmentAt: 0)
        segmentBtns.setTitle((NSLocalizedString("Upcoming", value: "Upcoming", comment: "Selected segment")), forSegmentAt: 1)
         segmentBtns.setTitle((NSLocalizedString("Archived", value: "Archived", comment: "Selected segment")), forSegmentAt: 2)
     }
+    
     
     @IBAction func segmentAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -238,6 +242,7 @@ class HomeController: UIViewController {
         ExpertTableView.dataSource = self
         ExpertTableView.delegate = self
         ExpertTableView.reloadData()
+        ExpertTableView.backgroundColor = UIColor.clear
         //print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     // Setting up searchbar searchcontroller
@@ -262,7 +267,7 @@ class HomeController: UIViewController {
 
 //ExpertTableView
 class ExpertTableViewController: UITableView{
-    
+
 }
 extension HomeController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -273,6 +278,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             return 1
         }
     }
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if(tableView == ExpertTableView){
@@ -323,9 +330,15 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             cell.expertName?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.expertTitle?.text = object.title
             cell.backgroundColor = judasGrey()
-                
+            cell.layer.borderColor = CgjudasBlack()
+            cell.layer.borderWidth = 1
+            cell.layer.cornerRadius = 10
             return cell
     }
+    
+
+    
+    
     /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(tableView == filterView){
