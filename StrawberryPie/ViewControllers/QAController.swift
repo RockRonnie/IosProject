@@ -31,6 +31,8 @@ class QAController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        qaTable.register(UINib(nibName: "ChatMsgCell", bundle: nil), forCellReuseIdentifier: "chatcell")
+        qaTable.register(UINib(nibName: "QACell", bundle: nil), forCellReuseIdentifier: "pinnedcell")
         realm = RealmDB.sharedInstance.realm
         setupNotification()
         populateSources()
@@ -99,7 +101,6 @@ class QAController: UIViewController {
         userSource = RealmDB.sharedInstance.getUser()
         // print (userSource)
         if let gotUser = userSource {
-            print("USERNAME", gotUser.userName)
         }
         // Host name, profile
         if let gotHost = currentSession?.host[0] {
@@ -189,7 +190,7 @@ class QAController: UIViewController {
         if let gotMessage = messageField.text {
             if gotMessage.count <= 200 {
                 let newMessage = ChatMessage()
-                newMessage.body = ((userSource?.userName ?? " ") + ": " + (messageField.text ?? "Tapahtui virhe"))
+                newMessage.body = messageField.text ?? "Tapahtui virhe"
                 if let gotUser = RealmDB.sharedInstance.getUser() {
                     newMessage.messageUser.append(gotUser)
                     newMessage.messageSender = gotUser.userName
@@ -266,28 +267,41 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
         return (numberOfRows)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
         
+        //var cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         // Täytetään celli valitan tabin perusteella
         switch selectedTab {
         case "topic":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "qacell", for: indexPath)
             cell.textLabel?.text = topicSource
             cell.textLabel?.numberOfLines = 0
+            return cell
         case "pinned":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "pinnedcell", for: indexPath) as! QACell
             if let gotQA = qaSource {
                 if gotQA.QAs.count > 0 {
-                    cell.textLabel?.text = ((NSLocalizedString("Question", value: "Question", comment: "QA Question")) + ": " + gotQA.QAs[indexPath.row].question[0].body) + "\n" + (NSLocalizedString("Answer", value: "Answer", comment: "QA Answer")) + ": " + (gotQA.QAs[indexPath.row].answer[0].body)
-                    cell.textLabel?.numberOfLines = 0
-                    qaTable.rowHeight = 100.0 // palautetaan default korkeus topicin jäljiltä
+                    
+                    cell.QuestionUser.text = gotQA.QAs[indexPath.row].question[0].messageUser[0].userName
+                    cell.QuestionField.text = gotQA.QAs[indexPath.row].question[0].body
+                    cell.AnswerField.text = gotQA.QAs[indexPath.row].answer[0].body
+                    cell.AnswerUser.text = gotQA.QAs[indexPath.row].question[0].messageUser[0].userName
+                    //cell.msgTimestamp
+                    
+//                    cell.textLabel?.text = ((NSLocalizedString("Question", value: "Question", comment: "QA Question")) + ": " + gotQA.QAs[indexPath.row].question[0].body) + "\n" + (NSLocalizedString("Answer", value: "Answer", comment: "QA Answer")) + ": " + (gotQA.QAs[indexPath.row].answer[0].body)
+                    qaTable.rowHeight = 175.0
                 }
             }
+            return cell
         case "chat":
-            cell.textLabel?.text = chatSource?[indexPath.row].body
-            cell.textLabel?.numberOfLines = 2
-            qaTable.rowHeight = 44.0
+            let cell = tableView.dequeueReusableCell(withIdentifier: "chatcell", for: indexPath) as! ChatMsgCell
+            cell.msgBody.text = chatSource?[indexPath.row].body
+            cell.msgSender.text = chatSource?[indexPath.row].messageUser[0].userName
+            qaTable.rowHeight = 200.0
+            return cell
         default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "qacell", for: indexPath)
             cell.textLabel?.text = "🆘 Nyt levis koodi"
+            return cell
         }
-        return cell
     }
 }

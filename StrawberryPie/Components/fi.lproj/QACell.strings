@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Question:"; ObjectID = "54c-Jg-AaZ"; */
+"54c-Jg-AaZ.text" = "Kysymys:";
+
+/* Class = "UILabel"; text = "UsernameQ:"; ObjectID = "IHy-wG-ktj"; */
+"IHy-wG-ktj.text" = "UsernameQ:";
+
+/* Class = "UILabel"; text = "UsernameA"; ObjectID = "Nha-TA-U0Y"; */
+"Nha-TA-U0Y.text" = "UsernameA";
+
+/* Class = "UILabel"; text = "Answerfield"; ObjectID = "SV2-9I-6fy"; */
+"SV2-9I-6fy.text" = "Answerfield";
+
+/* Class = "UILabel"; text = "Questionfield"; ObjectID = "a19-hG-pVD"; */
+"a19-hG-pVD.text" = "Questionfield";
+
+/* Class = "UILabel"; text = "Answer:"; ObjectID = "sl6-US-5Kc"; */
+"sl6-US-5Kc.text" = "Vastaus:";
