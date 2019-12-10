@@ -155,6 +155,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
   }
   
   // Edit Profile and update to realm, switch between Edit and Save
+  // Depends on the title "Edit Profile" or "Save", really crude, but works fine
   @IBAction func editProfile(_ sender: UIButton!) {
     if editProfileBtn.titleLabel?.text == NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile") {
       userInfoView.isEditable = true
@@ -180,10 +181,8 @@ class ProfileController: UIViewController, UITextViewDelegate {
           editProfileBtn.setTitle(NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile"), for: .normal)
           xtraInfo.layer.borderWidth = 2.0
           xtraInfo.layer.borderColor = judasBlack().cgColor
-          xtraInfo.layer.cornerRadius = 10
           userInfoView.layer.borderWidth = 2.0
           userInfoView.layer.borderColor = judasBlack().cgColor
-          userInfoView.layer.cornerRadius = 10
         }
       }
     }
