@@ -24,7 +24,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     var sessions: Results<QASession>?
 
     let button = UIButton()
-    //Alert function for the the topbar button. Presents summary for the selected category.
+    // Alert function for the the topbar button. Presents summary for the selected category.
     @objc func press() {
         let summary = categoryObject[0].value(forKey: "categorySummary") as! String
         let alert = UIAlertController(title: "Summary", message: summary, preferredStyle: .alert)
@@ -65,7 +65,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             self.navigationController?.pushViewController(session, animated: true)
         }
     }
-    // Navigation from the selected cell to the QASession
+    // Populating the cell for the tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
         cell.profilePic?.contentMode = .scaleAspectFit
@@ -108,7 +108,8 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     func setupExperts(){
         let sessions = realm.objects(QASession.self).filter("sessionCategory = %@", categoryObject[0].value(forKey: "categoryName") as? String ?? "dummyValue")
         experts = Array(sessions)
-        if experts.count == 0 { // If the array is empty this creates a label to the center of the screen indicating that there is no sessions available for the picked category
+        if experts.count == 0 {
+        // If the array is empty this creates a label to the center of the screen indicating that there is no sessions available for the picked category
             print("No sessions found")
             CategoryContentTable.isHidden = true
             let label = UILabel(frame: CGRect(x:0,y:0,width:200, height:21))
@@ -122,6 +123,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             self.view.addSubview(label)
         }
     }
+    // Updates the feed
     func updateExpertFeed(){
         self.notificationToken = realm?.observe {_,_ in
             self.setupExperts()

@@ -2,13 +2,13 @@
 //  PrivateMessageController.swift
 //  StrawberryPie
 //
-//  Created by iosdev on 23/11/2019.
+//  Created by Roni Jumpponen on 23/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
-
+// Simply put, private chat between 2 users
 class PrivateMessageController: UIViewController {
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -27,10 +27,13 @@ class PrivateMessageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = judasGrey()
+        sendBtn.layer.borderWidth = 2
+        sendBtn.layer.borderColor = judasBlue().cgColor
+        sendBtn.setTitleColor(judasBlue(), for: .normal)
         setup()
     }
-    
+    // setting up the content
     func setup(){
         print("Private CHAT!")
         realmSetup()
@@ -39,7 +42,7 @@ class PrivateMessageController: UIViewController {
         updateMessages()
         setupTables()
     }
-    
+    // setting up the realm
     func realmSetup(){
         realm = RealmDB.sharedInstance.realm
         user = RealmDB.sharedInstance.getUser()
@@ -156,10 +159,10 @@ extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
         border.backgroundColor = CgjudasBlack()
         border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
         cell.layer.addSublayer(border)
-         return cell
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 175
     }
 }
 

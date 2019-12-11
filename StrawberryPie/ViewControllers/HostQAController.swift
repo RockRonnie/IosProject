@@ -44,6 +44,11 @@ class HostQAController: UIViewController {
         setupNotification()
         populateSources()
         
+        self.view.backgroundColor = judasGrey()
+        sendButton.layer.borderWidth = 2
+        sendButton.layer.borderColor = judasBlue().cgColor
+        sendButton.setTitleColor(judasBlue(), for: .normal)
+        
         qaTable.dataSource = self
         qaTable.delegate = self
         

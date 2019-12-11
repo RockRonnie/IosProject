@@ -56,7 +56,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell?.layer.borderWidth = 3
         let selectedCategory = category.getNames()[indexPath.item]
         print(selectedCategory)
-        
     }
     //Sends data over to CategoryContent 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,7 +74,5 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = UIColor.lightGray.cgColor
         cell?.layer.borderWidth = 0.25
-        
     }
-
 }

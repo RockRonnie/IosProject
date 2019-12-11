@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 import UIKit
 
-
 public class Category: NSManagedObject {
     //This method is used to create data for a category
     func createCategoryData(name: String, summary: String, imageName: String, id: Int){
@@ -109,7 +108,7 @@ public class Category: NSManagedObject {
         }
         return urls
     }
-    //This Should return the object
+    //Returns Given Category Object
     func getEntity(name: String) -> [NSManagedObject] {
         var test = [NSManagedObject]()
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return test}

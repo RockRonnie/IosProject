@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-
+// Users Hub of actions. Used for showing user his/hers private messages, Questions that experts have answered and a customized feed depending on if you are user / expert. Users see a "recommended" feed based on their selected interests, where as experts see their own sessions and can enter them in "hostmode"
 class PersonalFeedController: UIViewController {
     
     //Outlets
@@ -40,6 +40,8 @@ class PersonalFeedController: UIViewController {
         setup()
         styles()
     }
+    
+    // setting up personal feed
     func setup(){
         hideButton()
         initialTab()
@@ -54,6 +56,8 @@ class PersonalFeedController: UIViewController {
         personalFeedTableView.register(UINib(nibName: "QASessionCell", bundle: nil), forCellReuseIdentifier: "SessionCell")
         personalFeedTableView.reloadData()
     }
+    
+    //setting up the styles.
     func styles(){
         self.view.backgroundColor = judasGrey()
         self.personalFeedTableView.backgroundColor = judasGrey()
@@ -63,13 +67,15 @@ class PersonalFeedController: UIViewController {
         hostBtn.layer.borderColor = judasBlue().cgColor
         hostBtn.layer.cornerRadius = 5
     }
+    //used for setting tab
     func setTab(tab: String){
         selectedTab = tab
     }
+    //initial tab when view is loaded
     func initialTab(){
         selectedTab = "Feed"
     }
-    
+    //Segmented Control with segments for switching between tabs
     @IBAction func feedTabAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex{
         case 0:
@@ -85,6 +91,7 @@ class PersonalFeedController: UIViewController {
             print("Something went wrong")
         }
     }
+    // function used for finding out if the user is an expert or normal user
     func checkExpert(user: User?){
         if let user = user{
             if (user.userExpert ==  true){
@@ -97,13 +104,15 @@ class PersonalFeedController: UIViewController {
             print("user doesn't exist")
         }
     }
+    // hides the host button if the user is not expert
     func hideButton(){
         hostBtn.isHidden = true
     }
+    // shows the button
     func showButton(){
         hostBtn.isHidden = false
     }
-    
+    // function used for showing the right content depending on user being an expert or not
     func expertStatus(){
         switch expert {
         case true:
@@ -116,7 +125,7 @@ class PersonalFeedController: UIViewController {
             }
         }
     }
-    
+    // setting up the items for tableview
     func setupPersonalItems(){
         switch expert{
         case false: setupPersonalFeed()
@@ -127,52 +136,60 @@ class PersonalFeedController: UIViewController {
         setupPrivateChats()
         self.personalFeedTableView.reloadData()
     }
-    // normal user
+    // setting up the normal users feed based on his/hers interests, if he/she has none then just showint upcoming content instead
     func setupPersonalFeed(){
         if let user = user{
             if user.userInterests.isEmpty {
                 recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+                 self.personalFeedTableView.reloadData()
             }else{
                 recommendedSessions = realm?.objects(QASession.self).filter("sessionCategory IN %@", user.userInterests)
+                 self.personalFeedTableView.reloadData()
             }
         }else{
             recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+             self.personalFeedTableView.reloadData()
         }
      
     }
+    //Showing all pinned content related to the user (QA's)
     func setupPersonalQA(){
         if let user = user{
             let answeredQA = realm?.objects(QA.self).filter("ANY question.messageUser.userID == %@", user.userID)
             if let answeredQA = answeredQA {
                 self.personalQA = Array(answeredQA)
+                 self.personalFeedTableView.reloadData()
             }
         }
     }
+    // Users private chats
     func setupPrivateChats(){
         if let user = user{
             let chats = realm?.objects(Chat.self).filter("ANY userList.userID = %@", user.userID)
             if let chats = chats{
                 self.privateChats = Array(chats)
+                self.personalFeedTableView.reloadData()
             }
         }
     }
     
    // EXPERT
-    
+    //showing host content
     func setupHost(){
         print("setup host")
         print(user?.userID ?? "Dick")
         if let user = user{
             hostedSessions = realm?.objects(QASession.self).filter("ANY host.userID = %@", user.userID)
+            self.personalFeedTableView.reloadData()
             print("läpi meni")
         }
     }
+    // Used for finding the session users QA belongs to for navigation purposes
     func findSessionforQA(qa: QA) -> QASession {
         print("Finding session based on QA")
         let foundSession = realm?.objects(QASession.self).filter("ANY QABoard.QAs.QAID = %@", qa.QAID).first
         if let foundSession = foundSession{
             return foundSession
-            
         }
         else{
             print("Something went wrong")
@@ -180,12 +197,13 @@ class PersonalFeedController: UIViewController {
         }
     }
     
-    
+    //Dynamic notification token for observing the realm
     func updatePersonalFeed(){
         self.notificationToken = realm?.observe {_,_ in
             self.setupPersonalItems()
         }
     }
+    //checking the tab status
     func statusCheck(object: QASession) -> String{
         var status = ""
         if (object.live) {
