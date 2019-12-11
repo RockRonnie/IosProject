@@ -323,6 +323,6 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
   // Set height
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 35
-    }
-  } 
+  }
 }
+
