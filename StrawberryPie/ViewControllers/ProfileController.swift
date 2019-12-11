@@ -264,6 +264,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
       //SYNCUSER LOGOUT DOES NOT WORK CURRENTLY, NEEDS MORE RESEARCH, NOT A REAL LOGOUT
       let main = UIStoryboard(name: "Main", bundle: nil)
       RealmDB.sharedInstance.user?.logOut()
+        RealmDB.sharedInstance.setup = false
       print("Logged OUT USER")
       let loggedOut: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedOutTabBar") as? UITabBarController
       self.present(loggedOut!, animated:  true, completion: nil)
