@@ -36,7 +36,7 @@ class HomePageUITest: XCTestCase {
         XCTAssert(true, "Test passed")
     }
     
-    func testExample() {
+    func testSearchbar() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results
         let app = XCUIApplication()
