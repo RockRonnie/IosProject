@@ -36,7 +36,6 @@
 		68D7B6362398237E0082BFBA /* HostQAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7B6352398237E0082BFBA /* HostQAController.swift */; };
 		68F2A76C23A0189C0019673F /* QACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F2A76E23A0189C0019673F /* QACell.xib */; };
 		6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B723952F0A000917B0 /* ExpertCellController.swift */; };
-		6A0178BA23952F15000917B0 /* HomeExpertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */; };
 		6A08911023A0F36400F90BAD /* RealmUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08910F23A0F36400F90BAD /* RealmUtility.swift */; };
 		6A14BC56239AC7F20009E676 /* RegisterValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14BC55239AC7F20009E676 /* RegisterValidation.swift */; };
 		6A14BC58239AD2060009E676 /* LoginRegisterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */; };
@@ -74,7 +73,6 @@
 		6A9E89E1238946450069DE71 /* Hottest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D6238946450069DE71 /* Hottest.swift */; };
 		6A9E89E3238946450069DE71 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D7238946450069DE71 /* ChatMessageCell.swift */; };
 		6A9E89E5238946450069DE71 /* QAMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89D8238946450069DE71 /* QAMessageCell.swift */; };
-		6A9E89ED2389466B0069DE71 /* QASessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E82389466A0069DE71 /* QASessionController.swift */; };
 		6A9E89EF2389466B0069DE71 /* PersonalFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */; };
 		6A9E89F12389466B0069DE71 /* PrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */; };
 		6AA5C265239D4C8C000B677A /* PrivateChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA5C263239D4C8C000B677A /* PrivateChat.storyboard */; };
@@ -159,7 +157,6 @@
 		68F2A76D23A0189C0019673F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/QACell.xib; sourceTree = "<group>"; };
 		68F2A77023A018A40019673F /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/QACell.strings; sourceTree = "<group>"; };
 		6A0178B723952F0A000917B0 /* ExpertCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
-		6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeExpertTableCell.swift; sourceTree = "<group>"; };
 		6A08910F23A0F36400F90BAD /* RealmUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtility.swift; sourceTree = "<group>"; };
 		6A14BC55239AC7F20009E676 /* RegisterValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidation.swift; sourceTree = "<group>"; };
 		6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterTest.swift; sourceTree = "<group>"; };
@@ -204,7 +201,6 @@
 		6A9E89D7238946450069DE71 /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		6A9E89D8238946450069DE71 /* QAMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAMessageCell.swift; sourceTree = "<group>"; };
 		6A9E89E72389466A0069DE71 /* HostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostController.swift; sourceTree = "<group>"; };
-		6A9E89E82389466A0069DE71 /* QASessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QASessionController.swift; sourceTree = "<group>"; };
 		6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalFeedController.swift; sourceTree = "<group>"; };
 		6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessageController.swift; sourceTree = "<group>"; };
 		6AA5C264239D4C8C000B677A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PrivateChat.storyboard; sourceTree = "<group>"; };
@@ -392,12 +388,10 @@
 			isa = PBXGroup;
 			children = (
 				68D7B6352398237E0082BFBA /* HostQAController.swift */,
-				6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */,
 				6A9E89E72389466A0069DE71 /* HostController.swift */,
 				6A0178B723952F0A000917B0 /* ExpertCellController.swift */,
 				6A9E89E92389466A0069DE71 /* PersonalFeedController.swift */,
 				6A9E89EA2389466A0069DE71 /* PrivateMessageController.swift */,
-				6A9E89E82389466A0069DE71 /* QASessionController.swift */,
 				68574592238940B80002A538 /* HomeController.swift */,
 				6A7E6638238430AD00F8340C /* LoginRegisterController.swift */,
 				6AC642CB2385892500E2906F /* ProfileController.swift */,
@@ -780,14 +774,12 @@
 				6A7E663F238430AD00F8340C /* StrawberryPie.xcdatamodeld in Sources */,
 				6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */,
 				6AE09EAD238827760040E87E /* Category+CoreDataClass.swift in Sources */,
-				6A0178BA23952F15000917B0 /* HomeExpertTableCell.swift in Sources */,
 				6A9E89DD238946450069DE71 /* FeedTable.swift in Sources */,
 				6A9E89D02389461B0069DE71 /* ChatMessage.swift in Sources */,
 				6A9E89EF2389466B0069DE71 /* PersonalFeedController.swift in Sources */,
 				6A9E89DF238946450069DE71 /* FeedItem.swift in Sources */,
 				6AE09EAF238827760040E87E /* Studies+CoreDataProperties.swift in Sources */,
 				6AACF22C238EAEFB006ECBF4 /* ExpertFeed.swift in Sources */,
-				6A9E89ED2389466B0069DE71 /* QASessionController.swift in Sources */,
 				68574590238935DE0002A538 /* QAController.swift in Sources */,
 				6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */,
 				685D424623895F2400059014 /* QaTable.swift in Sources */,
