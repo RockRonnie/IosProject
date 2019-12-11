@@ -159,10 +159,10 @@ extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
         border.backgroundColor = CgjudasBlack()
         border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
         cell.layer.addSublayer(border)
-         return cell
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 175
     }
 }
 
