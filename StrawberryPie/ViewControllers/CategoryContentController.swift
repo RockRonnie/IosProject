@@ -37,7 +37,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         self.title = categoryObject[0].value(forKey: "categoryName") as? String
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Info", style: .plain, target: self, action: #selector(self.press))
         setupRealm("default", "default" , false)
-        
         CategoryContentTable.dataSource = self
         CategoryContentTable.delegate = self
         CategoryContentTable.reloadData()
@@ -56,6 +55,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
         _ = indexPath.row
     }
+    // Navigates from the selected session to a new one
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = indexPath.row
         let normalsession = UIStoryboard(name: "QA", bundle: nil)
@@ -92,6 +92,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         
         return cell
     }
+    // Checks the status of the session
     func statusCheck(object: QASession) -> String{
         var status = ""
         if (object.live) {
@@ -106,7 +107,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     //Filters the feed to specified category
     func setupExperts(){
         let sessions = realm.objects(QASession.self).filter("sessionCategory = %@", categoryObject[0].value(forKey: "categoryName") as? String ?? "dummyValue")
-        
         experts = Array(sessions)
         if experts.count == 0 { // If the array is empty this creates a label to the center of the screen indicating that there is no sessions available for the picked category
             print("No sessions found")
