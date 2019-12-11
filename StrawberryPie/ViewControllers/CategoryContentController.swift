@@ -52,9 +52,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return experts.count
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
-        _ = indexPath.row
-    }
+   
     // Navigates from the selected session to a new one
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = indexPath.row
@@ -67,7 +65,7 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
             self.navigationController?.pushViewController(session, animated: true)
         }
     }
-    
+    // Navigation from the selected cell to the QASession
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
         cell.profilePic?.contentMode = .scaleAspectFit
