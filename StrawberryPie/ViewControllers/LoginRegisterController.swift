@@ -29,10 +29,11 @@ import RealmSwift
   @IBOutlet weak var removeInterestThree: UIButton!
   @IBOutlet weak var cancelBtn: UIButton!
   @IBOutlet weak var doneBtn: UIButton!
+  @IBOutlet weak var topBar: UIView!
+  @IBOutlet weak var messageLabel: UILabel!
   
   // Create page content
   var signUpFormEnabled = Bool()
-  let messageLabel = UILabel()
   let changeFormButton = UIButton(type: .roundedRect)
   let loginButton = UIButton(type: .roundedRect)
   let signUpButton = UIButton(type: .roundedRect)
@@ -77,12 +78,14 @@ import RealmSwift
     let container = UIStackView()
     messageLabel.numberOfLines = 0
     messageLabel.text = NSLocalizedString("Please enter your login information", value: "Please enter your login information", comment: "LoginInfo")
-    container.addArrangedSubview(messageLabel)
+    // Add topbar on top of the screen
+    
     container.translatesAutoresizingMaskIntoConstraints = false
     container.axis = .vertical
     container.alignment = .fill
     container.spacing = 16.0
     view.addSubview(container)
+    
     
     // Create Register / Login Form
     // Styling etc. could be moved to another separate styling file
@@ -103,6 +106,10 @@ import RealmSwift
     lastnameField.borderStyle = .roundedRect
     userEmailField.borderStyle = .roundedRect
     userOccupation.borderStyle = .roundedRect
+    // Slightly grayish white
+    topBar.layer.backgroundColor = UIColor(displayP3Red: 0.9686, green: 0.9686, blue: 0.9686, alpha: 1).cgColor
+    topBar.layer.borderWidth = 0.5
+    topBar.layer.borderColor = UIColor.gray.cgColor
     // Modify info field height
     let xtraInfoHeightConstraint = NSLayoutConstraint(item: userXtraInfoField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80)
     let widthConstraint = userXtraInfoField.widthAnchor.constraint(equalToConstant: 370)

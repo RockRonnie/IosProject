@@ -88,6 +88,16 @@
                                     <action selector="removeSecond:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aul-Fl-5dj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqU-FJ-ZoG">
+                                <rect key="frame" x="314" y="346" width="51" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gtl-AX-khA"/>
+                                </constraints>
+                                <state key="normal" title="remove"/>
+                                <connections>
+                                    <action selector="removeThird:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bU8-cl-oPt"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdN-mF-LPI">
                                 <rect key="frame" x="277" y="617" width="48" height="30"/>
                                 <state key="normal" title="Done"/>
@@ -130,16 +140,26 @@
                                     <action selector="removeFirst:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jw8-sM-Sql"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqU-FJ-ZoG">
-                                <rect key="frame" x="314" y="346" width="51" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3T-qW-UYe">
+                                <rect key="frame" x="-7" y="0.0" width="390" height="89"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Syötä kirjautumistietosi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hso-cF-PPx">
+                                        <rect key="frame" x="106" y="60" width="178" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="gtl-AX-khA"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hso-cF-PPx" secondAttribute="bottom" constant="8" id="5Ih-dz-0hJ"/>
+                                    <constraint firstAttribute="height" constant="89" id="BXU-I9-Y3Q"/>
+                                    <constraint firstItem="Hso-cF-PPx" firstAttribute="leading" secondItem="f3T-qW-UYe" secondAttribute="leading" constant="106" id="Ggm-e4-WeN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hso-cF-PPx" secondAttribute="trailing" constant="106" id="JCv-kD-1LM"/>
+                                    <constraint firstAttribute="width" constant="390" id="rjD-UN-F6v"/>
+                                    <constraint firstItem="Hso-cF-PPx" firstAttribute="top" secondItem="f3T-qW-UYe" secondAttribute="top" constant="60" id="zbE-97-lsJ"/>
                                 </constraints>
-                                <state key="normal" title="remove"/>
-                                <connections>
-                                    <action selector="removeThird:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bU8-cl-oPt"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -152,9 +172,11 @@
                             <constraint firstItem="jqU-FJ-ZoG" firstAttribute="leading" secondItem="4NS-N1-sCG" secondAttribute="trailing" constant="134" id="En4-8Z-yRG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Og0-Gn-6M1" secondAttribute="bottom" constant="20" id="F4c-jK-5ZG"/>
                             <constraint firstItem="7dB-He-DnL" firstAttribute="top" secondItem="gn9-Uv-FuV" secondAttribute="bottom" constant="8" id="G88-8G-jPG"/>
+                            <constraint firstItem="f3T-qW-UYe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-7" id="GFk-OG-g15"/>
                             <constraint firstItem="gn9-Uv-FuV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Gr7-YX-ga2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7dB-He-DnL" secondAttribute="trailing" constant="10" id="Hhm-Gc-cYf"/>
                             <constraint firstItem="jqU-FJ-ZoG" firstAttribute="top" secondItem="2az-2r-XkZ" secondAttribute="bottom" constant="5" id="LGl-hs-Oam"/>
+                            <constraint firstAttribute="trailing" secondItem="f3T-qW-UYe" secondAttribute="trailing" constant="-8" id="M9O-Dz-M1T"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZG1-N2-SQY" secondAttribute="trailing" constant="195" id="O5s-3O-kpS"/>
                             <constraint firstItem="RdN-mF-LPI" firstAttribute="width" secondItem="Og0-Gn-6M1" secondAttribute="width" id="QOt-KK-PyF"/>
                             <constraint firstItem="Og0-Gn-6M1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="RSP-8j-Ck9"/>
@@ -162,6 +184,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RdN-mF-LPI" secondAttribute="trailing" constant="50" id="Vff-ri-qh5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jqU-FJ-ZoG" secondAttribute="trailing" constant="10" id="X9w-ZQ-pH8"/>
                             <constraint firstItem="gn9-Uv-FuV" firstAttribute="top" secondItem="4NS-N1-sCG" secondAttribute="bottom" constant="10" id="XFx-ox-k9F"/>
+                            <constraint firstItem="f3T-qW-UYe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XZi-pD-sBN"/>
                             <constraint firstItem="2az-2r-XkZ" firstAttribute="leading" secondItem="w7b-1T-Iuz" secondAttribute="trailing" constant="134" id="ZoZ-wI-vp4"/>
                             <constraint firstItem="rYc-mK-Cgb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="c40-fL-ugE"/>
                             <constraint firstItem="w7b-1T-Iuz" firstAttribute="top" secondItem="ZG1-N2-SQY" secondAttribute="bottom" constant="5" id="dXM-UV-D1i"/>
@@ -190,9 +213,11 @@
                         <outlet property="interestOne" destination="ZG1-N2-SQY" id="0lh-bX-ENN"/>
                         <outlet property="interestThree" destination="4NS-N1-sCG" id="sJU-ql-SsX"/>
                         <outlet property="interestTwo" destination="w7b-1T-Iuz" id="10x-vi-ve5"/>
+                        <outlet property="messageLabel" destination="Hso-cF-PPx" id="R2J-Uy-fs5"/>
                         <outlet property="removeInterestOne" destination="Wkn-UU-rvH" id="y7i-nj-T2I"/>
                         <outlet property="removeInterestThree" destination="jqU-FJ-ZoG" id="9op-nU-qv2"/>
                         <outlet property="removeInterestTwo" destination="2az-2r-XkZ" id="gjZ-if-UfD"/>
+                        <outlet property="topBar" destination="f3T-qW-UYe" id="FKC-RG-HiR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
