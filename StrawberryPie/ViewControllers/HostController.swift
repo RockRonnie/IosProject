@@ -42,6 +42,7 @@ class HostController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDatabase()
+        self.view.backgroundColor = judasGrey()
         setupText()
     }
     

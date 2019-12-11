@@ -29,10 +29,11 @@ import RealmSwift
   @IBOutlet weak var removeInterestThree: UIButton!
   @IBOutlet weak var cancelBtn: UIButton!
   @IBOutlet weak var doneBtn: UIButton!
+  @IBOutlet weak var topBar: UIView!
+  @IBOutlet weak var messageLabel: UILabel!
   
   // Create page content
   var signUpFormEnabled = Bool()
-  let messageLabel = UILabel()
   let changeFormButton = UIButton(type: .roundedRect)
   let loginButton = UIButton(type: .roundedRect)
   let signUpButton = UIButton(type: .roundedRect)
@@ -77,12 +78,14 @@ import RealmSwift
     let container = UIStackView()
     messageLabel.numberOfLines = 0
     messageLabel.text = NSLocalizedString("Please enter your login information", value: "Please enter your login information", comment: "LoginInfo")
-    container.addArrangedSubview(messageLabel)
+    // Add topbar on top of the screen
+    
     container.translatesAutoresizingMaskIntoConstraints = false
     container.axis = .vertical
     container.alignment = .fill
     container.spacing = 16.0
     view.addSubview(container)
+    
     
     // Create Register / Login Form
     // Styling etc. could be moved to another separate styling file
@@ -103,6 +106,10 @@ import RealmSwift
     lastnameField.borderStyle = .roundedRect
     userEmailField.borderStyle = .roundedRect
     userOccupation.borderStyle = .roundedRect
+    // Slightly grayish white
+    topBar.layer.backgroundColor = UIColor(displayP3Red: 0.9686, green: 0.9686, blue: 0.9686, alpha: 1).cgColor
+    topBar.layer.borderWidth = 0.5
+    topBar.layer.borderColor = UIColor.gray.cgColor
     // Modify info field height
     let xtraInfoHeightConstraint = NSLayoutConstraint(item: userXtraInfoField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80)
     let widthConstraint = userXtraInfoField.widthAnchor.constraint(equalToConstant: 370)
@@ -273,23 +280,15 @@ import RealmSwift
   // Login function, check for username and password
   func logIn(_ username: String,_ password: String,_ register: Bool) {
     if usernameField.text == "" {
-      self.present(customAlert(title: "uname", reason: "Missing username"), animated: true, completion: nil)
+      self.present(CustomAlert.customAlert(title: "Username error", reason: "Missing username", comment: "UsernameError"), animated: true, completion: nil)
     } else if userpasswordField.text == "" {
-      self.present(customAlert(title: "upw", reason: "Missing password"),
-                   animated: true, completion: nil)
+      self.present(CustomAlert.customAlert(title: "Password error", reason: "Missing password", comment: "PwError"), animated: true, completion: nil)
     } else {
       // ALL IS GOOD => LOGIN
       loginRealm(username, password, register)
     }
   }
-  // Custom alert, can be modified later
-  func customAlert(title: String, reason: String) -> UIAlertController {
-    let alert = UIAlertController(title: title, message: reason, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    
-    return alert
-    
-  }
+  
   // Login function with username and password
   func loginRealm(_ username: String,_ password: String,_ register: Bool){
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
@@ -325,7 +324,7 @@ import RealmSwift
       } else if let error = error {
         // Error login
         print("Login error: \(error)")
-        self.present(self.customAlert(title: "Login", reason: "Wrong login"), animated: true, completion: nil)
+        self.present(CustomAlert.customAlert(title: "Login error", reason: "Wrong login", comment: "LoginError"), animated: true, completion: nil)
       }
     }
     
@@ -336,17 +335,20 @@ import RealmSwift
   func signUp(_ username: String, _ password: String, _ register: Bool) {
     // Empty textfield = not valid
     if usernameField.text == "" {
-      self.present(customAlert(title: "uname", reason: "Missing username"), animated: true, completion: nil)
+      self.present(CustomAlert.customAlert(title: "Username error", reason: "Missing username", comment: "LoginError"), animated: true, completion: nil)
     } else if userpasswordField.text == "" {
-      self.present(customAlert(title: "upw", reason: "Missing password"),
-                   animated: true, completion: nil)
+      self.present(CustomAlert.customAlert(title: "Password error", reason: "Missing password", comment: "LoginError"), animated: true, completion: nil)
+
     } else if userpasswordField.text != "" && userpwagainField.text == "" || userpasswordField.text != userpwagainField.text {
-      self.present(customAlert(title: "upw", reason: "Please confirm password"),
-                   animated: true, completion: nil)
+      self.present(CustomAlert.customAlert(title: "Error!", reason: "Confirm password", comment: "LoginError"), animated: true, completion: nil)
+
     } else if RegisterValidation.validatePassword(passwordID: userpasswordField.text ?? "") != true {
-      self.present(customAlert(title: "password", reason: "Invalid password"),
-                   animated: true, completion: nil)
+      self.present(CustomAlert.customAlert(title: "Invalid password!", reason: "Must be 3-15 characters long, A-Z, a-z, 0-9", comment: "LoginError"), animated: true, completion: nil)
+
+    } else if RegisterValidation.validateUsername(user: usernameField.text ?? "") != true {
+      self.present(CustomAlert.customAlert(title: "Invalid username!", reason: "Username must be 3-15 characters long", comment: "LoginError"), animated: true, completion: nil)
     } else {
+      
       
       // Textfields are not empty and valid => Login
       
@@ -371,7 +373,7 @@ import RealmSwift
           self.realm = try! Realm(configuration: config)
           RealmDB.sharedInstance.realm = self.realm
           guard let userIdentity = self.user?.identity else {
-            self.present(self.customAlert(title: "Register Error!", reason: "userIdentity not found"), animated: true, completion: nil)
+            self.present(CustomAlert.customAlert(title: "Register Error!", reason: "userIdentity not found", comment: "userIdentity not found"), animated: true, completion: nil)
             return }
           self.thisUser.userID = userIdentity
           self.thisUser.userName = username
@@ -388,7 +390,7 @@ import RealmSwift
           print("Changing navigators")
         } else if let error = error {
           print("Signup error!: \(error)")
-          self.present(self.customAlert(title: "Signup", reason: "User exists"), animated: true, completion: nil)
+          self.present(CustomAlert.customAlert(title: "Signup", reason: "User exists", comment: "UserError"), animated: true, completion: nil)
         }
       }
     }
@@ -435,14 +437,14 @@ import RealmSwift
     // Settings for realm
     let isValidateEmail = RegisterValidation.validateEmail(emailID: self.userEmailField.text ?? "")
     if (isValidateEmail == false){
-      self.interestError.text = NSLocalizedString("Invalid email", value: "Invalid email", comment: "Emailerror")
+      self.interestError.text = NSLocalizedString("Invalid Email", value: "Invalid email: example email@email.com required", comment: "Emailerror")
       return
     }
     let config = self.user?.configuration(realmURL: Constants.REALM_URL, fullSynchronization: true)
     if let cfg = config {
       self.realm = try! Realm(configuration: cfg)
     } else {
-      self.present(self.customAlert(title: "Signup Error", reason: "Signup Error"), animated: true, completion: nil)
+      self.present(CustomAlert.customAlert(title: "Signup Error", reason: "Signup Error", comment: "SignupError"), animated: true, completion: nil)
     }
     // Create temporary user object from Realm (check getUser() function in RealmDB.swift for more information)
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
