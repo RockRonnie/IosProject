@@ -266,8 +266,6 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
         return (numberOfRows)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //var cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         // Täytetään celli valitan tabin perusteella
         switch selectedTab {
         case "topic":
@@ -284,9 +282,6 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
                     cell.QuestionField.text = gotQA.QAs[indexPath.row].question[0].body
                     cell.AnswerField.text = gotQA.QAs[indexPath.row].answer[0].body
                     cell.AnswerUser.text = gotQA.QAs[indexPath.row].question[0].messageUser[0].userName
-                    //cell.msgTimestamp
-                    
-//                    cell.textLabel?.text = ((NSLocalizedString("Question", value: "Question", comment: "QA Question")) + ": " + gotQA.QAs[indexPath.row].question[0].body) + "\n" + (NSLocalizedString("Answer", value: "Answer", comment: "QA Answer")) + ": " + (gotQA.QAs[indexPath.row].answer[0].body)
                     qaTable.rowHeight = 150.0
                 }
             }
@@ -332,7 +327,8 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
                         }else{
                             print("something went wrong")
                         }
-                    }else{
+                    }
+                    else{
                         print("trying to chat with yourself")
                     }
             }
