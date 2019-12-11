@@ -94,7 +94,7 @@ class StrawberryPieUITests: XCTestCase {
         app.textFields["Session title"].tap()
         app.typeText("TEst")
         app.buttons["Pick a Category"].tap()
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Misc & Unkown"]/*[[".cells.staticTexts[\"Misc & Unkown\"]",".staticTexts[\"Misc & Unkown\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.tables.staticTexts["Misc & Unknown"].tap()
         
         let window = app.children(matching: .window).element(boundBy: 0)
         let element = window.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element

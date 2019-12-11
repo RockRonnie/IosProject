@@ -147,15 +147,15 @@ public class Category: NSManagedObject {
     func generateData(){
         createCategoryData(name: "ICT", summary: "Everything related to the Information and Communication industry. Careers such as programming, cloud engineering, networks, etc.", imageName: "ICTImage",id: 0)
         createCategoryData(name: "Humanities and Arts", summary: "Careers related to for example language studies or different arts and their forms",imageName: "ArtImage",id: 1)
-        createCategoryData(name: "Social sectors", summary: "Careers related to Society and Social sectors.",imageName: "SocietyImage",id: 2)
+        createCategoryData(name: "Social Sectors", summary: "Careers related to Society and Social sectors.",imageName: "SocietyImage",id: 2)
         createCategoryData(name: "Education Sciences", summary: "Careers related teaching and education.",imageName: "EducationImage",id: 3)
-        createCategoryData(name: "Trade, Adminstration and Law", summary: "Careers related to law, adminstration and trade. ",imageName: "lawImage", id: 4)
+        createCategoryData(name: "Trade, Administration and Law", summary: "Careers related to law, adminstration and trade. ",imageName: "lawImage", id: 4)
         createCategoryData(name: "Natural Sciences", summary: "Natural Sciences such as chemistry, physics, geography etc.",imageName: "NaturalImage", id: 5)
         createCategoryData(name: "Technical Fields", summary: "Anything related to usual technology. Electrical Engineering, Automation Engineering, Building planning etc.", imageName: "TechImage", id: 6)
         createCategoryData(name: "Agriculture and Forestry", summary: "Careers related to maintaining forests, farming and maintaining catle for example.",imageName: "AgricultureImage",id:7)
         createCategoryData(name: "Health and Wellbeing", summary: "Careers related to health and wellbeing. For example nursing, doctors, personal trainers.", imageName: "HealthcareImage",id:8)
         createCategoryData(name: "Service Industry", summary: "Industry related to different services such as waitering etc.", imageName: "ServicesImage", id:9)
         createCategoryData(name: "General Education", summary: "Careers that can be accessed via General Education.", imageName: "GeneralEduImage",id:10)
-        createCategoryData(name: "Misc & Unkown", summary: "Everything that isn't included in the other categories.", imageName: "MiscImage", id:11)
+        createCategoryData(name: "Misc & Unknown", summary: "Everything that isn't included in the other categories.", imageName: "MiscImage", id:11)
     }
 }

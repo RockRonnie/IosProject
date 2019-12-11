@@ -335,8 +335,12 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             cell.category?.text = object.sessionCategory
             cell.status?.text = statusCheck(object: object)
             cell.backgroundColor = judasGrey()
-            cell.layer.borderColor = cellBorderColor
-            cell.layer.borderWidth = 1
+            let border = CALayer()
+            border.backgroundColor = cellBorderColor
+            border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
+            cell.layer.addSublayer(border)
+            //cell.layer.borderColor = cellBorderColor
+            //cell.layer.borderWidth = 0.5
             //cell.layer.cornerRadius = 10
             return cell
     }
