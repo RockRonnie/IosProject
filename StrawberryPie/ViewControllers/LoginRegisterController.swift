@@ -3,6 +3,7 @@
 //  StrawberryPie
 //
 //  Created by Markus Saronsalo on 19/11/2019.
+//  Some styling by Joachim Grotenfelt
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //  This class handles the login and register functions
 
@@ -49,6 +50,17 @@ import RealmSwift
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    messageLabel.font = UIFont.boldSystemFont(ofSize: 17)
+    self.view.backgroundColor = judasGrey()
+    changeFormButton.layer.borderWidth = 2
+    changeFormButton.layer.borderColor = judasBlue().cgColor
+    changeFormButton.setTitleColor(judasBlue(), for: .normal)
+    loginButton.layer.borderWidth = 2
+    loginButton.layer.borderColor = judasBlue().cgColor
+    loginButton.setTitleColor(judasBlue(), for: .normal)
+    signUpButton.layer.borderWidth = 2
+    signUpButton.layer.borderColor = judasBlue().cgColor
+    signUpButton.setTitleColor(judasBlue(), for: .normal)
     categoryTable.delegate = self
     categoryTable.dataSource = self
     categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
