@@ -32,7 +32,6 @@ class QAController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = judasGrey()
         sendButton.layer.borderWidth = 2
         sendButton.layer.borderColor = judasBlue().cgColor
         sendButton.setTitleColor(judasBlue(), for: .normal)
