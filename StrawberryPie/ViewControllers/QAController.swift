@@ -287,7 +287,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
                     //cell.msgTimestamp
                     
 //                    cell.textLabel?.text = ((NSLocalizedString("Question", value: "Question", comment: "QA Question")) + ": " + gotQA.QAs[indexPath.row].question[0].body) + "\n" + (NSLocalizedString("Answer", value: "Answer", comment: "QA Answer")) + ": " + (gotQA.QAs[indexPath.row].answer[0].body)
-                    qaTable.rowHeight = 100.0
+                    qaTable.rowHeight = 150.0
                 }
             }
             return cell
