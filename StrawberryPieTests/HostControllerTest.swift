@@ -5,7 +5,7 @@
 //  Created by iosdev on 31/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
-
+// Test the functionality of the session cration as a host
 import XCTest
 @testable import StrawberryPie
 
@@ -16,42 +16,30 @@ class HostControllerTest: XCTestCase {
     }
     func testFields(){
         //edu
-        
         host.selectedEducation = "derp"
         XCTAssert(host.selectedEducation == "derp", "selected education is not derp")
         host.selectedEducation = nil
         XCTAssert(host.selectedEducation == nil, "selected education is not nill")
-        
         //prof
         host.selectedProfession = "prof"
         XCTAssert(host.selectedProfession == "prof", "selected profession is not prof")
         host.selectedProfession = nil
         XCTAssert(host.selectedProfession == nil, "selected profession is not nill")
-        
         //title
-       
         host.sessionTitle = "title"
         XCTAssert(host.sessionTitle == "title", "selected title is not title")
-      
         host.sessionTitle = nil
         XCTAssert(host.sessionTitle == nil, "selected title is not nill")
-        
         //desc
-        
         host.sessionDesc = "desc"
         XCTAssert(host.sessionDesc == "desc", "selected desc is not desc")
-        
         host.sessionDesc = nil
         XCTAssert(host.sessionDesc == nil, "selected desc is not nill")
-        
         //intro
-   
         host.sessionIntro = "intro"
         XCTAssert(host.sessionIntro == "intro", "selected intro is not intro")
-       
         host.sessionIntro = nil
         XCTAssert(host.sessionIntro == nil, "selected intro is not nill")
- 
     }
     
     func testFunctions(){
@@ -60,6 +48,7 @@ class HostControllerTest: XCTestCase {
         let categories = host.allCategories
         XCTAssert(categories == [], "All categories is not an empty array")
     }
+    
     func realmTests(){
         let intro = host.createIntro()
         let secondintro = host.createIntro()
@@ -74,6 +63,7 @@ class HostControllerTest: XCTestCase {
         let session2 = host.createSession()
         XCTAssert(session != session2, "session is not unique")
     }
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }

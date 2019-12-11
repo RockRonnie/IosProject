@@ -33,13 +33,11 @@
 		68B0A19C23919C8000404D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6640238430AF00F8340C /* Assets.xcassets */; };
 		68B0A19E23919C8C00404D7A /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 6AD541E2238C364A00DF16DA /* Images */; };
 		68B0A1A92391A5A000404D7A /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
-		68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
 		68D7B6362398237E0082BFBA /* HostQAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7B6352398237E0082BFBA /* HostQAController.swift */; };
 		68F2A76C23A0189C0019673F /* QACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F2A76E23A0189C0019673F /* QACell.xib */; };
 		6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B723952F0A000917B0 /* ExpertCellController.swift */; };
 		6A08911023A0F36400F90BAD /* RealmUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08910F23A0F36400F90BAD /* RealmUtility.swift */; };
 		6A14BC56239AC7F20009E676 /* RegisterValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14BC55239AC7F20009E676 /* RegisterValidation.swift */; };
-		6A14BC58239AD2060009E676 /* LoginRegisterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */; };
 		6A48A9BC2396470600A962DA /* PickCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48A9BB2396470600A962DA /* PickCategoryCell.swift */; };
 		6A48A9BE2396616F00A962DA /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48A9BD2396616F00A962DA /* CoreDataTests.swift */; };
 		6A48A9C023969CF900A962DA /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48A9BF23969CF900A962DA /* CameraHandler.swift */; };
@@ -47,7 +45,6 @@
 		6A4CC2E5239E5353000166D6 /* PrivMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A4CC2E3239E5353000166D6 /* PrivMsgCell.xib */; };
 		6A4CC2E9239EC650000166D6 /* PrivateChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CC2E7239EC650000166D6 /* PrivateChatCell.swift */; };
 		6A4CC2EC239ECC04000166D6 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CC2EB239ECC04000166D6 /* Formatter.swift */; };
-		6A6F9D75239BE6DA00B8C0E9 /* HomeControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6F9D74239BE6DA00B8C0E9 /* HomeControllerTest.swift */; };
 		6A76E01823A136F800216BB2 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A76E01723A136F800216BB2 /* CustomAlert.swift */; };
 		6A7C06BE23A00A8E00E7AE41 /* HomePageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C06BD23A00A8E00E7AE41 /* HomePageUITest.swift */; };
 		6A7D3412238830630079BFB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D3411238830630079BFB7 /* Constants.swift */; };
@@ -57,7 +54,6 @@
 		6A7E6641238430AF00F8340C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6640238430AF00F8340C /* Assets.xcassets */; };
 		6A7E66682384368600F8340C /* .gitlab-ci.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E66672384368600F8340C /* .gitlab-ci.yml */; };
 		6A8DEA7A23967B3200B42FBB /* HostControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8DEA7923967B3200B42FBB /* HostControllerTest.swift */; };
-		6A9C169C2397AF2900448A57 /* HostControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C169B2397AF2800448A57 /* HostControllerUITests.swift */; };
 		6A9C169E2397C1FE00448A57 /* pickState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9C169D2397C1FE00448A57 /* pickState.swift */; };
 		6A9E89C02389461B0069DE71 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B7238946190069DE71 /* Intro.swift */; };
 		6A9E89C22389461B0069DE71 /* QAMessageBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89B8238946190069DE71 /* QAMessageBoard.swift */; };
@@ -161,7 +157,6 @@
 		6A0178B723952F0A000917B0 /* ExpertCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6A08910F23A0F36400F90BAD /* RealmUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtility.swift; sourceTree = "<group>"; };
 		6A14BC55239AC7F20009E676 /* RegisterValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidation.swift; sourceTree = "<group>"; };
-		6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterTest.swift; sourceTree = "<group>"; };
 		6A367A1B238C2D750006D64A /* RealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
 		6A48A9BB2396470600A962DA /* PickCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickCategoryCell.swift; sourceTree = "<group>"; };
 		6A48A9BD2396616F00A962DA /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
@@ -170,7 +165,6 @@
 		6A4CC2E3239E5353000166D6 /* PrivMsgCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivMsgCell.xib; sourceTree = "<group>"; };
 		6A4CC2E7239EC650000166D6 /* PrivateChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateChatCell.swift; sourceTree = "<group>"; };
 		6A4CC2EB239ECC04000166D6 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
-		6A6F9D74239BE6DA00B8C0E9 /* HomeControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerTest.swift; sourceTree = "<group>"; };
 		6A76E01723A136F800216BB2 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		6A7C06BD23A00A8E00E7AE41 /* HomePageUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageUITest.swift; sourceTree = "<group>"; };
 		6A7D3411238830630079BFB7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -181,11 +175,9 @@
 		6A7E6640238430AF00F8340C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A7E6645238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7E664A238430AF00F8340C /* StrawberryPieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrawberryPieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrawberryPieTests.swift; sourceTree = "<group>"; };
 		6A7E6650238430AF00F8340C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A7E66672384368600F8340C /* .gitlab-ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".gitlab-ci.yml"; sourceTree = "<group>"; };
 		6A8DEA7923967B3200B42FBB /* HostControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostControllerTest.swift; sourceTree = "<group>"; };
-		6A9C169B2397AF2800448A57 /* HostControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostControllerUITests.swift; sourceTree = "<group>"; };
 		6A9C169D2397C1FE00448A57 /* pickState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickState.swift; sourceTree = "<group>"; };
 		6A9E89B7238946190069DE71 /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		6A9E89B8238946190069DE71 /* QAMessageBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAMessageBoard.swift; sourceTree = "<group>"; };
@@ -268,7 +260,6 @@
 			children = (
 				684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */,
 				684EEE18239270C800D68EC6 /* Info.plist */,
-				6A9C169B2397AF2800448A57 /* HostControllerUITests.swift */,
 				6A7C06BD23A00A8E00E7AE41 /* HomePageUITest.swift */,
 			);
 			path = StrawberryPieUITests;
@@ -347,11 +338,8 @@
 			children = (
 				6A8DEA7923967B3200B42FBB /* HostControllerTest.swift */,
 				684EEE1E2392847B00D68EC6 /* QAControllerTest.swift */,
-				6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */,
 				6A7E6650238430AF00F8340C /* Info.plist */,
 				6A48A9BD2396616F00A962DA /* CoreDataTests.swift */,
-				6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */,
-				6A6F9D74239BE6DA00B8C0E9 /* HomeControllerTest.swift */,
 				6AAA625B239FF6250078FFE9 /* ObjectTests.swift */,
 			);
 			path = StrawberryPieTests;
@@ -748,7 +736,6 @@
 			files = (
 				684EEE17239270C800D68EC6 /* StrawberryPieUITests.swift in Sources */,
 				6A7C06BE23A00A8E00E7AE41 /* HomePageUITest.swift in Sources */,
-				6A9C169C2397AF2900448A57 /* HostControllerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,11 +804,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A14BC58239AD2060009E676 /* LoginRegisterTest.swift in Sources */,
-				68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */,
 				6A8DEA7A23967B3200B42FBB /* HostControllerTest.swift in Sources */,
 				684EEE1F2392847B00D68EC6 /* QAControllerTest.swift in Sources */,
-				6A6F9D75239BE6DA00B8C0E9 /* HomeControllerTest.swift in Sources */,
 				6AAA625C239FF6250078FFE9 /* ObjectTests.swift in Sources */,
 				6A48A9BE2396616F00A962DA /* CoreDataTests.swift in Sources */,
 			);

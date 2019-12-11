@@ -48,7 +48,7 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Qauncele"
+        self.navigationItem.title = "Qauncel"
         print(RealmDB.sharedInstance.setup)
         setupRealm("default", "default" , false)
         setupSearchBar()
