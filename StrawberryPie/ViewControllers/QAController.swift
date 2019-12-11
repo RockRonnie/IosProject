@@ -312,23 +312,28 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
         switch selectedTab {
             case "chat":
                 let myUser = RealmDB.sharedInstance.getUser()
-                if let myUser = myUser{
-                    let privChat = UIStoryboard(name: "PrivateChat", bundle: nil)
-                    let chatNav = privChat.instantiateViewController(withIdentifier: "PrivateMessageController") as? PrivateMessageController
-                    let otherUser = chatSource?[indexPath.row].messageUser[0]
+                let otherUser = chatSource?[indexPath.row].messageUser[0]
+                if otherUser != myUser {
+                    if let myUser = myUser{
+                        let privChat = UIStoryboard(name: "PrivateChat", bundle: nil)
+                        let chatNav = privChat.instantiateViewController(withIdentifier: "PrivateMessageController") as? PrivateMessageController
+                   
                
-                    let users = List<User>()
-                    if let otherUser = otherUser{
-                    users.append(otherUser)
-                    }
-                    users.append(myUser)
-                    let utility = RealmUtility()
-                    let chat = utility.checkIfChatExists(users)
-                    chatNav?.chatInstance = chat
-                    if let chatNav = chatNav{
-                        self.navigationController?.pushViewController(chatNav, animated: true)
+                        let users = List<User>()
+                        if let otherUser = otherUser{
+                            users.append(otherUser)
+                        }
+                        users.append(myUser)
+                        let utility = RealmUtility()
+                        let chat = utility.checkIfChatExists(users)
+                        chatNav?.chatInstance = chat
+                        if let chatNav = chatNav{
+                            self.navigationController?.pushViewController(chatNav, animated: true)
+                        }else{
+                            print("something went wrong")
+                        }
                     }else{
-                        print("something went wrong")
+                        print("trying to chat with yourself")
                     }
             }
             default:
