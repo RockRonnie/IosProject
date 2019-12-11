@@ -11,9 +11,6 @@ import UIKit
 class QACell: UITableViewCell {
     @IBOutlet weak var QuestionField: UILabel!
     @IBOutlet weak var QuestionUser: UILabel!
-    
     @IBOutlet weak var AnswerField: UILabel!
     @IBOutlet weak var AnswerUser: UILabel!
-    
-    
 }

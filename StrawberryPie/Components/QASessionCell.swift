@@ -15,6 +15,4 @@ class QASessionCell: UITableViewCell {
     @IBOutlet weak var sessionDesc: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var status: UILabel!
-    
-    
 }

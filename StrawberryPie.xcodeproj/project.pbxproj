@@ -37,6 +37,7 @@
 		68F2A76C23A0189C0019673F /* QACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F2A76E23A0189C0019673F /* QACell.xib */; };
 		6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B723952F0A000917B0 /* ExpertCellController.swift */; };
 		6A0178BA23952F15000917B0 /* HomeExpertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */; };
+		6A08911023A0F36400F90BAD /* RealmUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08910F23A0F36400F90BAD /* RealmUtility.swift */; };
 		6A14BC56239AC7F20009E676 /* RegisterValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14BC55239AC7F20009E676 /* RegisterValidation.swift */; };
 		6A14BC58239AD2060009E676 /* LoginRegisterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */; };
 		6A48A9BC2396470600A962DA /* PickCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48A9BB2396470600A962DA /* PickCategoryCell.swift */; };
@@ -157,6 +158,7 @@
 		68F2A77023A018A40019673F /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/QACell.strings; sourceTree = "<group>"; };
 		6A0178B723952F0A000917B0 /* ExpertCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeExpertTableCell.swift; sourceTree = "<group>"; };
+		6A08910F23A0F36400F90BAD /* RealmUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtility.swift; sourceTree = "<group>"; };
 		6A14BC55239AC7F20009E676 /* RegisterValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidation.swift; sourceTree = "<group>"; };
 		6A14BC57239AD2060009E676 /* LoginRegisterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterTest.swift; sourceTree = "<group>"; };
 		6A367A1B238C2D750006D64A /* RealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				6A48A9BF23969CF900A962DA /* CameraHandler.swift */,
 				6AD541F82394075F00DF16DA /* UserImageFetch.swift */,
 				6A4CC2EB239ECC04000166D6 /* Formatter.swift */,
+				6A08910F23A0F36400F90BAD /* RealmUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				6AE09EB0238827760040E87E /* Work+CoreDataProperties.swift in Sources */,
 				6A4CC2E9239EC650000166D6 /* PrivateChatCell.swift in Sources */,
 				6A9E89DB238946450069DE71 /* FeedTableTableViewController.swift in Sources */,
+				6A08911023A0F36400F90BAD /* RealmUtility.swift in Sources */,
 				6A9E89CC2389461B0069DE71 /* Education.swift in Sources */,
 				6A9E89C22389461B0069DE71 /* QAMessageBoard.swift in Sources */,
 				6AD7B91F239FA78E00AB8E62 /* QACell.swift in Sources */,

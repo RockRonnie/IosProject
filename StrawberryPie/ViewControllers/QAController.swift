@@ -307,4 +307,31 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             return cell
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch selectedTab {
+            case "chat":
+                let myUser = RealmDB.sharedInstance.getUser()
+                if let myUser = myUser{
+                    let privChat = UIStoryboard(name: "PrivateChat", bundle: nil)
+                    let chatNav = privChat.instantiateViewController(withIdentifier: "PrivateMessageController") as? PrivateMessageController
+                    let otherUser = chatSource?[indexPath.row].messageUser[0]
+               
+                    let users = List<User>()
+                    if let otherUser = otherUser{
+                    users.append(otherUser)
+                    }
+                    users.append(myUser)
+                    let utility = RealmUtility()
+                    let chat = utility.checkIfChatExists(users)
+                    chatNav?.chatInstance = chat
+                    if let chatNav = chatNav{
+                        self.navigationController?.pushViewController(chatNav, animated: true)
+                    }else{
+                        print("something went wrong")
+                    }
+            }
+            default:
+                print("not chat")
+        }
+    }
 }
