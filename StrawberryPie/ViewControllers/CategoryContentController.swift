@@ -82,8 +82,8 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         cell.sessionDesc?.text = object.sessionDescription
         cell.host?.text = object.host[0].firstName + " " + object.host[0].lastName
         cell.title?.text = object.title
-        cell.category?.text = object.sessionCategory
-        cell.status?.text = statusCheck(object: object)
+        cell.category?.text = NSLocalizedString(object.sessionCategory, value: object.sessionCategory, comment: "Category name")
+        cell.status?.text = NSLocalizedString(statusCheck(object: object), value: statusCheck(object: object), comment: "Session status")
         cell.backgroundColor = judasGrey()
         let border = CALayer()
         border.backgroundColor = CgjudasBlack()
@@ -96,11 +96,11 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     func statusCheck(object: QASession) -> String{
         var status = ""
         if (object.live) {
-            status = "LIVE"
+            status = "Live"
         }else if(object.upcoming){
-            status = "UPCOMING"
+            status = "Upcoming"
         }else if(object.archived){
-            status = "ARCHIVED"
+            status = "Archived"
         }
         return status
     }

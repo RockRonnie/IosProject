@@ -33,9 +33,13 @@ class HostQAController: UIViewController {
     var userSource: User?
     // Tabin valinta, oletuksena chat
     var selectedTab = "chat"
+    let myFormatter = Formatter()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        qaTable.register(UINib(nibName: "ChatMsgCell", bundle: nil), forCellReuseIdentifier: "chatcell")
+        qaTable.register(UINib(nibName: "QACell", bundle: nil), forCellReuseIdentifier: "pinnedcell")
         realm = RealmDB.sharedInstance.realm
         setupNotification()
         populateSources()
@@ -71,6 +75,10 @@ class HostQAController: UIViewController {
         print ("Source data")
         // Title
         titleLabel.text = currentSession?.title ?? "No title"
+        //Tabit
+        scSegment?.setTitle((NSLocalizedString("Topic", value: "Topic", comment: "Selected segment")), forSegmentAt: 0)
+        scSegment?.setTitle((NSLocalizedString("Pinned", value: "Pinned", comment: "Selected segment")), forSegmentAt: 1)
+        scSegment?.setTitle((NSLocalizedString("Chat", value: "Chat", comment: "Selected segment")), forSegmentAt: 2)
         // Session status
         if currentSession?.archived == true {
             liveButton.isHidden = true
@@ -326,24 +334,39 @@ extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextF
         // Täytetään celli valitan tabin perusteella
         switch selectedTab {
         case "topic":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "qacell", for: indexPath)
             cell.textLabel?.text = topicSource
             cell.textLabel?.numberOfLines = 0
+            return cell
         case "pinned":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "pinnedcell", for: indexPath) as! QACell
             if let gotQA = qaSource {
                 if gotQA.QAs.count > 0 {
-                    cell.textLabel?.text = (gotQA.QAs[indexPath.row].question[0].body) + "\n" + (gotQA.QAs[indexPath.row].answer[0].body)
-                    cell.textLabel?.numberOfLines = 0
+                    
+                    cell.QuestionUser.text = gotQA.QAs[indexPath.row].question[0].messageUser[0].userName
+                    cell.QuestionField.text = gotQA.QAs[indexPath.row].question[0].body
+                    cell.AnswerField.text = gotQA.QAs[indexPath.row].answer[0].body
+                    cell.AnswerUser.text = gotQA.QAs[indexPath.row].question[0].messageUser[0].userName
+                    qaTable.rowHeight = 150.0
                 }
             }
+            return cell
         case "chat":
-            
-            cell.textLabel?.text = chatSource?[indexPath.row].body
-            cell.textLabel?.numberOfLines = 2
-            qaTable.rowHeight = 44.0
+            let cell = tableView.dequeueReusableCell(withIdentifier: "chatcell", for: indexPath) as! ChatMsgCell
+            cell.msgBody.text = chatSource?[indexPath.row].body
+            cell.msgSender.text = chatSource?[indexPath.row].messageUser[0].userName
+            let timestamp = chatSource?[indexPath.row].timestamp
+            if let timestamp = timestamp {
+                let myStamp = myFormatter.dateformat(timestamp)
+                cell.msgTimestamp.text = myStamp
+            }
+            qaTable.rowHeight = 75.0
+            return cell
         default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "qacell", for: indexPath)
             cell.textLabel?.text = "🆘 Nyt levis koodi"
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
