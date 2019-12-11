@@ -27,6 +27,7 @@ class PrivateMessageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
     }
     
