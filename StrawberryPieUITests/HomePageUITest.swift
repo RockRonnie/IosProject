@@ -41,8 +41,9 @@ class HomePageUITest: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         let app = XCUIApplication()
-        app.navigationBars["K&V"].buttons["Team Työkkäri ReEdu"].tap()
-        app/*@START_MENU_TOKEN@*/.buttons["Tulossa"]/*[[".segmentedControls.buttons[\"Tulossa\"]",".buttons[\"Tulossa\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        
+        
         
     }
 

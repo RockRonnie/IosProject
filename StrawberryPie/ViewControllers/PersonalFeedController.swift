@@ -43,7 +43,7 @@ class PersonalFeedController: UIViewController {
         hostBtn.setTitleColor(judasBlue(), for: .normal)
         hostBtn.layer.borderWidth = 2.0
         hostBtn.layer.borderColor = judasBlue().cgColor
-        hostBtn.layer.cornerRadius = 10
+        hostBtn.layer.cornerRadius = 5
         setup()
     }
     func setup(){
@@ -275,7 +275,6 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
             
             //Scaleing the image to fit ImageView
-
             cell.profilePic.contentMode = .scaleAspectFit
             cell.backgroundColor = judasGrey()
             //Cell border values
