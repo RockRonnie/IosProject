@@ -76,7 +76,7 @@ class StrawberryPieUITests: XCTestCase {
         app.tables.staticTexts["I will tell you my secrets on how I became even better than Doughnut hating Yngwie"].tap()
         app.buttons["Chat"].tap()
         app.textFields["Enter message"].tap()
-        app.textFields.element.typeText("Test Message")
+        app.typeText("Test Message")
         app.buttons["Send"].tap()
     }
     func testHosting(){
