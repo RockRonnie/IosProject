@@ -30,7 +30,7 @@ class HomePageUITest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func chooseSession() {
+    func chooseSessionAnd() {
         let app = XCUIApplication()
         app.tables/*@START_MENU_TOKEN@*/.staticTexts["This is a short description of my Q and A Sessionnnnnnnnnnnnnnnnn"]/*[[".cells.staticTexts[\"This is a short description of my Q and A Sessionnnnnnnnnnnnnnnnn\"]",".staticTexts[\"This is a short description of my Q and A Sessionnnnnnnnnnnnnnnnn\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app/*@START_MENU_TOKEN@*/.buttons["Chat"]/*[[".segmentedControls.buttons[\"Chat\"]",".buttons[\"Chat\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -41,17 +41,6 @@ class HomePageUITest: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        let app = XCUIApplication()
-        let searchSessionsSearchField = app.searchFields["Search Sessions"]
-        searchSessionsSearchField.tap()
-        searchSessionsSearchField.swipeLeft()
-        app.buttons["Kumoa"].tap()
-        
-        
-    }
-
-    func searchTest(){
         
     }
 }
