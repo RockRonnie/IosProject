@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "9LV-76-Tw9"; */
+"9LV-76-Tw9.text" = "Otsikko";
+
+/* Class = "UIViewController"; title = "CategoryContent"; ObjectID = "PyH-sZ-RWa"; */
+"PyH-sZ-RWa.title" = "Kategorian sisältö";
+
+/* Class = "UINavigationItem"; title = "Categories"; ObjectID = "QFS-Jk-WCn"; */
+"QFS-Jk-WCn.title" = "Kategoriat";
+
+/* Class = "UILabel"; text = "DESC"; ObjectID = "QYs-gz-82Y"; */
+"QYs-gz-82Y.text" = "Kuvaus";
+
+/* Class = "UITabBarItem"; title = "Categories"; ObjectID = "ZcQ-Fu-cAE"; */
+"ZcQ-Fu-cAE.title" = "Kategoriat";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "jcP-Nf-RJl"; */
+"jcP-Nf-RJl.text" = "Nimi";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nw8-CL-wRN"; */
+"nw8-CL-wRN.text" = "Luokitus";

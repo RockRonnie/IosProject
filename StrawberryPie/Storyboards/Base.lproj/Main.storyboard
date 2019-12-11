@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ugR-Qj-qXe">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,6 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="1" green="0.12947133720000001" blue="0.045129191749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="x37-Hb-ozh" kind="relationship" relationship="viewControllers" id="y6b-74-IY9"/>
@@ -72,7 +73,7 @@
         <scene sceneID="Bxn-gY-LKe">
             <objects>
                 <viewControllerPlaceholder storyboardName="Home" id="x37-Hb-ozh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rr5-qQ-KHL"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icons8-home-10" id="rr5-qQ-KHL"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FjV-78-yHA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,7 +83,7 @@
         <scene sceneID="EPa-Zh-W1m">
             <objects>
                 <viewControllerPlaceholder storyboardName="Categories" id="pwG-Mq-SaR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="RD7-fD-jSH"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icons8-categorize-30" id="RD7-fD-jSH"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7T-wV-813" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,8 +100,12 @@
             <point key="canvasLocation" x="-859" y="187"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-categorize-30" width="30" height="30"/>
+        <image name="icons8-home-10" width="10" height="10"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jO1-JY-mv8"/>
-        <segue reference="2Ae-Kh-JK6"/>
+        <segue reference="h2I-fJ-zbA"/>
+        <segue reference="y6b-74-IY9"/>
     </inferredMetricsTieBreakers>
 </document>

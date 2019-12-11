@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Message"; ObjectID = "0Kj-Pm-OUE"; */
+"0Kj-Pm-OUE.text" = "Viesti";
+
+/* Class = "UILabel"; text = "Timestamp"; ObjectID = "19r-PX-7ie"; */
+"19r-PX-7ie.text" = "Aikaleima";
+
+/* Class = "UILabel"; text = "USERNAME"; ObjectID = "7n6-5X-wuj"; */
+"7n6-5X-wuj.text" = "Käyttäjänimi";
+
+/* Class = "UILabel"; text = "Last message:"; ObjectID = "Fej-9o-nTs"; */
+"Fej-9o-nTs.text" = "Uusin viesti:";
+
+/* Class = "UILabel"; text = "Private Chat"; ObjectID = "Hsw-X4-xVj"; */
+"Hsw-X4-xVj.text" = "Yksityisviesti";
+
+/* Class = "UILabel"; text = "USERNAME"; ObjectID = "aqf-Rd-aNW"; */
+"aqf-Rd-aNW.text" = "Käyttäjätunnus";

@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "4Ha-Fs-PaS"; */
+"4Ha-Fs-PaS.text" = "Otsikko";
+
+/* Class = "UIButton"; normalTitle = "Host A session"; ObjectID = "CgH-YS-WS4"; */
+"CgH-YS-WS4.normalTitle" = "Luo tapahtuma";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "HNv-13-mfr"; */
+"HNv-13-mfr.text" = "Nimi";
+
+/* Class = "UIButton"; normalTitle = "Private Messages"; ObjectID = "Lio-XU-Wsw"; */
+"Lio-XU-Wsw.normalTitle" = "Yksityisviestit";
+
+/* Class = "UIButton"; normalTitle = "Personal Feed"; ObjectID = "SFj-GP-f2z"; */
+"SFj-GP-f2z.normalTitle" = "Oma syöte";
+
+/* Class = "UIButton"; normalTitle = "Q&A"; ObjectID = "a2z-sU-bkc"; */
+"a2z-sU-bkc.normalTitle" = "K&V";
+
+/* Class = "UITabBarItem"; title = "Feed"; ObjectID = "dMS-is-V3t"; */
+"dMS-is-V3t.title" = "Syöte";
+
+/* Class = "UILabel"; text = "DESC"; ObjectID = "qkd-aQ-35f"; */
+"qkd-aQ-35f.text" = "Kuvaus";

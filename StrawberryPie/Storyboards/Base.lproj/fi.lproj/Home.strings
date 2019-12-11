@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "5NC-vv-yEL"; */
+"5NC-vv-yEL.text" = "Otsikko";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "72e-ts-Nwy"; */
+"72e-ts-Nwy.title" = "Koti";
+
+/* Class = "UIButton"; normalTitle = "Filter"; ObjectID = "8fa-fE-m1Z"; */
+"8fa-fE-m1Z.normalTitle" = "Suodatin";
+
+/* Class = "UILabel"; text = "DESC"; ObjectID = "Iak-vB-mzj"; */
+"Iak-vB-mzj.text" = "Kuvaus";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "LWX-aB-rKV"; */
+"LWX-aB-rKV.text" = "Nimi";
+
+/* Class = "UILabel"; text = "Get help from the experts"; ObjectID = "noi-15-Wgc"; */
+"noi-15-Wgc.text" = "Asiantuntijat apunasi, kysymyksiä & vastauksia";

@@ -5,6 +5,7 @@
 //  Created by Ilias Doukas on 22/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// Reusable custom tableviewcontroller
 
 import UIKit
 
@@ -16,7 +17,6 @@ class QaTable: UITableViewController {
         super.viewDidLoad()
         
     }
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (tableSource.count)

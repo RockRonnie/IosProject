@@ -5,134 +5,253 @@
 //  Created by iosdev on 23/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// This viewcontroller is used for creating new sessions. The creator must have an expert status.
 
 import UIKit
 import RealmSwift
 
 
 class HostController: UIViewController {
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var eduTextField: UITextField!
+    @IBOutlet weak var profTextField: UITextField!
+    @IBOutlet weak var pickCategory: UIButton!
+    @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var introTextView: UITextView!
-    @IBOutlet weak var titleField: UITextField!
+    let main = UIStoryboard(name: "Main", bundle: nil)
+    let transparentView = UIView()
+    let tableView = UITableView()
+    var selectedButton = UIButton()
     var sessionTitle: String?
     var sessionIntro: String?
-    var objectCount = 0
+    var sessionDesc: String?
+    var selectedCategory: String?
+    var selectedProfession: String?
+    var selectedEducation: String?
     var createdSession: QASession?
     var realm: Realm!
     var thisUser: String?
+    var thisUserObject: User?
+    var category = Category()
+    var allCategories: Array<String> = []
     
     override func viewDidLoad() {
-        realm = RealmDB.sharedInstance.realm
-        print(RealmDB.sharedInstance.user?.isAdmin ?? "this sucks")
-        print(RealmDB.sharedInstance.user?.identity ?? "huoh")
-        thisUser = RealmDB.sharedInstance.user?.identity ?? "Not"
-        usernameLabel.text = thisUser
         super.viewDidLoad()
-        titleField.delegate = self
+        setupDatabase()
+        self.view.backgroundColor = judasGrey()
+        setupText()
+    }
+    
+    //setting up Realm and CoreData
+    func setupDatabase(){
+        realm = RealmDB.sharedInstance.realm
+        category.generateData()
+        thisUser = RealmDB.sharedInstance.user?.identity ?? "Not"
+        thisUserObject = RealmDB.sharedInstance.getUser()
+        allCategories = category.getNames()
+    }
+    
+    func setupText(){
+        
+        // setting up the textfields and username label
+        usernameLabel.text = thisUserObject?.userName ?? "no name found"
+        titleTextField.placeholder = "Session title"
+        profTextField.placeholder = "Profession"
+        eduTextField.placeholder = "Education"
+        
+        // Text Field/View Delegates
+        titleTextField.delegate = self
         introTextView.delegate = self
-        // Do any additional setup after loading the view.
+        descTextView.delegate = self
+        profTextField.delegate = self
+        eduTextField.delegate = self
+        
+        // Tableview delegate / datasource / cell register methods
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(PickCategoryCell.self, forCellReuseIdentifier: "Cell")
     }
-    //Button action
+    
+    //Button actions for clearing the fields and creating the session
     @IBAction func clearButton(_ sender: UIButton) {
-        introTextView.text = ""
-        titleField.text = ""
+        clear()
     }
+    
     @IBAction func createButton(_ sender: Any) {
         print("Starting the QA Session creation sequence")
+        validation()
+    }
+    
+    // clearing the fields
+    func clear() {
+        introTextView.text = ""
+        titleTextField.text = ""
+        descTextView.text = ""
+        profTextField.text = ""
+        eduTextField.text = ""
+    }
+    
+    // validating the fields so that none of them is empty, creating a new session, then adding it to the global realm
+    func validation(){
+        if(sessionDesc != nil && sessionIntro != nil && sessionTitle != nil && selectedEducation != nil && selectedProfession != nil && selectedCategory != nil){
+            sessiontoRealm()
+        }else{
+            let alert = UIAlertController(title: "Validation failed", message: "Please fill all the field and select a category", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated:true,completion: nil)
+        }
+    }
+    
+    // Creating the session object and sending it to realm cloud
+    func sessiontoRealm() {
+        /*let personalFeed: UIViewController? = feed.instantiateViewController(withIdentifier: "PersonalFeedController") as UIViewController*/
+        let perFeed: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
         createdSession = createSession()
-        print(createdSession ?? "No object")
         if let createdSession = createdSession {
             try! realm.write {
                 realm.add(createdSession)
             }
+            self.present(perFeed!, animated:true, completion: nil)
         }
-        objectCount += 1
     }
     
-    //functions for creating the objects
+    // function for making the category tableview visible
+    func addTransparentView(frames: CGRect) {
+        let window = UIApplication.shared.keyWindow
+        transparentView.frame = window?.frame ?? self.view.frame
+        self.view.addSubview(transparentView)
+        
+        tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        self.view.addSubview(tableView)
+        tableView.layer.cornerRadius = 5
+        
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        tableView.reloadData()
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+        transparentView.addGestureRecognizer(tapgesture)
+        transparentView.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0.5
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5, width: frames.width, height: CGFloat(self.allCategories.count * 50))
+        }, completion: nil)
+    }
+    
+    // function for removing the transparent view (making the tableview for selecting the category invisible)
+    @objc func removeTransparentView() {
+        let frames = selectedButton.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transparentView.alpha = 0
+            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        }, completion: nil)
+    }
+  
+    // functions for the dropdown category menu
+    @IBAction func categoryButton(_ sender: UIButton) {
+        selectedButton = pickCategory
+        addTransparentView(frames: pickCategory.frame)
+    }
+
+    func setCategory(category: String) {
+        selectedCategory = category
+    }
+    
+    //functions for creating the Realm objects
     func createSession() -> QASession{
         print("Creating Session object")
-            let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionTitle ?? "session description", "host": [createUser()], "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()]])
+        let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionDesc ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "sessionCategory": selectedCategory ?? "No category", "profession": selectedProfession ?? "no profession", "education": selectedEducation ?? "no education", "upcoming":true])
             return newSession
     }
+    
     func createChat() -> Chat {
         print("creatin Chat object")
-        let newChat = Chat(value:["title": sessionTitle])
+        let newChat = Chat(value:["title": sessionTitle ?? "No title"])
         return newChat
     }
-    func createUser() -> User {
-        print("Creating a user object to serve as a host")
-            let newUser = User(value:["userID": thisUser ?? "dummyuser" ,"userName": "user\(objectCount)", "firstName": "firstname user\(objectCount)", "lastName": "lastname user\(objectCount)", "info": "info for user \(objectCount)"])
-            return newUser
-    }
+   
     func createIntro() -> Intro {
         print("Creating Session Intro object")
         let newIntro = Intro(value: ["title": sessionTitle ?? "Session Title", "body": sessionIntro ?? "Session intro"])
         return newIntro
     }
+    
     func createBoard() -> QAMessageBoard {
         print("Creating message board object")
         let newBoard = QAMessageBoard()
         return newBoard
     }
-    /*
-    func getSession() -> QASession {
-            let realmSession = realm.objects(QASession.self).sorted(byKeyPath: "sessionID", ascending: false)
-        return realmSession[0]
-    }
- */
-    // Initializing a realm object
-    // (value: ["brand": "BMW", "year": 1980])
- 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
-
 
 extension HostController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
         print("should begin editing")
         return true
-    } // return NO to disallow editing.
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField){
         print("first responder!")
-    } // became first responder
+    }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool{
-        sessionTitle = textField.text
-        print("Textfield should end editing")
-        if(sessionTitle != nil){
-            return true
+        if (textField == titleTextField){
+            sessionTitle = textField.text
+            if(sessionTitle != nil){
+                return true
+            }else{
+                return false
+            }
+        }else if(textField == profTextField){
+            selectedProfession = textField.text
+            if(selectedProfession != nil){
+                return true
+            }else{
+                return false
+            }
+        }else if(textField == eduTextField){
+            selectedEducation = textField.text
+            if(selectedEducation != nil){
+                return true
+            }else{
+                return false
+            }
         }else{
             return false
         }
-    }// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end1
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField){
         print("textfield did end editing")
-        if(sessionTitle != nil){
-            textField.resignFirstResponder()
-        }else{
-            print("no name selected")
-            textField.becomeFirstResponder()
+       
+        if (textField == titleTextField){
+            if(sessionTitle != nil){
+                textField.resignFirstResponder()
+            }else{
+                print("no title")
+                textField.becomeFirstResponder()
+            }
+        }else if(textField == profTextField){
+            if(selectedProfession != nil){
+                textField.resignFirstResponder()
+            }else{
+                print("no profession")
+                textField.becomeFirstResponder()
+            }
+        }else if(textField == eduTextField){
+            if(selectedEducation != nil){
+                textField.resignFirstResponder()
+            }else{
+                print("no education")
+                textField.becomeFirstResponder()
+            }
         }
+    }
         
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
             print("changing characters")
-            let allowedCharacters = CharacterSet.letters
-            let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
+            return true
         } // return NO to not change text
         
         
@@ -142,20 +261,45 @@ extension HostController: UITextFieldDelegate {
         
         func textFieldShouldReturn(_ textField: UITextField) -> Bool{
             print("returning")
-            sessionTitle = textField.text
-            if (sessionTitle != ""){
-                textField.resignFirstResponder()
-                return true
+            if(textField == titleTextField){
+                sessionTitle = textField.text
+                if (sessionTitle != ""){
+                    textField.resignFirstResponder()
+                    return true
+                }else{
+                    let alert = UIAlertController(title: "Incorrect title", message: "Please input a proper session title", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated:true,completion: nil)
+                    return false
+                }
+            }else if(textField == profTextField){
+                selectedProfession = textField.text
+                if (selectedProfession != ""){
+                    textField.resignFirstResponder()
+                    return true
+                }else{
+                    let alert = UIAlertController(title: "Incorrect profession", message: "Please input a proper profession", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated:true,completion: nil)
+                    return false
+                }
+            }else if(textField == eduTextField){
+                selectedEducation = textField.text
+                if (selectedEducation != ""){
+                    textField.resignFirstResponder()
+                    return true
+                }else{
+                    let alert = UIAlertController(title: "Incorrect education", message: "Please input a proper education", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated:true,completion: nil)
+                    return false
+                }
             }else{
-                let alert = UIAlertController(title: "Incorrect title", message: "Please input a proper session title", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated:true,completion: nil)
                 return false
             }
-            
-        } // called when 'return' key pressed. return NO to ignore.
+        }
     }
-}// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+
 extension HostController: UITextViewDelegate{
         
         func textViewShouldBeginEditing(_ textView: UITextView) -> Bool{
@@ -168,10 +312,21 @@ extension HostController: UITextViewDelegate{
         } // became first responder
         
         func textViewShouldEndEditing(_ textView: UITextView) -> Bool{
-            sessionIntro = textView.text
-            print("Textfield should end editing")
-            if(sessionIntro != nil){
-                return true
+            print("TextView should end editing")
+            if (textView == introTextView){
+                sessionIntro = textView.text
+                if(sessionIntro != nil){
+                    return true
+                }else{
+                return false
+                }
+            }else if(textView == descTextView){
+                sessionDesc = textView.text
+                if(sessionDesc != nil){
+                    return true
+                }else{
+                    return false
+                }
             }else{
                 return false
             }
@@ -179,18 +334,26 @@ extension HostController: UITextViewDelegate{
         
         func textViewDidEndEditing(_ textView: UITextView){
             print("textfield did end editing")
-            if(sessionIntro != nil){
-                textView.resignFirstResponder()
-            }else{
-                print("no name selected")
-                textView.becomeFirstResponder()
+
+            if (textView == introTextView){
+                if(sessionIntro != nil){
+                    textView.resignFirstResponder()
+                }else{
+                    print("no intro")
+                    textView.becomeFirstResponder()
+                }
+            }else if(textView == descTextView){
+                if(sessionIntro != nil){
+                    textView.resignFirstResponder()
+                }else{
+                    print("no description")
+                    textView.becomeFirstResponder()
+                }
             }
-    }
+        }
             func textView(_ textView: UITextView, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
                 print("changing characters")
-                let allowedCharacters = CharacterSet.letters
-                let characterSet = CharacterSet(charactersIn: string)
-                return allowedCharacters.isSuperset(of: characterSet)
+                return true
             } // return NO to not change text
             
             
@@ -200,17 +363,51 @@ extension HostController: UITextViewDelegate{
             
             func textViewShouldReturn(_ textView: UITextView) -> Bool{
                 print("returning")
-                sessionTitle = textView.text
-                if (sessionTitle != ""){
-                    textView.resignFirstResponder()
-                    return true
+                if(textView == introTextView){
+                    sessionIntro = textView.text
+                    if (sessionIntro != ""){
+                        textView.resignFirstResponder()
+                        return true
+                    }else{
+                        let alert = UIAlertController(title: "Incorrect intro", message: "Please input a proper session intro", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated:true,completion: nil)
+                        return false
+                    }
+                }else if(textView == descTextView){
+                    sessionDesc = textView.text
+                    if (sessionDesc != ""){
+                        textView.resignFirstResponder()
+                        return true
+                    }else{
+                        let alert = UIAlertController(title: "Incorrect description", message: "Please input a proper session description", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated:true,completion: nil)
+                        return false
+                    }
                 }else{
-                    let alert = UIAlertController(title: "Incorrect title", message: "Please input a proper session title", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated:true,completion: nil)
                     return false
                 }
-                
             } // called when 'return' key pressed. return NO to ignore.
+}
+extension HostController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allCategories.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = allCategories[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        setCategory(category: allCategories[indexPath.row])
+        selectedButton.setTitle(allCategories[indexPath.row], for: .normal)
+        removeTransparentView()
+    }
 }

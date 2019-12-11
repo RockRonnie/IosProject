@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "Topic"; ObjectID = "Kaj-il-Skr"; */
+"Kaj-il-Skr.normalTitle" = "Aihe";
+
+/* Class = "UIButton"; normalTitle = "Pinned"; ObjectID = "Pcg-uf-Kez"; */
+"Pcg-uf-Kez.normalTitle" = "Nostot";
+
+/* Class = "UITextField"; placeholder = "Enter message"; ObjectID = "YHw-E5-McQ"; */
+"YHw-E5-McQ.placeholder" = "Kirjoita viesti";
+
+/* Class = "UIButton"; normalTitle = "Chat"; ObjectID = "fQB-j1-CVy"; */
+"fQB-j1-CVy.normalTitle" = "Chat";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "n9P-ZH-Ho3"; */
+"n9P-ZH-Ho3.normalTitle" = "Lähetä";
+
+/* Class = "UIViewController"; title = "QA Scene"; ObjectID = "rbh-wZ-ci6"; */
+"rbh-wZ-ci6.title" = "Kysymykset ja vastaukset";
+
+/* Class = "UILabel"; text = "QA Title"; ObjectID = "zLm-GV-bOL"; */
+"zLm-GV-bOL.text" = "Otsikko";

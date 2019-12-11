@@ -19,8 +19,7 @@ public class Category: NSManagedObject {
         fetchRequest.predicate = NSPredicate(format: "categoryName == %@", name)
         do {
             let result = try managedContext.fetch(fetchRequest)
-            if result.count < 1 {
-                
+            if result.count < 1 { //Chekcs if there are any results. If not, allows to greate new entity
                 guard let imageUrl = Bundle.main.url(forResource: imageName, withExtension: "jpg", subdirectory: "Images") else {return}
                 let categoryEntity = NSEntityDescription.entity(forEntityName: "Category", in: managedContext)!
                 let category = NSManagedObject(entity: categoryEntity, insertInto: managedContext)
@@ -56,7 +55,6 @@ public class Category: NSManagedObject {
             print(error)
         }
     }
-    
     //Fetches data from the given gategory
     func getCategoryData(name: String){
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return}
@@ -73,7 +71,7 @@ public class Category: NSManagedObject {
             print("There was an error processing your request: \(error)")
         }
     }
-    //Returns the category names in an array of strings
+    //Returns the category names in an array of strings. Sorted
     func getNames() -> Array<String>{
         var names = [String]()
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return [""]}
@@ -90,7 +88,7 @@ public class Category: NSManagedObject {
         }
         return names
     }
-    //Returns category images in an array of UIImages
+    //Returns category images in an array of UIImages. Sorted
     func getImages() ->Array<UIImage>{
         var urls = [UIImage]()
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return urls}
@@ -110,7 +108,7 @@ public class Category: NSManagedObject {
         }
         return urls
     }
-    //This Should return the object
+    //Returns Given Category Object
     func getEntity(name: String) -> [NSManagedObject] {
         var test = [NSManagedObject]()
         guard let appDel = UIApplication.shared.delegate as? AppDelegate else {return test}
@@ -144,19 +142,19 @@ public class Category: NSManagedObject {
             print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
         }
     }
-    //Generates all the categories. Do not touch. Will break app
+    //Generates all the categories. Don't touch imageNames. Will break image
     func generateData(){
-        createCategoryData(name: "ICT", summary: "Computers and stuff you know", imageName: "ICTImage",id: 0)
-        createCategoryData(name: "Humanities and Arts", summary: "punch of hippies",imageName: "ArtImage",id: 1)
-        createCategoryData(name: "Social sectors", summary: "Studies and work related to society",imageName: "SocietyImage",id: 2)
-        createCategoryData(name: "Education Sciences", summary: "",imageName: "EducationImage",id: 3)
-        createCategoryData(name: "Trade, Adminstration and Law", summary: "",imageName: "lawImage", id: 4)
-        createCategoryData(name: "Natural Sciences", summary: "",imageName: "NaturalImage", id: 5)
-        createCategoryData(name: "Technical Fields", summary: "", imageName: "TechImage", id: 6)
-        createCategoryData(name: "Agriculture and Forestry", summary: "",imageName: "AgricultureImage",id:7)
-        createCategoryData(name: "Health and Wellbeing", summary: "", imageName: "HealthcareImage",id:8)
-        createCategoryData(name: "Service Industry", summary: "", imageName: "ServicesImage", id:9)
-        createCategoryData(name: "General Education", summary: "", imageName: "GeneralEduImage",id:10)
-        createCategoryData(name: "Misc & Unkown", summary: "", imageName: "MiscImage", id:11)
+        createCategoryData(name: "ICT", summary: "Everything related to the Information and Communication industry. Careers such as programming, cloud engineering, networks, etc.", imageName: "ICTImage",id: 0)
+        createCategoryData(name: "Humanities and Arts", summary: "Careers related to for example language studies or different arts and their forms",imageName: "ArtImage",id: 1)
+        createCategoryData(name: "Social Sectors", summary: "Careers related to Society and Social sectors.",imageName: "SocietyImage",id: 2)
+        createCategoryData(name: "Education Sciences", summary: "Careers related teaching and education.",imageName: "EducationImage",id: 3)
+        createCategoryData(name: "Trade, Administration and Law", summary: "Careers related to law, adminstration and trade. ",imageName: "lawImage", id: 4)
+        createCategoryData(name: "Natural Sciences", summary: "Natural Sciences such as chemistry, physics, geography etc.",imageName: "NaturalImage", id: 5)
+        createCategoryData(name: "Technical Fields", summary: "Anything related to usual technology. Electrical Engineering, Automation Engineering, Building planning etc.", imageName: "TechImage", id: 6)
+        createCategoryData(name: "Agriculture and Forestry", summary: "Careers related to maintaining forests, farming and maintaining catle for example.",imageName: "AgricultureImage",id:7)
+        createCategoryData(name: "Health and Wellbeing", summary: "Careers related to health and wellbeing. For example nursing, doctors, personal trainers.", imageName: "HealthcareImage",id:8)
+        createCategoryData(name: "Service Industry", summary: "Industry related to different services such as waitering etc.", imageName: "ServicesImage", id:9)
+        createCategoryData(name: "General Education", summary: "Careers that can be accessed via General Education.", imageName: "GeneralEduImage",id:10)
+        createCategoryData(name: "Misc & Unknown", summary: "Everything that isn't included in the other categories.", imageName: "MiscImage", id:11)
     }
 }
