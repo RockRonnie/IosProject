@@ -27,6 +27,7 @@ class PrivateMessageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
     }
     
@@ -158,7 +159,7 @@ extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 175
     }
 }
 

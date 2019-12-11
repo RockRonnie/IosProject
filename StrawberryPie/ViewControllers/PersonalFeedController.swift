@@ -132,11 +132,14 @@ class PersonalFeedController: UIViewController {
         if let user = user{
             if user.userInterests.isEmpty {
                 recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+                 self.personalFeedTableView.reloadData()
             }else{
                 recommendedSessions = realm?.objects(QASession.self).filter("sessionCategory IN %@", user.userInterests)
+                 self.personalFeedTableView.reloadData()
             }
         }else{
             recommendedSessions = realm?.objects(QASession.self).filter("upcoming = true")
+             self.personalFeedTableView.reloadData()
         }
      
     }
@@ -145,6 +148,7 @@ class PersonalFeedController: UIViewController {
             let answeredQA = realm?.objects(QA.self).filter("ANY question.messageUser.userID == %@", user.userID)
             if let answeredQA = answeredQA {
                 self.personalQA = Array(answeredQA)
+                 self.personalFeedTableView.reloadData()
             }
         }
     }
@@ -153,6 +157,7 @@ class PersonalFeedController: UIViewController {
             let chats = realm?.objects(Chat.self).filter("ANY userList.userID = %@", user.userID)
             if let chats = chats{
                 self.privateChats = Array(chats)
+                self.personalFeedTableView.reloadData()
             }
         }
     }
@@ -164,6 +169,7 @@ class PersonalFeedController: UIViewController {
         print(user?.userID ?? "Dick")
         if let user = user{
             hostedSessions = realm?.objects(QASession.self).filter("ANY host.userID = %@", user.userID)
+            self.personalFeedTableView.reloadData()
             print("läpi meni")
         }
     }
@@ -172,7 +178,6 @@ class PersonalFeedController: UIViewController {
         let foundSession = realm?.objects(QASession.self).filter("ANY QABoard.QAs.QAID = %@", qa.QAID).first
         if let foundSession = foundSession{
             return foundSession
-            
         }
         else{
             print("Something went wrong")
