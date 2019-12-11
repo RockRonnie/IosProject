@@ -5,6 +5,7 @@
 //  Created by Joachim Grotenfelt on 22/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+//  This swift file is the controller for the Home-page and all its' elements.
 
 import Foundation
 import UIKit
