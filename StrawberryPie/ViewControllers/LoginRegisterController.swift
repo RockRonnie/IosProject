@@ -2,11 +2,9 @@
 //  LoginRegisterController.swift
 //  StrawberryPie
 //
-//  Created by Markus Saronsalo on 19/11/2019.
+//  Created and commented by Markus Saronsalo on 19/11/2019.
 //  Some styling by Joachim Grotenfelt
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
-//  This class handles the login and register functions
-
 import UIKit
 import RealmSwift
 // Login Register class, handles the Login and register functions. Code could be cleaned more, but time restraints caused lowered priority for this.
