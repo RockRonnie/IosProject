@@ -184,22 +184,14 @@ class ProfileController: UIViewController, UITextViewDelegate {
     switch sender.selectedSegmentIndex {
     case 0:
       print("About Me")
-      interestTableView.isHidden = true
       setState(state: "About Me")
-      if xtraInfo.text != "" {
+      interestTableView.isHidden = true
       xtraInfo.isHidden = false
-      } else {
-      xtraInfo.isHidden = true
-      }
       case 1:
       print("Interests")
-      xtraInfo.isHidden = true
       setState(state: "Interests")
-      if interestTableView.visibleCells.isEmpty {
-      interestTableView.isHidden = true
-      } else {
       interestTableView.isHidden = false
-      }
+      xtraInfo.isHidden = true
     default:
       print("ERROR: Segment Error")
     }
@@ -207,10 +199,10 @@ class ProfileController: UIViewController, UITextViewDelegate {
   func getState(){
     switch selectedState {
     case "About Me":
-      if userInfoView.text == ""{
-        userInfoView.isHidden = true
+      if xtraInfo.text == "" && xtraInfo.isEditable == false {
+        xtraInfo.isHidden = true
       } else {
-        userInfoView.isHidden = false
+        xtraInfo.isHidden = false
       }
     case "Interests":
       if interestTableView.visibleCells.isEmpty {
@@ -229,7 +221,6 @@ class ProfileController: UIViewController, UITextViewDelegate {
       userInfoView.isEditable = true
       xtraInfo.isEditable = true
       realNameLabel.isEnabled = true
-      getState()
       editProfileBtn.setTitle(NSLocalizedString("Save", value: "Save", comment: "Save"), for: .normal)
       // Change colors of editable fields
       userInfoView.layer.borderWidth = 3
@@ -260,16 +251,14 @@ class ProfileController: UIViewController, UITextViewDelegate {
             userInfoView.text = NSLocalizedString("Occupation not defined", value: "Occupation not defined", comment: "occupation")
           }
           if xtraInfo.text == "" {
-            xtraInfo.text = NSLocalizedString("No info given", value: "No info given", comment: "fullname")
+          xtraInfo.text = NSLocalizedString("No info given", value: "No info given", comment: "fullname")
           }
-          getState()
           editProfileBtn.setTitle(NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile"), for: .normal)
-          // Change borders back to black
           xtraInfo.layer.borderWidth = 2.0
           xtraInfo.layer.borderColor = judasBlack().cgColor
           userInfoView.layer.borderWidth = 2.0
           userInfoView.layer.borderColor = judasBlack().cgColor
-          realNameLabel.layer.borderWidth = 2
+          realNameLabel.layer.borderWidth = 2.0
           realNameLabel.layer.borderColor = judasBlack().cgColor
         }
       }
