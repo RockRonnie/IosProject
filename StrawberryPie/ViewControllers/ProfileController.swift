@@ -316,7 +316,7 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
   // Populate tableview with CoreData
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    cell.textLabel?.text = user?.userInterests[indexPath.item] ?? ""
+    cell.textLabel?.text = NSLocalizedString((user?.userInterests[indexPath.item] ?? ""), value: (user?.userInterests[indexPath.item] ?? ""), comment: "Category name")
     return cell
   }
   

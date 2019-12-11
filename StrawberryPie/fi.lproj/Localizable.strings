@@ -31,6 +31,7 @@
 "Live" = "Käynnissä";
 "Upcoming" = "Tulossa";
 "Archived" = "Arkistoidut";
+"Search sessions" = "Etsi tapahtumia";
 
 // LoginRegisterController
 "Do it later" = "Tee se myöhemmin";

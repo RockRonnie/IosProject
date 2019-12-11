@@ -27,6 +27,7 @@
 		6869F7F7239D05D400694E3D /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7FA239D05D400694E3D /* Host.storyboard */; };
 		6869F7F8239D05D400694E3D /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6869F7FA239D05D400694E3D /* Host.storyboard */; };
 		689803D9238A860400FE39CF /* QaTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 689803D8238A860400FE39CF /* QaTest.storyboard */; };
+		689A912023A19968008ADC36 /* PrivateChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 689A912223A19968008ADC36 /* PrivateChatCell.xib */; };
 		68B0A18F2391934B00404D7A /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A367A1B238C2D750006D64A /* RealmDB.swift */; };
 		68B0A191239193A900404D7A /* HostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E89E72389466A0069DE71 /* HostController.swift */; };
 		68B0A19C23919C8000404D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E6640238430AF00F8340C /* Assets.xcassets */; };
@@ -46,7 +47,6 @@
 		6A4CC2E4239E5353000166D6 /* PrivMsgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CC2E2239E5353000166D6 /* PrivMsgCell.swift */; };
 		6A4CC2E5239E5353000166D6 /* PrivMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A4CC2E3239E5353000166D6 /* PrivMsgCell.xib */; };
 		6A4CC2E9239EC650000166D6 /* PrivateChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CC2E7239EC650000166D6 /* PrivateChatCell.swift */; };
-		6A4CC2EA239EC650000166D6 /* PrivateChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A4CC2E8239EC650000166D6 /* PrivateChatCell.xib */; };
 		6A4CC2EC239ECC04000166D6 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CC2EB239ECC04000166D6 /* Formatter.swift */; };
 		6A6F9D75239BE6DA00B8C0E9 /* HomeControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6F9D74239BE6DA00B8C0E9 /* HomeControllerTest.swift */; };
 		6A76E01823A136F800216BB2 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A76E01723A136F800216BB2 /* CustomAlert.swift */; };
@@ -154,6 +154,8 @@
 		6869F7F9239D05D400694E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Host.storyboard; sourceTree = "<group>"; };
 		6869F7FC239D05DC00694E3D /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Host.strings; sourceTree = "<group>"; };
 		689803D8238A860400FE39CF /* QaTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QaTest.storyboard; sourceTree = "<group>"; };
+		689A912123A19968008ADC36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PrivateChatCell.xib; sourceTree = "<group>"; };
+		689A912423A1996E008ADC36 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/PrivateChatCell.strings; sourceTree = "<group>"; };
 		68D7B6352398237E0082BFBA /* HostQAController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostQAController.swift; sourceTree = "<group>"; };
 		68E1B8B923958378003055E4 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F2A76D23A0189C0019673F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/QACell.xib; sourceTree = "<group>"; };
@@ -170,7 +172,6 @@
 		6A4CC2E2239E5353000166D6 /* PrivMsgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivMsgCell.swift; sourceTree = "<group>"; };
 		6A4CC2E3239E5353000166D6 /* PrivMsgCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivMsgCell.xib; sourceTree = "<group>"; };
 		6A4CC2E7239EC650000166D6 /* PrivateChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateChatCell.swift; sourceTree = "<group>"; };
-		6A4CC2E8239EC650000166D6 /* PrivateChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateChatCell.xib; sourceTree = "<group>"; };
 		6A4CC2EB239ECC04000166D6 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		6A6F9D74239BE6DA00B8C0E9 /* HomeControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerTest.swift; sourceTree = "<group>"; };
 		6A76E01723A136F800216BB2 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
@@ -427,7 +428,7 @@
 				6A4CC2E2239E5353000166D6 /* PrivMsgCell.swift */,
 				6A4CC2E3239E5353000166D6 /* PrivMsgCell.xib */,
 				6A4CC2E7239EC650000166D6 /* PrivateChatCell.swift */,
-				6A4CC2E8239EC650000166D6 /* PrivateChatCell.xib */,
+				689A912223A19968008ADC36 /* PrivateChatCell.xib */,
 				6AD7B91D239FA78E00AB8E62 /* QACell.swift */,
 				68F2A76E23A0189C0019673F /* QACell.xib */,
 				6AD7B921239FBB8100AB8E62 /* ChatMsgCell.swift */,
@@ -624,7 +625,7 @@
 				6869F7CD239CF8F000694E3D /* Localizable.strings in Resources */,
 				689803D9238A860400FE39CF /* QaTest.storyboard in Resources */,
 				6AD7B924239FBB8100AB8E62 /* ChatMsgCell.xib in Resources */,
-				6A4CC2EA239EC650000166D6 /* PrivateChatCell.xib in Resources */,
+				689A912023A19968008ADC36 /* PrivateChatCell.xib in Resources */,
 				68F2A76C23A0189C0019673F /* QACell.xib in Resources */,
 				6AA5C265239D4C8C000B677A /* PrivateChat.storyboard in Resources */,
 				6869F7D9239CFF3B00694E3D /* HostQA.storyboard in Resources */,
@@ -947,6 +948,15 @@
 				6869F7FC239D05DC00694E3D /* fi */,
 			);
 			name = Host.storyboard;
+			sourceTree = "<group>";
+		};
+		689A912223A19968008ADC36 /* PrivateChatCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				689A912123A19968008ADC36 /* Base */,
+				689A912423A1996E008ADC36 /* fi */,
+			);
+			name = PrivateChatCell.xib;
 			sourceTree = "<group>";
 		};
 		68F2A76E23A0189C0019673F /* QACell.xib */ = {

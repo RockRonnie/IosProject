@@ -48,7 +48,7 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Team Työkkäri ReEdu"
+        self.navigationItem.title = "Qauncele"
         print(RealmDB.sharedInstance.setup)
         setupRealm("default", "default" , false)
         setupSearchBar()
@@ -238,7 +238,7 @@ class HomeController: UIViewController {
     func setupSearchBar(){
         SearchController.searchResultsUpdater = self
         SearchController.obscuresBackgroundDuringPresentation = false
-        SearchController.searchBar.placeholder = "Search Sessions"
+        SearchController.searchBar.placeholder = NSLocalizedString("Search sessions", value: "Search sessions", comment: "Session search")
         navigationItem.searchController = SearchController
         definesPresentationContext = true
     }

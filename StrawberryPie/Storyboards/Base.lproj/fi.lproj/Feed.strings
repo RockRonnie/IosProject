@@ -3,7 +3,7 @@
 "4Ha-Fs-PaS.text" = "Otsikko";
 
 /* Class = "UIButton"; normalTitle = "Host A session"; ObjectID = "CgH-YS-WS4"; */
-"CgH-YS-WS4.normalTitle" = "Isännöi tapahtuma";
+"CgH-YS-WS4.normalTitle" = "Luo tapahtuma";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "HNv-13-mfr"; */
 "HNv-13-mfr.text" = "Nimi";

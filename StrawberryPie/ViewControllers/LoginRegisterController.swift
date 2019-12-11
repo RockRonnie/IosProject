@@ -599,13 +599,13 @@ extension LoginRegisterController: UITableViewDataSource, UITableViewDelegate { 
       
       switch self.thisUser.userInterests.count {
       case 1:
-        self.interestOne.text = selectedCategory
+        self.interestOne.text = NSLocalizedString(selectedCategory, value: selectedCategory, comment: "Category name")
         removeInterestOne.isHidden = false
       case 2:
-        self.interestTwo.text = selectedCategory
+        self.interestTwo.text = NSLocalizedString(selectedCategory, value: selectedCategory, comment: "Category name")
         removeInterestTwo.isHidden = false
       case 3:
-        self.interestThree.text = selectedCategory
+        self.interestThree.text = NSLocalizedString(selectedCategory, value: selectedCategory, comment: "Category name")
         removeInterestThree.isHidden = false
       case 4:
         self.interestError.text = "All 3 categories picked"
