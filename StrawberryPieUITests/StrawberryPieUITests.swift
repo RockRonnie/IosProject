@@ -58,5 +58,4 @@ class StrawberryPieUITests: XCTestCase {
         let test = app.staticTexts["NoContentLabel"].exists
         XCTAssertFalse(test, "There was no content")
     }
-
 }
