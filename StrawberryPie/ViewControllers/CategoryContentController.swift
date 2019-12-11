@@ -55,6 +55,9 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath){
         _ = indexPath.row
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        _ = indexPath.row
         let normalsession = UIStoryboard(name: "QA", bundle: nil)
         let session = normalsession.instantiateViewController(withIdentifier: "QAController") as? QAController
         var realmSession: QASession?
@@ -63,7 +66,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         if let session = session{
             self.navigationController?.pushViewController(session, animated: true)
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
