@@ -85,9 +85,11 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         cell.category?.text = object.sessionCategory
         cell.status?.text = statusCheck(object: object)
         cell.backgroundColor = judasGrey()
-        cell.layer.borderColor = CgjudasBlack()
-        cell.layer.borderWidth = 1
-        
+        let border = CALayer()
+        border.backgroundColor = CgjudasBlack()
+        border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
+        cell.layer.addSublayer(border)
+
         return cell
     }
     // Checks the status of the session
