@@ -5,6 +5,7 @@
 //  Created by Markus Saronsao on 06/12/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// These functions are used to validate the register form before submitting
 
 import UIKit
 
@@ -18,6 +19,7 @@ struct RegisterValidation {
     let isValidateEmail = validateEmail.evaluate(with: trimmedString)
     return isValidateEmail
   }
+    
   // Validate password
   static func validatePassword(passwordID: String) -> Bool {
     // letters, numbers, 3-15 characters
@@ -27,6 +29,7 @@ struct RegisterValidation {
     let isValidPw = validatePw.evaluate(with: trimmedString)
     return isValidPw
   }
+    
   static func validateUsername(user: String) -> Bool {
     // letters, numbers, 3-15 characters
     let usernameRegEx = "[A-Z0-9a-z]{3,15}"

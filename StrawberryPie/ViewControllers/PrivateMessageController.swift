@@ -5,26 +5,24 @@
 //  Created by Roni Jumpponen on 23/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// Simply put, a private chat between two different users
+
 
 import UIKit
 import RealmSwift
-// Simply put, private chat between 2 users
 class PrivateMessageController: UIViewController {
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
-    
     @IBOutlet weak var partnerPic: UIImageView!
     var chatInstance: Chat?
     var realm: Realm?
     var user: User?
     var chatPartner: User?
-    
     var notificationToken: NotificationToken?
     var messages: List<ChatMessage>?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         sendBtn.layer.borderWidth = 2
@@ -125,8 +123,6 @@ class PrivateMessageController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let thisTimestamp = formatter.string(from: timestamp)
-        //let thisTimestamp = formatter.date(from: timestamp)
-    
         return thisTimestamp
     }
     
@@ -164,4 +160,3 @@ extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
         return 175
     }
 }
-

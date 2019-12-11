@@ -5,6 +5,8 @@
 //  Created by iosdev on 10/12/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// Reusable cell for QA. Has a .xib file for styling.
+
 
 import UIKit
 

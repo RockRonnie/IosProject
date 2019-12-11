@@ -4,7 +4,8 @@
 //
 //  Created by Arttu Jokinen on 22/11/2019.
 //
-//
+// // Extension for class Work.
+
 
 import Foundation
 import CoreData

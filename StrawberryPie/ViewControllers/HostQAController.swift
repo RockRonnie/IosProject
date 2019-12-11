@@ -16,7 +16,6 @@ class HostQAController: UIViewController {
     let answerField = UITextField()
     var answerButton = UIButton()
     var cancelButton = UIButton()
-
     var currentSession: QASession?
     var realm: Realm?
     var notificationToken: NotificationToken?
@@ -35,7 +34,6 @@ class HostQAController: UIViewController {
     var selectedTab = "chat"
     let myFormatter = Formatter()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         qaTable.register(UINib(nibName: "ChatMsgCell", bundle: nil), forCellReuseIdentifier: "chatcell")
@@ -43,21 +41,16 @@ class HostQAController: UIViewController {
         realm = RealmDB.sharedInstance.realm
         setupNotification()
         populateSources()
-        
         sendButton.layer.borderWidth = 2
         sendButton.layer.borderColor = judasBlue().cgColor
         sendButton.setTitleColor(judasBlue(), for: .normal)
-        
         qaTable.dataSource = self
         qaTable.delegate = self
-        
         hostCardCV.dataSource = self
         hostCardCV.delegate = self
-        
         //viestin kirjoitus piiloon aluksi
         sendButton.isHidden = true
         messageField.isHidden = true
-        
         let layout = hostCardCV.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         layout.minimumInteritemSpacing = 5
@@ -74,7 +67,6 @@ class HostQAController: UIViewController {
             }
         }
 
-    
     func populateSources() {
         print ("Source data")
         // Title
@@ -125,10 +117,6 @@ class HostQAController: UIViewController {
                 }
             })
         }
-    }
-    
-    func testiTesti() -> Int {
-        return 1
     }
     
     func messageToRealm(data: ChatMessage) {
@@ -213,10 +201,6 @@ class HostQAController: UIViewController {
             }
         }
     }
-    
-    
-    
-    
     
     @IBAction func sendButton(_ sender: UIButton) {
         // Luodaan uusi viesti ja lähetetään realmiin nykyisen sessionin chattiobjektiin. Leivotaan viestin eteen username
@@ -334,7 +318,7 @@ extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextF
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
+        _ = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "qacell")
         // Täytetään celli valitan tabin perusteella
         switch selectedTab {
         case "topic":
@@ -346,14 +330,14 @@ extension HostQAController:  UITableViewDelegate, UITableViewDataSource, UITextF
             let cell = tableView.dequeueReusableCell(withIdentifier: "pinnedcell", for: indexPath) as! QACell
             if let gotQA = qaSource {
                 if gotQA.QAs.count > 0 {
-                    
                     cell.QuestionUser.text = gotQA.QAs[indexPath.row].question[0].messageUser[0].userName
                     cell.QuestionField.text = gotQA.QAs[indexPath.row].question[0].body
                     cell.AnswerField.text = gotQA.QAs[indexPath.row].answer[0].body
-                    cell.AnswerUser.text = gotQA.QAs[indexPath.row].question[0].messageUser[0].userName
+                    cell.AnswerUser.text = gotQA.QAs[indexPath.row].answer[0].messageUser[0].userName
                     qaTable.rowHeight = 150.0
                 }
             }
+            
             return cell
         case "chat":
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatcell", for: indexPath) as! ChatMsgCell

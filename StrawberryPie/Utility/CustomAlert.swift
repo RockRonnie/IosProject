@@ -5,6 +5,7 @@
 //  Created by Markus Saronsalo on 11/12/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// Reusable custom alert. Used mostly in log in and register.
 
 import UIKit
 
@@ -15,8 +16,6 @@ struct CustomAlert {
   static func customAlert(title: String, reason: String, comment: String) -> UIAlertController {
     let alert = UIAlertController(title: NSLocalizedString(title, value: title, comment: comment), message: NSLocalizedString(reason, value: reason, comment: comment), preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    
     return alert
   }
-  
 }

@@ -4,6 +4,7 @@
 //
 //  Created by iosdev on 27/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
+
 //  Class for handling Category Content view. Populates the tableview with the picked categorys contents only.
 
 import UIKit
@@ -11,18 +12,14 @@ import CoreData
 import RealmSwift
 
 class CategoryContentController: UIViewController,UITableViewDataSource, UITableViewDelegate {
-    
     @IBOutlet weak var CategoryContentTable: ExpertTableViewController!
     var notificationToken: NotificationToken?
     var topText = String()
     var categoryObject = [NSManagedObject]()
-    
     var user: SyncUser?
     var realm: Realm!
-    
     lazy var experts: Array<QASession> = []
     var sessions: Results<QASession>?
-
     let button = UIButton()
     // Alert function for the the topbar button. Presents summary for the selected category.
     @objc func press() {
@@ -89,7 +86,6 @@ class CategoryContentController: UIViewController,UITableViewDataSource, UITable
         border.backgroundColor = CgjudasBlack()
         border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
         cell.layer.addSublayer(border)
-
         return cell
     }
     // Checks the status of the session

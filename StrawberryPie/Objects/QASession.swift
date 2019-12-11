@@ -5,6 +5,8 @@
 //  Created by iosdev on 21/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// This class is used for defining a QASession (Platform for all of the other Realm objects) object to be used with Realm
+
 
 import Foundation
 
@@ -25,12 +27,7 @@ import RealmSwift
     let chat = List<Chat>()
     let QABoard = List<QAMessageBoard>()
     let intro = List<Intro>()
- 
-    // add properties if needed, however the objects and their data should be enough
-    
     override static func primaryKey() -> String? {
         return "sessionID"
     }
-    
 }
-

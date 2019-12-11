@@ -5,6 +5,7 @@
 //  Created by iosdev on 23/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// This viewcontroller is used for creating new sessions. The creator must have an expert status.
 
 import UIKit
 import RealmSwift
@@ -20,18 +21,15 @@ class HostController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var introTextView: UITextView!
     let main = UIStoryboard(name: "Main", bundle: nil)
-    
     let transparentView = UIView()
     let tableView = UITableView()
     var selectedButton = UIButton()
-    
     var sessionTitle: String?
     var sessionIntro: String?
     var sessionDesc: String?
     var selectedCategory: String?
     var selectedProfession: String?
     var selectedEducation: String?
-    
     var createdSession: QASession?
     var realm: Realm!
     var thisUser: String?
@@ -80,6 +78,7 @@ class HostController: UIViewController {
     @IBAction func clearButton(_ sender: UIButton) {
         clear()
     }
+    
     @IBAction func createButton(_ sender: Any) {
         print("Starting the QA Session creation sequence")
         validation()
@@ -117,7 +116,6 @@ class HostController: UIViewController {
             self.present(perFeed!, animated:true, completion: nil)
         }
     }
-    
     
     // function for making the category tableview visible
     func addTransparentView(frames: CGRect) {
@@ -165,6 +163,7 @@ class HostController: UIViewController {
         let newSession = QASession(value:["title": sessionTitle ?? "session title" ,"sessionDescription": sessionDesc ?? "session description", "host": [thisUserObject] , "chat":[createChat()], "QABoard": [createBoard()], "intro": [createIntro()], "sessionCategory": selectedCategory ?? "No category", "profession": selectedProfession ?? "no profession", "education": selectedEducation ?? "no education", "upcoming":true])
             return newSession
     }
+    
     func createChat() -> Chat {
         print("creatin Chat object")
         let newChat = Chat(value:["title": sessionTitle ?? "No title"])
@@ -176,6 +175,7 @@ class HostController: UIViewController {
         let newIntro = Intro(value: ["title": sessionTitle ?? "Session Title", "body": sessionIntro ?? "Session intro"])
         return newIntro
     }
+    
     func createBoard() -> QAMessageBoard {
         print("Creating message board object")
         let newBoard = QAMessageBoard()
@@ -183,7 +183,6 @@ class HostController: UIViewController {
     }
 
 }
-
 
 extension HostController: UITextFieldDelegate {
     

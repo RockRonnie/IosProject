@@ -15,26 +15,19 @@ class PersonalFeedController: UIViewController {
     @IBOutlet weak var personalFeedTableView: UITableView!
     @IBOutlet weak var hostBtn: UIButton!
     @IBOutlet weak var personaFeedSegment: UISegmentedControl!
-    
     var notificationToken: NotificationToken?
-    
     var realm: Realm?
     var user: User?
     var expert: Bool = false
-    
     lazy var personalFeed: Array<QASession> = []
     lazy var personalQA: Array<QA> = []
-    
     var personalMessages: List<ChatMessage>?
     var privateMessages: List<ChatMessage>?
-    
     var privateChats: Array<Chat>?
     var hostedSessions: Results<QASession>?
     var recommendedSessions: Results<QASession>?
     var answeredQA: Results<QA>?
-    
     var selectedTab: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

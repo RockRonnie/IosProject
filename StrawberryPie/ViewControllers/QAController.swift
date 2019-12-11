@@ -5,6 +5,7 @@
 //  Created by Ilias Doukas on 23/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// ViewController class for displaying all of the data in a Session for user. Chat functionality is part of this class.
 
 import UIKit
 import RealmSwift
@@ -15,7 +16,6 @@ class QAController: UIViewController {
     var realm: Realm?
     var notificationToken: NotificationToken?
     var qaSource: QAMessageBoard?
-    
     var hostImage: UIImage?
     var hostName: String?
     var hostProfession: String?
@@ -24,9 +24,7 @@ class QAController: UIViewController {
     var chatSource: List<ChatMessage>?
     var userSource: User?
     let myFormatter = Formatter()
-    
     let feed = UIStoryboard(name: "HostQA", bundle: nil)
-    
     // Tabin valinta, oletuksena aihe
     var selectedTab = "topic"
     
@@ -40,10 +38,8 @@ class QAController: UIViewController {
         realm = RealmDB.sharedInstance.realm
         setupNotification()
         populateSources()
-        
         qaTable.dataSource = self
         qaTable.delegate = self
-        
         hostCardCV.dataSource = self
         hostCardCV.delegate = self
         
@@ -154,7 +150,6 @@ class QAController: UIViewController {
     
     @IBAction func scSegmentPressed(_ sender: Any) {
         let getIndex = scSegment.selectedSegmentIndex
-        
         switch (getIndex) {
         case 0:
             // Vaihdetaan cellin pohjaa ja reloadData()
@@ -206,8 +201,8 @@ class QAController: UIViewController {
             }
         }
     }
+    
     @IBOutlet weak var sendButton: UIButton!
-
     @IBOutlet weak var qaTable: UITableView!
 }
 
@@ -215,9 +210,11 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hostcardcell", for: indexPath)
         if indexPath.row == 0  {
@@ -225,6 +222,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             pic.image = hostImage
             cell.contentView.addSubview(pic)
         }
+            
         else {
             let titleFont = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(500))
             let title = UILabel(frame: CGRect(x: 0, y: 25, width: cell.bounds.size.width, height: 20))
@@ -248,8 +246,10 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             company.lineBreakMode = .byTruncatingTail
             cell.contentView.addSubview(company)
         }
+        
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item + 1)
     }
@@ -266,8 +266,10 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             numberOfRows = chatSource?.count ?? 0
         default: numberOfRows = 0
         }
+        
         return (numberOfRows)
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Täytetään celli valitan tabin perusteella
         switch selectedTab {
@@ -280,7 +282,6 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             let cell = tableView.dequeueReusableCell(withIdentifier: "pinnedcell", for: indexPath) as! QACell
             if let gotQA = qaSource {
                 if gotQA.QAs.count > 0 {
-                    
                     cell.QuestionUser.text = gotQA.QAs[indexPath.row].question[0].messageUser[0].userName
                     cell.QuestionField.text = gotQA.QAs[indexPath.row].question[0].body
                     cell.AnswerField.text = gotQA.QAs[indexPath.row].answer[0].body
@@ -288,6 +289,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
                     qaTable.rowHeight = 150.0
                 }
             }
+            
             return cell
         case "chat":
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatcell", for: indexPath) as! ChatMsgCell
@@ -298,6 +300,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
                 let myStamp = myFormatter.dateformat(timestamp)
                 cell.msgTimestamp.text = myStamp
             }
+            
             qaTable.rowHeight = 75.0
             return cell
         default:
@@ -306,6 +309,7 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
             return cell
         }
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch selectedTab {
             case "chat":
@@ -315,8 +319,6 @@ extension QAController:  UITableViewDelegate, UITableViewDataSource, UITextField
                     if let myUser = myUser{
                         let privChat = UIStoryboard(name: "PrivateChat", bundle: nil)
                         let chatNav = privChat.instantiateViewController(withIdentifier: "PrivateMessageController") as? PrivateMessageController
-                   
-               
                         let users = List<User>()
                         if let otherUser = otherUser{
                             users.append(otherUser)

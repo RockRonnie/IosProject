@@ -5,11 +5,13 @@
 //  Created by Ilias Doukas on 22/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// Reusable custom tableviewcontroller
+
 
 import UIKit
 
 class QaHostCardTable: UITableViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }

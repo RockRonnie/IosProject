@@ -5,6 +5,8 @@
 //  Created by iosdev on 22/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
+// This class is used for defining a Intro object to be used with Realm
+
 
 import Foundation
 
@@ -19,5 +21,4 @@ import RealmSwift
     override static func primaryKey() -> String? {
         return "introId"
     }
-    
 }

@@ -190,7 +190,6 @@ import RealmSwift
     advancedSignup()
   }
   // Removebutton for first item in the list
-  
   @IBAction func removeFirst(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
     try! self.realm.write {
@@ -625,4 +624,3 @@ extension LoginRegisterController: UITextViewDelegate {
     }
   }
 }
-

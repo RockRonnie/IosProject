@@ -4,6 +4,7 @@
 //
 //  Created by Joachim Grotenfelt on 10/12/2019.
 //  CGColors added by Arttu Jokinen
+//
 //  This swift file holds all the colors we have been using in the
 //  project as functions, this way they are easier to call to another file.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.

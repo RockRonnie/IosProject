@@ -5,15 +5,16 @@
   Created by Ilias Doukas / Markus Saronsalo on 08/12/2019.
   Copyright © 2019 Team Työkkäri. All rights reserved.
 */
+// Finnish translations. Default values are in English
 
-//QAController.swift
+// QAController.swift
 "Please log in first" = "Kirjaudu ensin sisään";
 "Topic" = "Aihe";
 "Pinned" = "Nostot";
 "Question" = "Kysymys";
 "Answer" = "Vastaus";
 
-// CategoryViewController
+// CategoryViewController + other category references
 "ICT" = "Tietotekniikka";
 "Humanities and Arts" = "Humanistiset ja taiteet";
 "Social Sectors" = "Sosiaalisektori";
@@ -77,4 +78,3 @@
 "Log Out" = "Kirjaudu ulos?";
 "Cancel Log Out" = "Peruuta";
 "Yes, Log Out" = "Kyllä, kirjaudu ulos";
-

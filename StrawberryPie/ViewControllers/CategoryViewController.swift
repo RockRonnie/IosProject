@@ -10,10 +10,8 @@ import UIKit
 import CoreData
 
 class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
     var category = Category()
     @IBOutlet weak var collectionView: UICollectionView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         category.deleteAllData(entity: "Category")

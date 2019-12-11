@@ -7,7 +7,6 @@
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 import UIKit
 import RealmSwift
-
 // Profile class, handles the user profile page. All the necessary code has been commented as needed
 class ProfileController: UIViewController, UITextViewDelegate {
   // realm, user, url and selectedstate declaration
@@ -102,9 +101,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
     topBar.layer.borderColor = UIColor.gray.cgColor
     // SET 2 titles for segmentbutton for choosing between 2 views
     segmentButtons.setTitle((NSLocalizedString("About Me", value: "About Me", comment: "Selected segment")), forSegmentAt: 0)
-    
     segmentButtons.setTitle((NSLocalizedString("Interests", value: "Interests", comment: "Selected segment")), forSegmentAt: 1)
-    
     // Get users from realm
     let users = realm.objects(User.self)
     let imagePost = UserImagePost()
@@ -174,7 +171,6 @@ class ProfileController: UIViewController, UITextViewDelegate {
   func realmSetup(){
     realm = RealmDB.sharedInstance.realm
     user = RealmDB.sharedInstance.getUser()
-    
   }
   
   // State for segmentButton
@@ -240,6 +236,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
       realNameLabel.layer.borderWidth = 3
       realNameLabel.layer.borderColor = judasOrange().cgColor
     }
+    
     if editProfileBtn.titleLabel?.text == NSLocalizedString("Save", value: "Save", comment: "Save") {
       let users = realm.objects(User.self)
       for user in users {
@@ -324,4 +321,3 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
     return 35
   }
 }
-

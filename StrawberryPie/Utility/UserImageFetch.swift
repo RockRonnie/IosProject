@@ -4,6 +4,7 @@
 //
 //  Created by iosdev on 01/12/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
+//
 //  Class for the Post request that uploads image to server and returns response JSON which can be used later on.
 
 import Foundation
@@ -14,11 +15,8 @@ public class UserImagePost {
     
     let url = "http://foxer153.asuscomm.com:3000/upload" //API URL
 
-
     func requestWith(endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((JSON?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
-        
         let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
-        
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             for (key, value) in parameters {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)

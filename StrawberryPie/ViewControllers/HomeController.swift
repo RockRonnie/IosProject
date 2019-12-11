@@ -16,28 +16,22 @@ class HomeController: UIViewController {
     @IBOutlet weak var segmentBtns: UISegmentedControl!
     @IBOutlet weak var ExpertTableView: ExpertTableViewController!
     @IBOutlet weak var filterButton: UIButton!
-    
     let cellBorderColor = CgjudasBlack()
     let tableBorderColor = CgjudasBlack()
-    
     let SearchController = UISearchController(searchResultsController: nil)
-    
     let transparentView = UIView()
     let filterView = UITableView()
     var selectedButton = UIButton()
-    
     var notificationToken: NotificationToken?
     //Realm user sync and activate Realm
     var user: SyncUser?
     var realm: Realm!
-    
     lazy var sessions: Array<QASession> = []
     lazy var filteredSessions: Array<QASession> = []
     var upcomingSessions: Results<QASession>?
     var liveSessions: Results<QASession>?
     var archivedSessions: Results<QASession>?
     var expertImage: UIImage?
-    
     var selectedState: String?
     var isSearchBarEmpty: Bool {
         return SearchController.searchBar.text?.isEmpty ?? true
@@ -135,6 +129,7 @@ class HomeController: UIViewController {
                     removeIsEmptyLabel()
                 }
             }
+            
         case "archived":
             if let archivedSessions = self.archivedSessions {
                 self.sessions = Array(archivedSessions)
@@ -316,7 +311,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
         return status
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
             //Scaleing the image to fit ImageView
@@ -349,12 +343,9 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-
-
 extension HomeController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         filterContentForSearchText(searchBar.text)
-        
     }
 }
