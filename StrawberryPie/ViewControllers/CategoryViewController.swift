@@ -39,7 +39,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         let categoryName = category.getNames()[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         cell.categoryNameLabel.text = NSLocalizedString(categoryName, value: categoryName, comment: "Category name")
-        print(categoryName)
         cell.categoryImageView.image = category.getImages()[indexPath.item] //category.getImages()[indexPath.item]
         //Adding some styling here
         cell.layer.borderColor = UIColor.lightGray.cgColor

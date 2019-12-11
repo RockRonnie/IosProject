@@ -143,7 +143,6 @@ extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrivCell", for: indexPath) as! PrivMsgCell
         let row = indexPath.row
         if let messages = messages {
-            self.scrollToBottom()
             cell.username.text = messages[row].messageUser[0].userName
             cell.messagefield.text = messages[row].body
             let myFormatter = Formatter()
@@ -151,6 +150,11 @@ extension PrivateMessageController: UITableViewDelegate, UITableViewDataSource{
             print(timestamp)
             cell.timestamp.text = timestamp
         }
+        cell.backgroundColor = judasGrey()
+        let border = CALayer()
+        border.backgroundColor = CgjudasBlack()
+        border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
+        cell.layer.addSublayer(border)
          return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

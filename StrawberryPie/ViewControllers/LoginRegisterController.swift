@@ -394,9 +394,9 @@ import RealmSwift
           try! self.realm.write {
             self.realm.add(self.thisUser)
           }
-          let alert = UIAlertController(title: "Customize?", message: "Do you want to customize your profile now?", preferredStyle: .alert)
-          alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in self.createUserMoreInfo() }))
-          alert.addAction(UIAlertAction(title: "Do it later", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
+          let alert = UIAlertController(title: NSLocalizedString("Customize?", value: "Customize?", comment: "Register customization"), message: NSLocalizedString("Do you want to customize your profile now?", value: "Do you want to customize your profile now?", comment: "Register customization"), preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", value: "Yes", comment: "Yes"), style: .default, handler: { (action: UIAlertAction!) in self.createUserMoreInfo() }))
+          alert.addAction(UIAlertAction(title: NSLocalizedString("Do it later", value: "Do it later", comment: "Register customization"), style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
           self.present(alert, animated: true)
           print("Realm connection has been setup")
           print("Changing navigators")
@@ -563,7 +563,8 @@ extension LoginRegisterController: UITableViewDataSource, UITableViewDelegate { 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     let interestCategories = category.getNames()
-    cell.textLabel?.text = interestCategories[indexPath.item]
+    cell.textLabel?.text = NSLocalizedString(interestCategories[indexPath.item], value: interestCategories[indexPath.item], comment: "Category name")
+    //cell.textLabel?.text = interestCategories[indexPath.item]
     return cell
   }
   // Set height

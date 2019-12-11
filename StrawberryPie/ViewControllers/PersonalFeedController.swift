@@ -37,14 +37,8 @@ class PersonalFeedController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = judasGrey()
-        self.personalFeedTableView.backgroundColor = judasGrey()
-        personaFeedSegment.tintColor = judasBlue()
-        hostBtn.setTitleColor(judasBlue(), for: .normal)
-        hostBtn.layer.borderWidth = 2.0
-        hostBtn.layer.borderColor = judasBlue().cgColor
-        hostBtn.layer.cornerRadius = 5
         setup()
+        styles()
     }
     func setup(){
         hideButton()
@@ -59,6 +53,15 @@ class PersonalFeedController: UIViewController {
         personalFeedTableView.register(UINib(nibName: "QACell", bundle: nil), forCellReuseIdentifier: "QACell")
         personalFeedTableView.register(UINib(nibName: "QASessionCell", bundle: nil), forCellReuseIdentifier: "SessionCell")
         personalFeedTableView.reloadData()
+    }
+    func styles(){
+        self.view.backgroundColor = judasGrey()
+        self.personalFeedTableView.backgroundColor = judasGrey()
+        personaFeedSegment.tintColor = judasBlue()
+        hostBtn.setTitleColor(judasBlue(), for: .normal)
+        hostBtn.layer.borderWidth = 2.0
+        hostBtn.layer.borderColor = judasBlue().cgColor
+        hostBtn.layer.cornerRadius = 5
     }
     func setTab(tab: String){
         selectedTab = tab
@@ -122,6 +125,7 @@ class PersonalFeedController: UIViewController {
         expertStatus()
         setupPersonalQA()
         setupPrivateChats()
+        self.personalFeedTableView.reloadData()
     }
     // normal user
     func setupPersonalFeed(){
@@ -148,7 +152,7 @@ class PersonalFeedController: UIViewController {
         if let user = user{
             let chats = realm?.objects(Chat.self).filter("ANY userList.userID = %@", user.userID)
             if let chats = chats{
-                privateChats = Array(chats)
+                self.privateChats = Array(chats)
             }
         }
     }
@@ -180,7 +184,6 @@ class PersonalFeedController: UIViewController {
     func updatePersonalFeed(){
         self.notificationToken = realm?.observe {_,_ in
             self.setupPersonalItems()
-            self.personalFeedTableView.reloadData()
         }
     }
     func statusCheck(object: QASession) -> String{
@@ -277,10 +280,10 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
             //Scaleing the image to fit ImageView
             cell.profilePic.contentMode = .scaleAspectFit
             cell.backgroundColor = judasGrey()
-            //Cell border values
-            cell.layer.borderWidth = 2.0
-            cell.layer.borderColor = judasBlack().cgColor
-            //cell.layer.cornerRadius = 10
+            let border = CALayer()
+            border.backgroundColor = CgjudasBlack()
+            border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
+            cell.layer.addSublayer(border)
           
             var object: QASession
             object = self.personalFeed[indexPath.row] as QASession
@@ -306,6 +309,11 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
                     cell.QuestionField.text = qa.question[0].body
                     cell.AnswerUser.text = qa.answer[0].messageUser[0].userName
                     cell.AnswerField.text = qa.answer[0].body
+                    cell.backgroundColor = judasGrey()
+                    let border = CALayer()
+                    border.backgroundColor = CgjudasBlack()
+                    border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
+                    cell.layer.addSublayer(border)
                     return cell
                 }else{
                     cell.textLabel?.text = "nothing here"
@@ -339,6 +347,11 @@ extension PersonalFeedController: UITableViewDelegate, UITableViewDataSource{
                     let myStamp = myFormatter.dateformat(timestamp)
                     cell.lastTimestamp.text = myStamp
                 }
+                cell.backgroundColor = judasGrey()
+                let border = CALayer()
+                border.backgroundColor = CgjudasBlack()
+                border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
+                cell.layer.addSublayer(border)
                 return cell
                 
              }else{
