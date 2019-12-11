@@ -18,7 +18,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
         category.deleteAllData(entity: "Category")
         category.generateData()
-        category.getCategoryData(name: "Social sectors")
+        category.getCategoryData(name: "Social Sectors")
         let test = category.getEntity(name: "ICT")
         print(test[0].value(forKey: "categoryName") as! String)
         collectionView.dataSource = self
