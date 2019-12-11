@@ -29,6 +29,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
   @IBOutlet weak var logOutBtn: UIButton!
   @IBOutlet weak var expertLabel: UILabel!
   @IBOutlet weak var realNameLabel: UITextField!
+  @IBOutlet weak var topBar: UIView!
   
   
   // Profile pic selection
@@ -101,6 +102,10 @@ class ProfileController: UIViewController, UITextViewDelegate {
     editProfileBtn.isHidden = true
     xtraInfo.isEditable = false
     xtraInfo.isHidden = false
+    // Slightly grayish white
+    topBar.layer.backgroundColor = UIColor(displayP3Red: 0.9686, green: 0.9686, blue: 0.9686, alpha: 1).cgColor
+    topBar.layer.borderWidth = 0.5
+    topBar.layer.borderColor = UIColor.gray.cgColor
     segmentButtons.setTitle((NSLocalizedString("About Me", value: "About Me", comment: "Selected segment")), forSegmentAt: 0)
     
  segmentButtons.setTitle((NSLocalizedString("Interests", value: "Interests", comment: "Selected segment")), forSegmentAt: 1)
