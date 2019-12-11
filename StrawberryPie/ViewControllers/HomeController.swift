@@ -11,6 +11,7 @@ import UIKit
 import RealmSwift
 
 class HomeController: UIViewController {
+    //Outlets
     @IBOutlet weak var segmentBtns: UISegmentedControl!
     @IBOutlet weak var ExpertTableView: ExpertTableViewController!
     @IBOutlet weak var filterButton: UIButton!
@@ -25,7 +26,7 @@ class HomeController: UIViewController {
     var selectedButton = UIButton()
     
     var notificationToken: NotificationToken?
-
+    //Realm user sync and activate Realm
     var user: SyncUser?
     var realm: Realm!
     
@@ -60,7 +61,7 @@ class HomeController: UIViewController {
         UITabBar.appearance().tintColor = judasBlue()
     }
     
-    
+    //Segmented Controllers Action, changes the state depending on which "tab" you choose.
     @IBAction func segmentAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -94,7 +95,6 @@ class HomeController: UIViewController {
     }
     
     //function for loading the data that is ran every time home view is selected.
-    
     func setupExperts(){
         getSessions()
         getState()
@@ -148,6 +148,7 @@ class HomeController: UIViewController {
         default: print("everything went to hell")
         }
     }
+    
     // Creates a subview label that indicates that there are no sessions available
     func createisEmptyLabel(){
         removeIsEmptyLabel()
@@ -162,12 +163,14 @@ class HomeController: UIViewController {
         label.tag = 69
         self.view.addSubview(label)
     }
+    
     // Removes the label from the view 
     func removeIsEmptyLabel(){
         if let viewWithTag = self.view.viewWithTag(69){
             viewWithTag.removeFromSuperview()
         }
     }
+    
     //setting up the notification token for observing the realm to achieve full synchronization and reactive UI
     func updateExpertFeed(){
         self.notificationToken = realm?.observe {_,_ in
@@ -220,17 +223,16 @@ class HomeController: UIViewController {
                 print(self.user?.identity ?? "No identity")
             }
     }
+    
     // Setting up tableviews
     func setupTables(){
         ExpertTableView.dataSource = self
         ExpertTableView.delegate = self
         ExpertTableView.reloadData()
         ExpertTableView.backgroundColor = UIColor.clear
-        //ExpertTableView.layer.borderColor = tableBorderColor
-        //ExpertTableView.layer.borderWidth = 2
         ExpertTableView.register(UINib(nibName: "QASessionCell", bundle: nil), forCellReuseIdentifier: "SessionCell")
-        //print(Realm.Configuration.defaultConfiguration.fileURL)
     }
+    
     // Setting up searchbar searchcontroller
     func setupSearchBar(){
         SearchController.searchResultsUpdater = self
@@ -239,6 +241,7 @@ class HomeController: UIViewController {
         navigationItem.searchController = SearchController
         definesPresentationContext = true
     }
+    
     // Filtering function for searchbar
     func filterContentForSearchText(_ searchText: String?) {
         if let searchText = searchText{
@@ -248,12 +251,12 @@ class HomeController: UIViewController {
             ExpertTableView.reloadData()
         }
     }
-    
 }
 
 //ExpertTableView
 class ExpertTableViewController: UITableView{
 }
+
 extension HomeController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
           if(tableView == ExpertTableView){
@@ -263,8 +266,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             return 1
         }
     }
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if(tableView == ExpertTableView){
@@ -276,6 +277,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             return 0
         }
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         if(tableView == ExpertTableView){
             _ = indexPath.row
@@ -300,6 +302,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             }
         }
         )}
+    
     func statusCheck(object: QASession) -> String{
         var status = ""
         if (object.live) {
@@ -316,6 +319,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
             //Scaleing the image to fit ImageView
             cell.profilePic?.contentMode = .scaleAspectFit
+            //Splits the array objects
             var object: QASession
             if isFiltering {
                 object = filteredSessions[indexPath.row] as QASession
@@ -329,6 +333,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
                     cell.profilePic?.image = result
                 }
             })
+            //sets the value to all cell elements from the split object.
             cell.sessionDesc?.text = object.sessionDescription
             cell.host?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.title?.text = object.title
@@ -339,20 +344,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             border.backgroundColor = cellBorderColor
             border.frame = CGRect(x: 0, y:  cell.frame.size.height - 0.5, width: cell.frame.size.width, height: 0.5)
             cell.layer.addSublayer(border)
-            //cell.layer.borderColor = cellBorderColor
-            //cell.layer.borderWidth = 0.5
-            //cell.layer.cornerRadius = 10
             return cell
     }
-    /*
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if(tableView == filterView){
-            return 50
-        }else{
-            return 200
-        }
-    }
- */
 }
 
 extension HomeController: UISearchResultsUpdating {
