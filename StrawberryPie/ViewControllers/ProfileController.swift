@@ -108,7 +108,7 @@ class ProfileController: UIViewController, UITextViewDelegate {
     topBar.layer.borderColor = UIColor.gray.cgColor
     segmentButtons.setTitle((NSLocalizedString("About Me", value: "About Me", comment: "Selected segment")), forSegmentAt: 0)
     
- segmentButtons.setTitle((NSLocalizedString("Interests", value: "Interests", comment: "Selected segment")), forSegmentAt: 1)
+    segmentButtons.setTitle((NSLocalizedString("Interests", value: "Interests", comment: "Selected segment")), forSegmentAt: 1)
     
     
     let users = realm.objects(User.self)
@@ -127,16 +127,21 @@ class ProfileController: UIViewController, UITextViewDelegate {
           expertLabel.text = ""
         }
         joinDateLabel.text = user.Account_created.dateToString(dateFormat: "dd-MM-yyyy HH:mm")
-        realNameLabel.text = "\(user.firstName)" + " \(user.lastName)"
+        if user.firstName != "" && user.lastName != "" {
+          realNameLabel.text = "\(user.firstName)" + " \(user.lastName)"
+        } else {
+          realNameLabel.text = NSLocalizedString("Name not defined", value: "Name not defined", comment: "fullname")
+          realNameLabel.isEnabled = false
+        }
         if user.info != "" {
           userInfoView.text = user.info
         } else {
-          userInfoView.isHidden = true
+          userInfoView.text = NSLocalizedString("Occupation not defined", value: "Occupation not defined", comment: "occupation")
         }
         if user.extraInfo != "" {
           xtraInfo.text = user.extraInfo
         } else {
-          xtraInfo.isHidden = true
+          xtraInfo.text = NSLocalizedString("No info given", value: "No info given", comment: "fullname")
         }
         if user.userInterests.count > 0 {
           interestTableView.isHidden = true
@@ -223,12 +228,16 @@ class ProfileController: UIViewController, UITextViewDelegate {
     if editProfileBtn.titleLabel?.text == NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile") {
       userInfoView.isEditable = true
       xtraInfo.isEditable = true
+      realNameLabel.isEnabled = true
       getState()
       editProfileBtn.setTitle(NSLocalizedString("Save", value: "Save", comment: "Save"), for: .normal)
+      // Change colors of editable fields
       userInfoView.layer.borderWidth = 3
       userInfoView.layer.borderColor = judasOrange().cgColor
       xtraInfo.layer.borderWidth = 3
       xtraInfo.layer.borderColor = judasOrange().cgColor
+      realNameLabel.layer.borderWidth = 3
+      realNameLabel.layer.borderColor = judasOrange().cgColor
     }
     if editProfileBtn.titleLabel?.text == NSLocalizedString("Save", value: "Save", comment: "Save") {
       let users = realm.objects(User.self)
@@ -242,15 +251,26 @@ class ProfileController: UIViewController, UITextViewDelegate {
           }
           userInfoView.isEditable = false
           xtraInfo.isEditable = false
+          realNameLabel.isEnabled = false
+          // Check if user enters empty fields
+          if realNameLabel.text == "" {
+            realNameLabel.text = NSLocalizedString("Name not defined", value: "Name not defined", comment: "fullname")
+          }
           if userInfoView.text == "" {
-          userInfoView.isHidden = true
+            userInfoView.text = NSLocalizedString("Occupation not defined", value: "Occupation not defined", comment: "occupation")
+          }
+          if xtraInfo.text == "" {
+            xtraInfo.text = NSLocalizedString("No info given", value: "No info given", comment: "fullname")
           }
           getState()
           editProfileBtn.setTitle(NSLocalizedString("Edit Profile", value: "Edit Profile", comment: "Edit Profile"), for: .normal)
+          // Change borders back to black
           xtraInfo.layer.borderWidth = 2.0
           xtraInfo.layer.borderColor = judasBlack().cgColor
           userInfoView.layer.borderWidth = 2.0
           userInfoView.layer.borderColor = judasBlack().cgColor
+          realNameLabel.layer.borderWidth = 2
+          realNameLabel.layer.borderColor = judasBlack().cgColor
         }
       }
     }
