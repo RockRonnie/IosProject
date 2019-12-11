@@ -44,6 +44,9 @@
 "Invalid password!" = "Virheellinen salasana";
 "Username must be 3-15 characters long" = "3-15 kirjainta vaaditaan";
 "Username error" = "Käyttäjänimivirhe";
+"Name not defined" = "Nimeä ei ole määritelty";
+"Occupation not defined" = "Ammattia ei ole määritelty";
+"No info given" = "Ei tietoa";
 "Missing username" = "Puuttuva käyttäjänimi";
 "Password error" = "Salasanavirhe";
 "Missing password" = "Puuttuva salasana";
