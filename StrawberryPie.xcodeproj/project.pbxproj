@@ -49,6 +49,7 @@
 		6A4CC2EA239EC650000166D6 /* PrivateChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A4CC2E8239EC650000166D6 /* PrivateChatCell.xib */; };
 		6A4CC2EC239ECC04000166D6 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CC2EB239ECC04000166D6 /* Formatter.swift */; };
 		6A6F9D75239BE6DA00B8C0E9 /* HomeControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6F9D74239BE6DA00B8C0E9 /* HomeControllerTest.swift */; };
+		6A7C06BE23A00A8E00E7AE41 /* HomePageUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C06BD23A00A8E00E7AE41 /* HomePageUITest.swift */; };
 		6A7D3412238830630079BFB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D3411238830630079BFB7 /* Constants.swift */; };
 		6A7E6637238430AD00F8340C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6636238430AD00F8340C /* AppDelegate.swift */; };
 		6A7E6639238430AD00F8340C /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E6638238430AD00F8340C /* LoginRegisterController.swift */; };
@@ -171,6 +172,7 @@
 		6A4CC2E8239EC650000166D6 /* PrivateChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateChatCell.xib; sourceTree = "<group>"; };
 		6A4CC2EB239ECC04000166D6 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		6A6F9D74239BE6DA00B8C0E9 /* HomeControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerTest.swift; sourceTree = "<group>"; };
+		6A7C06BD23A00A8E00E7AE41 /* HomePageUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageUITest.swift; sourceTree = "<group>"; };
 		6A7D3411238830630079BFB7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6A7E6633238430AD00F8340C /* StrawberryPie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrawberryPie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7E6636238430AD00F8340C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				684EEE16239270C800D68EC6 /* StrawberryPieUITests.swift */,
 				684EEE18239270C800D68EC6 /* Info.plist */,
 				6A9C169B2397AF2800448A57 /* HostControllerUITests.swift */,
+				6A7C06BD23A00A8E00E7AE41 /* HomePageUITest.swift */,
 			);
 			path = StrawberryPieUITests;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				684EEE17239270C800D68EC6 /* StrawberryPieUITests.swift in Sources */,
+				6A7C06BE23A00A8E00E7AE41 /* HomePageUITest.swift in Sources */,
 				6A9C169C2397AF2900448A57 /* HostControllerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

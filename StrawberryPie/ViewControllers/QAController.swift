@@ -90,6 +90,7 @@ class QAController: UIViewController {
         scSegment?.setTitle((NSLocalizedString("Topic", value: "Topic", comment: "Selected segment")), forSegmentAt: 0)
         scSegment?.setTitle((NSLocalizedString("Pinned", value: "Pinned", comment: "Selected segment")), forSegmentAt: 1)
         scSegment?.setTitle((NSLocalizedString("Chat", value: "Chat", comment: "Selected segment")), forSegmentAt: 2)
+        scSegment.tintColor = judasBlue()
         // Chatviestit
         if let chat = currentSession?.chat[0] {
             chatSource = chat.chatMessages
