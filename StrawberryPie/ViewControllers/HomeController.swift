@@ -307,14 +307,15 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
     func statusCheck(object: QASession) -> String{
         var status = ""
         if (object.live) {
-            status = "LIVE"
+            status = NSLocalizedString("Live", value: "Live", comment: "Session status")
         }else if(object.upcoming){
-            status = "UPCOMING"
+            status = NSLocalizedString("Upcoming", value: "Upcoming", comment: "Session status")
         }else if(object.archived){
-            status = "ARCHIVED"
+            status = NSLocalizedString("Archived", value: "Archived", comment: "Session status")
         }
         return status
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! QASessionCell
@@ -330,7 +331,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             let imageProcessor = UserImagePost()
             imageProcessor.getPic(image: object.host[0].uImage, onCompletion: {(resultImage) in
                 if let result = resultImage {
-                    print("kuva saatu")
                     cell.profilePic?.image = result
                 }
             })
@@ -338,7 +338,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             cell.sessionDesc?.text = object.sessionDescription
             cell.host?.text = object.host[0].firstName + " " + object.host[0].lastName
             cell.title?.text = object.title
-            cell.category?.text = object.sessionCategory
+            cell.category?.text = NSLocalizedString(object.sessionCategory, value: object.sessionCategory, comment: "Category name")
             cell.status?.text = statusCheck(object: object)
             cell.backgroundColor = judasGrey()
             let border = CALayer()
@@ -348,6 +348,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource{
             return cell
     }
 }
+
+
 
 extension HomeController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {

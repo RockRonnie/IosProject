@@ -19,13 +19,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="422" height="194.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEQ-M1-s84">
-                        <rect key="frame" x="121" y="64" width="294" height="90"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Session Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEQ-M1-s84">
+                        <rect key="frame" x="139" y="64" width="276" height="90"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="294" id="LYU-Zt-nBa"/>
                             <constraint firstAttribute="height" constant="90" id="NMD-Pv-bQa"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -35,7 +35,7 @@
                             <constraint firstAttribute="width" constant="267" id="fzv-BP-OX5"/>
                             <constraint firstAttribute="height" constant="21" id="glP-Hh-rJc"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -45,7 +45,7 @@
                             <constraint firstAttribute="width" constant="421" id="cWA-gg-Pm9"/>
                             <constraint firstAttribute="height" constant="21" id="d3T-pp-tU3"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -56,25 +56,25 @@
                             <constraint firstAttribute="height" constant="93" id="fn1-q1-E54"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5Z-3j-ldG">
-                        <rect key="frame" x="283" y="159" width="132" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="132" id="Qxz-px-fTv"/>
-                            <constraint firstAttribute="height" constant="27" id="n05-uU-nEt"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qas-Lp-x6b">
                         <rect key="frame" x="8" y="35" width="254" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="254" id="bhR-nE-K09"/>
                             <constraint firstAttribute="height" constant="21" id="z0X-55-W7x"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5Z-3j-ldG">
+                        <rect key="frame" x="283" y="159" width="132" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="132" id="Qxz-px-fTv"/>
+                            <constraint firstAttribute="height" constant="27" id="n05-uU-nEt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
                 </subviews>
                 <constraints>
