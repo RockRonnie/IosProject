@@ -22,7 +22,7 @@ struct Constants {
   
   static let AUTH_URL  = URL(string: "https://\(MY_INSTANCE_ADDRESS)")!
   // /~/ <-- tuolla tehdään käyttäjäkohtainen path
-  static let REALM_URL = URL(string: "realms://\(MY_INSTANCE_ADDRESS)/QATest")!
+  static let REALM_URL = URL(string: "realms://\(MY_INSTANCE_ADDRESS)/QANew")!
   
 
 }

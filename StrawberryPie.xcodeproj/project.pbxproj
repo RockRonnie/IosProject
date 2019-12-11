@@ -34,6 +34,7 @@
 		68B0A1A92391A5A000404D7A /* Studies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE09EA8238827750040E87E /* Studies+CoreDataClass.swift */; };
 		68B0A1B32391AA3D00404D7A /* StrawberryPieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E664E238430AF00F8340C /* StrawberryPieTests.swift */; };
 		68D7B6362398237E0082BFBA /* HostQAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7B6352398237E0082BFBA /* HostQAController.swift */; };
+		68F2A76C23A0189C0019673F /* QACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F2A76E23A0189C0019673F /* QACell.xib */; };
 		6A0178B823952F0A000917B0 /* ExpertCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B723952F0A000917B0 /* ExpertCellController.swift */; };
 		6A0178BA23952F15000917B0 /* HomeExpertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */; };
 		6A14BC56239AC7F20009E676 /* RegisterValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14BC55239AC7F20009E676 /* RegisterValidation.swift */; };
@@ -85,7 +86,6 @@
 		6AD541F7238EC6A700DF16DA /* CategoryContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */; };
 		6AD541F92394075F00DF16DA /* UserImageFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD541F82394075F00DF16DA /* UserImageFetch.swift */; };
 		6AD7B91F239FA78E00AB8E62 /* QACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD7B91D239FA78E00AB8E62 /* QACell.swift */; };
-		6AD7B920239FA78E00AB8E62 /* QACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AD7B91E239FA78E00AB8E62 /* QACell.xib */; };
 		6AD7B923239FBB8100AB8E62 /* ChatMsgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD7B921239FBB8100AB8E62 /* ChatMsgCell.swift */; };
 		6AD7B924239FBB8100AB8E62 /* ChatMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AD7B922239FBB8100AB8E62 /* ChatMsgCell.xib */; };
 		6AD7B927239FC2CE00AB8E62 /* QASessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD7B925239FC2CE00AB8E62 /* QASessionCell.swift */; };
@@ -154,6 +154,8 @@
 		689803D8238A860400FE39CF /* QaTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QaTest.storyboard; sourceTree = "<group>"; };
 		68D7B6352398237E0082BFBA /* HostQAController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostQAController.swift; sourceTree = "<group>"; };
 		68E1B8B923958378003055E4 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68F2A76D23A0189C0019673F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/QACell.xib; sourceTree = "<group>"; };
+		68F2A77023A018A40019673F /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/QACell.strings; sourceTree = "<group>"; };
 		6A0178B723952F0A000917B0 /* ExpertCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertCellController.swift; sourceTree = "<group>"; };
 		6A0178B923952F15000917B0 /* HomeExpertTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeExpertTableCell.swift; sourceTree = "<group>"; };
 		6A14BC55239AC7F20009E676 /* RegisterValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidation.swift; sourceTree = "<group>"; };
@@ -213,7 +215,6 @@
 		6AD541F6238EC6A700DF16DA /* CategoryContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryContentController.swift; sourceTree = "<group>"; };
 		6AD541F82394075F00DF16DA /* UserImageFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageFetch.swift; sourceTree = "<group>"; };
 		6AD7B91D239FA78E00AB8E62 /* QACell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QACell.swift; sourceTree = "<group>"; };
-		6AD7B91E239FA78E00AB8E62 /* QACell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QACell.xib; sourceTree = "<group>"; };
 		6AD7B921239FBB8100AB8E62 /* ChatMsgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMsgCell.swift; sourceTree = "<group>"; };
 		6AD7B922239FBB8100AB8E62 /* ChatMsgCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatMsgCell.xib; sourceTree = "<group>"; };
 		6AD7B925239FC2CE00AB8E62 /* QASessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QASessionCell.swift; sourceTree = "<group>"; };
@@ -422,7 +423,7 @@
 				6A4CC2E7239EC650000166D6 /* PrivateChatCell.swift */,
 				6A4CC2E8239EC650000166D6 /* PrivateChatCell.xib */,
 				6AD7B91D239FA78E00AB8E62 /* QACell.swift */,
-				6AD7B91E239FA78E00AB8E62 /* QACell.xib */,
+				68F2A76E23A0189C0019673F /* QACell.xib */,
 				6AD7B921239FBB8100AB8E62 /* ChatMsgCell.swift */,
 				6AD7B922239FBB8100AB8E62 /* ChatMsgCell.xib */,
 				6AD7B925239FC2CE00AB8E62 /* QASessionCell.swift */,
@@ -618,7 +619,7 @@
 				689803D9238A860400FE39CF /* QaTest.storyboard in Resources */,
 				6AD7B924239FBB8100AB8E62 /* ChatMsgCell.xib in Resources */,
 				6A4CC2EA239EC650000166D6 /* PrivateChatCell.xib in Resources */,
-				6AD7B920239FA78E00AB8E62 /* QACell.xib in Resources */,
+				68F2A76C23A0189C0019673F /* QACell.xib in Resources */,
 				6AA5C265239D4C8C000B677A /* PrivateChat.storyboard in Resources */,
 				6869F7D9239CFF3B00694E3D /* HostQA.storyboard in Resources */,
 			);
@@ -938,6 +939,15 @@
 				6869F7FC239D05DC00694E3D /* fi */,
 			);
 			name = Host.storyboard;
+			sourceTree = "<group>";
+		};
+		68F2A76E23A0189C0019673F /* QACell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68F2A76D23A0189C0019673F /* Base */,
+				68F2A77023A018A40019673F /* fi */,
+			);
+			name = QACell.xib;
 			sourceTree = "<group>";
 		};
 		6AA5C263239D4C8C000B677A /* PrivateChat.storyboard */ = {
