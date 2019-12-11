@@ -79,8 +79,8 @@ class StrawberryPieUITests: XCTestCase {
         app.typeText("Test Message")
         app.buttons["Send"].tap()
     }
+    // Test that tries to create a session
     func testHosting(){
-        
         let app = XCUIApplication()
         let tabBarsQuery = app.tabBars
         testLogin()
@@ -94,18 +94,12 @@ class StrawberryPieUITests: XCTestCase {
         app.typeText("TEst")
         app.buttons["Pick a Category"].tap()
         app.tables.staticTexts["Misc & Unknown"].tap()
-        
         let window = app.children(matching: .window).element(boundBy: 0)
         let element = window.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
         element.children(matching: .textView).element(boundBy: 0).tap()
-   
         app.typeText("This is made by a test")
-        
         element.children(matching: .textView).element(boundBy: 1).tap()
-      
         app.typeText("This is made by a test")
         app.buttons["Create Session"].tap()
-        
-        
     }
 }
