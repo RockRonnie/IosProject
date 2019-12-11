@@ -65,13 +65,18 @@ class ProfileController: UIViewController, UITextViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     // SET COLORS and STYLES
+    segmentButtons.tintColor = judasBlue()
     self.view.backgroundColor = judasGrey()
-    editProfileBtn.tintColor = judasBlue()
-    logOutBtn.tintColor = judasBlue()
+    logOutBtn.backgroundColor = judasGrey()
+    logOutBtn.setTitleColor(judasBlue(), for: .normal)
     logOutBtn.layer.borderWidth = 2.0
     logOutBtn.layer.borderColor = judasBlue().cgColor
+    logOutBtn.layer.cornerRadius = 5
+    editProfileBtn.backgroundColor = judasGrey()
+    editProfileBtn.setTitleColor(judasBlue(), for: .normal)
     editProfileBtn.layer.borderWidth = 2.0
     editProfileBtn.layer.borderColor = judasBlue().cgColor
+    editProfileBtn.layer.cornerRadius = 5
     interestTableView.layer.borderWidth = 2.0
     interestTableView.layer.borderColor = judasBlack().cgColor
     userInfoView.layer.cornerRadius = 0
