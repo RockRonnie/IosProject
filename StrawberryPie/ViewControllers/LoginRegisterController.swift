@@ -2,22 +2,19 @@
 //  LoginRegisterController.swift
 //  StrawberryPie
 //
-//  Created by Markus Saronsalo on 19/11/2019.
+//  Created and commented by Markus Saronsalo on 19/11/2019.
 //  Some styling by Joachim Grotenfelt
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
-//  This class handles the login and register functions
-
 import UIKit
 import RealmSwift
-
+// Login Register class, handles the Login and register functions. Code could be cleaned more, but time restraints caused lowered priority for this.
 @objcMembers class LoginRegisterController: UIViewController, UITextFieldDelegate {
-  
+  // Declarations
   var category = Category()
   var realm: Realm!
   var user: SyncUser?
   let main = UIStoryboard(name: "Main", bundle: nil)
   let thisUser = User()
-  
   // Interestlist outlets
   @IBOutlet weak var categoryTable: UITableView!
   @IBOutlet weak var interestOne: UILabel!
@@ -32,7 +29,6 @@ import RealmSwift
   @IBOutlet weak var doneBtn: UIButton!
   @IBOutlet weak var topBar: UIView!
   @IBOutlet weak var messageLabel: UILabel!
-  
   // Create page content
   var signUpFormEnabled = Bool()
   let changeFormButton = UIButton(type: .roundedRect)
@@ -50,25 +46,12 @@ import RealmSwift
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    messageLabel.font = UIFont.boldSystemFont(ofSize: 17)
     self.view.backgroundColor = judasGrey()
-    changeFormButton.layer.borderWidth = 2
-    changeFormButton.layer.borderColor = judasBlue().cgColor
-    changeFormButton.setTitleColor(judasBlue(), for: .normal)
-    loginButton.layer.borderWidth = 2
-    loginButton.layer.borderColor = judasBlue().cgColor
-    loginButton.setTitleColor(judasBlue(), for: .normal)
-    signUpButton.layer.borderWidth = 2
-    signUpButton.layer.borderColor = judasBlue().cgColor
-    signUpButton.setTitleColor(judasBlue(), for: .normal)
-    categoryTable.delegate = self
-    categoryTable.dataSource = self
-    categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     userOccupation.delegate = self
     userXtraInfoField.delegate = self
     // Init realm
     realm = RealmDB.sharedInstance.realm
-    // Show only login fields
+    // Show only login fields initially
     usernameField.isHidden = false
     userpasswordField.isHidden = false
     userOccupation.isHidden = true
@@ -83,36 +66,20 @@ import RealmSwift
     infoAddedButton.isHidden = true
     cancelBtn.isHidden = true
     doneBtn.isHidden = true
-    // Enabling signup and switching it back again to set initial values to match login form
-    self.signUpFormEnabled = true
-    self.switchForm()
-    // Container, can be used for additional information on the screen, is built programmatically
-    let container = UIStackView()
-    messageLabel.numberOfLines = 0
-    messageLabel.text = NSLocalizedString("Please enter your login information", value: "Please enter your login information", comment: "LoginInfo")
-    // Add topbar on top of the screen
-    
-    container.translatesAutoresizingMaskIntoConstraints = false
-    container.axis = .vertical
-    container.alignment = .fill
-    container.spacing = 16.0
-    view.addSubview(container)
-    
-    
-    // Create Register / Login Form
-    // Styling etc. could be moved to another separate styling file
-    // --------------------------------------
-    // Password secure text entry
-    userpwagainField.isSecureTextEntry = true
-    userpasswordField.isSecureTextEntry = true
-    usernameField.placeholder = NSLocalizedString("Username", value: "Username", comment: "Username")
-    firstnameField.placeholder = NSLocalizedString("First Name", value: "First Name", comment: "Firstname")
-    lastnameField.placeholder = NSLocalizedString("Last Name", value: "Last Name", comment: "Lastname")
-    userEmailField.placeholder = NSLocalizedString("Email", value: "Email", comment: "Email")
-    userOccupation.placeholder = NSLocalizedString("Occupation", value: "Occupation", comment: "Occupation")
-    userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
-    userpasswordField.placeholder = NSLocalizedString("Password", value: "Password", comment: "Password")
-    userpwagainField.placeholder = NSLocalizedString("Confirm Password", value: "Confirm Password", comment: "Confirmpw")
+    // STYLING AND COLORING, could be moved to another separate styling file
+    messageLabel.font = UIFont.boldSystemFont(ofSize: 17)
+    changeFormButton.layer.borderWidth = 2
+    changeFormButton.layer.borderColor = judasBlue().cgColor
+    changeFormButton.setTitleColor(judasBlue(), for: .normal)
+    loginButton.layer.borderWidth = 2
+    loginButton.layer.borderColor = judasBlue().cgColor
+    loginButton.setTitleColor(judasBlue(), for: .normal)
+    signUpButton.layer.borderWidth = 2
+    signUpButton.layer.borderColor = judasBlue().cgColor
+    signUpButton.setTitleColor(judasBlue(), for: .normal)
+    categoryTable.delegate = self
+    categoryTable.dataSource = self
+    categoryTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     usernameField.borderStyle = .roundedRect
     firstnameField.borderStyle = .roundedRect
     lastnameField.borderStyle = .roundedRect
@@ -122,19 +89,44 @@ import RealmSwift
     topBar.layer.backgroundColor = UIColor(displayP3Red: 0.9686, green: 0.9686, blue: 0.9686, alpha: 1).cgColor
     topBar.layer.borderWidth = 0.5
     topBar.layer.borderColor = UIColor.gray.cgColor
-    // Modify info field height
+    // Modify info field height and width
     let xtraInfoHeightConstraint = NSLayoutConstraint(item: userXtraInfoField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80)
     let widthConstraint = userXtraInfoField.widthAnchor.constraint(equalToConstant: 370)
     userXtraInfoField.addConstraint(xtraInfoHeightConstraint)
     userXtraInfoField.addConstraint(widthConstraint)
-    // "Placeholder" for info and xtrainfo
+    // "Placeholder" for info and xtrainfo, textView does not work as textField and has no default placeholder
     userXtraInfoField.textColor = UIColor.lightGray
     userpasswordField.borderStyle = .roundedRect
     userpwagainField.borderStyle = .roundedRect
     userXtraInfoField.font = UIFont.systemFont(ofSize: 17.0)
     userXtraInfoField.layer.borderWidth = 1.0
     userXtraInfoField.layer.cornerRadius = 6
-    
+    // Enabling signup and switching it back again to set initial values to match login form
+    self.signUpFormEnabled = true
+    self.switchForm()
+    // Container, can be used for additional information on the screen, is built programmatically
+    let container = UIStackView()
+    // Topmost label
+    messageLabel.numberOfLines = 0
+    messageLabel.text = NSLocalizedString("Please enter your login information", value: "Please enter your login information", comment: "LoginInfo")
+    container.translatesAutoresizingMaskIntoConstraints = false
+    container.axis = .vertical
+    container.alignment = .fill
+    container.spacing = 16.0
+    view.addSubview(container)
+    // Create Register / Login Form
+    // Password secure text entry
+    userpwagainField.isSecureTextEntry = true
+    userpasswordField.isSecureTextEntry = true
+    // Placeholders for all fields with localization
+    usernameField.placeholder = NSLocalizedString("Username", value: "Username", comment: "Username")
+    firstnameField.placeholder = NSLocalizedString("First Name", value: "First Name", comment: "Firstname")
+    lastnameField.placeholder = NSLocalizedString("Last Name", value: "Last Name", comment: "Lastname")
+    userEmailField.placeholder = NSLocalizedString("Email", value: "Email", comment: "Email")
+    userOccupation.placeholder = NSLocalizedString("Occupation", value: "Occupation", comment: "Occupation")
+    userXtraInfoField.text = NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo")
+    userpasswordField.placeholder = NSLocalizedString("Password", value: "Password", comment: "Password")
+    userpwagainField.placeholder = NSLocalizedString("Confirm Password", value: "Confirm Password", comment: "Confirmpw")
     // Disable autocapitalization on most of the fields except first name and last name
     usernameField.autocapitalizationType = .none
     userEmailField.autocapitalizationType = .none
@@ -145,7 +137,6 @@ import RealmSwift
     usernameField.autocorrectionType = .no
     userEmailField.autocorrectionType = .no
     userOccupation.autocorrectionType = .no
-    
     // Add every text field to container
     container.addArrangedSubview(usernameField)
     container.addArrangedSubview(firstnameField)
@@ -155,8 +146,7 @@ import RealmSwift
     container.addArrangedSubview(userpwagainField)
     container.addArrangedSubview(userOccupation)
     container.addArrangedSubview(userXtraInfoField)
-    
-    // Hide interest table initially
+    // Hide interest table initially, will be shown in second phase of registration
     categoryTable.isHidden = true
     interestOne.isHidden = true
     interestTwo.isHidden = true
@@ -169,39 +159,38 @@ import RealmSwift
     interestTwo.text = ""
     interestThree.text = ""
     interestError.text = ""
-    
-    // LOGIN BUTTON
+    // LOGIN BUTTON with localization
     loginButton.setTitle(NSLocalizedString("Login", value: "Login", comment: "Logintext"), for: .normal)
     loginButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
-    // SIGNUP BUTTON
+    // SIGNUP BUTTON with localization
     signUpButton.setTitle(NSLocalizedString("Sign up", value: "Sign up", comment: "Signuptext"), for: .normal)
     signUpButton.addTarget(self, action: #selector(createUser), for: .touchUpInside)
     // SWAP FORMS BUTTON
     changeFormButton.setTitle(NSLocalizedString("No account? Register", value: "No account? Register", comment: "No account switch"), for: .normal)
     changeFormButton.addTarget(self, action: #selector(switchForm), for: .touchUpInside)
-    
     // Add buttons, cancelButton for cancelling extra signup details
     container.addArrangedSubview(loginButton)
     container.addArrangedSubview(signUpButton)
     container.addArrangedSubview(infoAddedButton)
     container.addArrangedSubview(changeFormButton)
-    
     // Container's location on the screen
     let guide = view.safeAreaLayoutGuide
     NSLayoutConstraint.activate([
       container.centerXAnchor.constraint(equalTo: guide.centerXAnchor, constant: 0),
       container.centerYAnchor.constraint(equalTo: guide.centerYAnchor, constant: -180),
-      
       ])
-  }
+    }
   // Buttons for finishing register or cancelling it
+  
   @IBAction func cancelRegister(_ sender: Any) {
     cancelRegister()
   }
+  
   @IBAction func registerDone(_ sender: Any) {
     advancedSignup()
   }
   // Removebutton for first item in the list
+  
   @IBAction func removeFirst(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
     try! self.realm.write {
@@ -236,6 +225,7 @@ import RealmSwift
       }
     }
   }
+  
   // Remove button for second item in the list
   @IBAction func removeSecond(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
@@ -265,6 +255,7 @@ import RealmSwift
       }
     }
   }
+  
   // Remove button for third item in the list
   @IBAction func removeThird(_ sender: Any) {
     let userUpdatedObj = RealmDB.sharedInstance.getUser()
@@ -287,9 +278,8 @@ import RealmSwift
       }
     }
   }
-  // Mimic placeholder text
-  
-  // Login function, check for username and password
+
+  // Login function, check for missing username and password
   func logIn(_ username: String,_ password: String,_ register: Bool) {
     if usernameField.text == "" {
       self.present(CustomAlert.customAlert(title: "Username error", reason: "Missing username", comment: "UsernameError"), animated: true, completion: nil)
@@ -339,9 +329,7 @@ import RealmSwift
         self.present(CustomAlert.customAlert(title: "Login error", reason: "Wrong login", comment: "LoginError"), animated: true, completion: nil)
       }
     }
-    
   }
-  
   
   // Signup function
   func signUp(_ username: String, _ password: String, _ register: Bool) {
@@ -350,20 +338,14 @@ import RealmSwift
       self.present(CustomAlert.customAlert(title: "Username error", reason: "Missing username", comment: "LoginError"), animated: true, completion: nil)
     } else if userpasswordField.text == "" {
       self.present(CustomAlert.customAlert(title: "Password error", reason: "Missing password", comment: "LoginError"), animated: true, completion: nil)
-
     } else if userpasswordField.text != "" && userpwagainField.text == "" || userpasswordField.text != userpwagainField.text {
       self.present(CustomAlert.customAlert(title: "Error!", reason: "Confirm password", comment: "LoginError"), animated: true, completion: nil)
-
     } else if RegisterValidation.validatePassword(passwordID: userpasswordField.text ?? "") != true {
       self.present(CustomAlert.customAlert(title: "Invalid password!", reason: "Must be 3-15 characters long, A-Z, a-z, 0-9", comment: "LoginError"), animated: true, completion: nil)
-
     } else if RegisterValidation.validateUsername(user: usernameField.text ?? "") != true {
       self.present(CustomAlert.customAlert(title: "Invalid username!", reason: "Username must be 3-15 characters long", comment: "LoginError"), animated: true, completion: nil)
     } else {
-      
-      
       // Textfields are not empty and valid => Login
-      
       SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: true), server: Constants.AUTH_URL) { user, error in
         if let user = user {
           // logout user in realm instance if exists
@@ -412,14 +394,14 @@ import RealmSwift
   func signIn() {
     logIn(username ?? "", password ?? "", false)
   }
+  
   func createUser() {
-    
     signUp(username ?? "", password ?? "", true)
   }
+  
   // Enable user fields for registration phase 2
   func createUserMoreInfo() {
-    // SHOW RELEVANT FIELDS
-    
+  // SHOW RELEVANT FIELDS
     self.doneBtn.isHidden = false
     self.cancelBtn.isHidden = false
     self.usernameField.isHidden = true
@@ -439,11 +421,13 @@ import RealmSwift
     self.interestTwo.isHidden = false
     self.interestThree.isHidden = false
   }
+  
   // Go out of register and present logged in tab bar, should only be used for user that has logged in already
   func cancelRegister() {
     let loggedIn: UITabBarController? = main.instantiateViewController(withIdentifier: "LoggedInTabBar") as? UITabBarController
     self.present(loggedIn!, animated: true, completion: nil)
   }
+  
   // Registration phase 2 function
   func advancedSignup() {
     // Settings for realm
@@ -485,9 +469,7 @@ import RealmSwift
     let alert = UIAlertController(title: alertTitle, message: NSLocalizedString("Registration Successful!", value: "Registration Successful!", comment: "AlertSuccess2"), preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in self.cancelRegister() }))
     self.present(alert, animated: true)
-    
   }
-  
   
   // Change between login / register forms
   func switchForm() {
@@ -498,7 +480,6 @@ import RealmSwift
       self.messageLabel.text = NSLocalizedString("Please enter your login information", value: "Please enter your login information", comment: "LoginInfo")
       self.userpwagainField.isHidden = true
       self.loginButton.isHidden = false
-      
       self.signUpButton.isHidden = true
       let changeFormButtonTextSignup = NSLocalizedString("Sign up instead", value: "Sign up instead", comment: "Change form button text signup")
       changeFormButton.setTitle(changeFormButtonTextSignup, for: .normal)
@@ -514,9 +495,7 @@ import RealmSwift
       self.signUpButton.isHidden = false
       changeFormButton.setTitle(NSLocalizedString("Already have an account? Login instead", value: "Already have an account? Login instead", comment: "Change form button text login"), for: .normal)
     }
-    
-    
-    // Getters
+  // Getters
   }
   var firstname: String? {
     get {
@@ -554,6 +533,8 @@ import RealmSwift
     }
   }
 }
+
+// Tableview extension with delegates and extension
 extension LoginRegisterController: UITableViewDataSource, UITableViewDelegate { // Tableview rowcount to match CoreData
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let rowCount = category.getNames().count
@@ -593,10 +574,8 @@ extension LoginRegisterController: UITableViewDataSource, UITableViewDelegate { 
           print("No changes")
         }
       }
-      
-      
       // Switch case for showing interests on the screen
-      
+      // Also error if all 3 categories are already chosen
       switch self.thisUser.userInterests.count {
       case 1:
         self.interestOne.text = NSLocalizedString(selectedCategory, value: selectedCategory, comment: "Category name")
@@ -620,7 +599,11 @@ extension LoginRegisterController: UITableViewDataSource, UITableViewDelegate { 
     }
   }
 }
+
+// UITEXTVIEW extension with delegate
 extension LoginRegisterController: UITextViewDelegate {
+  
+  // Placeholder functionality, clears textfield if user starts editing
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textView == userXtraInfoField && userXtraInfoField.text == NSLocalizedString("More Info", value: "More Info", comment: "Moreinfo"){
       userXtraInfoField.text = nil
@@ -628,6 +611,7 @@ extension LoginRegisterController: UITextViewDelegate {
     }
   }
   
+  // Also Placeholder functionality, fills the placeholder back or not depending on the editing result
   func textViewDidEndEditing(_ textView: UITextView) {
     if textView == userXtraInfoField {
       switch self.userXtraInfoField.text {
