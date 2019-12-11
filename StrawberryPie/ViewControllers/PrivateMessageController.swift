@@ -27,7 +27,10 @@ class PrivateMessageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = judasGrey()
+        sendBtn.layer.borderWidth = 2
+        sendBtn.layer.borderColor = judasBlue().cgColor
+        sendBtn.setTitleColor(judasBlue(), for: .normal)
         setup()
     }
     
