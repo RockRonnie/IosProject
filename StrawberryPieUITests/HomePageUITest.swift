@@ -31,19 +31,17 @@ class HomePageUITest: XCTestCase {
     }
     
     func chooseSession() {
-        
-        
-        
+        let app = XCUIApplication()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["This is a short description of my Q and A Sessionnnnnnnnnnnnnnnnn"]/*[[".cells.staticTexts[\"This is a short description of my Q and A Sessionnnnnnnnnnnnnnnnn\"]",".staticTexts[\"This is a short description of my Q and A Sessionnnnnnnnnnnnnnnnn\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Chat"]/*[[".segmentedControls.buttons[\"Chat\"]",".buttons[\"Chat\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Nostot"]/*[[".segmentedControls.buttons[\"Nostot\"]",".buttons[\"Nostot\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Aihe"]/*[[".segmentedControls.buttons[\"Aihe\"]",".buttons[\"Aihe\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
     }
     
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        let app = XCUIApplication()
-        
-        
-        
+   
         
     }
 
