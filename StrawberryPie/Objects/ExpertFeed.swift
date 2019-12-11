@@ -2,7 +2,7 @@
 //  ExpertFeed.swift
 //  StrawberryPie
 //
-//  Created by iosdev on 27/11/2019.
+//  Created by Joachim Grotenfelt on 27/11/2019.
 //  Copyright © 2019 Team Työkkäri. All rights reserved.
 //
 

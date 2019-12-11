@@ -16,23 +16,27 @@
 // CategoryViewController
 "ICT" = "Tietotekniikka";
 "Humanities and Arts" = "Humanistiset ja taiteet";
-"Social sectors" = "Sosiaalisektori";
+"Social Sectors" = "Sosiaalisektori";
 "Education Sciences" = "Koulutus";
-"Trade, Admnistration and Law" = "Kauppa, hallinto ja laki";
+"Trade, Administration and Law" = "Kauppa, hallinto ja laki";
 "Natural Sciences" = "Luonnontieteet";
 "Technical Fields" = "Tekniikan alat";
 "Agriculture and Forestry" = "Maa- ja metsätalous";
 "Health and Wellbeing" = "Terveys- ja hyvinvointi";
 "Service Industry" = "Palveluala";
 "General Education" = "Yleissivistävä";
-"Misc & Unkown" = "Muu & Tuntematon";
+"Misc & Unknown" = "Muut & Tuntemattomat";
 
 // HomeController
 "Live" = "Käynnissä";
 "Upcoming" = "Tulossa";
-"Archived" = "Arkistoitu";
+"Archived" = "Arkistoidut";
 
 // LoginRegisterController
+"Do it later" = "Tee se myöhemmin";
+"Yes" = "Kyllä";
+"Customize?" = "Mukauta?";
+"Do you want to customize your profile now?" = "Haluatko räätälöidä profiilisi nyt?";
 "Please fill out the registration form" = "Täytä rekisteröintilomake";
 "Please enter your login information" = "Syötä kirjautumistietosi";
 "Already have an account? Login instead" = "Onko sinulla jo tili? Kirjaudu sisään";

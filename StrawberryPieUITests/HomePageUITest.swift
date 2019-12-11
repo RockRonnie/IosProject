@@ -39,5 +39,10 @@ class HomePageUITest: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results
+        let app = XCUIApplication()
+        app.searchFields["Search Sessions"].tap()
+        app.searchFields.element.typeText("How I became")
+        let test = app.staticTexts["How I became a guitar legend"].exists
+        XCTAssertTrue(test, "test was found")
     }
 }
