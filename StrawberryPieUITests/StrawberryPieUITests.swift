@@ -58,5 +58,54 @@ class StrawberryPieUITests: XCTestCase {
         let test = app.staticTexts["NoContentLabel"].exists
         XCTAssertFalse(test, "There was no content")
     }
+    // This tests login
+    func testLogin(){
+        let app = XCUIApplication()
+        app.tabBars.buttons["Login / Register"].tap()
+        app.textFields["Username"].tap()
+        app.textFields.element.typeText("foxer153")
+        app.secureTextFields["Password"].tap()
+        app.secureTextFields.element.typeText("test123")
+        app.buttons["Login"].tap()
+    }
+    // This test will randomly fail at times. Tests chat message sending
+    func testChat(){
+        let app = XCUIApplication()
+        testLogin()
+        app.tables.staticTexts["I will tell you my secrets on how I became even better than Doughnut hating Yngwie"].tap()
+        app.buttons["Chat"].tap()
+        app.textFields["Enter message"].tap()
+        app.textFields.element.typeText("Test Message")
+        app.buttons["Send"].tap()
+    }
+    func testHosting(){
+        
+        let app = XCUIApplication()
+        let tabBarsQuery = app.tabBars
+        testLogin()
+        tabBarsQuery.buttons["Feed"].tap()
+        app.buttons["Host A session"].tap()
+        app.textFields["Profession"].tap()
+        app.typeText("TeST")
+        app.textFields["Education"].tap()
+        app.typeText("TEST")
+        app.textFields["Session title"].tap()
+        app.typeText("TEst")
+        app.buttons["Pick a Category"].tap()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Misc & Unkown"]/*[[".cells.staticTexts[\"Misc & Unkown\"]",".staticTexts[\"Misc & Unkown\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let window = app.children(matching: .window).element(boundBy: 0)
+        let element = window.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        element.children(matching: .textView).element(boundBy: 0).tap()
+   
+        app.typeText("This is made by a test")
+        
+        element.children(matching: .textView).element(boundBy: 1).tap()
+      
+        app.typeText("This is made by a test")
+        app.buttons["Create Session"].tap()
+        
+        
+    }
 
 }
