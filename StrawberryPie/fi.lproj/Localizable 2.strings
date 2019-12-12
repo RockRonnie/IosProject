@@ -1,0 +1,80 @@
+/* 
+  Localizable.strings
+  StrawberryPie
+
+  Created by Ilias Doukas / Markus Saronsalo on 08/12/2019.
+  Copyright © 2019 Team Työkkäri. All rights reserved.
+*/
+// Finnish translations. Default values are in English
+
+// QAController.swift
+"Please log in first" = "Kirjaudu ensin sisään";
+"Topic" = "Aihe";
+"Pinned" = "Nostot";
+"Question" = "Kysymys";
+"Answer" = "Vastaus";
+
+// CategoryViewController + other category references
+"ICT" = "Tietotekniikka";
+"Humanities and Arts" = "Humanistiset ja taiteet";
+"Social Sectors" = "Sosiaalisektori";
+"Education Sciences" = "Koulutus";
+"Trade, Administration and Law" = "Kauppa, hallinto ja laki";
+"Natural Sciences" = "Luonnontieteet";
+"Technical Fields" = "Tekniikan alat";
+"Agriculture and Forestry" = "Maa- ja metsätalous";
+"Health and Wellbeing" = "Terveys- ja hyvinvointi";
+"Service Industry" = "Palveluala";
+"General Education" = "Yleissivistävä";
+"Misc & Unknown" = "Muut & Tuntemattomat";
+
+// HomeController
+"Live" = "Käynnissä";
+"Upcoming" = "Tulossa";
+"Archived" = "Arkistoidut";
+"Search sessions" = "Etsi tapahtumia";
+
+// LoginRegisterController
+"Do it later" = "Tee se myöhemmin";
+"Yes" = "Kyllä";
+"Customize?" = "Mukauta?";
+"Do you want to customize your profile now?" = "Haluatko räätälöidä profiilisi nyt?";
+"Please fill out the registration form" = "Täytä rekisteröintilomake";
+"Please enter your login information" = "Syötä kirjautumistietosi";
+"Already have an account? Login instead" = "Onko sinulla jo tili? Kirjaudu sisään";
+"Sign up instead" = "Rekisteröintilomakkeeseen";
+"Login error" = "Kirjautumisvirhe";
+"Wrong login" = "Väärä kirjautuminen";
+"Invalid Email" = "Virheellinen sähköpostiosoite (esim@esim.fi)";
+"Invalid username!" = "Virheellinen käyttäjänimi";
+"Invalid password!" = "Virheellinen salasana";
+"Username must be 3-15 characters long" = "3-15 kirjainta vaaditaan";
+"Username error" = "Käyttäjänimivirhe";
+"Name not defined" = "Nimeä ei ole määritelty";
+"Occupation not defined" = "Ammattia ei ole määritelty";
+"No info given" = "Ei tietoa";
+"Missing username" = "Puuttuva käyttäjänimi";
+"Password error" = "Salasanavirhe";
+"Missing password" = "Puuttuva salasana";
+"Password error!" = "Salasanavirhe";
+"Confirm password" = "Varmista salasana";
+"Must be 3-15 characters long, A-Z, a-z, 0-9" = "Salasanaksi vaaditaan 3-15 kirjainta ja/tai numeroa: A-Z, a-z, 0-9";
+"No account? Register" = "Ei tiliä? Rekisteröidy";
+"Sign up" = "Rekisteröidy";
+"Login" = "Kirjaudu sisään";
+"First Name" = "Etunimi";
+"Last Name" = "Sukunimi";
+"Password" = "Salasana";
+"Confirm Password" = "Syötä salasana uudestaan";
+"Email" = "Sähköposti";
+"Username" = "Käyttäjänimi";
+"Occupation" = "Ammatti";
+"More Info" = "Lisätietoja";
+"Success!" = "Onnistui!";
+"Registration Successful!" = "Rekisteröinti onnistui!";
+"About Me" = "Tietoja minusta";
+"Interests" = "Kiinnostuksen kohteet";
+"Edit Profile" = "Muokkaa profiilia";
+"Log Out" = "Kirjaudu ulos?";
+"Cancel Log Out" = "Peruuta";
+"Yes, Log Out" = "Kyllä, kirjaudu ulos";
